@@ -1,6 +1,10 @@
 $MyPath = [IO.Path]::GetDirectoryName($MyInvocation.MyCommand.Definition)
 
 $BasePath = Resolve-Path "$MyPath\.."
+$BasePath = "$BasePath\components"
+if (!(Test-Path $BasePath)) {
+	mkdir $BasePath | Out-Null
+}
 $BaseRepo = "https://github.com/mastersign/mediacategorizer"
 
 function check-git() {

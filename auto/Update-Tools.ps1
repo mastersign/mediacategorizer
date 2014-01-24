@@ -38,22 +38,28 @@ function download($url, $targetFile) {
 
 ## Download 7zip
 
-$tmp = "$BasePath\download.zip"
-download $7zipUrl $tmp
-unzip $tmp $7zipDir
-Remove-Item $tmp
+if (!(Test-Path "$7zipDir\7za.exe")) {
+	$tmp = "$BasePath\download.zip"
+	download $7zipUrl $tmp
+	unzip $tmp $7zipDir
+	Remove-Item $tmp
+}
 
 ## Download FFmpeg
 
-$tmp = "$BasePath\download.7z"
-download $ffmpegUrl $tmp
-un7zip $tmp $BasePath
-Remove-Item $tmp
-if (Test-Path $ffmpegDir) { Remove-Item $ffmpegDir -Recurse -Force }
-Get-ChildItem "$BasePath\ffmpeg-*-win32-static" -Directory `
-    | % { Move-Item $_ $ffmpegDir }
+if (!(Test-Path "$ffmpegDir\bin\ffmpeg.exe")) {
+	$tmp = "$BasePath\download.7z"
+	download $ffmpegUrl $tmp
+	un7zip $tmp $BasePath
+	Remove-Item $tmp
+	if (Test-Path $ffmpegDir) { Remove-Item $ffmpegDir -Recurse -Force }
+	Get-ChildItem "$BasePath\ffmpeg-*-win32-static" -Directory `
+		| % { Move-Item $_ $ffmpegDir }
+}
 
 ## Download WaveViz
 
-if (!(Test-Path $wavevizDir)) { mkdir $wavevizDir | Out-Null }
-download $wavevizUrl "$wavevizDir\WaveViz.exe"
+if (!(Test-Path "$wavevizDir\WaveViz.exe")) {
+	if (!(Test-Path $wavevizDir)) { mkdir $wavevizDir | Out-Null }
+	download $wavevizUrl "$wavevizDir\WaveViz.exe"
+}

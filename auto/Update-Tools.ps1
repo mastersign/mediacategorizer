@@ -6,8 +6,6 @@ if (!(Test-Path $BasePath)) {
 	mkdir $BasePath | Out-Null
 }
 
-$tmp = "$BasePath\download.tmp"
-
 $7zipUrl = "https://sourceforge.net/projects/sevenzip/files/7-Zip/9.20/7za920.zip/download"
 $7zipDir = "$BasePath\7z"
 
@@ -38,15 +36,24 @@ function download($url, $targetFile) {
     $wc.DownloadFile($url, $targetFile)
 }
 
-#download $7zipUrl $tmp
-#unzip $tmp $7zipDir
-#Remove-Item $tmp
+## Download 7zip
 
-#download $ffmpegUrl $tmp
-#un7zip $tmp $BasePath
-#Remove-Item $tmp
-#Get-ChildItem "$BasePath\ffmpeg-*-win32-static" -Directory `
-#    | % { Move-Item $_ $ffmpegDir -Force }
+$tmp = "$BasePath\download.zip"
+download $7zipUrl $tmp
+unzip $tmp $7zipDir
+Remove-Item $tmp
+
+## Download FFmpeg
+
+$tmp = "$BasePath\download.7z"
+download $ffmpegUrl $tmp
+un7zip $tmp $BasePath
+Remove-Item $tmp
+if (Test-Path $ffmpegDir) { Remove-Item $ffmpegDir -Recurse -Force }
+Get-ChildItem "$BasePath\ffmpeg-*-win32-static" -Directory `
+    | % { Move-Item $_ $ffmpegDir }
+
+## Download WaveViz
 
 if (!(Test-Path $wavevizDir)) { mkdir $wavevizDir | Out-Null }
 download $wavevizUrl "$wavevizDir\WaveViz.exe"

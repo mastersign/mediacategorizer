@@ -8,11 +8,12 @@ function build-vs-solution($solutionFile) {
 	& $msbuild /p:Configuration=Release /verbosity:minimal $solutionFile
 }
 
-function run-cmd($cmdFile) {
-	& cmd /C "call `"$cmdFile`""
+function run-cmd($cmd, $arg) {
+	cmd /C "call `"$cmd`" $arg"
 }
 
 pushd "$ComponentsPath\Distillery"
+run-cmd "lein.bat" "self-install"
 run-cmd "$ComponentsPath\Distillery\build-jar.bat"
 popd
 

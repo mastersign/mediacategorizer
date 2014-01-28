@@ -2,6 +2,7 @@
 
 $BasePath = Resolve-Path "$MyPath\.."
 $ComponentsPath = Resolve-Path "$BasePath\components"
+$DocsPath = Resolve-Path "$BasePath\docs"
 $TargetDir = "$BasePath\release"
 if (Test-Path $TargetDir) { Remove-Item $TargetDir -Recurse -Force }
 if (!(Test-Path $TargetDir)) { mkdir $TargetDir | Out-Null }
@@ -41,3 +42,11 @@ Copy-Item "$SourceTranscripterDir\bin\Release\Transcripter.exe*" $TargetTranscri
 $SourceMCDir = "$ComponentsPath\MediaCategorizer"
 Copy-Item "$SourceMCDir\bin\Release\MediaCategorizer.exe*" $TargetDir
 Copy-Item "$SourceMCDir\lib\*" $TargetDir
+
+$SourceDocsDir = "$DocsPath\out"
+$TargetDocsDir = "$TargetDir\docs"
+if (Test-Path $SourceDocsDir) {
+	mkdir $TargetDocsDir | Out-Null
+	Get-ChildItem $SourceDocsDir -Directory | % { Copy-Item $_.FullName $TargetDocsDir -Recurse }
+	Copy-Item "$SourceDocsDir\*.html" $TargetDocsDir
+}

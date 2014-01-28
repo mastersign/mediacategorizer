@@ -8,7 +8,7 @@ creator:
   affiliation: Brandenburg University of Applied Sciences
   email: kiertscher@fh-brandenburg.de
 version: 0.3.0
-date: 2014-01-17
+date: 2014-01-30
 lang: en
 ...
 

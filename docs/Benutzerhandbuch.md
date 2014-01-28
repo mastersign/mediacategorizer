@@ -8,7 +8,7 @@ creator:
   affiliation: Fachhochschule Brandenburg
   email: kiertscher@fh-brandenburg.de
 version: 0.3.0
-date: 17.01.2014
+date: 30.01.2014
 lang: de
 ...
 
@@ -330,7 +330,7 @@ Bei der Veröffentlichung ist zu beachten, dass je nach Größe der Videodateien
 
 [net45]: http://www.microsoft.com/de-de/download/details.aspx?id=30653
 [java7]: https://www.java.com/de/download/manual.jsp
-[profile-management]: Sprachprofilverwaltung.html
+[profile-management]: Sprecherprofilverwaltung.html
 
 [logo]: images/MediaCategorizer.png
 [ui-parts]: images/ui-parts-annotated.png

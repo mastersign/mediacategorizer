@@ -7,9 +7,7 @@ Eine Windows-Anwendung zur Verschriftlichung und Kategorisierung von Videos mit 
 
 Diese Anwendung ist das Ergebnis eines Forschungsprojektes an der [Fachhochschule Brandenburg][fhb] mit dem Namen "Online Lehr- und Lernhilfsmittel" (OLL). Das Projekt wurde gefördert mit Mitteln des Europäischen Fonds für Regionalentwicklung (EFRE) in der Bewirtschaftung des MWFK Programms "e-learning und e-knowledge".
 
-* **Projektleiter:** Friedhelm Mündemann <muendemann@fh-brandenburg.de>
-* **Mitarbeiter:** Tobias Kiertscher <kiertscher@fh-brandenburg.de>
-* **Bearbeitungszeit:** 07.2013 - 01.2014
+**Projekt-Website:** <http://mastersign.github.io/mediacategorizer/>
 
 Funktionalität
 --------------
@@ -35,7 +33,7 @@ Darüber hinaus werden die folgenden externen Werkzeuge benutzt:
 * [Microsoft Speech API][mssapi] (SAPI 5.4 in Microsoft Windows 7)
 * [WaveViz][waveviz]
 
-Außer der Microsoft Speech API, welche durch Transcripter gekapselt wird, besitzen alle Komponenten eine Befehlszeilenschnittstelle. Die Benutzeroberfläche von MediaCategorizer nutzt für die Ansteuerung der Komponenten einheitlich die Befehlszeilenschnittstelle. Dadurch können die einzelnen Komponenten auch in anderen Prozessen eingesetzt werden.
+Außer der Microsoft Speech API, welche durch *Transcripter* gekapselt wird, besitzen alle Komponenten eine Befehlszeilenschnittstelle. Dadurch können die einzelnen Komponenten auch in anderen Prozessen eingesetzt werden. Die Benutzeroberfläche von *MediaCategorizer* nutzt die Befehlszeilenschnittstelle, um alle übrigen Komponenten anzusteuern. 
 
 Technologien
 ------------

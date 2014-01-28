@@ -686,7 +686,7 @@ header h1#subtitle {
 <p>Die Tonspurextraktion löst aus den Videos die Tonspur heraus und konvertiert sie in ein Format, das von der Komponente zur Wellenformvisualisierung und der Komponente zur Spracherkennung unterstützt wird.</p>
 <p>Die Wellenformvisualisierung erzeugt aus der extrahierten Tonspur eine bildliche Darstellung des Tonsignals. Dieses wird in der <abbr title="Hyper Text Markup Language">HTML</abbr>5-Ausgabe eingebunden und dient der Veranschaulichung der Dynamik des Tonsignals.</p>
 <p>Die Spracherkennung steuert die Microsoft Speech API an und speichert die Spracherkennungsergebnisse als Zwischenergebnis in einer <abbr title="Extensible Data Notation">EDN</abbr>-Datei, welche von der Komponente für Analyse und Visualisierung gelesen werden kann.</p>
-<p>Die Komponente für Analyse und Visualisierung filtert zunächst die erkannten Worte und bildet anschließend für Videos und Kategorien Worthäufigkeitslisten. Diese werden in Form von Wortwolken visualisiert. Aus den Worthäufigkeitslisten von Videos und Kategorien werden die Übereinstimmungen zwischen Videos und Kategorien berechnet. Aus den Übereinstimmungen werden dann Zuordnungen zwischen Videos und Kategorien abgeleitet. Die Ergebnisse (einschließlich der erkannten Worte mit ihren Erkennungssicherheiten) werden in Form einer XML-Datei gespeichert. Zusätzlich werden die Volltexte der einzelnen Videos als Reintext gespeichert. Abschließend wird eine statische <abbr title="Hyper Text Markup Language">HTML</abbr>5-Webseite generiert welche alle Ergebnisse visuell aufbereitet darstellt, die Original-Videodateien einbindet und eine interaktive Navigation zwischen den Analyseergebnissen erlaubt. Diese Webseite kann sowohl lokal gespeichert und direkt mit einem Browser betrachtet werden, sie kann aber auch mit Hilfe eines Webservers gehostet und so über das Internet verfügbar gemacht werden.</p>
+<p>Die Komponente für Analyse und Visualisierung filtert zunächst die erkannten Worte und bildet anschließend für Videos und Kategorien Worthäufigkeitslisten. Diese werden in Form von Wortwolken visualisiert. Aus den Worthäufigkeitslisten von Videos und Kategorien werden die Übereinstimmungen zwischen Videos und Kategorien berechnet. Aus den Übereinstimmungen werden dann Zuordnungen zwischen Videos und Kategorien abgeleitet. Die Ergebnisse (einschließlich der erkannten Worte mit ihren Erkennungssicherheiten) werden in Form einer <abbr title="eXtensible Markup Language">XML</abbr>-Datei gespeichert. Zusätzlich werden die Volltexte der einzelnen Videos als Reintext gespeichert. Abschließend wird eine statische <abbr title="Hyper Text Markup Language">HTML</abbr>5-Webseite generiert welche alle Ergebnisse visuell aufbereitet darstellt, die Original-Videodateien einbindet und eine interaktive Navigation zwischen den Analyseergebnissen erlaubt. Diese Webseite kann sowohl lokal gespeichert und direkt mit einem Browser betrachtet werden, sie kann aber auch mit Hilfe eines Webservers gehostet und so über das Internet verfügbar gemacht werden.</p>
 <h2 id="hauptprojekt"><a href="#hauptprojekt">Hauptprojekt</a></h2>
 <p><strong>Projektname:</strong> MediaCategorizer<br /><strong>Repository:</strong> <a href="https://github.com/mastersign/mediacategorizer/">https://github.com/mastersign/mediacategorizer/</a><br /><strong>Verzeichnis:</strong> <code>/</code></p>
 <h3 id="merkmale"><a href="#merkmale">Merkmale</a></h3>
@@ -698,7 +698,7 @@ header h1#subtitle {
 <h3 id="setup"><a href="#setup">Setup</a></h3>
 <ol type="1">
 <li><p>Installieren der <a href="#voraussetzungen">Voraussetzungen</a></p>
-<p>Für das Kompilieren der Komponenten müssen mindestens .NET 4.5, JDK 7 und PowerShell 3 installiert sein. Für das Erzeugen der Projektdokumentation in <abbr title="Hyper Text Markup Language">HTML</abbr> und DOCX müssen mindestens PowerShell 3 und pandoc installiert sein.</p></li>
+<p>Für das Kompilieren der Komponenten müssen mindestens .NET 4.5, <abbr title="Java Development Kit">JDK</abbr> 7 und PowerShell 3 installiert sein. Für das Erzeugen der Projektdokumentation in <abbr title="Hyper Text Markup Language">HTML</abbr> und DOCX müssen mindestens PowerShell 3 und pandoc installiert sein.</p></li>
 <li><p>Klonen des Hauptprojektes in ein lokales Repository</p>
 <p>Befehlszeile mit git in <code>PATH</code> öffnen und <code>&gt; git clone https://github.com/mastersign/mediacategorizer.git D:\MediaCategorizer</code> ausführen. Der Pfad <code>D:\MediaCategorizer</code> kann bei Bedarf angepasst werden.</p></li>
 <li><p>Erzeugen der Projektdokumentation in <abbr title="Hyper Text Markup Language">HTML</abbr> und DOCX</p>
@@ -809,7 +809,7 @@ The colors are specified as RGBA hex values. (e.g. #E080D0FF)</code></pre>
 <li>Analyse der Spracherkennungsergebnisse</li>
 <li>Erzeugung der Worthäufigkeitslisten für Videos und Kategorien</li>
 <li>Berechnung der Übereinstimmungskennzahlen</li>
-<li>Erzeugung der XML-Ausgabe</li>
+<li>Erzeugung der <abbr title="eXtensible Markup Language">XML</abbr>-Ausgabe</li>
 <li>Erzeugung der Reintext-Ausgabe</li>
 <li>Ansteuerung der Bibliothek <em>Mastersign Cloud</em></li>
 <li>Erzeugung der Ergebniswebseite</li>

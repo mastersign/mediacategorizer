@@ -5,7 +5,7 @@ author:
 - Tobias Kiertscher
 association:
 - type: Projekt
-  text: OLL - Online-Lehr- und Lernmittel
+  text: Online-Lehr- und Lernhilfsmittel (OLL)
 - type: Teilprojekt
   text: Verschriftlichung von Videosequenzen
 creator:
@@ -18,13 +18,15 @@ creator:
   affiliation: Fachhochschule Brandenburg, Fachbereich Informatik und Medien
   email: kiertscher@fh-brandenburg.de
 bibliography: bibliography.bib
-date: 17.01.2014
+date: 30.01.2014
 version: 1
 lang: de
 ...
 
 # Zusammenfassung
-Im Rahmen des Projekte *OLL - Online-Lehr- und Lernmittel* wurde im Teilprojekt *Verschriftlichung von Videosequenzen* ein automatisierter Prozess implementiert und erforscht, mit dem eine Verschriftlichung von Videos möglich ist. Neben einem Transkript werden Worthäufigkeitslisten für jedes Video erzeugt. Die Videos können anschließend automatisch einer benutzerdefinierten Anzahl von Kategorien zugeordnet werden. Dadurch ist z.B. die automatische Verschlagwortung und thematische Einordnung von Videomaterial mit unbekanntem gesprochenem Inhalt möglich. Der Prozess wird durch eine grafische Benutzeroberfläche gesteuert. Projekte mit Videos, Kategorien und Steuerparametern können gespeichert und wiederverwendet werden. Die Ergebnisse werden u.a. als HTML5-Webseite und als maschinenlesbares XML ausgeben. Die Webseite bietet eine ansprechende visuelle Aufbereitung der erkannten Worte und Texte und eine übersichtliche Präsentation der Übereinstimmung zwischen den Videos und der Kategorien.
+Im Rahmen des Projekte *Online-Lehr- und Lernhilfsmittel (OLL)* an der Fachhochschule Brandenburg wurde im Teilprojekt *Verschriftlichung von Videosequenzen* ein automatisierter Prozess implementiert und erforscht, mit dem eine Verschriftlichung von Videos möglich ist. Neben einem Transkript werden Worthäufigkeitslisten für jedes Video erzeugt. Die Videos können anschließend automatisch einer benutzerdefinierten Anzahl von Kategorien zugeordnet werden. Dadurch ist z.B. die automatische Verschlagwortung und thematische Einordnung von Videomaterial mit unbekanntem gesprochenem Inhalt möglich. Der Prozess wird durch eine grafische Benutzeroberfläche gesteuert. Projekte mit Videos, Kategorien und Steuerparametern können gespeichert und wiederverwendet werden. Die Ergebnisse werden u.a. als HTML5-Webseite und als maschinenlesbares XML ausgeben. Die Webseite bietet eine ansprechende visuelle Aufbereitung der erkannten Worte und Texte und eine übersichtliche Präsentation der Übereinstimmung zwischen den Videos und der Kategorien.
+
+Das Projekt wurde gefördert mit Mitteln des Europäischen Fonds für Regionalentwicklung (EFRE) in der Bewirtschaftung des MWFK Programms "e-learning und e-knowledge".
 
 # Zielstellung
 Das Ziel des Teilprojektes ist, das Testen und lauffähig machen eines automatisierten Prozesses zur Extraktion von Tonspuren aus einem Video, Verschriftlichung der Tonspur und Erstellen einer Worthäufigkeitsliste.

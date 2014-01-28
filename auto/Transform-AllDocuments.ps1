@@ -1,6 +1,7 @@
 param (
 	$sourceDir = "..\docs",
-	$targetDir = "..\docs\out"
+	$targetDir = "..\docs\out",
+	$formats = @("html", "docx")
 )
 
 if (!(Test-Path $targetDir)) {
@@ -26,7 +27,7 @@ function transform($source) {
 	$ext = [IO.Path]::GetExtension($source)
 	if ($ext -eq ".md") {
 		$target = [IO.Path]::Combine($script:targetDir, [IO.Path]::GetFileNameWithoutExtension($source))
-		& "$myPath\Transform-Document.ps1" -source $source -target $target
+		& "$myPath\Transform-Document.ps1" -source $source -target $target -formats $formats
 	}
 }
 

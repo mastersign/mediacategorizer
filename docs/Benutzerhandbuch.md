@@ -53,22 +53,22 @@ Im übrigen Bereich des Fensters wird die jeweils aktive Seite angezeigt.
 ## Projektseiten
 Die verschiedenen Aspekte eines Projektes sind auf die folgenden Seiten verteilt. 
 
-* [Start](#start)
-* [Kategorien](#kategorien)
-* [Medien](#medien)
-* [Parameter](#parameter)
-* [Ausführung](#ausführung)
+* [Start](#PageStart)
+* [Kategorien](#PageCategories)
+* [Medien](#PageMedia)
+* [Parameter](#PageParameters)
+* [Ausführung](#PageProcessing)
 
 Die Seiten können in beliebiger Reihenfolge über das Prozessmenü aufgerufen werden.
 
-### Start
+### Start {#PageStart}
 Auf der *Startseite* eines Projekt kann für das Projekt ein Name und eine Beschreibung angegeben werden (siehe [#ui-page-start]). Darüber hinaus wird auf der Startseite ein absoluter oder relativer Pfad für das Ausgabeverzeichnis angegeben. In diesem Verzeichnis werden die Prozessergebnisse gespeichert.
 
 Wird ein relativer Pfad für das Ausgabeverzeichnis angegeben, bezieht sich dieser auf die Position der Projektdatei im Dateisystem. Deshalb muss das Projekt gespeichert werden, bevor die Ausführung des Prozesses gestartet wird.
 
 ![#ui-page-start Die Startseite eines Projektes][ui-page-start]
 
-### Kategorien
+### Kategorien {#PageCategories}
 Auf der Seite *Kategorien* können die Kategorien für das Projekt definiert werden (siehe [#ui-page-cats]). Die Schaltflächen *Kategorie hinzufügen* und *Kategorie entfernen* können verwendet werden um der Liste neue Einträge hinzuzufügen oder einen markierten Eintrag zu löschen.
 
 ![#ui-page-cats Die Kategorien eines Projektes][ui-page-cats]
@@ -92,7 +92,7 @@ Die URL gibt den Pfad zu der Ressource an. Für eine Wikipedia-Seite zum Begriff
 
 Werden in einem Projekt keine Kategorien angegeben, wird für die Prozessausgabe keine Zuordnung zwischen Kategorien und Videos berechnet.
 
-### Medien
+### Medien {#PageMedia}
 Auf der Seite *Medien* werden die Videos angegeben, die in dem Prozess verarbeitet werden sollen (siehe [#ui-page-media]).
 
 ![#ui-page-media Die Medienliste eines Projektes][ui-page-media]
@@ -105,7 +105,7 @@ Einfacher als das manuelle Hinzufügen von Einträgen zu Liste ist jedoch die Nu
 
 Zurzeit werden in der Benutzeroberfläche von MediaCategorizer nur mp4-Video-Dateien als Medien unterstützt.
 
-### Parameter
+### Parameter {#PageParameters}
 Die Seite *Parameter* führt eine Reihe von Einstellungen auf, die den Prozess steuern (siehe [#ui-page-params]).
 
 ![#ui-page-params Die Parametereinstellung eines Projektes][ui-page-params]
@@ -204,7 +204,7 @@ Die Seite *Parameter* führt eine Reihe von Einstellungen auf, die den Prozess s
 		* **Wellenform 2**  
 		  Gibt die zweite Farbe für den Farbverlauf der Wellenform an. Die zweite Farbe wird fern der Horizontlinie verwendet.
 
-### Ausführung
+### Ausführung {#PageProcessing}
 Auf der Seite *Ausführung* kann der Prozess gestartet und der Fortschritt der Ausführung beobachtet werden. Sie besteht aus einem Kopfbereich der den globalen Fortschritt der Ausführung anzeigt, eine Liste mit Aufgaben und am Fuß eine Schaltfläche zum Starten des Projektes.
 
 ![#ui-page-process Die Fortschrittsanzeige während der Ausführung des Prozesses][ui-page-process]
@@ -218,7 +218,7 @@ Die Aufgabenliste besteht aus drei Bereichen:
 * **Abgeschlossene Aufgaben**  
   In diesem Teil werden alle Aufgaben angezeigt, die abgeschlossen oder fehlgeschlagen sind. Abgeschlossene Aufgaben werden grün hinterlegt, fehlgeschlagene Aufgaben werden rot hinterlegt und zeigen eine Fehlermeldung an.
 
-## Programmeinstellungen
+## Programmeinstellungen {#PageSetup}
 Durch den Eintrag *Einstellungen* im Projektmenü oben rechts, gelangt man auf die Seite *Einstellungen*. Auf dieser Seite werden Projektübergreifende Programmeinstellungen festgelegt. Diese Einstellungen werden in der Datei `MediaCategorizer.setup.xml` im Programmverzeichnis von MediaCategorizer gespeichert.
 
 ![#ui-page-settings Die Programmeinstellungen von MediaCategorizer][ui-page-settings]
@@ -246,7 +246,7 @@ Die folgenden Einstellungen stehen zur Verfügung:
 	* **Parallele Aufgaben**  
 	  Wenn *Parallelisierung* auf `Manual` steht, gibt dieser Parameter die Anzahl der maximal parallel laufenden Aufgaben an.
 
-## Infoseite
+## Infoseite {#PageAbout}
 Die *Infoseite* wird über den Eintrag *Info* im Projektmenü rechts oben aufgerufen. Sie enthält Versions- und Lizenzinformationen zu MediaCategorizer (siehe [#ui-page-info]). 
 
 ![#ui-page-info Die Infoseite von MediaCategorizer][ui-page-info]

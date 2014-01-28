@@ -626,8 +626,8 @@ header h1#subtitle {
 <li><a href="#installation">Installation</a></li>
 <li><a href="#benutzeroberfläche">Benutzeroberfläche</a><ul>
 <li><a href="#projektseiten">Projektseiten</a></li>
-<li><a href="#programmeinstellungen">Programmeinstellungen</a></li>
-<li><a href="#infoseite">Infoseite</a></li>
+<li><a href="#PageSetup">Programmeinstellungen</a></li>
+<li><a href="#PageAbout">Infoseite</a></li>
 </ul></li>
 <li><a href="#prozessergebnisse">Prozessergebnisse</a><ul>
 <li><a href="#verzeichnisstruktur">Verzeichnisstruktur</a></li>
@@ -682,21 +682,21 @@ header h1#subtitle {
 <h2 id="projektseiten"><a href="#projektseiten">Projektseiten</a></h2>
 <p>Die verschiedenen Aspekte eines Projektes sind auf die folgenden Seiten verteilt.</p>
 <ul>
-<li><a href="#start">Start</a></li>
-<li><a href="#kategorien">Kategorien</a></li>
-<li><a href="#medien">Medien</a></li>
-<li><a href="#parameter">Parameter</a></li>
-<li><a href="#ausführung">Ausführung</a></li>
+<li><a href="#PageStart">Start</a></li>
+<li><a href="#PageCategories">Kategorien</a></li>
+<li><a href="#PageMedia">Medien</a></li>
+<li><a href="#PageParameters">Parameter</a></li>
+<li><a href="#PageProcessing">Ausführung</a></li>
 </ul>
 <p>Die Seiten können in beliebiger Reihenfolge über das Prozessmenü aufgerufen werden.</p>
-<h3 id="start"><a href="#start">Start</a></h3>
+<h3 id="PageStart"><a href="#PageStart">Start</a></h3>
 <p>Auf der <em>Startseite</em> eines Projekt kann für das Projekt ein Name und eine Beschreibung angegeben werden (siehe <a href="#ui-page-start">Abbildung 2</a>). Darüber hinaus wird auf der Startseite ein absoluter oder relativer Pfad für das Ausgabeverzeichnis angegeben. In diesem Verzeichnis werden die Prozessergebnisse gespeichert.</p>
 <p>Wird ein relativer Pfad für das Ausgabeverzeichnis angegeben, bezieht sich dieser auf die Position der Projektdatei im Dateisystem. Deshalb muss das Projekt gespeichert werden, bevor die Ausführung des Prozesses gestartet wird.</p>
 <p><a name="ui-page-start"></a></p>
 <figure>
 <img src="images/ui-page-start.png" alt="Abbildung 2: Die Startseite eines Projektes" /><figcaption>Abbildung 2: Die Startseite eines Projektes</figcaption>
 </figure>
-<h3 id="kategorien"><a href="#kategorien">Kategorien</a></h3>
+<h3 id="PageCategories"><a href="#PageCategories">Kategorien</a></h3>
 <p>Auf der Seite <em>Kategorien</em> können die Kategorien für das Projekt definiert werden (siehe <a href="#ui-page-cats">Abbildung 3</a>). Die Schaltflächen <em>Kategorie hinzufügen</em> und <em>Kategorie entfernen</em> können verwendet werden um der Liste neue Einträge hinzuzufügen oder einen markierten Eintrag zu löschen.</p>
 <p><a name="ui-page-cats"></a></p>
 <figure>
@@ -713,7 +713,7 @@ header h1#subtitle {
 </ul>
 <p>Die URL gibt den Pfad zu der Ressource an. Für eine Wikipedia-Seite zum Begriff <em>Betriebssystem</em> kann z.B. die URL <code>http://de.wikipedia.org/wiki/Betriebssystem</code> verwendet werden. Wenn eine Datei aus dem lokalen Dateisystem angegeben werden soll, muss dem Pfad <code>file:///</code> vorangestellt werden. So kann die Datei <code>C:\Users\Nutzer1\Documents\Stichworte.txt</code> z.B. mit der URL <code>file:///C:\Users\Nutzer1\Documents\Stichworte.txt</code> angegeben werden.</p>
 <p>Werden in einem Projekt keine Kategorien angegeben, wird für die Prozessausgabe keine Zuordnung zwischen Kategorien und Videos berechnet.</p>
-<h3 id="medien"><a href="#medien">Medien</a></h3>
+<h3 id="PageMedia"><a href="#PageMedia">Medien</a></h3>
 <p>Auf der Seite <em>Medien</em> werden die Videos angegeben, die in dem Prozess verarbeitet werden sollen (siehe <a href="#ui-page-media">Abbildung 4</a>).</p>
 <p><a name="ui-page-media"></a></p>
 <figure>
@@ -723,7 +723,7 @@ header h1#subtitle {
 <p>Einträge werden in der Medienliste durch das Klicken auf den freien Bereich unter dem letzten Eintrag erzeugt. Es können ein oder mehrere Einträge markiert und mit der <code>Entf</code>-Taste gelöscht werden.</p>
 <p>Einfacher als das manuelle Hinzufügen von Einträgen zu Liste ist jedoch die Nutzung der Drag&amp;Drop-Unterstützung. Dazu können ein oder mehrere Dateien oder Ordner aus einem Explorer-Fenster auf die umrandete Fläche unter der Liste gezogen werden. Dabei werden alle Ordner nach kompatiblen Mediendateien durchsucht und passende Einträge in der List erzeugt. Der Name wird aus dem Dateinamen gewonnen und die ID wird als fortlaufende Nummer generiert.</p>
 <p>Zurzeit werden in der Benutzeroberfläche von MediaCategorizer nur mp4-Video-Dateien als Medien unterstützt.</p>
-<h3 id="parameter"><a href="#parameter">Parameter</a></h3>
+<h3 id="PageParameters"><a href="#PageParameters">Parameter</a></h3>
 <p>Die Seite <em>Parameter</em> führt eine Reihe von Einstellungen auf, die den Prozess steuern (siehe <a href="#ui-page-params">Abbildung 5</a>).</p>
 <p><a name="ui-page-params"></a></p>
 <figure>
@@ -801,7 +801,7 @@ header h1#subtitle {
 </ul></li>
 </ul></li>
 </ul>
-<h3 id="ausführung"><a href="#ausführung">Ausführung</a></h3>
+<h3 id="PageProcessing"><a href="#PageProcessing">Ausführung</a></h3>
 <p>Auf der Seite <em>Ausführung</em> kann der Prozess gestartet und der Fortschritt der Ausführung beobachtet werden. Sie besteht aus einem Kopfbereich der den globalen Fortschritt der Ausführung anzeigt, eine Liste mit Aufgaben und am Fuß eine Schaltfläche zum Starten des Projektes.</p>
 <p><a name="ui-page-process"></a></p>
 <figure>
@@ -813,7 +813,7 @@ header h1#subtitle {
 <li><strong>Laufende Aufgaben</strong><br /> In diesem Teil werden all Aufgaben angezeigt, die gerade ausgeführt werden. Jede laufende Aufgabe zeigt Statusmeldungen an und besitzt einen eigenen Fortschrittsbalken.</li>
 <li><strong>Abgeschlossene Aufgaben</strong><br /> In diesem Teil werden alle Aufgaben angezeigt, die abgeschlossen oder fehlgeschlagen sind. Abgeschlossene Aufgaben werden grün hinterlegt, fehlgeschlagene Aufgaben werden rot hinterlegt und zeigen eine Fehlermeldung an.</li>
 </ul>
-<h2 id="programmeinstellungen"><a href="#programmeinstellungen">Programmeinstellungen</a></h2>
+<h2 id="PageSetup"><a href="#PageSetup">Programmeinstellungen</a></h2>
 <p>Durch den Eintrag <em>Einstellungen</em> im Projektmenü oben rechts, gelangt man auf die Seite <em>Einstellungen</em>. Auf dieser Seite werden Projektübergreifende Programmeinstellungen festgelegt. Diese Einstellungen werden in der Datei <code>MediaCategorizer.setup.xml</code> im Programmverzeichnis von MediaCategorizer gespeichert.</p>
 <p><a name="ui-page-settings"></a></p>
 <figure>
@@ -837,7 +837,7 @@ header h1#subtitle {
 <li><strong>Parallele Aufgaben</strong><br /> Wenn <em>Parallelisierung</em> auf <code>Manual</code> steht, gibt dieser Parameter die Anzahl der maximal parallel laufenden Aufgaben an.</li>
 </ul></li>
 </ul>
-<h2 id="infoseite"><a href="#infoseite">Infoseite</a></h2>
+<h2 id="PageAbout"><a href="#PageAbout">Infoseite</a></h2>
 <p>Die <em>Infoseite</em> wird über den Eintrag <em>Info</em> im Projektmenü rechts oben aufgerufen. Sie enthält Versions- und Lizenzinformationen zu MediaCategorizer (siehe <a href="#ui-page-info">Abbildung 8</a>).</p>
 <p><a name="ui-page-info"></a></p>
 <figure>

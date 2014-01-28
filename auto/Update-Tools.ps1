@@ -56,6 +56,10 @@ if (!(Test-Path "$ffmpegDir\bin\ffmpeg.exe")) {
 	Get-ChildItem "$BasePath\ffmpeg-*-win32-static" -Directory `
 		| % { Move-Item $_ $ffmpegDir }
 }
+if (Test-Path "$ffmpegDir\bin\ffplay.exe") { Remove-Item "$ffmpegDir\bin\ffplay.exe" }
+if (Test-Path "$ffmpegDir\ff-prompt.bat") { Remove-Item "$ffmpegDir\ff-prompt.bat" }
+if (Test-Path "$ffmpegDir\doc") { Remove-Item "$ffmpegDir\doc" -Recurse -Force }
+if (Test-Path "$ffmpegDir\presets") { Remove-Item "$ffmpegDir\presets" -Recurse -Force }
 
 ## Download WaveViz
 

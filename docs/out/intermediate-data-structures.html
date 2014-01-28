@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>MediaCategorizer - Intermediate File Formats</title>
+    <meta name="author" content="Tobias Kiertscher" />
+    <meta name="date" content="2014-01-17" />
+    
+    <style type="text/css">
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    color: inherit;
+    font-family: inherit;
+}
+
+body
+{
+    line-height: 100%;
+    background-color: #fff;
+    color: #000;
+    font-family: sans-serif;
+    text-align: left;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    font-family: serif;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section
+{
+    display: block;
+}
+
+nav ul
+{
+    list-style: none;
+}
+
+blockquote, q
+{
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after
+{
+    content: '';
+    content: none;
+}
+
+code
+{
+    font-family: monospace;
+}
+
+ins
+{
+    text-decoration: underline;
+}
+
+mark
+{
+    font-style: italic;
+    font-weight: bold;
+}
+
+del
+{
+    text-decoration: line-through;
+}
+
+a
+{
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+abbr[title], dfn[title]
+{
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+table
+{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+hr
+{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #888;
+    margin: 1em 0;
+    padding: 0;
+}
+
+input, select
+{
+    vertical-align: middle;
+}
+
+body
+{
+    font-family: Calibri, Tahoma, Helvetica, Arial, sans-serif;
+    line-height: 115%;
+    margin: 1em 1.5em 2em 1.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0.66em;
+    margin-bottom: 0.33em;
+    line-height: 100%;
+}
+h1, h2, h3, h4 {
+    font-family: Cambria, Times, "Times New Roman", serif;
+    font-weight: normal;
+}
+h1 {
+    font-size: 2.3em;
+}
+h2 {
+    font-size: 1.8em;
+}
+h3 {
+    font-size: 1.4em;
+}
+h4 {
+    font-size: 1.1em;
+}
+h5, h6 {
+    font-family: Calibri, Tahoma, Helvetica, Arial, sans-serif;
+}
+h5 {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+h6 {
+    text-decoration: underline;
+    font-weight: normal;
+}
+
+hr {
+    clear: both;
+}
+
+p, ul, ol, pre, figure, table {
+    margin-top: 1.00em;
+}
+
+a {
+    color: #0850ff;
+    text-decoration: none;
+}
+a:visited {
+    color: #4060A0;
+}
+a:hover {
+    color: #0080ff;
+}
+a:active {
+    color: #dc143c;
+}
+
+h1 a, h1 a:visited,
+h2 a, h2 a:visited,
+h3 a, h3 a:visited,
+h4 a, h4 a:visited,
+h5 a, h5 a:visited,
+h6 a, h6 a:visited
+{
+    color: inherit;
+}
+
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
+    color: #0080ff;
+}
+h1 a:active, h2 a:active, h3 a:active, h4 a:active, h5 a:active, h6 a:active {
+    color: #dc143c;
+}
+
+
+img {
+    border: none;
+}
+
+ins, mark, del {
+    border-radius: 0.25em;
+    padding: 0 0.2em;
+}
+
+ins
+{
+    background-color: #9f9;
+    border: 1px solid #6b6;
+    color: #000;
+    text-decoration: none;
+}
+
+mark
+{
+    background-color: #ff9;
+    border: 1px solid #bb6;
+    color: #000;
+    font-style: italic;
+}
+
+del
+{
+    background-color: #f99;
+    border: 1px solid #b66;
+    color: #000;
+    text-decoration: line-through;
+}
+
+li ul, li ol {
+    margin-top: 0.33em;
+    margin-bottom: 0.33em;
+}
+li {
+    margin-left: 2em;
+}
+ul li {
+    list-style: disc outside none;
+}
+ul li li {
+    list-style: circle outside none;
+}
+ul li li li {
+    list-style: square outside none;
+}
+ol li {
+    list-style: decimal outside none;
+}
+ol li li {
+    list-style: lower-latin outside none;
+}
+ol li li li {
+    list-style: lower-roman outside none;
+}
+
+li p  {
+    margin-top: 0;
+}
+
+nav li {
+    list-style: none outside none;
+    margin-left: 0;
+}
+
+q {
+    quotes: "\201E" "\201C";
+    font-style: italic;
+}
+q:before {
+    content: open-quote;
+}
+q:after {
+    content: close-quote;
+}
+
+blockquote {
+    border: 1px #ddd solid;
+    border-radius: 0.5em;
+    margin: 1em 10% 1em 10%;
+    padding: 0.5em;
+    font-style: italic;
+}
+blockquote cite {
+    display: block;
+    text-align: right;
+    margin-top: 0.5em;
+    font-style: normal;
+    font-size: 0.8em;
+}
+blockquote > p:first-child {
+    margin-top: 0;
+}
+
+code {
+    font-family: Consolas, "Lucida Console", Courier, monospace;
+    font-size: 0.8em;
+    color: #024;
+    background-color: #f6f6f6;
+    padding: 0 0.2em;
+    border: 1px solid #e4e4e4;
+    border-radius: 0.2em;
+}
+pre code {
+    background-color: inherit;
+    border: none;
+    border-radius: none;
+}
+pre {
+    border: 1px #ddd solid;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    white-space: pre;
+    overflow: auto;
+}
+
+table {
+    border-collapse: collapse;
+}
+td, th {
+    padding: 0.125em 0.5em 0.125em 0.5em;
+    border: 1px #ddd solid;
+}
+thead td, th, tfoot td {
+    font-weight: bold;
+}
+
+thead, tfoot {
+    background-color: #F0F0F0;
+}
+
+figure {
+    border: 1px #ddd solid;
+    border-radius: 0.5em;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 0.5em;
+    text-align: center;
+    overflow: auto;
+}
+figure figcaption {
+    display: block;
+    text-align: center;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 0.8em;
+    margin-top: 0.5em;
+}
+
+figure table {
+    width: 100%;
+    margin-top: 0;
+}
+
+section {
+    border-top: 1px #aaa solid;
+    margin-top: 2em;
+}
+
+footer {
+    margin-top: 2em;
+    text-align: center;
+    color: #888;
+}
+
+aside {
+    float: right;
+    width: 20%;
+    border: 1px #ddd solid;
+    border-radius: 0.5em;
+    margin-left: 1em;
+    padding: 0 0.5em 1em 0.5em;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F0F0F0;
+}
+
+#frame {
+    text-align: left;
+    padding: 1em;
+    background-color: #FFFFFF;
+    -moz-box-shadow:    0 0 12px #808080;
+    -chrome-box-shadow: 0 0 12px #808080;
+    box-shadow:         0 0 12px #808080;
+}
+
+header {
+    padding-bottom: 1em;
+}
+
+figure {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/*** NAV ***/
+
+nav ul {
+    list-style: none;
+    margin-top: 0px;
+    padding-top: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+nav .menu-title {
+    font-weight: bold;
+}
+
+/*** NAV HORIZONTAL ***/
+
+nav.horizontal {
+    border-bottom: 1px solid #AAA;
+    width: auto;
+    float: none;
+    padding: 0.25em;
+}
+
+nav.horizontal .menu-title, nav.horizontal ul {
+    display: inline-block;
+}
+
+nav.horizontal .menu-title {
+    padding: 0 0.5em 0 0.25em;
+}
+
+nav.horizontal li {
+    display: inline-block;
+    padding: 0 0.5em 0 0.5em;
+}
+
+/*** NAV VERTICAL ***/
+
+nav.vertical {
+    border-bottom: none;
+    width: 10em;
+    float: left;
+    padding: 1em 1em 1em 0.5em;
+}
+
+nav.fixed {
+    position: fixed;
+}
+
+nav.vertical .menu-title, nav.vertical ul {
+    display: block;
+}
+
+nav.vertical .menu-title {
+    padding: 0 0 0.5em 0;
+}
+
+nav.vertical li {
+    display: block;
+    padding: 0 0 0.25em 0;
+}
+
+nav.vertical li li {
+    margin-left: 0.75em;
+    font-size: small;
+    padding: 0;
+}
+
+#page {
+    margin: 1em 0.5em 1em 11em;
+    padding-left: 1em;
+}
+
+footer {
+    border-top: 1px solid #AAA;
+    clear: both;
+}
+
+@media screen and (min-width: 960px) and (min-device-width: 960px) {
+    #frame {
+        width: 920px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (max-width: 720px), screen and (max-device-height: 720px) and (orientation: landscape) {
+    #frame {
+        max-width: 720px;
+    }
+
+    nav.vertical {
+        width: auto;
+        float: none;
+        margin: 0;
+        padding: 0.25em;
+    }
+
+    nav.fixed {
+        position: relative;
+    }
+
+    nav.vertical {
+        border-bottom: 1px solid #AAA;
+        width: auto;
+        float: none;
+        padding: 0.25em;
+    }
+
+    nav.vertical .menu-title, nav.vertical ul {
+        display: inline-block;
+    }
+
+    nav.vertical .menu-title {
+        padding: 0 0.5em 0 0.25em;
+    }
+
+    nav.vertical li {
+        display: inline-block;
+        padding: 0 0.5em 0 0.5em;
+    }
+
+    #page {
+        margin: 1em 0.5em;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 480px) and (orientation: portrait) {
+    #frame {
+    max-width: 480px;
+        padding: 0.25em;
+    }
+  header {
+        padding-bottom: 0;
+    }
+    header h1 {
+        margin: 0;
+        padding-bottom: 0.25em;
+    padding-top: 0.25em;
+        font-size: 1.8em;
+        border-bottom: 1px solid #AAA;
+        text-align: center;
+    }
+
+    nav.vertical, nav.horizontal {
+        border-bottom: 1px solid #AAA;
+        width: auto;
+        float: none;
+        padding: 0.5em 0em;
+        text-align: center;
+    }
+
+    nav.vertical .menu-title, nav.vertical ul, nav.horizontal .menu-title {
+        display: block;
+    }
+
+    nav.vertical .menu-title, nav.horizontal .menu-title {
+        padding: 0 0 0.5em 0;
+    }
+
+    nav.vertical li, nav.horizontal li {
+        display: block;
+        padding: 0 0 0.25em 0;
+    }
+}
+
+header h1#title {
+    margin-top: 0.25em;
+}
+
+header h1#subtitle {
+    margin-top: 0.5em;
+    font-size: 1.6em;
+}
+
+#preface {
+
+}
+#preface .item {
+    margin: 0.5em 0;
+}
+#preface .item .label {
+    font-weight: bold;
+    display: block;
+    float: left;
+    width: 6em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#preface .item .text {
+    display: block;
+    margin-left: 7em;
+}
+#preface .item .affiliation {
+    display: block;
+    margin-left: 7em;
+    clear: both;
+    font-style: italic;
+    color: #888;
+}
+
+    </style>
+    </head>
+<body>
+<div id="frame">
+    <header>
+        
+        <h1 id="title">MediaCategorizer</h1>
+        <h1 id="subtitle">Intermediate File Formats</h1>
+    </header>
+    <a id="TOC"></a>
+    <nav class="vertical fixed">
+    	<ul>
+<li><a href="#ConfigFile">Configuration File</a><ul>
+<li><a href="#Configuration">Configuration</a></li>
+<li><a href="#CloudConfiguration">Cloud Configuration</a></li>
+</ul></li>
+<li><a href="#JobFile">Job File</a><ul>
+<li><a href="#JobDescription">Job Description</a></li>
+<li><a href="#CategoryDescription">Category Description</a></li>
+<li><a href="#CategoryResourceDescription">Category Resource Description</a></li>
+<li><a href="#VideoDescription">Video Description</a></li>
+</ul></li>
+<li><a href="#SpeechRecognitionResultFile">Speech Recognition Result File</a><ul>
+<li><a href="#example-5">Example</a></li>
+<li><a href="#Phrase">Phrase</a></li>
+<li><a href="#SpeechRecognitionResult">Speech Recognition Result</a></li>
+<li><a href="#AlternatePhrase">Alternate Phrase</a></li>
+<li><a href="#RecognizedWord">Recognized Word</a></li>
+<li><a href="#ReverseIndexedStructures">Reverse Indexed Structures</a></li>
+</ul></li>
+<li><a href="#AnalysisResults">Analysis Results</a><ul>
+<li><a href="#WordIndex">Word Index</a></li>
+<li><a href="#IndexStatistics">Index Statistics</a></li>
+<li><a href="#VideoWordOccurrence">Video Word Occurrence</a></li>
+<li><a href="#VideoResult">Video Result</a></li>
+<li><a href="#VideoWord">Video Word</a></li>
+<li><a href="#CategoryMatch">Category Match</a></li>
+<li><a href="#CategoryResult">Category Result</a></li>
+<li><a href="#DescriptiveWord">Descriptive Word</a></li>
+<li><a href="#CategoryWord">Category Word</a></li>
+<li><a href="#VideoMatch">Video Match</a></li>
+</ul></li>
+</ul>
+    </nav>
+    <div id="page">
+        <div id="preface">
+            
+            <div class="item creator">
+                <span class="label">Author</span>
+                <span class="text">Tobias Kiertscher                <a href="mailto:kiertscher@fh-brandenburg.de">kiertscher@fh-brandenburg.de</a>                </span>
+                                <span class="affiliation">Brandenburg University of Applied Sciences</span>
+                            </div>
+            <div class="item date">
+                <span class="label">Datum</span>
+                <span class="text">2014-01-17</span>
+            </div>
+            <div class="item version">
+                <span class="label">Version</span>
+                <span class="text">0.3.0</span>
+            </div>
+        </div>
+    	<p>This document describes the most important data structures for the <em>distillery</em> component.</p>
+<h1 id="ConfigFile"><a href="#ConfigFile">Configuration File</a></h1>
+<p>File in <a href="http://edn-format.org/">Clojure <abbr title="Extensible Data Notation">EDN</abbr> syntax</a> with the extension <code>.cfg</code>. The content is a map with the <em><a href="#Configuration">Configuration</a></em> structure.</p>
+<h2 id="Configuration"><a href="#Configuration">Configuration</a></h2>
+<p>The configuration structure controls the processing of the speech recognition results and the creation of the output.</p>
+<h3 id="slots"><a href="#slots">Slots</a></h3>
+<ul>
+<li><strong>parallel-proc</strong><br /> <em>boolean</em> a flag to activate the parallel processing</li>
+<li><strong>blacklist-resource</strong><br /> <em>string</em> the resource name for the blacklist</li>
+<li><strong>blacklist-max-size</strong><br /> <em>integer number</em> the maximum number of words to take from the blacklist</li>
+<li><strong>min-confidence</strong><br /> <em>floating point number</em> <code>[0..1]</code> the minimal recognition confidence for a word to be used in the statistic analysis</li>
+<li><strong>good-confidence</strong><br /> <em>floating point number</em> the minimal recognition confidence of words, recognized “without a doubt”</li>
+<li><strong>min-relative-appearance</strong><br /> <em>floating point number</em> <code>[0..1]</code> the minimal relative appearance (<code>max-appearance / appearance</code>) for correction candidates</li>
+<li><strong>min-match-score</strong><br /> <em>floating point number</em> <code>[0..1]</code> the minimal matching score for associating a video with a category</li>
+<li><strong>index-filter</strong><br /> <em>vector</em> with a combination of the following keywords: <code>:not-short</code>, <code>:noun</code>, <code>:min-confidence</code>, <code>:good-confidence</code>, <code>:no-punctuation</code>, <code>:not-in-blacklist</code></li>
+<li><strong>visualize-results</strong><br /> <em>boolean</em> a flag to activate the generating of an interactive website with a visualization of the process result</li>
+<li><strong>skip-media-copy</strong><br /> <em>boolean</em> a flag to suppress copying the media files into the website structure</li>
+<li><strong>skip-wordclouds</strong><br /> <em>boolean</em> a flag to suppress the time consuming generation of word clouds</li>
+<li><strong>skip-word-includes</strong><br /> <em>boolean</em> a flag to suppress the generation of a web-page for word in a video or a category</li>
+<li><strong>skip-match-includes</strong><br /> <em>boolean</em> a flag to suppress the generation of a web-page for every match between a video and a category</li>
+<li><strong>main-cloud</strong><br /> <em><a href="#CloudConfiguration">Cloud Configuration</a></em> the configuration map for the global word cloud</li>
+<li><strong>category-cloud</strong><br /> <em><a href="#CloudConfiguration">Cloud Configuration</a></em> the configuration map for the category word clouds</li>
+<li><strong>video-cloud</strong><br /> <em><a href="#CloudConfiguration">Cloud Configuration</a></em> the configuration map for the video word clouds</li>
+</ul>
+<h3 id="example"><a href="#example">Example</a></h3>
+<pre><code>{ :parallel-proc true
+  :blacklist-resource (resource &quot;blacklist.txt&quot;))
+  :blacklist-max-size 1000
+  :min-confidence 0.4
+  :good-confidence 0.7
+  :min-match-score 0.02
+  :index-filter [:not-short :noun :min-confidence :no-punctuation]
+  :skip-media-copy false
+  :skip-word-includes false
+  :skip-match-includes false
+  :main-cloud { { :width 640
+                  :height 400
+                  :color [0.0 0.8 0.2]
+                  ... } } 
+  :category-cloud { ... }
+  :video-cloud { ... } }</code></pre>
+<h2 id="CloudConfiguration"><a href="#CloudConfiguration">Cloud Configuration</a></h2>
+<p>A cloud configuration controls the creation of a word cloud.</p>
+<h3 id="slots-1"><a href="#slots-1">Slots</a></h3>
+<ul>
+<li><strong>width</strong><br /> <em>integer number</em> the width of the word cloud image in pixels</li>
+<li><strong>height</strong><br /> <em>integer number</em> the height of the word cloud image in pixels</li>
+<li><strong>precision</strong><br /> <em>floating point number</em> <code>[0..1]</code> the precision for finding a place for a word in the word cloud</li>
+<li><strong>order-priority</strong><br /> <em>floating point number</em> <code>[0..1]</code> the priority of building an alphabetic order in the word cloud</li>
+<li><strong>font-family</strong><br /> <em>string</em> the family name of the font to be used for the words in the word cloud</li>
+<li><strong>font-style</strong><br /> <em>vector</em> vector with a combination of the following styles: <code>:bold</code>, <code>:italic</code></li>
+<li><strong>min-font-size</strong><br /> <em>integer number</em> <code>[10..]</code> the font size of the smallest words in pixels</li>
+<li><strong>max-font-size</strong><br /> <em>integer number</em> <code>[10..]</code> the font size of the largest words in pixels</li>
+<li><strong>color</strong><br /> <em>vector</em> a vector with four <em>floating point numbers</em> <code>[0..1]</code> for red, green, and blue, and alpha</li>
+<li><strong>background-color</strong><br /> <em>vector</em> a vector with four <em>floating point numbers</em> <code>[0..1]</code> for red, green, blue, and alpha</li>
+</ul>
+<h3 id="example-1"><a href="#example-1">Example</a></h3>
+<pre><code>{ :width 540
+  :height 300
+  :precision :medium
+  :order-priority 0.6
+  :font-family &quot;Segoe UI&quot;
+  :font-style [:bold]
+  :min-font-size 13
+  :max-font-size 70
+  :color [0.0 0.3 0.8 1.0]
+  :background-color [0.0 0.0 0.0 0.0] }</code></pre>
+<h1 id="JobFile"><a href="#JobFile">Job File</a></h1>
+<p>File in <a href="http://edn-format.org/">Clojure <abbr title="Extensible Data Notation">EDN</abbr> syntax</a> with file extension <code>.saj</code>. It is the input for the speech recognition result analysis and contains a <em><a href="#JobDescription">Job Description</a></em> structure. Part of a job is a name, a number of categories, a number of videos, and additional parameters like the output directory.</p>
+<h2 id="JobDescription"><a href="#JobDescription">Job Description</a></h2>
+<p>A job description contains all information necessary to perform the analysis and create the analysis result representation.</p>
+<h3 id="slots-2"><a href="#slots-2">Slots</a></h3>
+<ul>
+<li><strong>media-categorizer-version</strong><br /> <em>string</em> the version number of the Media Categorizer tool</li>
+<li><strong>job-name</strong><br /> <em>string</em> short name for the job</li>
+<li><strong>job-description</strong><br /> <em>string</em> brief textual description of the job</li>
+<li><strong>output-dir</strong><br /> <em>string</em> file system path to the directory to save the analysis result representation</li>
+<li><strong>result-file</strong><br /> <em>string</em> the name of the <abbr title="eXtensible Markup Language">XML</abbr> file for the process result</li>
+<li><strong>configuration</strong><br /> <em><a href="#Caonfiguration">Configuration</a></em> a configuration map which overwrites the default configuration individually for each existing slot, can be nil or empty</li>
+<li><strong>categories</strong><br /> <em>vector</em> of <em><a href="#CategoryDescription">Category Descriptions</a></em></li>
+<li><strong>videos</strong><br /> <em>vector</em> of <em><a href="#VideoDescription">Video Descriptions</a></em></li>
+</ul>
+<h3 id="example-2"><a href="#example-2">Example</a></h3>
+<pre><code>{ :media-categorizer-version &quot;1.0.0&quot;
+  :job-name &quot;Archive 001&quot;
+  :job-description &quot;The first part of the video archive.&quot;
+  :output-dir &quot;C:\\Videos\\Result&quot;
+  :result-file &quot;result.xml&quot;
+  :configuration { ... } 
+  :categories [ ... ] 
+  :videos [ ... ] }</code></pre>
+<h2 id="CategoryDescription"><a href="#CategoryDescription">Category Description</a></h2>
+<p>Defines a category and all associated resources.</p>
+<h3 id="slots-3"><a href="#slots-3">Slots</a></h3>
+<ul>
+<li><strong>id</strong><br /> <em>string</em> a short identifier without white spaces and special chars</li>
+<li><strong>name</strong><br /> <em>string</em> the full name of the category</li>
+<li><strong>resources</strong><br /> <em>vector</em> a vector with <em><a href="#CategoryResourceDescription">Category Resource Descriptions</a></em></li>
+</ul>
+<h3 id="example-3"><a href="#example-3">Example</a></h3>
+<pre><code>{ :id &quot;comb&quot;
+  :name &quot;Combination&quot;
+  :resources [ {:type :html, :url &quot;http://en.wikipedia.org/wiki/Combination&quot;}
+               {:type :html, :url &quot;http://mathworld.wolfram.com/Combination.html&quot;}
+               {:type :plain, :url &quot;file://D:\\text\\combination.txt&quot;} ] }</code></pre>
+<h2 id="CategoryResourceDescription"><a href="#CategoryResourceDescription">Category Resource Description</a></h2>
+<p>The reference to a category resource.</p>
+<h3 id="slots-4"><a href="#slots-4">Slots</a></h3>
+<ul>
+<li><strong>type</strong><br /> <code>:plain</code> | <code>:html</code> the text type of the resource</li>
+<li><strong>url</strong><br /> <em>string</em> the <abbr title="Uniform Resource Locator">URL</abbr> to the resource</li>
+</ul>
+<h2 id="VideoDescription"><a href="#VideoDescription">Video Description</a></h2>
+<p>Defines a video and all associated resources.</p>
+<h3 id="slots-5"><a href="#slots-5">Slots</a></h3>
+<ul>
+<li><strong>id</strong><br /> <em>string</em> a short identifier without white spaces and special chars</li>
+<li><strong>name</strong><br /> <em>string</em> the full name of the video</li>
+<li><strong>video-file</strong><br /> <em>string</em> the absolute path to the original video file</li>
+<li><strong>recognition-profile</strong><br /> <em>string</em> the identifier for the selected speech recognition profile (for the Microsoft <abbr title="Speech Application Programming Interface">SAPI</abbr> the identifier is a <abbr title="Globally Unique IDentifier">GUID</abbr>)</li>
+<li><strong>recognition-profile-name</strong><br /> <em>string</em> the human readable name of the selected speech recognition profile</li>
+<li><strong>audio-file</strong><br /> <em>string</em> the absolute path to the extracted audio file <code>.wav</code> (<abbr title="Pulse Code Modulation">PCM</abbr> 16bit mono), used for speech recognition</li>
+<li><strong>duration</strong><br /> <em>floating point number</em> the length of the audio stream in seconds</li>
+<li><strong>waveform-file</strong><br /> <em>string</em> the absolute path to an image representing the waveform of the extracted audio</li>
+<li><strong>results-file</strong><br /> <em>string</em> the absolute path to the speech recognition results file <code>*.srr</code></li>
+</ul>
+<h3 id="example-4"><a href="#example-4">Example</a></h3>
+<pre><code>{ :id &quot;C1-P3-Intro&quot;
+  :name &quot;Introduction&quot;
+  :video-file &quot;D:\\media\\c1\\p3_introduction.mp4&quot;
+  :recognition-profile &quot;&quot;
+  :recognition-profile-name &quot;en-US_female_03&quot;
+  :audio-file &quot;D:\\media\\proc\\audio\\p3_introduction.wav&quot;
+  :waveform-file &quot;D:\\media\\proc\\waveform\\p3_introduction.png&quot;
+  :results-file &quot;D:\\media\\proc\\transcript\\p3_introduction.srr&quot; }</code></pre>
+<h1 id="SpeechRecognitionResultFile"><a href="#SpeechRecognitionResultFile">Speech Recognition Result File</a></h1>
+<p>File in <a href="http://edn-format.org/">Clojure <abbr title="Extensible Data Notation">EDN</abbr> syntax</a> with file extension <code>.srr</code>. The content is a vector of <em><a href="#SpeechRecognitionResult">Speech Recognition Results</a></em>.</p>
+<h2 id="example-5"><a href="#example-5">Example</a></h2>
+<pre><code>[ { :no 0
+    :start 0.3
+    :duration 2.712
+    :confidence 0.5651
+    :text &quot;Hello and welcome&quot;
+    :words [ { :no 0 :confidence 0.9544 :text &quot;Hello&quot; :lexical-form &quot;hello&quot; :pronunciation &quot;həˈləʊ̯&quot; }
+             { :no 1 :confidence 0.8234 :text &quot;and&quot; :lexical-form &quot;and&quot; :pronunciation &quot;ænd&quot; }
+             { :no 2 :confidence 0.8602 :text &quot;welcome&quot; :lexical-form &quot;welcome&quot; :pronunciation &quot;ˈwɛl.kəm&quot; } ]
+    :alternates [ { :no 0
+                    :confidence 0.3521
+                    :text &quot;Hello and welcome&quot;
+                    :words [ ... ] }
+                  ... ] }
+  ... ]</code></pre>
+<h2 id="Phrase"><a href="#Phrase">Phrase</a></h2>
+<p>A phrase is a sequence of recognized words.</p>
+<h3 id="slots-6"><a href="#slots-6">Slots</a></h3>
+<ul>
+<li><strong>confidence</strong><br /> <em>floating point number</em> <code>[0..1]</code> describing the overall confidence of this phrase</li>
+<li><strong>text</strong><br /> <em>string</em> with the text of the words in this phrase</li>
+<li><strong>words</strong><br /> <em>vector</em> of the <em><a href="#RecognizedWord">Recognized Words</a></em> in this phrase</li>
+</ul>
+<h2 id="SpeechRecognitionResult"><a href="#SpeechRecognitionResult">Speech Recognition Result</a></h2>
+<p>A speech recognition result describes the result yielded by the speech recognition engine, analyzing a section of an audio stream. The analyzed section is typically selected by an algorithm which considers among others values like length of silence, background noises, and maximal length of a section. A speech recognition of an audio section yields a number of alternative phrases. The phrase with the highest confidence is typically used as the recognized phrase for the audio section. A speech recognition result is a <em><a href="#Phrase">Phrase</a></em> as well.</p>
+<h3 id="slots-7"><a href="#slots-7">Slots</a></h3>
+<ul>
+<li><strong>no</strong><br /> <em>integer number</em> <code>[0..n]</code> identifying the result in the context of a video</li>
+<li><strong>start</strong><br /> <em>floating point number</em> with the begin of the audio section in seconds</li>
+<li><strong>duration</strong><br /> <em>floating point number</em> with the duration of the audio section in seconds</li>
+<li><strong>confidence</strong><br /> <em>floating point number</em> <code>[0..1]</code> describing the overall confidence of the <em>recognized phrase</em> for the audio section</li>
+<li><strong>text</strong><br /> <em>string</em> with the text of the words in the recognized phrase</li>
+<li><strong>words</strong><br /> <em>vector</em> of the <em><a href="#RecognizedWord">Recognized Words</a></em> in the recognized phrase</li>
+<li><strong>alternates</strong> (optional)<br /> <em>vector</em> with <em><a href="#AlternatePhrase">Alternate Phrases</a></em></li>
+</ul>
+<h3 id="example-6"><a href="#example-6">Example</a></h3>
+<pre><code>{ :no 0
+  :start 24.35
+  :duration 4.267
+  :confidence 0.7885
+  :text &quot;a brown fox jumped over the messy hill.&quot;
+  :words [ ... ]
+  :alternates [ ... ] }</code></pre>
+<h2 id="AlternatePhrase"><a href="#AlternatePhrase">Alternate Phrase</a></h2>
+<p>An alternate sequence of recognized words for an audio section. An alternate sequence is an extension of the <em><a href="#Phrase">Phrase</a></em> structure.</p>
+<h3 id="slots-8"><a href="#slots-8">Slots</a></h3>
+<ul>
+<li><strong>no</strong> <em>integer number</em> <code>[0..n]</code> identifying the phrase in the context of a <em><a href="#SpeechRecognitionResult">Speech Recognition Result</a></em></li>
+<li><strong>confidence</strong> <em>floating point number</em> <code>[0..1]</code> describing the overall confidence of this phrase</li>
+<li><strong>text</strong> <em>string</em> with the text of the words in this phrase</li>
+<li><strong>words</strong> <em>vector</em> of the <em><a href="#RecognizedWord">Recognized Words</a></em> in this phrase</li>
+</ul>
+<h3 id="example-7"><a href="#example-7">Example</a></h3>
+<pre><code>{ :no 4
+  :confidence 0.48992
+  :text &quot;a brown fox run about the messy mill.&quot;
+  :words [ ... ] }</code></pre>
+<h2 id="RecognizedWord"><a href="#RecognizedWord">Recognized Word</a></h2>
+<p>A recognized word is a word in the context of a recognition result. Every word is recognized with a certain confidence. The confidence values of the words in a phrase can be combined to an overall confidence for a phrase.</p>
+<h3 id="slots-9"><a href="#slots-9">Slots</a></h3>
+<ul>
+<li><strong>no</strong><br /> <em>integer number</em> <code>[0..n]</code> identifying the word in a phrase</li>
+<li><strong>confidence</strong><br /> <em>floating point number</em> <code>[0..1]</code> describing the confidence for the recognition of this word</li>
+<li><strong>text</strong><br /> <em>string</em> the text representation of the word in the context of the phrase</li>
+<li><strong>lexical-form</strong><br /> <em>string</em> the lexical form of the word</li>
+<li><strong>pronunciation</strong><br /> <em>string</em> the <a href="http://en.wikipedia.org/wiki/International_Phonetic_Alphabet"><abbr title="International Phonetic Alphabet">IPA</abbr></a> pronunciation of the word in the context of the phrase</li>
+</ul>
+<h3 id="example-8"><a href="#example-8">Example</a></h3>
+<pre><code>{ :no 2
+  :confidence 0.6443
+  :text &quot;brown&quot;
+  :lexical-form &quot;brown&quot;
+  :pronunciation &quot;braʊn&quot; }</code></pre>
+<h2 id="ReverseIndexedStructures"><a href="#ReverseIndexedStructures">Reverse Indexed Structures</a></h2>
+<p>Reverse indexing adds numerical references, pointing upwards in the hierarchy.</p>
+<h3 id="reverse-indexed-word"><a href="#reverse-indexed-word">Reverse Indexed Word</a></h3>
+<p>The reverse indexing adds one additional slot to the <em><a href="#RecognizedWord">Words</a></em> in a recognized phrase of a result:</p>
+<ul>
+<li><strong>result-no</strong><br /> <em>integer number</em> <code>[0..n]</code> identifying the result containing this word</li>
+</ul>
+<h3 id="reverse-indexed-alternate-phrase"><a href="#reverse-indexed-alternate-phrase">Reverse Indexed Alternate Phrase</a></h3>
+<p>The reverse indexing adds one additional slot to <em><a href="#AlternatePhrase">Alternate Phrases</a></em> in a result:</p>
+<ul>
+<li><strong>result-no</strong><br /> <em>integer number</em> <code>[0..n]</code> identifying the result containing this phrase</li>
+</ul>
+<h3 id="reverse-indexed-phrase-word"><a href="#reverse-indexed-phrase-word">Reverse Indexed Phrase Word</a></h3>
+<p>The reverse indexing adds two additional slots to <em><a href="#RecognizedWord">Words</a></em> in <em><a href="#AlternatePhrase">Alternate Phrases</a></em> of a result:</p>
+<ul>
+<li><strong>result-no</strong><br /> <em>integer number</em> <code>[0..n]</code> identifying the result containing the phrase</li>
+<li><strong>alt-no</strong><br /> <em>integer number</em> <code>[0..n]</code> identifying the alternate phrase in the result</li>
+</ul>
+<h1 id="AnalysisResults"><a href="#AnalysisResults">Analysis Results</a></h1>
+<p>The analysis steps in <a href="api.html#distillery.core">distillery.core/prepare-and-analyze</a> takes a <em><a href="#JobDescription">Job Description</a></em>, loads the necessary resources and generates additional data. This additional data is attached to the <em><a href="#JobDescription">Job Description</a></em> structure and its children.</p>
+<p>Because of the large amount of the accumulated data during the analysis process the extended job description structure is not written out as it is as an <a href="http://edn-format.org/"><abbr title="Extensible Data Notation">EDN</abbr></a> file. Instead the most important parts of the analysis result is written out as the <abbr title="eXtensible Markup Language">XML</abbr> result file.</p>
+<h2 id="WordIndex"><a href="#WordIndex">Word Index</a></h2>
+<p>During analysis the <em><a href="#JobDescription">Job Description</a></em> is extended with a the slot <code>:words</code>, holding an index of words. A word index points from words to a number of occurrences in video phrases. It is encoded as a map with the lexical form of a word as the key and a structure with properties of the word as value.</p>
+<h3 id="value-slots"><a href="#value-slots">Value Slots</a></h3>
+<p>The following properties of a word are possible.</p>
+<ul>
+<li><strong>id</strong><br /> <em>string</em> an identifier, that can be used ax <abbr title="Hyper Text Markup Language">HTML</abbr>/<abbr title="eXtensible Markup Language">XML</abbr> ID or as a file name</li>
+<li><strong>lexical-form</strong><br /> <em>string</em> the lexical form of the word</li>
+<li><strong>pronunciation</strong><br /> <em>string</em> the <a href="http://en.wikipedia.org/wiki/International_Phonetic_Alphabet"><abbr title="International Phonetic Alphabet">IPA</abbr></a> pronunciation of the word</li>
+<li><strong>occurrences</strong><br /> <em>vector</em> a vector of <em><a href="#VideoWordOccurrence">Video Word Occurrences</a></em></li>
+<li><strong>occurrence-count</strong><br /> <em>integer number</em> <code>[1..n]</code> the number of occurrences (cached for easy accessibility)</li>
+<li><strong>mean-confidence</strong><br /> <em>floating point number</em> <code>[0..1]</code> mean recognition confidence</li>
+</ul>
+<h3 id="example-9"><a href="#example-9">Example</a></h3>
+<pre><code>{ &quot;Grammar&quot; { :id &quot;grammar&quot;
+              :lexical-form &quot;Grammar&quot;
+              :pronunciation &quot;...&quot;
+              :occurrences [ { :video-id &quot;video1&quot; :result-no 20 :word-no 3 :confidence 0.679 } ... ]
+              :occurrence-count 3
+              :mean-confidence 0.7533 }
+  &quot;Method&quot;  { :id &quot;method&quot;
+              :lexical-form &quot;Method&quot;
+              :pronunciation &quot;...&quot;
+              :occurrences [ ... ] 
+              :occurrence-count 1
+              :mean-confidence 0.895 }</code></pre>
+<h2 id="IndexStatistics"><a href="#IndexStatistics">Index Statistics</a></h2>
+<p>For computational reasons, an index map can be supported by some statistical values.</p>
+<h3 id="slots-10"><a href="#slots-10">Slots</a></h3>
+<ul>
+<li><strong>count</strong><br /> <em>integer number</em> <code>[0..n]</code> the number of words in the index</li>
+<li><strong>max-occurrence-count</strong><br /> <em>integer number</em> <code>[1..n]</code> the number of occurrences of the most frequent word</li>
+</ul>
+<h3 id="example-10"><a href="#example-10">Example</a></h3>
+<pre><code>{ :count 233
+  :max-occurrence-count: 35 } </code></pre>
+<h2 id="VideoWordOccurrence"><a href="#VideoWordOccurrence">Video Word Occurrence</a></h2>
+<p>A video word occurrence is the address to a recognized word in a video.</p>
+<h3 id="slots-11"><a href="#slots-11">Slots</a></h3>
+<ul>
+<li><strong>video-id</strong> <em>(optional)</em><br /> <em>string</em> video id</li>
+<li><strong>result-no</strong><br /> <em>int</em> result number</li>
+<li><strong>word-no</strong><br /> <em>int</em> word number</li>
+<li><strong>confidence</strong><br /> <em>floating point number</em> <code>[0..1]</code> recognition confidence</li>
+</ul>
+<h3 id="example-11"><a href="#example-11">Example</a></h3>
+<pre><code>{ :video-id &quot;video1&quot; 
+  :result-no 20 
+  :word-no 3 
+  :confidence 0.679 }</code></pre>
+<h2 id="VideoResult"><a href="#VideoResult">Video Result</a></h2>
+<p>The analysis result for the recognized phrases of a video extends the <em><a href="#VideoDescription">Video Description</a></em> structure. The original <em><a href="#VideoDescription">Video Description</a></em> from the vector in the <code>:videos</code> slot of a <em><a href="#JobDescription">Job Description</a></em> structure is extended by the following slots:</p>
+<h3 id="slots-12"><a href="#slots-12">Slots</a></h3>
+<ul>
+<li><em>id</em></li>
+<li><em>name</em></li>
+<li>…</li>
+<li><strong>results</strong><br /> <em>vector</em> of <em><a href="#RecognitionResult">Recognition Result</a></em> structures</li>
+<li><strong>phrase-count</strong><br /> <em>integer number</em> <code>[1..n]</code> the number of recognized phrases (cached for easy accessibility)</li>
+<li><strong>word-count</strong><br /> <em>integer number</em> <code>[1..n]</code> the number of recognized words</li>
+<li><strong>index</strong><br /> <em>map</em> the video word index, which maps from word IDs to <em><a href="#VideoWord">Video Word</a></em> structures</li>
+<li><strong>index-stats</strong><br /> <em><a href="#IndexStatistics">Index Statistics</a></em> for the video word index</li>
+<li><strong>matches</strong><br /> <em>map</em> a look-up table, which maps from category IDs to <em><a href="#CategoryMatch">Category Matches</a></em></li>
+<li><strong>max-score</strong><br /> <em>floating point value</em> <code>[0..1]</code> the maximal score between the video and a category</li>
+</ul>
+<h3 id="example-12"><a href="#example-12">Example</a></h3>
+<pre><code>{ :id &quot;video01&quot;
+  :name &quot;The first video&quot;
+  ...
+  :results [ ... ]
+  :phrase-count 311
+  :word-count 4977
+  :index { &quot;alpha&quot; { :mean-confidence 0.793
+                     :occurrences [ ... ]
+                     :occurrence-count 9
+                     :match-value: 0.104 }
+           &quot;beta&quot;  { ... }
+           ... }
+  :index-stats { :count 288
+                 :max-occurrence-count 19 } 
+  :matches { &quot;info&quot; { :category-id &quot;info&quot;
+                      :word-scores { ... }
+                      :score 0.7133 }
+             &quot;math&quot; { ... }
+             ... }
+  :max-score 0.9323 }</code></pre>
+<h2 id="VideoWord"><a href="#VideoWord">Video Word</a></h2>
+<p>A video word is a word which occurs at least one time in the recognized phrases of a video. Every video word is represented by some statistical values and a list of <em><a href="#VideoWordOccurrence">Video Word Occurrences</a></em>.</p>
+<h3 id="slots-13"><a href="#slots-13">Slots</a></h3>
+<ul>
+<li><strong>id</strong><br /> <em>string</em> an identifier, that can be used ax <abbr title="Hyper Text Markup Language">HTML</abbr>/<abbr title="eXtensible Markup Language">XML</abbr> ID or as a file name</li>
+<li><strong>lexical-form</strong><br /> <em>string</em> the lexical form of the word</li>
+<li><strong>pronunciation</strong><br /> <em>string</em> the <a href="http://en.wikipedia.org/wiki/International_Phonetic_Alphabet"><abbr title="International Phonetic Alphabet">IPA</abbr></a> pronunciation of the word</li>
+<li><strong>occurrences</strong><br /> <em>vector</em> a vector of <em><a href="#VideoWordOccurrence">Video Word Occurrences</a></em></li>
+<li><strong>occurrence-count</strong><br /> <em>integer number</em> <code>[1..n]</code> the number of occurrences (cached for easy accessibility)</li>
+<li><strong>mean-confidence</strong><br /> <em>floating point number</em> <code>[0..1]</code> mean recognition confidence</li>
+<li><strong>match-value</strong><br /> <em>floating point number</em> <code>[0..1]</code> the weight of this word in the context of the video</li>
+</ul>
+<h3 id="example-13"><a href="#example-13">Example</a></h3>
+<pre><code>{ :id &quot;bioinformatik&quot;
+  :lexical-form &quot;Bioinformatik&quot;
+  :pronunciation &quot;biːoːiːnfɔ͡ɐmaːˈtʰɪk&quot;
+  :occurrences [ {:video-id &quot;ABC&quot;
+                  :result-no 3
+                  :word-no 10
+                  :confidence 0.689}
+                 ... ]
+  :occurrence-count 21
+  :mean-confidence 0.8234
+  :match-value 0.01522 }</code></pre>
+<h2 id="CategoryMatch"><a href="#CategoryMatch">Category Match</a></h2>
+<p>The category match describes the matching result between a video and a category.</p>
+<h3 id="slots-14"><a href="#slots-14">Slots</a></h3>
+<ul>
+<li><strong>category-id</strong><br /> <em>string</em> the id of the matched category</li>
+<li><strong>word-scores</strong><br /> <em>map</em> a look-up table, which maps from word IDs to word matching scores</li>
+<li><strong>score</strong><br /> <em>floating point number</em> <code>[0..1]</code> the matching score between the video and the category</li>
+</ul>
+<h3 id="example-14"><a href="#example-14">Example</a></h3>
+<pre><code>{ :category-id &quot;math&quot;
+  :word-scores { &quot;algorithm&quot; 0.00315
+                 &quot;linear&quot; 2.4552E-4
+                 ... } }</code></pre>
+<h2 id="CategoryResult"><a href="#CategoryResult">Category Result</a></h2>
+<p>The analysis result for the words of a category extends the <em><a href="#CategoryDescription">Category Description</a></em> structure. The original <em><a href="#CategoryDescription">Category Description</a></em> from the vector in the <code>:categories</code> slot of a <em><a href="#JobDescription">Job Description</a></em> structure is extended by the following slots:</p>
+<h3 id="slots-15"><a href="#slots-15">Slots</a></h3>
+<ul>
+<li><em>id</em></li>
+<li><em>name</em></li>
+<li>…</li>
+<li><strong>words</strong><br /> <em>vector</em> of <em><a href="#DescriptiveWord">Descriptive Words</a></em></li>
+<li><strong>index</strong><br /> <em>map</em> the category word index, which maps from word IDs to <em><a href="#CategoryWord">Category Word</a></em> structures</li>
+<li><strong>index-stats</strong><br /> <em><a href="#IndexStatistics">Index Statistics</a></em> for the category word index</li>
+<li><strong>matches</strong><br /> <em>map</em> a look-up table, which maps from video IDs to <em><a href="#VideoMatch">Video Matches</a></em></li>
+<li><strong>max-score</strong><br /> <em>floating point value</em> <code>[0..1]</code> the maximal score between the category and a video</li>
+</ul>
+<h3 id="example-15"><a href="#example-15">Example</a></h3>
+<pre><code>{ :id &quot;math&quot;
+  :name &quot;Mathematics&quot;
+  ...
+  :words [ ... ]
+  :index { &quot;gamma&quot; { :mean-confidence 1
+                     :occurrences [ ... ]
+                     :occurrence-count 4
+                     :match-value: 0.0281 }
+           &quot;kappa&quot;  { ... }
+           ... }
+  :index-stats { :count 1022
+                 :max-occurrence-count 56 } 
+  :matches { &quot;video01&quot; { :video-id &quot;video01&quot;
+                         :word-scores { ... }
+                         :score 0.3991 }
+             &quot;video02&quot; { ... }
+             ... }
+  :max-score 0.8554 }</code></pre>
+<h2 id="DescriptiveWord"><a href="#DescriptiveWord">Descriptive Word</a></h2>
+<p>A descriptive word is a word, describing a category as part of the category resources. The category resources are filtered to sequences of tokens and then concatenated to one token sequence per category. A descriptive word is a token in this sequence. The structure of a descriptive word is somehow similar to the <em><a href="#RecognizedWord">Recognized Word</a></em> structure</p>
+<h3 id="slots-16"><a href="#slots-16">Slots</a></h3>
+<ul>
+<li><strong>no</strong><br /> <em>integer number</em> <code>[0..n]</code> the position of the word in the token sequence</li>
+<li><strong>text</strong><br /> <em>string</em> the characters of the word</li>
+<li><strong>lexical-form</strong><br /> <em>string</em> a copy of the text to provide the same interface as <em><a href="#RecognizedWord">Recognized Words</a></em></li>
+<li><strong>confidence</strong><br /> <em>floating point number</em> has always the value of <code>1</code> because a descriptive word is part of the category resources and therefore has no recognition confidence</li>
+</ul>
+<h3 id="example-16"><a href="#example-16">Example</a></h3>
+<pre><code>{ :no 455
+  :text &quot;way&quot;
+  :lexical-confidence &quot;way&quot;
+  :confidence 1 }</code></pre>
+<h2 id="CategoryWord"><a href="#CategoryWord">Category Word</a></h2>
+<p>A category word is a word which occurs at least one time in the category resources. Every category word is represented by some statistical values and a list of <em><a href="#CategoryWordOccurrence">Category Word Occurrences</a></em>.</p>
+<h3 id="slots-17"><a href="#slots-17">Slots</a></h3>
+<ul>
+<li><strong>id</strong><br /> <em>string</em> an identifier, that can be used ax <abbr title="Hyper Text Markup Language">HTML</abbr>/<abbr title="eXtensible Markup Language">XML</abbr> ID or as a file name</li>
+<li><strong>lexical-form</strong><br /> <em>string</em> the lexical form of the word</li>
+<li><strong>occurrences</strong><br /> <em>vector</em> of <em><a href="#CategoryWordOccurrence">Category Word Occurrences</a></em></li>
+<li><strong>occurrence-count</strong><br /> <em>integer number</em> <code>[1..n]</code> the number of occurrences (cached for easy accessibility)</li>
+<li><strong>mean-confidence</strong><br /> <em>floating point number</em> has always the value of <code>1</code> because all category word occurrences have the confidence of <code>1</code></li>
+<li><strong>match-value</strong><br /> <em>floating point number</em> <code>[0..1]</code> the weight of this word in the context of the category</li>
+</ul>
+<h3 id="example-17"><a href="#example-17">Example</a></h3>
+<pre><code>{ :id &quot;bioinformatik&quot;
+  :lexical-form &quot;Bioinformatik&quot;
+  :occurrences [ {:category-id &quot;biology&quot;
+                  :no 466
+                  :confidence 1}
+                 ... ]
+  :occurrence-count 21
+  :mean-confidence 0.8234
+  :match-value 0.01522 }</code></pre>
+<h2 id="VideoMatch"><a href="#VideoMatch">Video Match</a></h2>
+<p>The video match describes the matching result between a category and a video.</p>
+<h3 id="slots-18"><a href="#slots-18">Slots</a></h3>
+<ul>
+<li><strong>video-id</strong><br /> <em>string</em> the id of the matched video</li>
+<li><strong>word-scores</strong><br /> <em>map</em> a look-up table, which maps from word IDs to word matching scores</li>
+<li><strong>score</strong><br /> <em>floating point number</em> <code>[0..1]</code> the matching score between the category and the video</li>
+</ul>
+<h3 id="example-18"><a href="#example-18">Example</a></h3>
+<pre><code>{ :video-id &quot;video08&quot;
+  :word-scores { &quot;hair&quot; 0.00023
+                 &quot;tube&quot; 1.6882E-4
+                 ... } }</code></pre>
+<div class="references">
+
+</div>
+    </div>
+    
+</div>
+</body>
+</html>

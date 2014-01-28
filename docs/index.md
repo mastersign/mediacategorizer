@@ -44,7 +44,7 @@ Diese Anwendung ist das Ergebnis eines Forschungsprojektes an der [Fachhochschul
 
 ---
 
-Copyright &copy; Tobias Kiertscher, Fachhochschule Brandenburg 2014.
+Copyright &copy; 2014 Tobias Kiertscher, Fachhochschule Brandenburg.
 
 [logo]: images/MediaCategorizer.png
 [ui-page-process]: images/ui-page-process.png

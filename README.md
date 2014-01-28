@@ -5,7 +5,7 @@ MediaCategorizer
 
 Eine Windows-Anwendung zur Verschriftlichung und Kategorisierung von Videos mit gesprochenem Inhalt.
 
-Dieses Projekt ist das Ergebnis eines Forschungsprojektes an der [Fachhochschule Brandenburg][fhb] mit dem Namen "Online Lehr- und Lernhilfsmittel" (OLL). Das Projekt wurde gefördert mit Mitteln des Europäischen Fonds für Regionalentwicklung (EFRE) in der Bewirtschaftung des MWFK Programms "e-learning und e-knowledge".
+Diese Anwendung ist das Ergebnis eines Forschungsprojektes an der [Fachhochschule Brandenburg][fhb] mit dem Namen "Online Lehr- und Lernhilfsmittel" (OLL). Das Projekt wurde gefördert mit Mitteln des Europäischen Fonds für Regionalentwicklung (EFRE) in der Bewirtschaftung des MWFK Programms "e-learning und e-knowledge".
 
 * **Projektleiter:** Friedhelm Mündemann <muendemann@fh-brandenburg.de>
 * **Mitarbeiter:** Tobias Kiertscher <kiertscher@fh-brandenburg.de>
@@ -48,6 +48,10 @@ Screenshots
 ![Benutzeroberfläche][ui-page-process]
 
 _Die Fortschrittsanzeige während der Bearbeitung eines Projektes_
+
+![Wort in einem Video][video-word]
+
+_Die Details eines erkannten Wortes_
 
 ![Übereinstimmungsmatrix][matrix]
 

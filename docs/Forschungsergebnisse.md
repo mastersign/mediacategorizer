@@ -415,16 +415,9 @@ Sollte es hypothetisch erforderlich sein Tonspuren in anderen Sprachen zu verarb
 # Fazit und Ausblick
 In diesem Projekt wurde die Software FFmpeg für die Extraktion einer Tonspur aus einem Video gefunden und getestet. Diese Software wird über die Befehlszeile gesteuert und kann somit leicht in einen automatisierten Prozess eingebunden werden. FFmpeg unterstützt eine Vielzahl der gängigen Video- und Audio-Formate sowohl als Eingabe als auch als Ausgabe.
 
-Es wurden verschiedene Spracherkennungssystem nach den folgenden Kriterien verglichen: 
+Es wurden verschiedene Spracherkennungssystem anhand der folgenden Kriterien verglichen: geringer Einarbeitungsaufwand, Verfügbarkeit aller Bausteine für die Spracherkennung, Erfüllung aller technischen Voraussetzungen, geringe Kosten, Transparenz und Flexibilität.
 
-* Einarbeitungsaufwand gering
-* Bausteine verfügbar
-* Technische Voraussetzungen erfüllt
-* Kosten gering
-* Transparent
-* Flexibel
-
-Entsprechend den Anforderungen und Rahmenbedingungen dieses Projektes wurde die Microsoft Speech API als Teil des Microsoft Windows 7 Betriebssystems als Spracherkennungssystem gewählt. Es lässt sich über eine gut dokumentierte Schnittstelle mit eine Programmiersprache ansteuern, und es gibt eine Reihe von wichtigen Details über die erkannten Worte und Phrasen aus (z.B. Position, Erkennungssicherheit). Es unterstützt die Spracherkennung nur mit Hilfe von trainierten Profilen. Wenn jedoch eine Anzahl von unterschiedlichen Profilen für die Erkennung verwendet wird und die besten Ergebnisse ausgewählt werden, ist die Erkennungsleistung für eine thematische Zuordnung eines Videos ausreichend. Ein ausreichend sauberer Volltext kann jedoch bei Videomaterial mit unbekannten Sprechern nicht erzielt werden. Es bleibt zu prüfen, ob eines der anderen kommerziellen Systeme (z.B. Voice Pro von Linguatec) eine bessere Erkennungsleistung mit unbekannten Sprechern erzielt.
+Entsprechend den Anforderungen und Rahmenbedingungen dieses Projektes wurde die Microsoft Speech API (Teil des Microsoft Windows 7 Betriebssystems) als Spracherkennungssystem gewählt. Es lässt sich über eine gut dokumentierte Schnittstelle mit eine Programmiersprache ansteuern, und es gibt eine Reihe von wichtigen Details über die erkannten Worte und Phrasen aus (z.B. Position, Erkennungssicherheit). Es unterstützt die Spracherkennung nur mit Hilfe von trainierten Profilen. Wenn jedoch eine Anzahl von unterschiedlichen Profilen für die Erkennung verwendet wird und die besten Ergebnisse ausgewählt werden, ist die Erkennungsleistung für eine thematische Zuordnung eines Videos ausreichend. Ein ausreichend sauberer Volltext kann jedoch bei Videomaterial mit unbekannten Sprechern nicht erzielt werden. Es bleibt zu prüfen, ob eines der anderen kommerziellen Systeme (z.B. Voice Pro von Linguatec) eine bessere Erkennungsleistung mit unbekannten Sprechern erzielt.
 
 Es wurden verschiedene Filter implementiert, um die erkannten Worte zu filtern. Dabei werden sowohl die Erkennungssicherheit berücksichtigt, als auch lexikalische Eigenschaften wie Wortlänge und Großschreibung. Darüber hinaus ist die Verwendung einer Blacklist möglich. Die Blacklist ist zurzeit auf eine Liste mit den häufigsten kleingeschriebenen Worten der deutschen Sprache festgelegt. In Zukunft könnte die Auswahl und oder Erzeugung einer variablen Blacklist implementiert werden. Die einzelnen Filter können bei Bedarf parametrisiert und wahlweise aktiviert oder deaktiviert werden. 
 

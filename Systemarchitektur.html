@@ -804,8 +804,8 @@ header h1#subtitle {
 <img src="images/diagrams/ToolDistillery.png" alt="Abbildung 14: Die Steuerklasse für Distillery" /><figcaption>Abbildung 14: Die Steuerklasse für Distillery</figcaption>
 </figure>
 <h4 id="de.fhb.oll.mediacategorizer.settings"><a href="#de.fhb.oll.mediacategorizer.settings"><code>de.fhb.oll.mediacategorizer.settings</code></a></h4>
-<p>Dieser Namensraum enthält die Klassen <code>Setup</code> und <code>SetupManager</code>, die für die Verwaltung und das Sichern und Wiederherstellen der Anwendungseinstellungen verantwortlich sind (siehe <a href="#img:ui-setup">Abbildung ???</a>).</p>
-<p><a name="img:setup"></a></p>
+<p>Dieser Namensraum enthält die Klassen <code>Setup</code> und <code>SetupManager</code>, die für die Verwaltung und das Sichern und Wiederherstellen der Anwendungseinstellungen verantwortlich sind (siehe <a href="#img:ui-setup">Abbildung 15</a>).</p>
+<p><a name="img:ui-setup"></a></p>
 <figure>
 <img src="images/diagrams/Setup.png" alt="Abbildung 15: Das Modell für die Programmeinstellungen" /><figcaption>Abbildung 15: Das Modell für die Programmeinstellungen</figcaption>
 </figure>
@@ -906,21 +906,23 @@ Farbwerte werden als RGBA-Hex-Werte angegeben. (z.B. #E080D0FF)</code></pre>
     -db, --dashboard: Aktiviert im Standardmodus eine Übersichtsdarstellung
     -p, --progress: Aktiviert die Ausgabe des Fortschritts
     -t, --target &lt;SRR-Datei&gt;: Gibt im Standardmodus die Ergebnisdatei an</code></pre>
-<p><strong>Beispiel Test:</strong> <code>&gt; Transcripter.exe -ct -td 60 D:\media\sound.wav</code></p>
-<p><strong>Beispiel Spracherkennung:</strong> <code>&gt; Transcripter.exe -p -t D:\media\result.srr D:\media\sound.wav</code></p>
+<p><strong>Beispiel Test:</strong> <code>&gt; Transcripter.exe -ct -td 60 &quot;D:\media\sound.wav&quot;</code></p>
+<p><strong>Beispiel Spracherkennung:</strong> <code>&gt; Transcripter.exe -p -t &quot;D:\media\result.srr&quot; &quot;D:\media\sound.wav&quot;</code></p>
 <h3 id="testergebnisse"><a href="#testergebnisse">Testergebnisse</a></h3>
 <p>Im Testmodus für Erkennungssicherheit werden die folgenden Werte ausgegeben.</p>
-<pre><code>PhraseCount=&lt;Anzahl der erkannten Phrasen&gt;
-PhraseConfidenceSum=&lt;Die Summe der Erkennungssicherheit aller erkannten Phrasen&gt;
-MaxPhraseConfidence=&lt;Die höchste Erkennungssicherheit aller erkannten Phrasen&gt;
-MinPhraseConfidence=&lt;Die mittlere Erkennungssicherheit aller erkannten Phrasen&gt;
-MinPhraseConfidence=&lt;Die geringste Erkennungssicherheit aller erkannten Phrasen&gt;
-WordCount=&lt;Die Anzahl der erkannten Worte&gt;
-WordCondifenceSum=&lt;Die Summe der Erkennungssicherheit aller erkannten Worte&gt;
-MaxWordConfidence=&lt;Die höchste Erkennungssicherheit aller erkannten Worte&gt;
-MeanWordConfidence=&lt;Die mittlere Erkennungssicherheit aller erkannten Worte&gt;
-MinWordConfidence=&lt;Die geringste Erkennungssicherheit aller erkannten Worte&gt;
-BestWordConfidence=&lt;Die mittlere Erkennungssicherheit des am besten erkannten Wortes&gt;</code></pre>
+<ul>
+<li><code>PhraseCount</code> Anzahl der erkannten Phrasen</li>
+<li><code>PhraseConfidenceSum</code> Summe der Erkennungssicherheit aller erkannten Phrasen</li>
+<li><code>MaxPhraseConfidence</code> Höchste Erkennungssicherheit aller erkannten Phrasen</li>
+<li><code>MinPhraseConfidence</code> Mittlere Erkennungssicherheit aller erkannten Phrasen</li>
+<li><code>MinPhraseConfidence</code> Geringste Erkennungssicherheit aller erkannten Phrasen</li>
+<li><code>WordCount</code> Anzahl der erkannten Worte</li>
+<li><code>WordCondifenceSum</code> Summe der Erkennungssicherheit aller erkannten Worte</li>
+<li><code>MaxWordConfidence</code> Höchste Erkennungssicherheit aller erkannten Worte</li>
+<li><code>MeanWordConfidence</code> Mittlere Erkennungssicherheit aller erkannten Worte</li>
+<li><code>MinWordConfidence</code> Geringste Erkennungssicherheit aller erkannten Worte</li>
+<li><code>BestWordConfidence</code> Mittlere Erkennungssicherheit des am besten erkannten Wortes</li>
+</ul>
 <h2 id="distillery"><a href="#distillery">Analyse und Visualisierung</a></h2>
 <p><strong>Projektname:</strong> MediaCategorizer - Distillery<br /><strong>Repository:</strong> <a href="https://github.com/mastersign/mediacategorizer-distillery/">https://github.com/mastersign/mediacategorizer-distillery/</a><br /><strong>Verzeichnis:</strong> <code>/components/Distillery</code><br /><strong>Projekt-Typ:</strong> Leiningen<br /><strong>Programmiersprache:</strong> Clojure 1.5<br /><strong>Plattform, Bibiotheken:</strong> Java 7 Runtime, clojure, data.xml, enlive</p>
 <h3 id="merkmale-5"><a href="#merkmale-5">Merkmale</a></h3>

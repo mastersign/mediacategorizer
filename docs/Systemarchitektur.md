@@ -12,22 +12,25 @@ date: 30.01.2014
 lang: de
 ...
 
-Dieses Dokument beschreibt die Entwicklungsumgebung und die Architektur von *MediaCategorizer*. Es soll Softwareentwicklern helfen die Software zu verstehen und somit eine Anpassung und Erweiterung unterstützen. 
+Dieses Dokument beschreibt die Architektur und Implementierung von *MediaCategorizer*. Es soll Softwareentwicklern helfen die Software zu verstehen und somit eine Anpassung und Erweiterung unterstützen.
 
-# Komponenten
-Das Projekt setzt sich aus den folgenden Komponenten zusammen:
+# Übersicht
+Das Projekt setzt sich aus den folgenden Komponenten zusammen (siehe [#img:architecture]).
 
-* Hauptprojekt *MediaCategorizer*
-* Benutzeroberfläche *MediaCategorizer - UI*
-* Tonspurextraktion *FFmpeg* (extern) 
-* Wellenformvisualisierung *WaveViz* (extern)
-* Spracherkennung *MediaCategorizer - Transcripter*
-* Analyse und Visualisierung *MediaCategorizer - Distillery*
-* Wortwolkengenerierung *Mastersign Cloud*
+* [Hauptprojekt](#mc) *MediaCategorizer*
+* [Benutzeroberfläche](#ui) *MediaCategorizer - UI*
+* [Spracherkennung](#transcripter) *MediaCategorizer - Transcripter*
+* [Analyse und Visualisierung](#distillery) *MediaCategorizer - Distillery*
+* [Wortwolkengenerierung](#cloud) *Mastersign Cloud*
+* [Medieninspektion](#ffprobe) *FFprobe* (extern)
+* [Tonspurextraktion](#ffmpeg) *FFmpeg* (extern)
+* [Wellenformvisualisierung](#waveviz) *WaveViz* (extern)
+
+![#img:architecture Übersicht über die Architektur von *MediaCategorizer*][architecture]
 
 Das Hauptprojekt dient als Startpunkt. Es enthält die Dokumentation und eine Anzahl von Scripts zur Automatisierung des Projektes. Durch die Automatisierung werden die folgenden Aktionen unterstützt:
 
-* Download der externen Komponenten *FFmpeg* und *WaveViz*
+* Download der externen Komponenten *FFmpeg*, *FFprobe* und *WaveViz*
 * Erzeugen der Dokumentation im HTML- und DOCX-Format aus den Markdown-Quelldateien
 * Klonen der Komponenten-Repositories *UI*, *Transcripter* und *Distillery*
 * Kompilieren der Komponenten
@@ -46,7 +49,7 @@ Die Komponente für Analyse und Visualisierung filtert zunächst die erkannten W
 # Entwicklungsumgebung
 MediaCategorizer wurde mit C# in Visual Studio 2013 und Clojure in LightTable 0.5 implementiert. Deshalb benötigt das Projekt sowohl die Microsoft .NET Laufzeitumgebung als auch die Java Laufzeitumgebung. C# wurden gewählt, weil es mit der WPF-Bibliothek eine schnelle Entwicklung der Benutzeroberfläche und durch die .NET-Schnittstelle eine einfache Anbindung an die Microsoft Speech API ermöglicht. Clojure wurde gewählt, weil das funktionale Programmierparadigma, die komfortablen Bibliotheken für Webseitenerzeugung und die interaktive Entwicklungsumgebung (REPL) eine schnelle Umsetzung der Analyse und Visualisierung ermöglichen. Für die Projektautomatisierung wird die Microsoft PowerShell eingesetzt.
 
-**Voraussetzungen:**
+## Voraussetzungen
 
 * Microsoft Windows 7 Professional/Enterprise mit Service Pack 1 oder höher
 * [Git][git]
@@ -58,8 +61,10 @@ MediaCategorizer wurde mit C# in Visual Studio 2013 und Clojure in LightTable 0.
   _(für die Anpassung oder Weiterentwicklung von MediaCategorizer oder Transcripter erforderlich)_
 * [Java Development Kit 7][jdk] oder höher
 
-## Hauptprojekt
+# Komponenten
+In den folgenden Abschnitten werden die einzelnen Komponenten detailliert beschrieben.
 
+## Hauptprojekt {#mc}
 **Projektname:** MediaCategorizer  
 **Repository:** <https://github.com/mastersign/mediacategorizer/>  
 **Verzeichnis:** `/`  
@@ -99,8 +104,7 @@ MediaCategorizer wurde mit C# in Visual Studio 2013 und Clojure in LightTable 0.
 
 	Um MediaCategorizer in Betrieb zu nehmen sind die Anweisungen im [Benutzerhandbuch][handbook] Abschnitt *Installation* zu beachten.
 
-## Benutzeroberfläche
-
+## Benutzeroberfläche {#ui}
 **Projektname:** MediaCategorizer - UI  
 **Repository:** <https://github.com/mastersign/mediacategorizer-ui/>  
 **Verzeichnis:** `/components/MediaCategorizer`  
@@ -184,7 +188,6 @@ Dieser Namensraum enthält die Klassen `Setup` und `SetupManager`, die für die 
 ![#img:setup Das Modell für die Programmeinstellungen][ui-setup]
 
 ## Medieninspektion und Tonspurextraktion (extern)
-
 **Projektname:** FFmpeg  
 **Website:** <http://www.ffmpeg.org>
 
@@ -197,8 +200,7 @@ Dieser Namensraum enthält die Klassen `Setup` und `SetupManager`, die für die 
 
 Das FFmpeg-Projekt umfasst die Programmdatei `ffmpeg.exe` für Transformationsaufgaben und die Programmdatei `ffprobe.exe` für Inspektionsaufgaben.
 
-#### Inspektion
-
+#### Inspektion {#ffprobe}
 **Beispiel:** `> ffprobe.exe -i "D:\media\video.mp4"`
 
 Die Ausgabe könnte dann z.B. wie folgt aussehen.
@@ -232,8 +234,7 @@ Die Ausgabe könnte dann z.B. wie folgt aussehen.
 
 MediaCategorizer nutzt `ffprobe` um die Länge der Videos zu ermitteln, um daraus einen Fortschritt bei Transformation und Spracherkennung zu berechnen. Die Länge des Videos wird dabei mit dem folgenden regulären Ausdruck ermittelt: `Duration: (\d+):(\d\d):(\d\d)\.(\d+)`. Die vier Gruppen entsprechen dabei Stunden, Minuten, Sekunden, Millisekunden.
 
-#### Transformation
-
+#### Transformation {#ffmpeg}
 **Beispiel:** `> ffmpeg.exe -i "D:\media\video.mp4" -n -vn -ac 1 -ar 16000 -acodec pcm_s16le "D:\media\sound.wav"`
 
 Bedeutung der Argumente:
@@ -246,8 +247,7 @@ Bedeutung der Argumente:
 * `-acodec pcm_s16le` Ausgabeformat ist PCM-Audio mit Vorzeichen-behafteter 16Bit-Auflösung und Little-Endian Byte-Reihenfolge
 * `"D:\media\sound.wav` Der Pfad der Ausgabedatei
 
-## Wellenformvisualisierung (extern)
-
+## Wellenformvisualisierung (extern) {#waveviz}
 **Projektname:** WaveViz  
 **Repository:** <https://github.com/mastersign/waveviz>  
 
@@ -260,8 +260,9 @@ Bedeutung der Argumente:
 * Antialiasing durch Over-Sampling
 * Ausgabe als PNG-Datei
 
-### Befehlszeilenschnittstelle
+![#img:waveform Eine mit *WaveViz* erzeugte Visualisierung einer Wave-Datei][waveform]
 
+### Befehlszeilenschnittstelle
 **Programmdatei:** `WaveViz.exe`  
 
 	Syntax: waveviz <WAV-Datei> <PNG-Datei> [w h] [bg f1 f2 li]
@@ -275,8 +276,7 @@ Bedeutung der Argumente:
 
 **Beispiel:** `> WaveViz.exe "D:\media\sound.wav" "D:\media\wave.png" 1024 100 #00000000 #FF880080 #880000FF #FF0000FF`
 
-## Spracherkennung
-
+## Spracherkennung {#transcripter}
 **Projektname:** MediaCategorizer - Transcripter  
 **Repository:** <https://github.com/mastersign/mediacategorizer-transcripter/>  
 **Verzeichnis:** `/components/Transcripter`  
@@ -298,7 +298,6 @@ Das Befehlszeilenprogramm *Transcripter* ist nahezu vollständig prozedural in d
 Das Programm besitzt zwei Betriebsmodi. Im Standardmodus wird die gesamte Quelldatei vom Spracherkennungssystem verarbeitet und die Erkennungsergebnisse werden im EDN-Format in die Ergebnisdatei geschrieben. Die Ergebnisdatei sollte die Endung `.srr` für [Speech Recognition Result][srr] besitzen. Im Testmodus für Erkennungssicherheit wird nur der Anfang einer Datei vom Spracherkennungssystem verarbeitet und statistische Werte zu den erkannten Phrasen und Wörtern ausgegeben.
 
 ### Befehlszeilenschnittstelle
-
 **Programmdatei:** `Transcripter.exe`
 
 	Syntax: transcripter [Optionen] <WAV-Datei>
@@ -314,7 +313,6 @@ Das Programm besitzt zwei Betriebsmodi. Im Standardmodus wird die gesamte Quelld
 **Beispiel Spracherkennung:** `> Transcripter.exe -p -t D:\media\result.srr D:\media\sound.wav`
 
 ### Testergebnisse
-
 Im Testmodus für Erkennungssicherheit werden die folgenden Werte ausgegeben.
 
 	PhraseCount=<Anzahl der erkannten Phrasen>
@@ -329,8 +327,7 @@ Im Testmodus für Erkennungssicherheit werden die folgenden Werte ausgegeben.
 	MinWordConfidence=<Die geringste Erkennungssicherheit aller erkannten Worte>
 	BestWordConfidence=<Die mittlere Erkennungssicherheit des am besten erkannten Wortes>
 
-## Analyse und Visualisierung
-
+## Analyse und Visualisierung {#distillery}
 **Projektname:** MediaCategorizer - Distillery  
 **Repository:** <https://github.com/mastersign/mediacategorizer-distillery/>  
 **Verzeichnis:** `/components/Distillery`  
@@ -354,7 +351,6 @@ Im Testmodus für Erkennungssicherheit werden die folgenden Werte ausgegeben.
 > TODO
 
 ## Wortwolken
-
 **Projektname:** Mastersign Cloud  
 **Repository:** <https://github.com/mastersign/mediacategorizer-distillery/>  
 **Verzeichnis:** `/components/Distillery/src/mastersign`  
@@ -385,6 +381,7 @@ Im Testmodus für Erkennungssicherheit werden die folgenden Werte ausgegeben.
 [handbook]: Benutzerhandbuch.html
 [srr]: intermediate-data-structures.html#SpeechRecognitionResultFile
 
+[architecture]: images/diagrams/Architecture.png
 [ui-ns]: images/diagrams/Namespaces.png
 [ui-ui]: images/diagrams/UI.png
 [ui-project]: images/diagrams/Project.png
@@ -399,6 +396,7 @@ Im Testmodus für Erkennungssicherheit werden die folgenden Werte ausgegeben.
 [ui-tool-transcripter]: images/diagrams/ToolTranscripter.png
 [ui-tool-waveviz]: images/diagrams/ToolWaveViz.png
 [ui-setup]: images/diagrams/Setup.png
+[waveform]: images/waveform.png
 
 *[EDN]: Extensible Data Notation
 *[REPL]: Read-Eval-Print-Loop

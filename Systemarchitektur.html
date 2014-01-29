@@ -744,62 +744,62 @@ header h1#subtitle {
 <h4 id="de.fhb.oll.mediacategorizer.edn"><a href="#de.fhb.oll.mediacategorizer.edn"><code>de.fhb.oll.mediacategorizer.edn</code></a></h4>
 <p>Dieser Namensraum enthält die Schnittstelle <code>IEdnWritable</code> und einige Hilfsklassen für das Erzeugen von <abbr title="Extensible Data Notation">EDN</abbr>-Dateien.</p>
 <h4 id="de.fhb.oll.mediacategorizer.model"><a href="#de.fhb.oll.mediacategorizer.model"><code>de.fhb.oll.mediacategorizer.model</code></a></h4>
-<p>Dieser Namensraum enthält die Domain-Modell-Klassen <code>Project</code>, <code>Category</code>, <code>Media</code>, <code>Configuration</code> und alle Klassen die für deren Definition benötigt werden (siehe <a href="#img:project">Abbildung 4</a> und <a href="#img:configuration">Abbildung 5</a>).</p>
-<p><a name="img:project"></a></p>
+<p>Dieser Namensraum enthält die Domain-Modell-Klassen <code>Project</code>, <code>Category</code>, <code>Media</code>, <code>Configuration</code> und alle Klassen die für deren Definition benötigt werden (siehe <a href="#img:ui-project">Abbildung 4</a> und <a href="#img:ui-configuration">Abbildung 5</a>).</p>
+<p><a name="img:ui-project"></a></p>
 <figure>
 <img src="images/diagrams/Project.png" alt="Abbildung 4: Das Domain-Modell für ein Projekt" /><figcaption>Abbildung 4: Das Domain-Modell für ein Projekt</figcaption>
 </figure>
-<p><a name="img:configuration"></a></p>
+<p><a name="img:ui-configuration"></a></p>
 <figure>
 <img src="images/diagrams/Configuration.png" alt="Abbildung 5: Das Domain-Modell für die Projektparameter" /><figcaption>Abbildung 5: Das Domain-Modell für die Projektparameter</figcaption>
 </figure>
 <p>Die Klassen in diesem Namensraum wird in der Datei <code>Model.xml</code> definiert und durch den Codegenerator <em>Scaleton</em> in der Datei <code>Model.Designer.cs</code> implementiert. Einige der generierten Klassen werden in eigenen Dateien um zusätzliche Funktionalität ergänzt. Die Schnittstelle <code>IEdnWritable</code> wird für alle Modell-Klassen in der Datei <code>&lt;abbr title=&quot;Extensible Data Notation&quot;&gt;EDN&lt;/abbr&gt;.cs</code> implementiert.</p>
 <h4 id="de.fhb.oll.mediacategorizer.processing"><a href="#de.fhb.oll.mediacategorizer.processing"><code>de.fhb.oll.mediacategorizer.processing</code></a></h4>
-<p>Dieser Namensraum enthält die Klassen für die verschiedenen Prozessschritte. Jeder Prozessschritt wird durch eine Klasse realisiert, welche die Schnittstelle <code>IProcess</code> implementiert (siehe <a href="#img:ui-iprocess">Abbildung ???</a>). Zur Vereinfachung der Implementierung wurden gemeinsame Aspekte der Prozessschritte in den Basisklassen <code>ProcessBase</code> und <code>MultiTaskProcessBase</code> zusammengefasst (siehe <a href="#img:process">Abbildung 7</a>).</p>
-<p><a name="img:iprocess"></a></p>
+<p>Dieser Namensraum enthält die Klassen für die verschiedenen Prozessschritte. Jeder Prozessschritt wird durch eine Klasse realisiert, welche die Schnittstelle <code>IProcess</code> implementiert (siehe <a href="#img:ui-iprocess">Abbildung 6</a>). Zur Vereinfachung der Implementierung wurden gemeinsame Aspekte der Prozessschritte in den Basisklassen <code>ProcessBase</code> und <code>MultiTaskProcessBase</code> zusammengefasst (siehe <a href="#img:ui-process">Abbildung 7</a>).</p>
+<p><a name="img:ui-iprocess"></a></p>
 <figure>
 <img src="images/diagrams/IProcess.png" alt="Abbildung 6: Die Schnittstelle für Prozessschritte" /><figcaption>Abbildung 6: Die Schnittstelle für Prozessschritte</figcaption>
 </figure>
-<p><a name="img:process"></a></p>
+<p><a name="img:ui-process"></a></p>
 <figure>
 <img src="images/diagrams/Process.png" alt="Abbildung 7: Die Basisklassen der Prozessschritte" /><figcaption>Abbildung 7: Die Basisklassen der Prozessschritte</figcaption>
 </figure>
-<p>Die Klasse <code>ProcessChain</code> verwaltet den gesamten Prozess und übernimmt das Starten der Prozessschritte, wenn deren Vorgänger im Prozess erfolgreich abgeschlossen wurden (siehe <a href="#img:ui-process-chain">Abbildung ???</a>).</p>
-<p><a name="img:process-chain"></a></p>
+<p>Die Klasse <code>ProcessChain</code> verwaltet den gesamten Prozess und übernimmt das Starten der Prozessschritte, wenn deren Vorgänger im Prozess erfolgreich abgeschlossen wurden (siehe <a href="#img:ui-process-chain">Abbildung 8</a>).</p>
+<p><a name="img:ui-process-chain"></a></p>
 <figure>
 <img src="images/diagrams/ProcessChain.png" alt="Abbildung 8: Die zentrale Steuerung für den Prozess" /><figcaption>Abbildung 8: Die zentrale Steuerung für den Prozess</figcaption>
 </figure>
 <h4 id="de.fhb.oll.mediacategorizer.tools"><a href="#de.fhb.oll.mediacategorizer.tools"><code>de.fhb.oll.mediacategorizer.tools</code></a></h4>
-<p>Dieser Namensraum enthält die Steuerklassen für die Komponenten, die über eine Befehlszeilenschnittstelle angesteuert werden. Die Steuerklassen sind von der gemeinsamen Basisklasse <code>ToolBase</code> abgeleitet (siehe <a href="#img:ui-tool-base">Abbildung ???</a>).</p>
+<p>Dieser Namensraum enthält die Steuerklassen für die Komponenten, die über eine Befehlszeilenschnittstelle angesteuert werden. Die Steuerklassen sind von der gemeinsamen Basisklasse <code>ToolBase</code> abgeleitet (siehe <a href="#img:ui-tool-base">Abbildung 9</a>).</p>
 <ul>
-<li><code>ToolFfprobe</code> (siehe <a href="#img:ui-tool-ffprobe">Abbildung ???</a>)</li>
-<li><code>ToolFfmpeg</code> (siehe <a href="#img:ui-tool-ffmpeg">Abbildung ???</a>)</li>
-<li><code>ToolWaveViz</code> (siehe <a href="#img:ui-tool-waveviz">Abbildung ???</a>)</li>
-<li><code>ToolTranscripter</code> (siehe <a href="#img:ui-tool-transcripter">Abbildung ???</a>)</li>
-<li><code>ToolDistillery</code> (siehe <a href="#img:ui-tool-distillery">Abbildung ???</a>)</li>
+<li><code>ToolFfprobe</code> (siehe <a href="#img:ui-tool-ffprobe">Abbildung 10</a>)</li>
+<li><code>ToolFfmpeg</code> (siehe <a href="#img:ui-tool-ffmpeg">Abbildung 11</a>)</li>
+<li><code>ToolWaveViz</code> (siehe <a href="#img:ui-tool-waveviz">Abbildung 12</a>)</li>
+<li><code>ToolTranscripter</code> (siehe <a href="#img:ui-tool-transcripter">Abbildung 13</a>)</li>
+<li><code>ToolDistillery</code> (siehe <a href="#img:ui-tool-distillery">Abbildung 14</a>)</li>
 </ul>
 <p>Die Steuerklassen sind für das asynchrone Verarbeiten der Komponentenausgaben verantwortlich. Die Ausgaben enthalten dabei sowohl Fortschrittsinformationen als auch Ergebnisdaten.</p>
-<p><a name="img:tool-base"></a></p>
+<p><a name="img:ui-tool-base"></a></p>
 <figure>
 <img src="images/diagrams/ToolBase.png" alt="Abbildung 9: Die Basisklasse der Steuerklassen für Komponenten" /><figcaption>Abbildung 9: Die Basisklasse der Steuerklassen für Komponenten</figcaption>
 </figure>
-<p><a name="img:tool-ffprobe"></a></p>
+<p><a name="img:ui-tool-ffprobe"></a></p>
 <figure>
 <img src="images/diagrams/ToolFFprobe.png" alt="Abbildung 10: Die Steuerklasse für FFprobe" /><figcaption>Abbildung 10: Die Steuerklasse für FFprobe</figcaption>
 </figure>
-<p><a name="img:tool-ffmpeg"></a></p>
+<p><a name="img:ui-tool-ffmpeg"></a></p>
 <figure>
 <img src="images/diagrams/ToolFFmpeg.png" alt="Abbildung 11: Die Steuerklasse für FFmpeg" /><figcaption>Abbildung 11: Die Steuerklasse für FFmpeg</figcaption>
 </figure>
-<p><a name="img:tool-waveviz"></a></p>
+<p><a name="img:ui-tool-waveviz"></a></p>
 <figure>
 <img src="images/diagrams/ToolWaveViz.png" alt="Abbildung 12: Die Steuerklasse für WaveViz" /><figcaption>Abbildung 12: Die Steuerklasse für WaveViz</figcaption>
 </figure>
-<p><a name="img:tool-transcripter"></a></p>
+<p><a name="img:ui-tool-transcripter"></a></p>
 <figure>
 <img src="images/diagrams/ToolTranscripter.png" alt="Abbildung 13: Die Steuerklasse für Transcripter" /><figcaption>Abbildung 13: Die Steuerklasse für Transcripter</figcaption>
 </figure>
-<p><a name="img:tool-distillery"></a></p>
+<p><a name="img:ui-tool-distillery"></a></p>
 <figure>
 <img src="images/diagrams/ToolDistillery.png" alt="Abbildung 14: Die Steuerklasse für Distillery" /><figcaption>Abbildung 14: Die Steuerklasse für Distillery</figcaption>
 </figure>

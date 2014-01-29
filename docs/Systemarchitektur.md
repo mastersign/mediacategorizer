@@ -185,7 +185,7 @@ Die Steuerklassen sind für das asynchrone Verarbeiten der Komponentenausgaben v
 
 Dieser Namensraum enthält die Klassen `Setup` und `SetupManager`, die für die Verwaltung und das Sichern und Wiederherstellen der Anwendungseinstellungen verantwortlich sind (siehe [#img:ui-setup]).
 
-![#img:setup Das Modell für die Programmeinstellungen][ui-setup]
+![#img:ui-setup Das Modell für die Programmeinstellungen][ui-setup]
 
 ## Medieninspektion und Tonspurextraktion (extern)
 **Projektname:** FFmpeg  
@@ -308,24 +308,24 @@ Das Programm besitzt zwei Betriebsmodi. Im Standardmodus wird die gesamte Quelld
 	    -p, --progress: Aktiviert die Ausgabe des Fortschritts
 	    -t, --target <SRR-Datei>: Gibt im Standardmodus die Ergebnisdatei an
 
-**Beispiel Test:** `> Transcripter.exe -ct -td 60 D:\media\sound.wav`
+**Beispiel Test:** `> Transcripter.exe -ct -td 60 "D:\media\sound.wav"`
 
-**Beispiel Spracherkennung:** `> Transcripter.exe -p -t D:\media\result.srr D:\media\sound.wav`
+**Beispiel Spracherkennung:** `> Transcripter.exe -p -t "D:\media\result.srr" "D:\media\sound.wav"`
 
 ### Testergebnisse
 Im Testmodus für Erkennungssicherheit werden die folgenden Werte ausgegeben.
 
-	PhraseCount=<Anzahl der erkannten Phrasen>
-	PhraseConfidenceSum=<Die Summe der Erkennungssicherheit aller erkannten Phrasen>
-	MaxPhraseConfidence=<Die höchste Erkennungssicherheit aller erkannten Phrasen>
-	MinPhraseConfidence=<Die mittlere Erkennungssicherheit aller erkannten Phrasen>
-	MinPhraseConfidence=<Die geringste Erkennungssicherheit aller erkannten Phrasen>
-	WordCount=<Die Anzahl der erkannten Worte>
-	WordCondifenceSum=<Die Summe der Erkennungssicherheit aller erkannten Worte>
-	MaxWordConfidence=<Die höchste Erkennungssicherheit aller erkannten Worte>
-	MeanWordConfidence=<Die mittlere Erkennungssicherheit aller erkannten Worte>
-	MinWordConfidence=<Die geringste Erkennungssicherheit aller erkannten Worte>
-	BestWordConfidence=<Die mittlere Erkennungssicherheit des am besten erkannten Wortes>
+* `PhraseCount` Anzahl der erkannten Phrasen
+* `PhraseConfidenceSum` Summe der Erkennungssicherheit aller erkannten Phrasen
+* `MaxPhraseConfidence` Höchste Erkennungssicherheit aller erkannten Phrasen
+* `MinPhraseConfidence` Mittlere Erkennungssicherheit aller erkannten Phrasen
+* `MinPhraseConfidence` Geringste Erkennungssicherheit aller erkannten Phrasen
+* `WordCount` Anzahl der erkannten Worte
+* `WordCondifenceSum` Summe der Erkennungssicherheit aller erkannten Worte
+* `MaxWordConfidence` Höchste Erkennungssicherheit aller erkannten Worte
+* `MeanWordConfidence` Mittlere Erkennungssicherheit aller erkannten Worte
+* `MinWordConfidence` Geringste Erkennungssicherheit aller erkannten Worte
+* `BestWordConfidence` Mittlere Erkennungssicherheit des am besten erkannten Wortes
 
 ## Analyse und Visualisierung {#distillery}
 **Projektname:** MediaCategorizer - Distillery  

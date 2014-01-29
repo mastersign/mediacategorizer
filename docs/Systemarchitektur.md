@@ -14,21 +14,6 @@ lang: de
 
 Dieses Dokument beschreibt die Entwicklungsumgebung und die Architektur von *MediaCategorizer*. Es soll Softwareentwicklern helfen die Software zu verstehen und somit eine Anpassung und Erweiterung unterstützen. 
 
-# Entwicklungsumgebung
-MediaCategorizer wurde mit C# in Visual Studio 2013 und Clojure in LightTable 0.5 implementiert. Deshalb benötigt das Projekt sowohl die Microsoft .NET Laufzeitumgebung als auch die Java Laufzeitumgebung. C# wurden gewählt, weil es mit der WPF-Bibliothek eine schnelle Entwicklung der Benutzeroberfläche und durch die .NET-Schnittstelle eine einfache Anbindung an die Microsoft Speech API ermöglicht. Clojure wurde gewählt, weil das funktionale Programmierparadigma, die komfortablen Bibliotheken für Webseitenerzeugung und die interaktive Entwicklungsumgebung (REPL) eine schnelle Umsetzung der Analyse und Visualisierung ermöglichen. Für die Projektautomatisierung wird die Microsoft PowerShell eingesetzt.
-
-**Voraussetzungen:**
-
-* Microsoft Windows 7 Professional/Enterprise mit Service Pack 1 oder höher
-* [Git][git]
-* [Microsoft PowerShell 3][ps3] oder höher (in Windows 8 bereits enthalten)
-* [pandoc 1.12][pandoc] oder höher  
-  _(für das Generieren der Dokumentation aus den Markdown-Quellen erforderlich)_
-* [Microsoft .NET Framework 4.5][clr] oder höher (in Windows 8 bereits enthalten)
-* [Microsoft Visual Studio 2012][vs] oder höher  
-  _(für die Anpassung oder Weiterentwicklung von MediaCategorizer oder Transcripter erforderlich)_
-* [Java Development Kit 7][jdk] oder höher
-
 # Komponenten
 Das Projekt setzt sich aus den folgenden Komponenten zusammen:
 
@@ -57,6 +42,21 @@ Die Wellenformvisualisierung erzeugt aus der extrahierten Tonspur eine bildliche
 Die Spracherkennung steuert die Microsoft Speech API an und speichert die Spracherkennungsergebnisse als Zwischenergebnis in einer EDN-Datei, welche von der Komponente für Analyse und Visualisierung gelesen werden kann.
 
 Die Komponente für Analyse und Visualisierung filtert zunächst die erkannten Worte und bildet anschließend für Videos und Kategorien Worthäufigkeitslisten. Diese werden in Form von Wortwolken visualisiert. Aus den Worthäufigkeitslisten von Videos und Kategorien werden die Übereinstimmungen zwischen Videos und Kategorien berechnet. Aus den Übereinstimmungen werden dann Zuordnungen zwischen Videos und Kategorien abgeleitet. Die Ergebnisse (einschließlich der erkannten Worte mit ihren Erkennungssicherheiten) werden in Form einer XML-Datei gespeichert.  Zusätzlich werden die Volltexte der einzelnen Videos als Reintext gespeichert. Abschließend wird eine statische HTML5-Webseite generiert welche alle Ergebnisse visuell aufbereitet darstellt, die Original-Videodateien einbindet und eine interaktive Navigation zwischen den Analyseergebnissen erlaubt. Diese Webseite kann sowohl lokal gespeichert und direkt mit einem Browser betrachtet werden, sie kann aber auch mit Hilfe eines Webservers gehostet und so über das Internet verfügbar gemacht werden. 
+
+# Entwicklungsumgebung
+MediaCategorizer wurde mit C# in Visual Studio 2013 und Clojure in LightTable 0.5 implementiert. Deshalb benötigt das Projekt sowohl die Microsoft .NET Laufzeitumgebung als auch die Java Laufzeitumgebung. C# wurden gewählt, weil es mit der WPF-Bibliothek eine schnelle Entwicklung der Benutzeroberfläche und durch die .NET-Schnittstelle eine einfache Anbindung an die Microsoft Speech API ermöglicht. Clojure wurde gewählt, weil das funktionale Programmierparadigma, die komfortablen Bibliotheken für Webseitenerzeugung und die interaktive Entwicklungsumgebung (REPL) eine schnelle Umsetzung der Analyse und Visualisierung ermöglichen. Für die Projektautomatisierung wird die Microsoft PowerShell eingesetzt.
+
+**Voraussetzungen:**
+
+* Microsoft Windows 7 Professional/Enterprise mit Service Pack 1 oder höher
+* [Git][git]
+* [Microsoft PowerShell 3][ps3] oder höher (in Windows 8 bereits enthalten)
+* [pandoc 1.12][pandoc] oder höher  
+  _(für das Generieren der Dokumentation aus den Markdown-Quellen erforderlich)_
+* [Microsoft .NET Framework 4.5][clr] oder höher (in Windows 8 bereits enthalten)
+* [Microsoft Visual Studio 2012][vs] oder höher  
+  _(für die Anpassung oder Weiterentwicklung von MediaCategorizer oder Transcripter erforderlich)_
+* [Java Development Kit 7][jdk] oder höher
 
 ## Hauptprojekt
 
@@ -117,9 +117,73 @@ Die Komponente für Analyse und Visualisierung filtert zunächst die erkannten W
 
 ### Architektur
 
+Der Quellcode der Benutzeroberfläche teilt sich in die folgenden Namensräume auf (siehe [#img:ui-ns]).
 
+![#img:ui-ns Namesräume der Benutzeroberfläche][ui-ns]
 
-## Tonspurextraktion (extern)
+#### `de.fhb.oll.mediacategorizer`
+
+Dieser Namensraum enthält die `App`-Klasse welche den Programmstart initiiert, das Hauptfenster `MainWindow` und die verschiedenen Seiten `Page*` (siehe [#img:ui-ui]). 
+
+![#img:ui-ui Die Klassen des Hauptfensters und der Seiten][ui-ui]
+
+#### `de.fhb.oll.mediacategorizer.edn`
+
+Dieser Namensraum enthält die Schnittstelle `IEdnWritable` und einige Hilfsklassen für das Erzeugen von EDN-Dateien.  
+
+#### `de.fhb.oll.mediacategorizer.model`
+
+Dieser Namensraum enthält die Domain-Modell-Klassen `Project`, `Category`, `Media`, `Configuration` und alle Klassen die für deren Definition benötigt werden (siehe [#img:project] und [#img:configuration]).
+
+![#img:project Das Domain-Modell für ein Projekt][ui-project]
+
+![#img:configuration Das Domain-Modell für die Projektparameter][ui-configuration]
+
+Die Klassen in diesem Namensraum wird in der Datei `Model.xml` definiert und durch den Codegenerator *Scaleton* in der Datei `Model.Designer.cs` implementiert. Einige der generierten Klassen werden in eigenen Dateien um zusätzliche Funktionalität ergänzt. Die Schnittstelle `IEdnWritable` wird für alle Modell-Klassen in der Datei `EDN.cs` implementiert.
+
+#### `de.fhb.oll.mediacategorizer.processing`
+
+Dieser Namensraum enthält die Klassen für die verschiedenen Prozessschritte. Jeder Prozessschritt wird durch eine Klasse realisiert, welche die Schnittstelle `IProcess` implementiert (siehe [#img:ui-iprocess]). Zur Vereinfachung der Implementierung wurden gemeinsame Aspekte der Prozessschritte in den Basisklassen `ProcessBase` und `MultiTaskProcessBase` zusammengefasst (siehe [#img:process]). 
+
+![#img:iprocess Die Schnittstelle für Prozessschritte][ui-iprocess]
+
+![#img:process Die Basisklassen der Prozessschritte][ui-process]
+
+Die Klasse `ProcessChain` verwaltet den gesamten Prozess und übernimmt das Starten der Prozessschritte, wenn deren Vorgänger im Prozess erfolgreich abgeschlossen wurden (siehe [#img:ui-process-chain]). 
+
+![#img:process-chain Die zentrale Steuerung für den Prozess][ui-process-chain]
+
+#### `de.fhb.oll.mediacategorizer.tools`
+
+Dieser Namensraum enthält die Steuerklassen für die Komponenten, die über eine Befehlszeilenschnittstelle angesteuert werden. Die Steuerklassen sind von der gemeinsamen Basisklasse `ToolBase` abgeleitet (siehe [#img:ui-tool-base]).
+
+* `ToolFfprobe` (siehe [#img:ui-tool-ffprobe])
+* `ToolFfmpeg` (siehe [#img:ui-tool-ffmpeg])
+* `ToolWaveViz` (siehe [#img:ui-tool-waveviz])
+* `ToolTranscripter` (siehe [#img:ui-tool-transcripter])
+* `ToolDistillery` (siehe [#img:ui-tool-distillery])
+
+Die Steuerklassen sind für das asynchrone Verarbeiten der Komponentenausgaben verantwortlich. Die Ausgaben enthalten dabei sowohl Fortschrittsinformationen als auch Ergebnisdaten.
+
+![#img:tool-base Die Basisklasse der Steuerklassen für Komponenten][ui-tool-base]
+
+![#img:tool-ffprobe Die Steuerklasse für FFprobe][ui-tool-ffprobe]
+
+![#img:tool-ffmpeg Die Steuerklasse für FFmpeg][ui-tool-ffmpeg]
+
+![#img:tool-waveviz Die Steuerklasse für WaveViz][ui-tool-waveviz]
+
+![#img:tool-transcripter Die Steuerklasse für Transcripter][ui-tool-transcripter]
+
+![#img:tool-distillery Die Steuerklasse für Distillery][ui-tool-distillery]
+
+#### `de.fhb.oll.mediacategorizer.settings`
+
+Dieser Namensraum enthält die Klassen `Setup` und `SetupManager`, die für die Verwaltung und das Sichern und Wiederherstellen der Anwendungseinstellungen verantwortlich sind (siehe [#img:ui-setup]).
+
+![#img:setup Das Modell für die Programmeinstellungen][ui-setup]
+
+## Medieninspektion und Tonspurextraktion (extern)
 
 **Projektname:** FFmpeg  
 **Website:** <http://www.ffmpeg.org>
@@ -200,14 +264,14 @@ Bedeutung der Argumente:
 
 **Programmdatei:** `WaveViz.exe`  
 
-	Syntax: waveviz <wave-file> <png-file> [w h] [bg f1 f2 li]
-  	  w  = image width in pixels
-  	  h  = image height in pixels
-  	  bg = background color
-  	  f1 = foreground color 1
-  	  f2 = foreground color 2
-  	  li = line color
-	The colors are specified as RGBA hex values. (e.g. #E080D0FF)
+	Syntax: waveviz <WAV-Datei> <PNG-Datei> [w h] [bg f1 f2 li]
+  	  w  = Bildbreite in Pixeln
+  	  h  = Bildhöhe in Pixeln
+  	  bg = Hintergrundfarbe
+  	  f1 = Vordergrundfarbe 1
+  	  f2 = Vordergrundfarbe 2
+  	  li = Farbe der Horizontlinie
+	Farbwerte werden als RGBA-Hex-Werte angegeben. (z.B. #E080D0FF)
 
 **Beispiel:** `> WaveViz.exe "D:\media\sound.wav" "D:\media\wave.png" 1024 100 #00000000 #FF880080 #880000FF #FF0000FF`
 
@@ -226,6 +290,44 @@ Bedeutung der Argumente:
 * Ansteuerung der Microsoft Speech API  
   über den .NET-Namensraum `System.Speech.Recognition` aus der Assembly `System.Speech.dll`
 * Ausgabe der Erkennungsergebnisse als EDN-Datei
+
+### Architektur
+
+Das Befehlszeilenprogramm *Transcripter* ist nahezu vollständig prozedural in der statischen Klasse `de.fhb.oll.transcripter.Program` implementiert. Lediglich das Parsen der Befehlszeilenargumente wird von einer Instanz der Klasse `CommandLineArguments` übernommen.
+
+Das Programm besitzt zwei Betriebsmodi. Im Standardmodus wird die gesamte Quelldatei vom Spracherkennungssystem verarbeitet und die Erkennungsergebnisse werden im EDN-Format in die Ergebnisdatei geschrieben. Die Ergebnisdatei sollte die Endung `.srr` für [Speech Recognition Result][srr] besitzen. Im Testmodus für Erkennungssicherheit wird nur der Anfang einer Datei vom Spracherkennungssystem verarbeitet und statistische Werte zu den erkannten Phrasen und Wörtern ausgegeben.
+
+### Befehlszeilenschnittstelle
+
+**Programmdatei:** `Transcripter.exe`
+
+	Syntax: transcripter [Optionen] <WAV-Datei>
+	  Optionen
+	    -ct, --confidence-test: Schaltet in den Testmodus für Erkennungssicherheit
+	    -td, --test-duration: Die maximale Testlänge ab dem Dateianfang in Sekunden
+	    -db, --dashboard: Aktiviert im Standardmodus eine Übersichtsdarstellung
+	    -p, --progress: Aktiviert die Ausgabe des Fortschritts
+	    -t, --target <SRR-Datei>: Gibt im Standardmodus die Ergebnisdatei an
+
+**Beispiel Test:** `> Transcripter.exe -ct -td 60 D:\media\sound.wav`
+
+**Beispiel Spracherkennung:** `> Transcripter.exe -p -t D:\media\result.srr D:\media\sound.wav`
+
+### Testergebnisse
+
+Im Testmodus für Erkennungssicherheit werden die folgenden Werte ausgegeben.
+
+	PhraseCount=<Anzahl der erkannten Phrasen>
+	PhraseConfidenceSum=<Die Summe der Erkennungssicherheit aller erkannten Phrasen>
+	MaxPhraseConfidence=<Die höchste Erkennungssicherheit aller erkannten Phrasen>
+	MinPhraseConfidence=<Die mittlere Erkennungssicherheit aller erkannten Phrasen>
+	MinPhraseConfidence=<Die geringste Erkennungssicherheit aller erkannten Phrasen>
+	WordCount=<Die Anzahl der erkannten Worte>
+	WordCondifenceSum=<Die Summe der Erkennungssicherheit aller erkannten Worte>
+	MaxWordConfidence=<Die höchste Erkennungssicherheit aller erkannten Worte>
+	MeanWordConfidence=<Die mittlere Erkennungssicherheit aller erkannten Worte>
+	MinWordConfidence=<Die geringste Erkennungssicherheit aller erkannten Worte>
+	BestWordConfidence=<Die mittlere Erkennungssicherheit des am besten erkannten Wortes>
 
 ## Analyse und Visualisierung
 
@@ -246,6 +348,10 @@ Bedeutung der Argumente:
 * Erzeugung der Reintext-Ausgabe
 * Ansteuerung der Bibliothek *Mastersign Cloud*
 * Erzeugung der Ergebniswebseite
+
+### Architektur
+
+> TODO
 
 ## Wortwolken
 
@@ -277,6 +383,22 @@ Bedeutung der Argumente:
 [miktex]: http://miktex.org/download
 
 [handbook]: Benutzerhandbuch.html
+[srr]: intermediate-data-structures.html#SpeechRecognitionResultFile
+
+[ui-ns]: images/diagrams/Namespaces.png
+[ui-ui]: images/diagrams/UI.png
+[ui-project]: images/diagrams/Project.png
+[ui-configuration]: images/diagrams/Configuration.png
+[ui-iprocess]: images/diagrams/IProcess.png
+[ui-process]: images/diagrams/Process.png
+[ui-process-chain]: images/diagrams/ProcessChain.png
+[ui-tool-base]: images/diagrams/ToolBase.png
+[ui-tool-distillery]: images/diagrams/ToolDistillery.png
+[ui-tool-ffmpeg]: images/diagrams/ToolFFmpeg.png
+[ui-tool-ffprobe]: images/diagrams/ToolFFprobe.png
+[ui-tool-transcripter]: images/diagrams/ToolTranscripter.png
+[ui-tool-waveviz]: images/diagrams/ToolWaveViz.png
+[ui-setup]: images/diagrams/Setup.png
 
 *[EDN]: Extensible Data Notation
 *[REPL]: Read-Eval-Print-Loop

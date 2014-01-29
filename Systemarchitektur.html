@@ -621,14 +621,17 @@ header h1#subtitle {
     <a id="TOC"></a>
     <nav class="vertical fixed">
     	<ul>
-<li><a href="#komponenten">Komponenten</a></li>
+<li><a href="#übersicht">Übersicht</a></li>
 <li><a href="#entwicklungsumgebung">Entwicklungsumgebung</a><ul>
-<li><a href="#hauptprojekt">Hauptprojekt</a></li>
-<li><a href="#benutzeroberfläche">Benutzeroberfläche</a></li>
+<li><a href="#voraussetzungen">Voraussetzungen</a></li>
+</ul></li>
+<li><a href="#komponenten">Komponenten</a><ul>
+<li><a href="#mc">Hauptprojekt</a></li>
+<li><a href="#ui">Benutzeroberfläche</a></li>
 <li><a href="#medieninspektion-und-tonspurextraktion-extern">Medieninspektion und Tonspurextraktion (extern)</a></li>
-<li><a href="#wellenformvisualisierung-extern">Wellenformvisualisierung (extern)</a></li>
-<li><a href="#spracherkennung">Spracherkennung</a></li>
-<li><a href="#analyse-und-visualisierung">Analyse und Visualisierung</a></li>
+<li><a href="#waveviz">Wellenformvisualisierung (extern)</a></li>
+<li><a href="#transcripter">Spracherkennung</a></li>
+<li><a href="#distillery">Analyse und Visualisierung</a></li>
 <li><a href="#wortwolken">Wortwolken</a></li>
 </ul></li>
 </ul>
@@ -650,21 +653,26 @@ header h1#subtitle {
                 <span class="text">0.3.0</span>
             </div>
         </div>
-    	<p>Dieses Dokument beschreibt die Entwicklungsumgebung und die Architektur von <em>MediaCategorizer</em>. Es soll Softwareentwicklern helfen die Software zu verstehen und somit eine Anpassung und Erweiterung unterstützen.</p>
-<h1 id="komponenten"><a href="#komponenten">Komponenten</a></h1>
-<p>Das Projekt setzt sich aus den folgenden Komponenten zusammen:</p>
+    	<p>Dieses Dokument beschreibt die Architektur und Implementierung von <em>MediaCategorizer</em>. Es soll Softwareentwicklern helfen die Software zu verstehen und somit eine Anpassung und Erweiterung unterstützen.</p>
+<h1 id="übersicht"><a href="#übersicht">Übersicht</a></h1>
+<p>Das Projekt setzt sich aus den folgenden Komponenten zusammen (siehe <a href="#img:architecture">Abbildung 1</a>).</p>
 <ul>
-<li>Hauptprojekt <em>MediaCategorizer</em></li>
-<li>Benutzeroberfläche <em>MediaCategorizer - UI</em></li>
-<li>Tonspurextraktion <em>FFmpeg</em> (extern)</li>
-<li>Wellenformvisualisierung <em>WaveViz</em> (extern)</li>
-<li>Spracherkennung <em>MediaCategorizer - Transcripter</em></li>
-<li>Analyse und Visualisierung <em>MediaCategorizer - Distillery</em></li>
-<li>Wortwolkengenerierung <em>Mastersign Cloud</em></li>
+<li><a href="#mc">Hauptprojekt</a> <em>MediaCategorizer</em></li>
+<li><a href="#ui">Benutzeroberfläche</a> <em>MediaCategorizer - UI</em></li>
+<li><a href="#transcripter">Spracherkennung</a> <em>MediaCategorizer - Transcripter</em></li>
+<li><a href="#distillery">Analyse und Visualisierung</a> <em>MediaCategorizer - Distillery</em></li>
+<li><a href="#cloud">Wortwolkengenerierung</a> <em>Mastersign Cloud</em></li>
+<li><a href="#ffprobe">Medieninspektion</a> <em>FFprobe</em> (extern)</li>
+<li><a href="#ffmpeg">Tonspurextraktion</a> <em>FFmpeg</em> (extern)</li>
+<li><a href="#waveviz">Wellenformvisualisierung</a> <em>WaveViz</em> (extern)</li>
 </ul>
+<p><a name="img:architecture"></a></p>
+<figure>
+<img src="images/diagrams/Architecture.png" alt="Abbildung 1: Übersicht über die Architektur von MediaCategorizer" /><figcaption>Abbildung 1: Übersicht über die Architektur von <em>MediaCategorizer</em></figcaption>
+</figure>
 <p>Das Hauptprojekt dient als Startpunkt. Es enthält die Dokumentation und eine Anzahl von Scripts zur Automatisierung des Projektes. Durch die Automatisierung werden die folgenden Aktionen unterstützt:</p>
 <ul>
-<li>Download der externen Komponenten <em>FFmpeg</em> und <em>WaveViz</em></li>
+<li>Download der externen Komponenten <em>FFmpeg</em>, <em>FFprobe</em> und <em>WaveViz</em></li>
 <li>Erzeugen der Dokumentation im <abbr title="Hyper Text Markup Language">HTML</abbr>- und DOCX-Format aus den Markdown-Quelldateien</li>
 <li>Klonen der Komponenten-Repositories <em>UI</em>, <em>Transcripter</em> und <em>Distillery</em></li>
 <li>Kompilieren der Komponenten</li>
@@ -677,7 +685,7 @@ header h1#subtitle {
 <p>Die Komponente für Analyse und Visualisierung filtert zunächst die erkannten Worte und bildet anschließend für Videos und Kategorien Worthäufigkeitslisten. Diese werden in Form von Wortwolken visualisiert. Aus den Worthäufigkeitslisten von Videos und Kategorien werden die Übereinstimmungen zwischen Videos und Kategorien berechnet. Aus den Übereinstimmungen werden dann Zuordnungen zwischen Videos und Kategorien abgeleitet. Die Ergebnisse (einschließlich der erkannten Worte mit ihren Erkennungssicherheiten) werden in Form einer <abbr title="eXtensible Markup Language">XML</abbr>-Datei gespeichert. Zusätzlich werden die Volltexte der einzelnen Videos als Reintext gespeichert. Abschließend wird eine statische <abbr title="Hyper Text Markup Language">HTML</abbr>5-Webseite generiert welche alle Ergebnisse visuell aufbereitet darstellt, die Original-Videodateien einbindet und eine interaktive Navigation zwischen den Analyseergebnissen erlaubt. Diese Webseite kann sowohl lokal gespeichert und direkt mit einem Browser betrachtet werden, sie kann aber auch mit Hilfe eines Webservers gehostet und so über das Internet verfügbar gemacht werden.</p>
 <h1 id="entwicklungsumgebung"><a href="#entwicklungsumgebung">Entwicklungsumgebung</a></h1>
 <p>MediaCategorizer wurde mit C# in Visual Studio 2013 und Clojure in LightTable 0.5 implementiert. Deshalb benötigt das Projekt sowohl die Microsoft .NET Laufzeitumgebung als auch die Java Laufzeitumgebung. C# wurden gewählt, weil es mit der WPF-Bibliothek eine schnelle Entwicklung der Benutzeroberfläche und durch die .NET-Schnittstelle eine einfache Anbindung an die Microsoft Speech API ermöglicht. Clojure wurde gewählt, weil das funktionale Programmierparadigma, die komfortablen Bibliotheken für Webseitenerzeugung und die interaktive Entwicklungsumgebung (<abbr title="Read-Eval-Print-Loop">REPL</abbr>) eine schnelle Umsetzung der Analyse und Visualisierung ermöglichen. Für die Projektautomatisierung wird die Microsoft PowerShell eingesetzt.</p>
-<p><strong>Voraussetzungen:</strong></p>
+<h2 id="voraussetzungen"><a href="#voraussetzungen">Voraussetzungen</a></h2>
 <ul>
 <li>Microsoft Windows 7 Professional/Enterprise mit Service Pack 1 oder höher</li>
 <li><a href="http://git-scm.com/">Git</a></li>
@@ -687,7 +695,9 @@ header h1#subtitle {
 <li><a href="http://www.visualstudio.com/de-de">Microsoft Visual Studio 2012</a> oder höher<br /> <em>(für die Anpassung oder Weiterentwicklung von MediaCategorizer oder Transcripter erforderlich)</em></li>
 <li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java Development Kit 7</a> oder höher</li>
 </ul>
-<h2 id="hauptprojekt"><a href="#hauptprojekt">Hauptprojekt</a></h2>
+<h1 id="komponenten"><a href="#komponenten">Komponenten</a></h1>
+<p>In den folgenden Abschnitten werden die einzelnen Komponenten detailliert beschrieben.</p>
+<h2 id="mc"><a href="#mc">Hauptprojekt</a></h2>
 <p><strong>Projektname:</strong> MediaCategorizer<br /><strong>Repository:</strong> <a href="https://github.com/mastersign/mediacategorizer/">https://github.com/mastersign/mediacategorizer/</a><br /><strong>Verzeichnis:</strong> <code>/</code></p>
 <h3 id="merkmale"><a href="#merkmale">Merkmale</a></h3>
 <ul>
@@ -710,7 +720,7 @@ header h1#subtitle {
 <p>War die Ausführung des Skripts erfolgreich, wurde im Verzeichnis <code>release</code> ein vollständiges Paket mit MediaCategorizer und allen erforderlichen Abhängigkeiten zusammengestellt.</p>
 <p>Um MediaCategorizer in Betrieb zu nehmen sind die Anweisungen im <a href="Benutzerhandbuch.html">Benutzerhandbuch</a> Abschnitt <em>Installation</em> zu beachten.</p></li>
 </ol>
-<h2 id="benutzeroberfläche"><a href="#benutzeroberfläche">Benutzeroberfläche</a></h2>
+<h2 id="ui"><a href="#ui">Benutzeroberfläche</a></h2>
 <p><strong>Projektname:</strong> MediaCategorizer - UI<br /><strong>Repository:</strong> <a href="https://github.com/mastersign/mediacategorizer-ui/">https://github.com/mastersign/mediacategorizer-ui/</a><br /><strong>Verzeichnis:</strong> <code>/components/MediaCategorizer</code><br /><strong>Projekt-Typ:</strong> Microsoft Visual Studio<br /><strong>Programmiersprache:</strong> C# 5.0<br /><strong>Plattform, Bibliotheken:</strong> .NET 4.5, WPF, Xceed WPF-Toolkit, Windows API CodePack</p>
 <h3 id="merkmale-1"><a href="#merkmale-1">Merkmale</a></h3>
 <ul>
@@ -720,44 +730,44 @@ header h1#subtitle {
 <li>Überwachung der Prozessausführung</li>
 </ul>
 <h3 id="architektur"><a href="#architektur">Architektur</a></h3>
-<p>Der Quellcode der Benutzeroberfläche teilt sich in die folgenden Namensräume auf (siehe <a href="#img:ui-ns">Abbildung 1</a>).</p>
+<p>Der Quellcode der Benutzeroberfläche teilt sich in die folgenden Namensräume auf (siehe <a href="#img:ui-ns">Abbildung 2</a>).</p>
 <p><a name="img:ui-ns"></a></p>
 <figure>
-<img src="images/diagrams/Namespaces.png" alt="Abbildung 1: Namesräume der Benutzeroberfläche" /><figcaption>Abbildung 1: Namesräume der Benutzeroberfläche</figcaption>
+<img src="images/diagrams/Namespaces.png" alt="Abbildung 2: Namesräume der Benutzeroberfläche" /><figcaption>Abbildung 2: Namesräume der Benutzeroberfläche</figcaption>
 </figure>
 <h4 id="de.fhb.oll.mediacategorizer"><a href="#de.fhb.oll.mediacategorizer"><code>de.fhb.oll.mediacategorizer</code></a></h4>
-<p>Dieser Namensraum enthält die <code>App</code>-Klasse welche den Programmstart initiiert, das Hauptfenster <code>MainWindow</code> und die verschiedenen Seiten <code>Page*</code> (siehe <a href="#img:ui-ui">Abbildung 2</a>).</p>
+<p>Dieser Namensraum enthält die <code>App</code>-Klasse welche den Programmstart initiiert, das Hauptfenster <code>MainWindow</code> und die verschiedenen Seiten <code>Page*</code> (siehe <a href="#img:ui-ui">Abbildung 3</a>).</p>
 <p><a name="img:ui-ui"></a></p>
 <figure>
-<img src="images/diagrams/UI.png" alt="Abbildung 2: Die Klassen des Hauptfensters und der Seiten" /><figcaption>Abbildung 2: Die Klassen des Hauptfensters und der Seiten</figcaption>
+<img src="images/diagrams/UI.png" alt="Abbildung 3: Die Klassen des Hauptfensters und der Seiten" /><figcaption>Abbildung 3: Die Klassen des Hauptfensters und der Seiten</figcaption>
 </figure>
 <h4 id="de.fhb.oll.mediacategorizer.edn"><a href="#de.fhb.oll.mediacategorizer.edn"><code>de.fhb.oll.mediacategorizer.edn</code></a></h4>
 <p>Dieser Namensraum enthält die Schnittstelle <code>IEdnWritable</code> und einige Hilfsklassen für das Erzeugen von <abbr title="Extensible Data Notation">EDN</abbr>-Dateien.</p>
 <h4 id="de.fhb.oll.mediacategorizer.model"><a href="#de.fhb.oll.mediacategorizer.model"><code>de.fhb.oll.mediacategorizer.model</code></a></h4>
-<p>Dieser Namensraum enthält die Domain-Modell-Klassen <code>Project</code>, <code>Category</code>, <code>Media</code>, <code>Configuration</code> und alle Klassen die für deren Definition benötigt werden (siehe <a href="#img:project">Abbildung 3</a> und <a href="#img:configuration">Abbildung 4</a>).</p>
+<p>Dieser Namensraum enthält die Domain-Modell-Klassen <code>Project</code>, <code>Category</code>, <code>Media</code>, <code>Configuration</code> und alle Klassen die für deren Definition benötigt werden (siehe <a href="#img:project">Abbildung 4</a> und <a href="#img:configuration">Abbildung 5</a>).</p>
 <p><a name="img:project"></a></p>
 <figure>
-<img src="images/diagrams/Project.png" alt="Abbildung 3: Das Domain-Modell für ein Projekt" /><figcaption>Abbildung 3: Das Domain-Modell für ein Projekt</figcaption>
+<img src="images/diagrams/Project.png" alt="Abbildung 4: Das Domain-Modell für ein Projekt" /><figcaption>Abbildung 4: Das Domain-Modell für ein Projekt</figcaption>
 </figure>
 <p><a name="img:configuration"></a></p>
 <figure>
-<img src="images/diagrams/Configuration.png" alt="Abbildung 4: Das Domain-Modell für die Projektparameter" /><figcaption>Abbildung 4: Das Domain-Modell für die Projektparameter</figcaption>
+<img src="images/diagrams/Configuration.png" alt="Abbildung 5: Das Domain-Modell für die Projektparameter" /><figcaption>Abbildung 5: Das Domain-Modell für die Projektparameter</figcaption>
 </figure>
 <p>Die Klassen in diesem Namensraum wird in der Datei <code>Model.xml</code> definiert und durch den Codegenerator <em>Scaleton</em> in der Datei <code>Model.Designer.cs</code> implementiert. Einige der generierten Klassen werden in eigenen Dateien um zusätzliche Funktionalität ergänzt. Die Schnittstelle <code>IEdnWritable</code> wird für alle Modell-Klassen in der Datei <code>&lt;abbr title=&quot;Extensible Data Notation&quot;&gt;EDN&lt;/abbr&gt;.cs</code> implementiert.</p>
 <h4 id="de.fhb.oll.mediacategorizer.processing"><a href="#de.fhb.oll.mediacategorizer.processing"><code>de.fhb.oll.mediacategorizer.processing</code></a></h4>
-<p>Dieser Namensraum enthält die Klassen für die verschiedenen Prozessschritte. Jeder Prozessschritt wird durch eine Klasse realisiert, welche die Schnittstelle <code>IProcess</code> implementiert (siehe <a href="#img:ui-iprocess">Abbildung ???</a>). Zur Vereinfachung der Implementierung wurden gemeinsame Aspekte der Prozessschritte in den Basisklassen <code>ProcessBase</code> und <code>MultiTaskProcessBase</code> zusammengefasst (siehe <a href="#img:process">Abbildung 6</a>).</p>
+<p>Dieser Namensraum enthält die Klassen für die verschiedenen Prozessschritte. Jeder Prozessschritt wird durch eine Klasse realisiert, welche die Schnittstelle <code>IProcess</code> implementiert (siehe <a href="#img:ui-iprocess">Abbildung ???</a>). Zur Vereinfachung der Implementierung wurden gemeinsame Aspekte der Prozessschritte in den Basisklassen <code>ProcessBase</code> und <code>MultiTaskProcessBase</code> zusammengefasst (siehe <a href="#img:process">Abbildung 7</a>).</p>
 <p><a name="img:iprocess"></a></p>
 <figure>
-<img src="images/diagrams/IProcess.png" alt="Abbildung 5: Die Schnittstelle für Prozessschritte" /><figcaption>Abbildung 5: Die Schnittstelle für Prozessschritte</figcaption>
+<img src="images/diagrams/IProcess.png" alt="Abbildung 6: Die Schnittstelle für Prozessschritte" /><figcaption>Abbildung 6: Die Schnittstelle für Prozessschritte</figcaption>
 </figure>
 <p><a name="img:process"></a></p>
 <figure>
-<img src="images/diagrams/Process.png" alt="Abbildung 6: Die Basisklassen der Prozessschritte" /><figcaption>Abbildung 6: Die Basisklassen der Prozessschritte</figcaption>
+<img src="images/diagrams/Process.png" alt="Abbildung 7: Die Basisklassen der Prozessschritte" /><figcaption>Abbildung 7: Die Basisklassen der Prozessschritte</figcaption>
 </figure>
 <p>Die Klasse <code>ProcessChain</code> verwaltet den gesamten Prozess und übernimmt das Starten der Prozessschritte, wenn deren Vorgänger im Prozess erfolgreich abgeschlossen wurden (siehe <a href="#img:ui-process-chain">Abbildung ???</a>).</p>
 <p><a name="img:process-chain"></a></p>
 <figure>
-<img src="images/diagrams/ProcessChain.png" alt="Abbildung 7: Die zentrale Steuerung für den Prozess" /><figcaption>Abbildung 7: Die zentrale Steuerung für den Prozess</figcaption>
+<img src="images/diagrams/ProcessChain.png" alt="Abbildung 8: Die zentrale Steuerung für den Prozess" /><figcaption>Abbildung 8: Die zentrale Steuerung für den Prozess</figcaption>
 </figure>
 <h4 id="de.fhb.oll.mediacategorizer.tools"><a href="#de.fhb.oll.mediacategorizer.tools"><code>de.fhb.oll.mediacategorizer.tools</code></a></h4>
 <p>Dieser Namensraum enthält die Steuerklassen für die Komponenten, die über eine Befehlszeilenschnittstelle angesteuert werden. Die Steuerklassen sind von der gemeinsamen Basisklasse <code>ToolBase</code> abgeleitet (siehe <a href="#img:ui-tool-base">Abbildung ???</a>).</p>
@@ -771,33 +781,33 @@ header h1#subtitle {
 <p>Die Steuerklassen sind für das asynchrone Verarbeiten der Komponentenausgaben verantwortlich. Die Ausgaben enthalten dabei sowohl Fortschrittsinformationen als auch Ergebnisdaten.</p>
 <p><a name="img:tool-base"></a></p>
 <figure>
-<img src="images/diagrams/ToolBase.png" alt="Abbildung 8: Die Basisklasse der Steuerklassen für Komponenten" /><figcaption>Abbildung 8: Die Basisklasse der Steuerklassen für Komponenten</figcaption>
+<img src="images/diagrams/ToolBase.png" alt="Abbildung 9: Die Basisklasse der Steuerklassen für Komponenten" /><figcaption>Abbildung 9: Die Basisklasse der Steuerklassen für Komponenten</figcaption>
 </figure>
 <p><a name="img:tool-ffprobe"></a></p>
 <figure>
-<img src="images/diagrams/ToolFFprobe.png" alt="Abbildung 9: Die Steuerklasse für FFprobe" /><figcaption>Abbildung 9: Die Steuerklasse für FFprobe</figcaption>
+<img src="images/diagrams/ToolFFprobe.png" alt="Abbildung 10: Die Steuerklasse für FFprobe" /><figcaption>Abbildung 10: Die Steuerklasse für FFprobe</figcaption>
 </figure>
 <p><a name="img:tool-ffmpeg"></a></p>
 <figure>
-<img src="images/diagrams/ToolFFmpeg.png" alt="Abbildung 10: Die Steuerklasse für FFmpeg" /><figcaption>Abbildung 10: Die Steuerklasse für FFmpeg</figcaption>
+<img src="images/diagrams/ToolFFmpeg.png" alt="Abbildung 11: Die Steuerklasse für FFmpeg" /><figcaption>Abbildung 11: Die Steuerklasse für FFmpeg</figcaption>
 </figure>
 <p><a name="img:tool-waveviz"></a></p>
 <figure>
-<img src="images/diagrams/ToolWaveViz.png" alt="Abbildung 11: Die Steuerklasse für WaveViz" /><figcaption>Abbildung 11: Die Steuerklasse für WaveViz</figcaption>
+<img src="images/diagrams/ToolWaveViz.png" alt="Abbildung 12: Die Steuerklasse für WaveViz" /><figcaption>Abbildung 12: Die Steuerklasse für WaveViz</figcaption>
 </figure>
 <p><a name="img:tool-transcripter"></a></p>
 <figure>
-<img src="images/diagrams/ToolTranscripter.png" alt="Abbildung 12: Die Steuerklasse für Transcripter" /><figcaption>Abbildung 12: Die Steuerklasse für Transcripter</figcaption>
+<img src="images/diagrams/ToolTranscripter.png" alt="Abbildung 13: Die Steuerklasse für Transcripter" /><figcaption>Abbildung 13: Die Steuerklasse für Transcripter</figcaption>
 </figure>
 <p><a name="img:tool-distillery"></a></p>
 <figure>
-<img src="images/diagrams/ToolDistillery.png" alt="Abbildung 13: Die Steuerklasse für Distillery" /><figcaption>Abbildung 13: Die Steuerklasse für Distillery</figcaption>
+<img src="images/diagrams/ToolDistillery.png" alt="Abbildung 14: Die Steuerklasse für Distillery" /><figcaption>Abbildung 14: Die Steuerklasse für Distillery</figcaption>
 </figure>
 <h4 id="de.fhb.oll.mediacategorizer.settings"><a href="#de.fhb.oll.mediacategorizer.settings"><code>de.fhb.oll.mediacategorizer.settings</code></a></h4>
 <p>Dieser Namensraum enthält die Klassen <code>Setup</code> und <code>SetupManager</code>, die für die Verwaltung und das Sichern und Wiederherstellen der Anwendungseinstellungen verantwortlich sind (siehe <a href="#img:ui-setup">Abbildung ???</a>).</p>
 <p><a name="img:setup"></a></p>
 <figure>
-<img src="images/diagrams/Setup.png" alt="Abbildung 14: Das Modell für die Programmeinstellungen" /><figcaption>Abbildung 14: Das Modell für die Programmeinstellungen</figcaption>
+<img src="images/diagrams/Setup.png" alt="Abbildung 15: Das Modell für die Programmeinstellungen" /><figcaption>Abbildung 15: Das Modell für die Programmeinstellungen</figcaption>
 </figure>
 <h2 id="medieninspektion-und-tonspurextraktion-extern"><a href="#medieninspektion-und-tonspurextraktion-extern">Medieninspektion und Tonspurextraktion (extern)</a></h2>
 <p><strong>Projektname:</strong> FFmpeg<br /><strong>Website:</strong> <a href="http://www.ffmpeg.org">http://www.ffmpeg.org</a></p>
@@ -808,7 +818,7 @@ header h1#subtitle {
 </ul>
 <h3 id="befehlszeilenschnittstelle"><a href="#befehlszeilenschnittstelle">Befehlszeilenschnittstelle</a></h3>
 <p>Das FFmpeg-Projekt umfasst die Programmdatei <code>ffmpeg.exe</code> für Transformationsaufgaben und die Programmdatei <code>ffprobe.exe</code> für Inspektionsaufgaben.</p>
-<h4 id="inspektion"><a href="#inspektion">Inspektion</a></h4>
+<h4 id="ffprobe"><a href="#ffprobe">Inspektion</a></h4>
 <p><strong>Beispiel:</strong> <code>&gt; ffprobe.exe -i &quot;D:\media\video.mp4&quot;</code></p>
 <p>Die Ausgabe könnte dann z.B. wie folgt aussehen.</p>
 <pre><code>ffprobe version N-58699-ge3d7a39 Copyright (c) 2007-2013 the FFmpeg developers
@@ -838,7 +848,7 @@ Input #0, mov,mp4,m4a,3gp,3g2,mj2, from &#39;D:\media\video.mp4&#39;:
       creation_time   : 2012-05-15 16:52:11
       handler_name    : IsoMedia File Produced by Google, 5-11-2011</code></pre>
 <p>MediaCategorizer nutzt <code>ffprobe</code> um die Länge der Videos zu ermitteln, um daraus einen Fortschritt bei Transformation und Spracherkennung zu berechnen. Die Länge des Videos wird dabei mit dem folgenden regulären Ausdruck ermittelt: <code>Duration: (\d+):(\d\d):(\d\d)\.(\d+)</code>. Die vier Gruppen entsprechen dabei Stunden, Minuten, Sekunden, Millisekunden.</p>
-<h4 id="transformation"><a href="#transformation">Transformation</a></h4>
+<h4 id="ffmpeg"><a href="#ffmpeg">Transformation</a></h4>
 <p><strong>Beispiel:</strong> <code>&gt; ffmpeg.exe -i &quot;D:\media\video.mp4&quot; -n -vn -ac 1 -ar 16000 -acodec pcm_s16le &quot;D:\media\sound.wav&quot;</code></p>
 <p>Bedeutung der Argumente:</p>
 <ul>
@@ -850,7 +860,7 @@ Input #0, mov,mp4,m4a,3gp,3g2,mj2, from &#39;D:\media\video.mp4&#39;:
 <li><code>-acodec pcm_s16le</code> Ausgabeformat ist PCM-Audio mit Vorzeichen-behafteter 16Bit-Auflösung und Little-Endian Byte-Reihenfolge</li>
 <li><code>&quot;D:\media\sound.wav</code> Der Pfad der Ausgabedatei</li>
 </ul>
-<h2 id="wellenformvisualisierung-extern"><a href="#wellenformvisualisierung-extern">Wellenformvisualisierung (extern)</a></h2>
+<h2 id="waveviz"><a href="#waveviz">Wellenformvisualisierung (extern)</a></h2>
 <p><strong>Projektname:</strong> WaveViz<br /><strong>Repository:</strong> <a href="https://github.com/mastersign/waveviz">https://github.com/mastersign/waveviz</a></p>
 <h3 id="merkmale-3"><a href="#merkmale-3">Merkmale</a></h3>
 <ul>
@@ -861,6 +871,10 @@ Input #0, mov,mp4,m4a,3gp,3g2,mj2, from &#39;D:\media\video.mp4&#39;:
 <li>Antialiasing durch Over-Sampling</li>
 <li>Ausgabe als PNG-Datei</li>
 </ul>
+<p><a name="img:waveform"></a></p>
+<figure>
+<img src="images/waveform.png" alt="Abbildung 16: Eine mit WaveViz erzeugte Visualisierung einer Wave-Datei" /><figcaption>Abbildung 16: Eine mit <em>WaveViz</em> erzeugte Visualisierung einer Wave-Datei</figcaption>
+</figure>
 <h3 id="befehlszeilenschnittstelle-1"><a href="#befehlszeilenschnittstelle-1">Befehlszeilenschnittstelle</a></h3>
 <p><strong>Programmdatei:</strong> <code>WaveViz.exe</code></p>
 <pre><code>Syntax: waveviz &lt;WAV-Datei&gt; &lt;PNG-Datei&gt; [w h] [bg f1 f2 li]
@@ -872,7 +886,7 @@ Input #0, mov,mp4,m4a,3gp,3g2,mj2, from &#39;D:\media\video.mp4&#39;:
   li = Farbe der Horizontlinie
 Farbwerte werden als RGBA-Hex-Werte angegeben. (z.B. #E080D0FF)</code></pre>
 <p><strong>Beispiel:</strong> <code>&gt; WaveViz.exe &quot;D:\media\sound.wav&quot; &quot;D:\media\wave.png&quot; 1024 100 #00000000 #FF880080 #880000FF #FF0000FF</code></p>
-<h2 id="spracherkennung"><a href="#spracherkennung">Spracherkennung</a></h2>
+<h2 id="transcripter"><a href="#transcripter">Spracherkennung</a></h2>
 <p><strong>Projektname:</strong> MediaCategorizer - Transcripter<br /><strong>Repository:</strong> <a href="https://github.com/mastersign/mediacategorizer-transcripter/">https://github.com/mastersign/mediacategorizer-transcripter/</a><br /><strong>Verzeichnis:</strong> <code>/components/Transcripter</code><br /><strong>Projekt-Typ:</strong> Microsoft Visual Studio<br /><strong>Programmiersprache:</strong> C# 5.0<br /><strong>Plattform, Bibiotheken:</strong> .NET 4.5, Microsoft Speech API</p>
 <h3 id="merkmale-4"><a href="#merkmale-4">Merkmale</a></h3>
 <ul>
@@ -907,7 +921,7 @@ MaxWordConfidence=&lt;Die höchste Erkennungssicherheit aller erkannten Worte&gt
 MeanWordConfidence=&lt;Die mittlere Erkennungssicherheit aller erkannten Worte&gt;
 MinWordConfidence=&lt;Die geringste Erkennungssicherheit aller erkannten Worte&gt;
 BestWordConfidence=&lt;Die mittlere Erkennungssicherheit des am besten erkannten Wortes&gt;</code></pre>
-<h2 id="analyse-und-visualisierung"><a href="#analyse-und-visualisierung">Analyse und Visualisierung</a></h2>
+<h2 id="distillery"><a href="#distillery">Analyse und Visualisierung</a></h2>
 <p><strong>Projektname:</strong> MediaCategorizer - Distillery<br /><strong>Repository:</strong> <a href="https://github.com/mastersign/mediacategorizer-distillery/">https://github.com/mastersign/mediacategorizer-distillery/</a><br /><strong>Verzeichnis:</strong> <code>/components/Distillery</code><br /><strong>Projekt-Typ:</strong> Leiningen<br /><strong>Programmiersprache:</strong> Clojure 1.5<br /><strong>Plattform, Bibiotheken:</strong> Java 7 Runtime, clojure, data.xml, enlive</p>
 <h3 id="merkmale-5"><a href="#merkmale-5">Merkmale</a></h3>
 <ul>

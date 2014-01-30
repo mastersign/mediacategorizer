@@ -347,8 +347,24 @@ Im Testmodus für Erkennungssicherheit werden die folgenden Werte ausgegeben.
 * Erzeugung der Ergebniswebseite
 
 ### Architektur
+*Distillery* ist nach dem funktionalen Programmierparadigma entwickelt und besteht aus einer Anzahl von Namensräumen und Funktionen in diesen Namensräumen. Es wurden keine expliziten Datentypen definiert, sondern ausschließlich die nativen Datentypen von Clojure verwendet (siehe [Intermediate Data Structures][data-structures]).
 
-> TODO
+In [#img:d-architecture] werden die Namensräume und ihre Abhängigkeiten dargestellt. Der Einstiegspunkt für die Anwendung ist der Namensraum `distillery.core`. Die logischen Schritte der Verarbeitung und die Ausgabe der Fortschrittsmeldungen sind in `distillery.tasks` implementiert. Die Funktionen für die Analyse der Spracherkennungsergebnisse befinden sich im Namensraum `distillery.processing`. Die Namensräume `distillery.txtresult` und `distillery.xmlresult` enthalten Funktionen zur Ausgabe der Spracherkennungs- und Analyseergebnisse in Reintext und XML-Format. Die Namensräume in `distillery.view` enthalten die verschiedenen Teile für die Erzeugung der HTML5-Webseite.
+
+Ergänzend gibt es die Namensräume `distillery.data`, `distillery.text` und `distillery.config`. Der Namesraum `distillery.data` enthält Funktionen für das Laden von externen Daten (z.B. Web-Seiten oder Textdateien) und einige allgemeine Hilfsfunktionen als Ergänzung zur `clojure.core`-Bibliothek. Der Namensraum `distillery.text` ist eine Abstraktionsschicht für Zeichenfolgenkonstanten, welche aus der Datei `Distillery/resources/text.edn` geladen werden. Diese Zwischenschicht bietet die Grundlage für die Wiederverwendung von Zeichenfolgen und stellt eine Vorbereitung für die Unterstützung von mehreren Ausgabesprachen dar. Der Namensraum `distillery.config` bietet eine Funktion für das Laden von Konfigurationsparametern an. Dabei werden Standardwerte aus der Datei `Distillery/resources/default-config.edn` geladen und mit den benutzerdefinierten Konfigurationsparameters aus der [Job-Datei][job] überlagert.
+
+![#img:d-architecture Die Architektur von Distillery][d-architecture]
+
+### API
+
+Für eine ausführliche Beschreibung der Namensräume und Funktionen von *Distillery* steht die automatisch generierte API-Dokumentation im Verzeichnis `Distillery/doc/api.html` zur Verfügung.
+
+### Befehlszeile
+**Programmdatei:** `distillery.jar`
+
+Die Einstiegsfunktion von *Distillery* erwartet nur den Pfad zur [Job-Datei][job] als einziges Argument.
+
+**Beispiel:** `> java -jar "D:\MediaCategorizer\tools\distillery.jar" "D:\work\job.saj"`
 
 ## Wortwolken
 **Projektname:** Mastersign Cloud  
@@ -369,6 +385,90 @@ Im Testmodus für Erkennungssicherheit werden die folgenden Werte ausgegeben.
 * Optional sortiertes Layout
 * Parametrisierung für Darstellungsqualität (beeinflusst Laufzeit)
 
+### API
+Die Funktionen des Wortwolkengenerators befinden sich in dem Namensraum `mastersign.wordcloud`. Um eine Wortwolke zu erzeugen, sind die folgenden Schritte notwendig.
+
+1. Sortieren der Wortliste, Zuweisen von Schriftart, Schriftgröße und Schriftfarbe, und Berechnen des Platzbedarfs der einzelnen Worte
+2. Berechnen der Position und Drehung aller Wörter die auf die Bildfläche passen
+3. Zeichnen der Wörter an den berechneten Position im entsprechenden Stil
+
+Um den ersten Schritt auszuführen, wird die Funktion `mastersign.wordcloud/build-word-infos` aufgerufen. Diese nimmt zwei Parameter entgegen: `word-data` und `args`. Das Argument `word-data` erwartet eine Sequenz von Vektoren/Tupeln mit folgendem Aufbau: `[id text v1 v2]` wobei `id` eine Zeichenkette zur eindeutigen Identifizierung des Wortes ist, `text` die darzustellende Zeichenfolge des Wortes, `v1` die Wert für die Schriftgröße und `v2` der Wert für die Schriftfarbe. Die Werte `v1` und `v2` sollten im Wertebereich `[0..1]` liegen. Ein Beispieldatensatz könnt z.B. wie folgt aussehen.
+
+	(def words [["b" "Bravo" 0.1 0.9]
+                ["a" "Alpha" 0.4 0.8]
+                ["c" "Charlie" 1.0 0.2]
+                ...])
+
+Das Argument `args` erwartet eine Map mit den folgenden Slots:
+
+* `:order-mode` steuert, nach welcher Worteigenschaft sortiert werden soll (`:id`, `:text`, `:value1`, `:value2`) (Standard: `:value1`)  
+  Die Sortierung wirkt sich später in der Position der Worte aus. Worte die am Anfang eingeordnet werde, erscheinen tendenziell in der Mitte der Wolke, Worte die am Ende eingeordnet werden, erscheinen tendenziell am Rand der Wolke.
+* `:font` Die Schriftart (mit Schriftfamilie und -stil): `java.awt.Font`
+* `:color-fn` Eine Funktion, die einen Wert zwischen 0 und 1 auf eine `java.awt.Color`-Instanz abbildet (Standard: Eine Überblendung zwischen Blau und Orange)
+* `:min-font-size` Die kleinste zu verwendende Schriftgröße in Pixeln (Standard: `14`)
+* `:max-font-size` Die größte zu verwendende Schriftgröße in Pixeln (Standard: `80`)
+
+Ein Aufruf könnte z.B. wie folgt aussehen.
+
+	(def word-infos (build-word-infos words {:order-mode :value2}))
+
+Wird anstelle der Standardsortierung von `:value1` die Sortierung `:value2` angegeben wird nicht nach Wortgröße sondern nach Farbe sortiert (siehe [#img:cloud-sort-value2]).
+
+Das Ergebnis des Aufrufs ist eine Sequenz mit Maps als Elementen. Jedes Element besitzt dabei die folgenden Slots:
+
+* `:id` Die Id
+* `:text` Die Zeichenfolge
+* `:v1` Der erste Wert
+* `:v2` Der zweite Wert
+* `:font` Die Schriftart (mit Schriftfamilie, -größe und -stil): `java.awt.Font`
+* `:color` Die Farbe: `java.awt.Color`
+* `:word-bounds` Das Rechteck in dem alle Zeichen des Wortes Platz finden: `java.awt.geom.Rectangle2D.Float`
+* `:glyph-bounds` Ein Vektor mit den Rechtecken in denen sich die einzelnen Zeichen des Wortes befinden: Vektor von `java.awt.geom.Rectangle2D.Float`
+
+Für den zweiten Schritt wird die Funktion `mastersign.wordcloud/build-cloud-info` aufgerufen. Sie akzeptiert ebenfalls zwei Argumente: `word-infos` und `args`. Das Argument `word-infos` erwartet die Sequenz von Wortbeschreibungen in Form von Maps wie sie von `build-word-infos` zurückgegeben wird. Das zweite Argument erwartet eine Map, die die folgenden Steuerparameter enthalten muss:
+
+* `:width` Die Breite der Bildfläche in Pixeln (Standard: `600`)
+* `:height` Die Höhe der Bildfläche in Pixeln (Standard: `300`)
+* `:padding` Der minimale Randabstand zum Bildrand (Standard: `4`)
+* `:max-test-radius` Der maximale Abstand zum Mittelpunkt beim Suchen einer passenden Position  (Standard: `350`)
+* `:order-priority` Ein Wert zwischen 0 und 1 der angibt, wie stark eine alphabetische Sortierung angewendet werden soll (Standard: `0.7`)
+* `:allow-rotation` Gibt an, ob Worte nach rechts oder links gedreht werden dürfen (Standard: `true`) 
+* `:precision` Gibt die Präzision bei der Positionssuche als Wert zwischen 0 und 1 an  (Standard: `0.4`)
+* `:final-refine` Gibt an, ob die Worte nach der Positionierung zusammengerückt werden sollen (Standard: `true`)
+
+Ein Aufruf könnte z.B. wie folgt aussehen.
+
+	(def cloud-info (build-cloud-info word-infos {:width 400 :height 400 :precision 0.7}))
+
+Das Ergebnis des Aufrufs ist eine Map mit den folgenden Slots:
+
+* `:args` Die übergebene Map mit den Steuerparametern
+* `:word-infos` Die übergebene Sequenz mit den Wortbeschreibungen, wobei die Wortbeschreibungen um die folgenden Slots ergänzt wurden:
+	* `:position` Mittelpunkt des Wortes
+	* `:rotation` Ausrichtung des Wortes
+	* `:rect` Das Rechteck in dem das Wort platziert wurde
+* `:test-area` Der Bereich der Bildfläche, der mit Worten gefüllt wurde
+
+Der dritte Schritt ist das Zeichnen der Wortwolke. Dazu wird die Funktion `mastersign.wordcloud/paint-cloud` aufgerufen. Sie akzeptiert als erstes Argument eine Map mit der Beschreibung der Wortwolke, wie sie von `mastersign.wordcloud/build-cloud-info` zurückgegeben wird. Als zweites Argument akzeptiert sie eine Map mit Steuerparametern, welche die Slots `:width` und `:height` enthalten muss. Die Funktion gibt ein `java.awt.image.BufferedImage` zurück.
+
+Der Aufruf könnte z.B. wie folgt aussehen.
+
+	(def img (paint-cloud cloud-info {:width 400 :height 400}))
+
+Als Zusammenfassung der drei Schritte und Vereinfachung des Aufrufs kann die Funktion `mastersign.wordcloud/create-cloud` verwendet werden. Sie erwartet als erstes Argument eine Sequenz mit Wörtern in der Form wie sie `mastersign.wordcloud/build-word-info` erwartet. Als zusätzliche Argumente können alle Steuerparameter aus den oben genannten Maps mit dem Argumentnamen `args` verwendet werden.
+
+Ein Aufruf könnte z.B. wie folgt aussehen.
+
+	(def img (create-cloud words :width 400 :height 400 :precision 0.7 :order-mode :value2))
+
+Die folgenden Abbildungen zeigen mögliche Ergebnisse. 
+
+![#img:cloud-sort-value1 Eine nach der Wortgröße sortierte Wortwolke][cloud-sort-value1]
+
+![#img:cloud-sort-value2 Eine nach der Wortfarbe sortierte Wortwolke][cloud-sort-value2]
+
+![#img:cloud-sort-alpha Eine alphabetisch sortierte Wortwolke][cloud-sort-alpha]
+
 
 [clr]: http://www.microsoft.com/de-de/download/details.aspx?id=40779
 [vs]: http://www.visualstudio.com/de-de
@@ -380,6 +480,8 @@ Im Testmodus für Erkennungssicherheit werden die folgenden Werte ausgegeben.
 
 [handbook]: Benutzerhandbuch.html
 [srr]: intermediate-data-structures.html#SpeechRecognitionResultFile
+[job]: intermediate-data-structures.html#JobFile
+[data-structures]: intermediate-data-structures.html
 
 [architecture]: images/diagrams/Architecture.png
 [ui-ns]: images/diagrams/Namespaces.png
@@ -397,6 +499,10 @@ Im Testmodus für Erkennungssicherheit werden die folgenden Werte ausgegeben.
 [ui-tool-waveviz]: images/diagrams/ToolWaveViz.png
 [ui-setup]: images/diagrams/Setup.png
 [waveform]: images/waveform.png
+[d-architecture]: images/diagrams/D_Architecture.png
+[cloud-sort-value1]: images/cloud/sort-value1.png
+[cloud-sort-value2]: images/cloud/sort-value2.png
+[cloud-sort-alpha]: images/cloud/sort-alpha.png
 
 *[EDN]: Extensible Data Notation
 *[REPL]: Read-Eval-Print-Loop

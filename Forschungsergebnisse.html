@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <title>Forschungsergebnisse - OLL - Verschriftlichung von Videosequenzen</title>
     <meta name="author" content="Tobias Kiertscher" />
-    <meta name="date" content="30.01.2014" />
+    <meta name="date" content="31.01.2014" />
     
     <style type="text/css">
 html, body, div, span, object, iframe,
@@ -660,6 +660,9 @@ header h1#subtitle {
             </div><div class="item association">
                 <span class="label">Teilprojekt</span>
                 <span class="text">Verschriftlichung von Videosequenzen</span>
+            </div><div class="item association">
+                <span class="label">Förderung</span>
+                <span class="text">EFRE MWFK - Antrags-Nr. 80156701</span>
             </div>
             <div class="item creator">
                 <span class="label">Projektleiter</span>
@@ -672,7 +675,7 @@ header h1#subtitle {
                             </div>
             <div class="item date">
                 <span class="label">Datum</span>
-                <span class="text">30.01.2014</span>
+                <span class="text">31.01.2014</span>
             </div>
             <div class="item version">
                 <span class="label">Version</span>
@@ -680,8 +683,8 @@ header h1#subtitle {
             </div>
         </div>
     	<h1 id="zusammenfassung"><a href="#zusammenfassung">Zusammenfassung</a></h1>
-<p>Im Rahmen des Projekte <em>Online-Lehr- und Lernhilfsmittel (OLL)</em> an der Fachhochschule Brandenburg wurde im Teilprojekt <em>Verschriftlichung von Videosequenzen</em> ein automatisierter Prozess implementiert und erforscht, mit dem eine Verschriftlichung von Videos möglich ist. Neben einem Transkript werden Worthäufigkeitslisten für jedes Video erzeugt. Die Videos können anschließend automatisch einer benutzerdefinierten Anzahl von Kategorien zugeordnet werden. Dadurch ist z.B. die automatische Verschlagwortung und thematische Einordnung von Videomaterial mit unbekanntem gesprochenem Inhalt möglich. Der Prozess wird durch eine grafische Benutzeroberfläche gesteuert. Projekte mit Videos, Kategorien und Steuerparametern können gespeichert und wiederverwendet werden. Die Ergebnisse werden u.a. als <abbr title="Hyper Text Markup Language">HTML</abbr>5-Webseite und als maschinenlesbares <abbr title="eXtensible Markup Language">XML</abbr> ausgeben. Die Webseite bietet eine ansprechende visuelle Aufbereitung der erkannten Worte und Texte und eine übersichtliche Präsentation der Übereinstimmung zwischen den Videos und der Kategorien.</p>
-<p>Das Projekt wurde gefördert mit Mitteln des Europäischen Fonds für Regionalentwicklung (EFRE) in der Bewirtschaftung des MWFK Programms “e-learning und e-knowledge”.</p>
+<p>Im Rahmen des Projekte <em>Online-Lehr- und Lernhilfsmittel (OLL)</em> an der <a href="http://www.fh-brandenburg.de/" title="Fachhochschule Brandenburg">Fachhochschule Brandenburg</a> wurde im Teilprojekt <em>Verschriftlichung von Videosequenzen</em> ein automatisierter Prozess implementiert und erforscht, mit dem eine Verschriftlichung von Videos möglich ist. Neben einem Transkript werden Worthäufigkeitslisten für jedes Video erzeugt. Die Videos können anschließend automatisch einer benutzerdefinierten Anzahl von Kategorien zugeordnet werden. Dadurch ist z.B. die automatische Verschlagwortung und thematische Einordnung von Videomaterial mit unbekanntem gesprochenem Inhalt möglich. Der Prozess wird durch eine grafische Benutzeroberfläche gesteuert. Projekte mit Videos, Kategorien und Steuerparametern können gespeichert und wiederverwendet werden. Die Ergebnisse werden u.a. als <abbr title="Hyper Text Markup Language">HTML</abbr>5-Webseite und als maschinenlesbares <abbr title="eXtensible Markup Language">XML</abbr> ausgeben. Die Webseite bietet eine ansprechende visuelle Aufbereitung der erkannten Worte und Texte und eine übersichtliche Präsentation der Übereinstimmung zwischen den Videos und der Kategorien.</p>
+<p>Das Projekt wurde gefördert mit Mitteln des Europäischen Fonds für Regionalentwicklung (EFRE) in der Bewirtschaftung des MWFK Programms “e-learning und e-knowledge”. Das Projekt wird unter der Antragsnummer 80156701 geführt.</p>
 <h1 id="zielstellung"><a href="#zielstellung">Zielstellung</a></h1>
 <p>Das Ziel des Teilprojektes ist, das Testen und lauffähig machen eines automatisierten Prozesses zur Extraktion von Tonspuren aus einem Video, Verschriftlichung der Tonspur und Erstellen einer Worthäufigkeitsliste.</p>
 <p>Dazu soll zunächst eine Software gefunden und getestet werden, mit der die Tonspur aus einem Video extrahiert und in einem geeigneten Format gespeichert werden kann.</p>
@@ -1088,7 +1091,7 @@ header h1#subtitle {
 <p>Da die Microsoft Speech <abbr title="Application Programming Interface">API</abbr> zu jeder erkannten Phrase die Position in der Tonspur angibt und <abbr title="Hyper Text Markup Language">HTML</abbr>5 einen Video-Player unterstützt, war es möglich die erkannten Worte mit der Abspielposition des Videos zu verknüpfen. Es kann aus dem Glossar und aus einer Wortwolke zu den Positionen im Video navigiert werden, an denen das jeweilige Wort erkannt wurde.</p>
 <p>Für die Zuordnung der Videos zu einer Anzahl von benutzerdefinierten Kategorien wurde eine Kennzahl definiert, mit der die Übereinstimmung zwischen einem Video und einer Kategorie berechnet werden kann. Dazu wird sowohl für das Video als auch für die Kategorie eine Worthäufigkeitsliste erzeugt. Eine Kategorie kann durch eine Menge von Quelltexten beschrieben werden. Als Quelltexte können sowohl lokale Textdateien als auch gewöhnliche Webseiten und insbesondere Wikipedia-Seiten verwendet werden.</p>
 <p>Für die Steuerung des automatisierten Prozesses wurde eine grafische Benutzeroberfläche implementiert, welche die Verwaltung der Videos, der Kategorien und der Prozessparameter ermöglicht. Während der Ausführung des Prozesses, die bei einer größeren Anzahl von Videos und Sprecherprofilen mehrere Stunden in Anspruch nehmen kann, werden die einzelnen Prozessschritte und deren Fortschritt übersichtlich dargestellt. Des Weiteren werden alle Schritte in einer Protokolldatei dokumentiert. Es gibt die Möglichkeit Zwischenergebnisse des Prozesses aufzuheben und somit eine wiederholte Ausführung mit veränderter Parametrisierung wesentlich zu Beschleunigen.</p>
-<p>Die in diesem Projekt entstandene Software wurde unter dem Namen <em>MediaCategorizer</em> auf der Plattform <a href="http://github.com/mastersign/mediacategorizer" title="MediaCategorizer auf github.com">github</a> veröffentlicht.</p>
+<p>Die in diesem Projekt entstandene Software wurde unter dem Namen <em>MediaCategorizer</em> auf der Plattform <a href="http://mastersign.github.io/mediacategorizer" title="MediaCategorizer auf github.com">github</a> unter der <a href="http://opensource.org/licenses/MIT">MIT-Lizenz</a> veröffentlicht.</p>
 <h1 id="anhang"><a href="#anhang">Anhang</a></h1>
 <p>Die folgenden Dokumente gehören ebenfalls zum Projektergebnis.</p>
 <ul>

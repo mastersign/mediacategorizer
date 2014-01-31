@@ -18,7 +18,7 @@ creator:
   affiliation: Fachhochschule Brandenburg, Fachbereich Informatik und Medien
   email: kiertscher@fh-brandenburg.de
 bibliography: bibliography.bib
-date: 30.01.2014
+date: 31.01.2014
 version: 1
 lang: de
 ...

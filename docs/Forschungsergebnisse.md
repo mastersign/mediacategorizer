@@ -8,6 +8,8 @@ association:
   text: Online-Lehr- und Lernhilfsmittel (OLL)
 - type: Teilprojekt
   text: Verschriftlichung von Videosequenzen
+- type: Förderung
+  text: EFRE MWFK - Antrags-Nr. 80156701
 creator:
 - role: Projektleiter
   name: Friedhelm Mündemann
@@ -24,9 +26,9 @@ lang: de
 ...
 
 # Zusammenfassung
-Im Rahmen des Projekte *Online-Lehr- und Lernhilfsmittel (OLL)* an der Fachhochschule Brandenburg wurde im Teilprojekt *Verschriftlichung von Videosequenzen* ein automatisierter Prozess implementiert und erforscht, mit dem eine Verschriftlichung von Videos möglich ist. Neben einem Transkript werden Worthäufigkeitslisten für jedes Video erzeugt. Die Videos können anschließend automatisch einer benutzerdefinierten Anzahl von Kategorien zugeordnet werden. Dadurch ist z.B. die automatische Verschlagwortung und thematische Einordnung von Videomaterial mit unbekanntem gesprochenem Inhalt möglich. Der Prozess wird durch eine grafische Benutzeroberfläche gesteuert. Projekte mit Videos, Kategorien und Steuerparametern können gespeichert und wiederverwendet werden. Die Ergebnisse werden u.a. als HTML5-Webseite und als maschinenlesbares XML ausgeben. Die Webseite bietet eine ansprechende visuelle Aufbereitung der erkannten Worte und Texte und eine übersichtliche Präsentation der Übereinstimmung zwischen den Videos und der Kategorien.
+Im Rahmen des Projekte *Online-Lehr- und Lernhilfsmittel (OLL)* an der [Fachhochschule Brandenburg][fhb] wurde im Teilprojekt *Verschriftlichung von Videosequenzen* ein automatisierter Prozess implementiert und erforscht, mit dem eine Verschriftlichung von Videos möglich ist. Neben einem Transkript werden Worthäufigkeitslisten für jedes Video erzeugt. Die Videos können anschließend automatisch einer benutzerdefinierten Anzahl von Kategorien zugeordnet werden. Dadurch ist z.B. die automatische Verschlagwortung und thematische Einordnung von Videomaterial mit unbekanntem gesprochenem Inhalt möglich. Der Prozess wird durch eine grafische Benutzeroberfläche gesteuert. Projekte mit Videos, Kategorien und Steuerparametern können gespeichert und wiederverwendet werden. Die Ergebnisse werden u.a. als HTML5-Webseite und als maschinenlesbares XML ausgeben. Die Webseite bietet eine ansprechende visuelle Aufbereitung der erkannten Worte und Texte und eine übersichtliche Präsentation der Übereinstimmung zwischen den Videos und der Kategorien.
 
-Das Projekt wurde gefördert mit Mitteln des Europäischen Fonds für Regionalentwicklung (EFRE) in der Bewirtschaftung des MWFK Programms "e-learning und e-knowledge".
+Das Projekt wurde gefördert mit Mitteln des Europäischen Fonds für Regionalentwicklung (EFRE) in der Bewirtschaftung des MWFK Programms "e-learning und e-knowledge". Das Projekt wird unter der Antragsnummer 80156701 geführt.
 
 # Zielstellung
 Das Ziel des Teilprojektes ist, das Testen und lauffähig machen eines automatisierten Prozesses zur Extraktion von Tonspuren aus einem Video, Verschriftlichung der Tonspur und Erstellen einer Worthäufigkeitsliste.
@@ -431,7 +433,7 @@ Für die Zuordnung der Videos zu einer Anzahl von benutzerdefinierten Kategorien
 
 Für die Steuerung des automatisierten Prozesses wurde eine grafische Benutzeroberfläche implementiert, welche die Verwaltung der Videos, der Kategorien und der Prozessparameter ermöglicht. Während der Ausführung des Prozesses, die bei einer größeren Anzahl von Videos und Sprecherprofilen mehrere Stunden in Anspruch nehmen kann, werden die einzelnen Prozessschritte und deren Fortschritt übersichtlich dargestellt. Des Weiteren werden alle Schritte in einer Protokolldatei dokumentiert. Es gibt die Möglichkeit Zwischenergebnisse des Prozesses aufzuheben und somit eine wiederholte Ausführung mit veränderter Parametrisierung wesentlich zu Beschleunigen.
 
-Die in diesem Projekt entstandene Software wurde unter dem Namen *MediaCategorizer* auf der Plattform [github][github] veröffentlicht.
+Die in diesem Projekt entstandene Software wurde unter dem Namen *MediaCategorizer* auf der Plattform [github][github] unter der [MIT-Lizenz][mit-lic] veröffentlicht.
 
 # Anhang
 Die folgenden Dokumente gehören ebenfalls zum Projektergebnis.
@@ -445,6 +447,7 @@ Die folgenden Dokumente gehören ebenfalls zum Projektergebnis.
 # Quellen
 Die folgenden Quellen wurden verwendet.
 
+[fhb]: http://www.fh-brandenburg.de/ "Fachhochschule Brandenburg"
 [ffmpeg]: http://www.ffmpeg.org "FFmpeg"
 [voicepro]: http://www.linguatec.com "Voice Pro von Linguatec"
 [dragon]: http://www.nuance.com "Dragon Natural Speaking von Nuance"
@@ -458,7 +461,8 @@ Die folgenden Quellen wurden verwendet.
 [clojure]: http://clojure.org "Clojure Programming Language"
 [mediawiki]: http://www.mediawiki.org "Media Wiki"
 [wikipedia]: http://de.wikipedia.org "Deutsche Wikipedia"
-[github]: http://github.com/mastersign/mediacategorizer "MediaCategorizer auf github.com"
+[github]: http://mastersign.github.io/mediacategorizer "MediaCategorizer auf github.com"
+[mit-lic]: http://opensource.org/licenses/MIT 
 
 [mc-handbook]: Benutzerhandbuch.html
 [mc-profiles]: Sprecherprofilverwaltung.html

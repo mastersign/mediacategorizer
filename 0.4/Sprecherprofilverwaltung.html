@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>MediaCategorizer - Struktur der Ergebniswebseite</title>
+    <title>MediaCategorizer - Sprecherprofilverwaltung</title>
     <meta name="author" content="Tobias Kiertscher" />
-    <meta name="date" content="05.02.2014" />
+    <meta name="date" content="31.01.2014" />
     
     <style type="text/css">
 html, body, div, span, object, iframe,
@@ -616,23 +616,17 @@ header h1#subtitle {
     <header>
         
         <h1 id="title">MediaCategorizer</h1>
-        <h1 id="subtitle">Struktur der Ergebniswebseite</h1>
+        <h1 id="subtitle">Sprecherprofilverwaltung</h1>
     </header>
     <a id="TOC"></a>
     <nav class="vertical fixed">
     	<ul>
-<li><a href="#index">Index</a><ul>
-<li><a href="#kontext">Kontext</a></li>
-<li><a href="#ansichten">Ansichten</a></li>
-</ul></li>
-<li><a href="#kategorie">Kategorie*</a><ul>
-<li><a href="#kontext-1">Kontext</a></li>
-<li><a href="#ansichten-1">Ansichten</a></li>
-</ul></li>
-<li><a href="#medium">Medium*</a><ul>
-<li><a href="#kontext-2">Kontext</a></li>
-<li><a href="#ansichten-2">Ansichten</a></li>
-</ul></li>
+<li><a href="#voraussetzungen">Voraussetzungen</a></li>
+<li><a href="#create">Sprecherprofil erzeugen</a></li>
+<li><a href="#train">Sprecherprofil trainieren</a></li>
+<li><a href="#export">Sprecherprofil exportieren</a></li>
+<li><a href="#import">Sprecherprofil importieren</a></li>
+<li><a href="#hinweise-zum-einsatz-von-sprecherprofilen">Hinweise zum Einsatz von Sprecherprofilen</a></li>
 </ul>
     </nav>
     <div id="page">
@@ -645,149 +639,51 @@ header h1#subtitle {
                             </div>
             <div class="item date">
                 <span class="label">Datum</span>
-                <span class="text">05.02.2014</span>
+                <span class="text">31.01.2014</span>
             </div>
             <div class="item version">
                 <span class="label">Version</span>
-                <span class="text">0.4.0</span>
+                <span class="text">0.3.0</span>
             </div>
         </div>
-    	<p>Dieses Dokument bietet eine knappe Übersicht über die technische Struktur der Ergebniswebseite, die von MediaCategorizer ausgegeben wird. Es richtet sich an Entwickler, die die Projektausgabe an eigene Bedürfnisse anpassen möchten. Das Dokument ist als Orientierungshilfe und Nachschlagewerk konzipiert.</p>
-<p>In der Webseite werden alle verarbeiteten Medien und Kategorien aufgeführt. Für jedes Medium und jede Kategorie ist ein individuelles Glossar und eine Wortwolke in der Webseite enthalten. Des Weiteren ist ein Medien-übergreifendes Glossar und eine Medien-übergreifende Wortwolke enthalten. Die Übereinstimmungen zwischen Medien und Kategorien werden übersichtlich in einer Matrix dargestellt.</p>
-<p>Die Webseite ist in unterschiedliche Kontexte aufgeteilt:</p>
-<ul>
-<li><strong>Projektkontext</strong> alle Medien und alle Kategorien</li>
-<li><strong>Medium</strong> ein Medium und die zugeordneten Kategorien</li>
-<li><strong>Kategorie</strong> eine Kategorie und die zugeordneten Medien</li>
-</ul>
-<h1 id="index"><a href="#index">Index</a></h1>
-<p>Pfad: <code>/index.html</code></p>
-<h2 id="kontext"><a href="#kontext">Kontext</a></h2>
-<ul>
-<li>Mehrere Kategorien</li>
-<li>Mehrere Medien</li>
-</ul>
-<h2 id="ansichten"><a href="#ansichten">Ansichten</a></h2>
-<ul>
-<li><p>Projekt</p>
-<ul>
-<li><p>Übersicht</p>
-<ul>
-<li>Beschreibung</li>
-<li>Statistiken</li>
-<li>Wort-Hitliste → Projekt : Wort</li>
-</ul></li>
-<li><p>Wortwolke</p>
-<ul>
-<li>Wortwolke Wort → Projekt : Wort</li>
-</ul></li>
-<li><p>Matrix</p>
-<ul>
-<li>Zeile → Medium : Übersicht</li>
-<li>Spalte → Kategorie : Übersicht</li>
-<li>Zelle → Kategorie : Übereinstimmung</li>
-</ul></li>
-<li>Glossar</li>
-</ul></li>
-<li><p>Kategorien</p>
-<ul>
-<li><p>Übersicht</p>
-<ul>
-<li>List → Kategorie : Übersicht</li>
-</ul></li>
-</ul></li>
-<li><p>Medien</p>
-<ul>
-<li><p>Übersicht</p>
-<ul>
-<li>List → Medium : Übersicht</li>
-</ul></li>
-</ul></li>
-<li><p>Wort*<br /> Pfad: <code>/words/&lt;Wort&gt;.inc.html</code></p>
-<ul>
-<li>Statistiken</li>
-<li>Medien (Teilmenge) → Medium : Wort</li>
-<li>Kategorien (Teilmenge) → Kategorie : Wort</li>
-</ul></li>
-</ul>
-<h1 id="kategorie"><a href="#kategorie">Kategorie*</a></h1>
-<p>Pfad: <code>/categories/&lt;Kategorie&gt;/index.html</code></p>
-<h2 id="kontext-1"><a href="#kontext-1">Kontext</a></h2>
-<ul>
-<li>Einzelne Kategorie</li>
-<li>Mehrere Medien (Teilmenge)</li>
-</ul>
-<h2 id="ansichten-1"><a href="#ansichten-1">Ansichten</a></h2>
-<ul>
-<li><p>Kategorie (Übersicht)</p>
-<ul>
-<li>Beschreibung</li>
-<li>Statistiken</li>
-<li>Wort-Hitliste → Kategorie:Wort</li>
-</ul></li>
-<li><p>Wortwolke</p>
-<ul>
-<li>Wortwolke Wort → Kategorie:Wort</li>
-</ul></li>
-<li><p>Medien</p>
-<ul>
-<li>Liste → Kategorie : Übereinstimmung</li>
-</ul></li>
-<li><p>Glossar</p>
-<ul>
-<li>Liste → Kategorie : Wort</li>
-</ul></li>
-<li><p>Wort*<br /> Pfad: <code>/categories/&lt;Kategorie&gt;/words/&lt;Wort&gt;.inc.html</code></p>
-<ul>
-<li>Statistiken</li>
-<li>Medien (Teilmenge) → Medium : Wort</li>
-</ul></li>
-<li><p>Übereinstimmung*<br /> Pfad: <code>/categories/&lt;Kategorie&gt;/matches/&lt;Medium&gt;.inc.html</code></p>
-<ul>
-<li>Übereinstimmung</li>
-<li>Wortliste → Kategorie : Wort</li>
-</ul></li>
-</ul>
-<h1 id="medium"><a href="#medium">Medium*</a></h1>
-<p>Pfad: <code>/media/&lt;Medium&gt;/index.html</code><br />Medienpfad: <code>/media/&lt;Medium&gt;/&lt;Medium&gt;.&lt;Typ&gt;</code><br />Waveform-Pfad: <code>/media/&lt;Medium&gt;/waveform.png</code></p>
-<h2 id="kontext-2"><a href="#kontext-2">Kontext</a></h2>
-<ul>
-<li>Einzelnes Medium</li>
-<li>Mehrere Kategorien (Teilmenge)</li>
-</ul>
-<h2 id="ansichten-2"><a href="#ansichten-2">Ansichten</a></h2>
-<ul>
-<li><p>Medium (Übersicht)</p>
-<ul>
-<li>Beschreibung</li>
-<li>Statistiken</li>
-<li>Waveform</li>
-<li>Wort-Hitliste &amp;rarra; Medium : Wort</li>
-</ul></li>
-<li><p>Wortwolke</p>
-<ul>
-<li>Wortwolke Wort → Medium : Wort</li>
-</ul></li>
-<li><p>Transkript</p>
-<ul>
-<li>Phrase Zeitpunkt → Abspielposition</li>
-<li>Phrase Wort → Medium : Wort</li>
-</ul></li>
-<li><p>Kategorien</p>
-<ul>
-<li>Liste → Kategorie : Übereinstimmung</li>
-</ul></li>
-<li><p>Glossar</p>
-<ul>
-<li>Liste → Medium : Wort</li>
-</ul></li>
-<li><p>Wort*<br /> Pfad: <code>/media/&lt;Medium&gt;/words/&lt;Wort&gt;.inc.html</code></p>
-<ul>
-<li>Statistiken</li>
-<li>Auftreten → Abspielposition</li>
-<li>Kategorien → Kategorie:Wort</li>
-</ul></li>
-</ul>
+    	<h1 id="voraussetzungen"><a href="#voraussetzungen">Voraussetzungen</a></h1>
+<p>MediaCategorizer verwendet für die Verschriftlichung das Microsoft Speech API, welches Bestandteil von Microsoft Windows ist. Für MediaCategorizer wird das Betriebssystem Microsoft Windows 7 in deutscher Sprache benötigt.</p>
+<p>Für die Spracherkennung sind ein oder mehrere Sprecherprofile erforderlich. Diese kleine Anleitung erklärt die Verwaltung der Sprecherprofile.</p>
+<h1 id="create"><a href="#create">Sprecherprofil erzeugen</a></h1>
+<p>Windows 7 erstellt bei der Installation automatisch ein nicht trainiertes Sprecherprofil mit dem Namen <em>Standard</em>. Es können beliebig viele weitere Profile erstellt werden. Dafür muss zunächst die Seite <em>Spracherkennung</em> in der Systemsteuerung geöffnet werden (siehe <a href="#sysctrl-speechrecon">Abbildung 1</a>).</p>
+<p><a name="sysctrl-speechrecon"></a></p>
+<figure>
+<img src="images/windows-sysctrl-speechrecon.png" alt="Abbildung 1: Die Spracherkennung in der Systemsteuerung" /><figcaption>Abbildung 1: Die Spracherkennung in der Systemsteuerung</figcaption>
+</figure>
+<p>Über den Link oben links <em>Erweiterte Sprachoptionen</em> wird der Dialog <em>Spracheigenschaften</em> geöffnet (siehe <a href="#speechprops">Abbildung 2</a>). Der Karteireiter <em>Spracherkennung</em> enthält die Liste der existierenden Sprecherprofile. Über die Schaltfläche <em>Neu…</em> kann ein neues Sprecherprofil angelegt werden (siehe <a href="#newprofile">Abbildung 3</a>).</p>
+<p><a name="speechprops"></a></p>
+<figure>
+<img src="images/windows-speechprops.png" alt="Abbildung 2: Der Dialog Spracheigenschaften" /><figcaption>Abbildung 2: Der Dialog “Spracheigenschaften”</figcaption>
+</figure>
+<p><a name="newprofile"></a></p>
+<figure>
+<img src="images/windows-speech-newprofile.png" alt="Abbildung 3: Der Dialog Profil hinzufügen…" /><figcaption>Abbildung 3: Der Dialog “Profil hinzufügen…”</figcaption>
+</figure>
+<h1 id="train"><a href="#train">Sprecherprofil trainieren</a></h1>
+<p>Ein existierendes Profil kann durch das Vorlesen eines vorgegebenen Textes trainiert werden. Der Trainingsassistent wird durch die Schaltfläche <em>Profil trainieren</em> im Dialog <em>Spracheigenschaften</em> aufgerufen (siehe <a href="#speechprops">Abbildung 2</a>).</p>
+<p>Das Training findet in ein oder mehreren Phasen statt. Die besten Ergebnisse werden erreicht, wenn alle Phasen des Trainings absolviert werden.</p>
+<h1 id="export"><a href="#export">Sprecherprofil exportieren</a></h1>
+<p>Sprecherprofile können in eine SPF-Datei exportiert und so auf ein anderes System übertragen werden. Diese Funktionalität steht leider nicht über die Benutzeroberfläche von Windows zur Verfügung. Jedoch bietet Microsoft für diesen Zweck das kleine Programm <em>Speech Profile Manager</em> zum <a href="http://www.microsoft.com/en-us/download/details.aspx?id=22358">Download</a> an (siehe <a href="#spm">Abbildung 4</a>).</p>
+<p><a name="spm"></a></p>
+<figure>
+<img src="images/speech-profile-manager.png" alt="Abbildung 4: Der Speech Profile Manager von Microsoft" /><figcaption>Abbildung 4: Der Speech Profile Manager von Microsoft</figcaption>
+</figure>
+<p>Um ein Profil zu exportieren genügt es, dieses im Speech Profile Manager auszuwählen und auf die Schaltfläche <em>Export…</em> zu klicken. Im anschließenden Dialog kann der Pfad der SPF-Datei angegeben werden in die das Profil exportiert werden soll.</p>
+<h1 id="import"><a href="#import">Sprecherprofil importieren</a></h1>
+<p>Sprecherprofile können aus einer SPF-Datei importiert werden. Dazu ist das Programm <em>Speech Profile Manager</em> erforderlich (siehe Abschnitt <a href="#export">Sprecherprofil exportieren</a>).</p>
+<p>Um ein Profil zu importieren, genügt es im Speech Profile Manager auf die Schaltfläche <em>Import…</em> zu klicken und anschließend die SPF-Datei auszuwählen. Das Programm warnt, wenn das zu importierende Profil den gleichen Namen besitzt wie ein bereits installiertes Profile und ermöglicht es, einen neuen Namen für das zu importierende Profil anzugeben.</p>
+<p>Nach erfolgreichem Import fragt das Programm zunächst nach, ob das importierte Profil zum Standardprofil gemacht werden soll. Diese Frage kann mit <em>No</em> beantwortet werden. Anschließen bietet das Programm an, die Mikrofoneinrichtung für das Profil durchzuführen. Für die Verschriftlichung mit MediaCategorizer ist dies nicht erforderlich, da dabei nicht das am PC angeschlossene Mikrofon zum Einsatz kommt. Deshalb kann auch dieser zweite Dialog mit <em>No</em> beantwortet werden.</p>
+<h1 id="hinweise-zum-einsatz-von-sprecherprofilen"><a href="#hinweise-zum-einsatz-von-sprecherprofilen">Hinweise zum Einsatz von Sprecherprofilen</a></h1>
+<p>MediaCategorizer nutzt immer alle installierten Sprecherprofile. Es wählt während der Ausführung nacheinander verschiedene Sprecherprofile als aktuelles Standardprofil aus, deshalb ist es die Regel, dass das Standardprofil nach der Ausführung von MediaCategorizer umgestellt wurde.</p>
+<p>Sind mehrere Sprecherprofile im System installiert, wählt MediaCategorizer für jedes Video das Sprecherprofil mit der besten Erkennungsleistung aus.</p>
+<p>Für gute Erkennungsergebnisse mit unbekanntem Videomaterial ist es empfehlenswert eine kleine Anzahl von Profilen (z.B. 8) zu verwenden, die von Sprechern mit möglichst unterschiedlichen Stimmen und unterschiedlicher Aussprache trainiert wurden. Eine große Anzahl unterschiedlicher Profile erhöht die Wahrscheinlichkeit einer guten Erkennungsleistung, erhöht aber auch deutlich den Rechenaufwand für die Profilauswahl.</p>
+<p>Sind die Sprecher der Videos bekannt, erzielt man die besten Ergebnisse, wenn Profile verwendet werden, die durch diese Sprecher trainiert wurden.</p>
+<p>Wenn im Dateipaket von MediaCategorizer ein Verzeichnis mit SPF-Dateien enthalten ist, können diese Profile für einen ersten Einsatz importiert werden (siehe Abschnitt <a href="#import">Sprecherprofil importieren</a>).</p>
 <div class="references">
 
 </div>

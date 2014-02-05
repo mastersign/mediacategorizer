@@ -7,8 +7,8 @@ creator:
   name: Tobias Kiertscher
   affiliation: Brandenburg University of Applied Sciences
   email: kiertscher@fh-brandenburg.de
-version: 0.3.0
-date: 2014-01-31
+version: 0.4.0
+date: 2014-02-05
 lang: en
 ...
 
@@ -42,7 +42,7 @@ speech recognition results and the creation of the output.
   (`max-appearance / appearance`) for correction candidates
 * **min-match-score**  
   _floating point number_ `[0..1]` the minimal matching score for associating
-  a video with a category
+  a medium with a category
 * **index-filter**  
   _vector_ with a combination of the following keywords:
   `:not-short`, `:noun`, `:min-confidence`, `:good-confidence`, `:no-punctuation`,
@@ -55,17 +55,17 @@ speech recognition results and the creation of the output.
 * **skip-wordclouds**  
   _boolean_ a flag to suppress the time consuming generation of word clouds
 * **skip-word-includes**  
-  _boolean_ a flag to suppress the generation of a web-page for word in a video or
+  _boolean_ a flag to suppress the generation of a web-page for word in a medium or
   a category
 * **skip-match-includes**  
   _boolean_ a flag to suppress the generation of a web-page for every match between
-  a video and a category
+  a medium and a category
 * **main-cloud**  
   _[Cloud Configuration](#CloudConfiguration)_ the configuration map for the global word cloud
 * **category-cloud**  
   _[Cloud Configuration](#CloudConfiguration)_ the configuration map for the category word clouds
-* **video-cloud**  
-  _[Cloud Configuration](#CloudConfiguration)_ the configuration map for the video word clouds
+* **medium-cloud**  
+  _[Cloud Configuration](#CloudConfiguration)_ the configuration map for the medium word clouds
 
 ### Example
 	{ :parallel-proc true
@@ -83,7 +83,7 @@ speech recognition results and the creation of the output.
                       :color [0.0 0.8 0.2]
                       ... } } 
       :category-cloud { ... }
-      :video-cloud { ... } }
+      :medium-cloud { ... } }
 
 ## Cloud Configuration {#CloudConfiguration}
 A cloud configuration controls the creation of a word cloud.
@@ -131,7 +131,7 @@ A cloud configuration controls the creation of a word cloud.
 File in [Clojure EDN syntax](http://edn-format.org/) with file extension `.saj`.
 It is the input for the speech recognition result analysis and contains
 a _[Job Description](#JobDescription)_ structure. Part of a job is a name, 
-a number of categories, a number of videos, and additional parameters
+a number of categories, a number of medium, and additional parameters
 like the output directory.
 
 ## Job Description {#JobDescription}
@@ -141,7 +141,7 @@ and create the analysis result representation.
 ### Slots
 
 * **media-categorizer-version**  
-  _string_ the version number of the Media Categorizer tool
+  _string_ the version number of the MediaCategorizer tool
 * **job-name**  
   _string_ short name for the job
 * **job-description**  
@@ -152,22 +152,22 @@ and create the analysis result representation.
 * **result-file**  
   _string_ the name of the XML file for the process result
 * **configuration**  
-  _[Configuration](#Caonfiguration)_ a configuration map which overwrites the default configuration
+  _[Configuration](#Configuration)_ a configuration map which overwrites the default configuration
   individually for each existing slot, can be nil or empty
 * **categories**  
   _vector_ of _[Category Descriptions](#CategoryDescription)_
-* **videos**  
-  _vector_ of _[Video Descriptions](#VideoDescription)_
+* **media**  
+  _vector_ of _[Medium Descriptions](#MediumDescription)_
 
 ### Example
 	{ :media-categorizer-version "1.0.0"
       :job-name "Archive 001"
-	  :job-description "The first part of the video archive."
-	  :output-dir "C:\\Videos\\Result"
+	  :job-description "The first part of the media archive."
+	  :output-dir "C:\\Media\\Result"
       :result-file "result.xml"
 	  :configuration { ... } 
 	  :categories [ ... ] 
-      :videos [ ... ] }
+      :media [ ... ] }
 
 ## Category Description {#CategoryDescription}
 Defines a category and all associated resources.
@@ -184,9 +184,9 @@ Defines a category and all associated resources.
 ### Example
 	{ :id "comb"
       :name "Combination"
-      :resources [ {:type :html, :url "http://en.wikipedia.org/wiki/Combination"}
-                   {:type :html, :url "http://mathworld.wolfram.com/Combination.html"}
-                   {:type :plain, :url "file://D:\\text\\combination.txt"} ] }
+      :resources [ {:type :wikipedia, :url "http://en.wikipedia.org/wiki/Combination"}
+                   {:type :html, :url "http://mathworld.wolfram.com/Combination.html" :file "D:\\cache\\combination.html" }
+                   {:type :plain, :file "D:\\text\\combination.txt"} ] }
 
 ## Category Resource Description {#CategoryResourceDescription}
 The reference to a category resource.
@@ -194,20 +194,22 @@ The reference to a category resource.
 ### Slots
 
 * **type**  
-  `:plain` | `:html` the text type of the resource
+  `:plain` | `:html` | `:wikipedia` the text type of the resource
 * **url**  
   _string_ the URL to the resource
+* **file**  
+  _string_ the absolute path to a local file
 
-## Video Description {#VideoDescription}
-Defines a video and all associated resources.
+## Medium Description {#MediumDescription}
+Defines a medium and all associated resources.
 
 ### Slots
 * **id**  
   _string_ a short identifier without white spaces and special chars
 * **name**  
-  _string_ the full name of the video
-* **video-file**  
-  _string_ the absolute path to the original video file
+  _string_ the full name of the medium
+* **medium-file**  
+  _string_ the absolute path to the original medium file
 * **recognition-profile**  
   _string_ the identifier for the selected speech recognition profile
   (for the Microsoft SAPI the identifier is a GUID)
@@ -226,7 +228,7 @@ Defines a video and all associated resources.
 ### Example
 	{ :id "C1-P3-Intro"
       :name "Introduction"
-      :video-file "D:\\media\\c1\\p3_introduction.mp4"
+      :medium-file "D:\\media\\c1\\p3_introduction.mp4"
       :recognition-profile ""
       :recognition-profile-name "en-US_female_03"
       :audio-file "D:\\media\\proc\\audio\\p3_introduction.wav"
@@ -279,7 +281,7 @@ A speech recognition result is a _[Phrase](#Phrase)_ as well.
 ### Slots
 
 * **no**  
-  _integer number_ `[0..n]` identifying the result in the context of a video
+  _integer number_ `[0..n]` identifying the result in the context of a medium
 * **start**  
   _floating point number_ with the begin of the audio section in seconds
 * **duration**  
@@ -393,7 +395,7 @@ analysis result is written out as the XML result file.
 During analysis the _[Job Description](#JobDescription)_ is extended 
 with a the slot `:words`, holding an index of words.
 A word index points from words to a number of occurrences 
-in video phrases. It is encoded as a map with the lexical form of a word
+in media phrases. It is encoded as a map with the lexical form of a word
 as the key and a structure with properties of the word as value.
 
 ### Value Slots
@@ -407,7 +409,7 @@ The following properties of a word are possible.
   _string_ the [IPA](http://en.wikipedia.org/wiki/International_Phonetic_Alphabet)
   pronunciation of the word
 * **occurrences**  
-  _vector_ a vector of _[Video Word Occurrences](#VideoWordOccurrence)_
+  _vector_ a vector of _[Medium Word Occurrences](#MediumWordOccurrence)_
 * **occurrence-count**  
   _integer number_ `[1..n]` the number of occurrences (cached for easy accessibility)
 * **mean-confidence**  
@@ -417,7 +419,7 @@ The following properties of a word are possible.
     { "Grammar" { :id "grammar"
                   :lexical-form "Grammar"
                   :pronunciation "..."
-                  :occurrences [ { :video-id "video1" :result-no 20 :word-no 3 :confidence 0.679 } ... ]
+                  :occurrences [ { :medium-id "video1" :result-no 20 :word-no 3 :confidence 0.679 } ... ]
                   :occurrence-count 3
                   :mean-confidence 0.7533 }
       "Method"  { :id "method"
@@ -441,13 +443,13 @@ For computational reasons, an index map can be supported by some statistical val
 	{ :count 233
       :max-occurrence-count: 35 } 
 
-## Video Word Occurrence {#VideoWordOccurrence}
-A video word occurrence is the address to a recognized word in a video.
+## Medium Word Occurrence {#MediumWordOccurrence}
+A medium word occurrence is the address to a recognized word in a medium.
 
 ### Slots
 
-* **video-id** _(optional)_  
-  _string_ video id
+* **medium-id** _(optional)_  
+  _string_ medium id
 * **result-no**  
   _int_ result number
 * **word-no**  
@@ -456,16 +458,16 @@ A video word occurrence is the address to a recognized word in a video.
   _floating point number_ `[0..1]` recognition confidence
 
 ### Example
-    { :video-id "video1" 
+    { :medium-id "video1" 
       :result-no 20 
       :word-no 3 
       :confidence 0.679 }
 
-## Video Result {#VideoResult}
-The analysis result for the recognized phrases of a video extends
-the _[Video Description](#VideoDescription)_ structure. 
-The original _[Video Description](#VideoDescription)_ from
-the vector in the `:videos` slot of a _[Job Description](#JobDescription)_ structure 
+## Medium Result {#MediumResult}
+The analysis result for the recognized phrases of a medium extends
+the _[Medium Description](#MediumDescription)_ structure. 
+The original _[Medium Description](#MediumDescription)_ from
+the vector in the `:media` slot of a _[Job Description](#JobDescription)_ structure 
 is extended by the following slots:
 
 ### Slots
@@ -480,17 +482,17 @@ is extended by the following slots:
 * **word-count**  
   _integer number_ `[1..n]` the number of recognized words
 * **index**  
-  _map_ the video word index, which maps from word IDs to _[Video Word](#VideoWord)_ structures
+  _map_ the media word index, which maps from word IDs to _[Medium Word](#MediumWord)_ structures
 * **index-stats**  
-  _[Index Statistics](#IndexStatistics)_ for the video word index 
+  _[Index Statistics](#IndexStatistics)_ for the media word index 
 * **matches**  
   _map_ a look-up table, which maps from category IDs to _[Category Matches](#CategoryMatch)_
 * **max-score**  
-  _floating point value_ `[0..1]` the maximal score between the video and a category
+  _floating point value_ `[0..1]` the maximal score between the medium and a category
 
 ### Example
 	{ :id "video01"
-      :name "The first video"
+      :name "The first medium"
       ...
       :results [ ... ]
       :phrase-count 311
@@ -510,10 +512,10 @@ is extended by the following slots:
                  ... }
       :max-score 0.9323 }
 
-## Video Word {#VideoWord}
-A video word is a word which occurs at least one time in the recognized phrases of a video.
-Every video word is represented by some statistical values and
-a list of _[Video Word Occurrences](#VideoWordOccurrence)_.
+## Medium Word {#MediumWord}
+A medium word is a word which occurs at least one time in the recognized phrases of a medium.
+Every medium word is represented by some statistical values and
+a list of _[Medium Word Occurrences](#MediumWordOccurrence)_.
 
 ### Slots
 
@@ -525,19 +527,19 @@ a list of _[Video Word Occurrences](#VideoWordOccurrence)_.
   _string_ the [IPA](http://en.wikipedia.org/wiki/International_Phonetic_Alphabet)
   pronunciation of the word
 * **occurrences**  
-  _vector_ a vector of _[Video Word Occurrences](#VideoWordOccurrence)_
+  _vector_ a vector of _[Medium Word Occurrences](#MediumWordOccurrence)_
 * **occurrence-count**  
   _integer number_ `[1..n]` the number of occurrences (cached for easy accessibility)
 * **mean-confidence**  
   _floating point number_ `[0..1]` mean recognition confidence
 * **match-value**  
-  _floating point number_ `[0..1]` the weight of this word in the context of the video
+  _floating point number_ `[0..1]` the weight of this word in the context of the medium
 
 ### Example
 	{ :id "bioinformatik"
       :lexical-form "Bioinformatik"
       :pronunciation "biːoːiːnfɔ͡ɐmaːˈtʰɪk"
-      :occurrences [ {:video-id "ABC"
+      :occurrences [ {:medium-id "ABC"
                       :result-no 3
                       :word-no 10
                       :confidence 0.689}
@@ -547,7 +549,7 @@ a list of _[Video Word Occurrences](#VideoWordOccurrence)_.
       :match-value 0.01522 }
 
 ## Category Match {#CategoryMatch}
-The category match describes the matching result between a video and a category.
+The category match describes the matching result between a medium and a category.
 
 ### Slots
 
@@ -556,7 +558,7 @@ The category match describes the matching result between a video and a category.
 * **word-scores**  
   _map_ a look-up table, which maps from word IDs to word matching scores
 * **score**  
-  _floating point number_ `[0..1]` the matching score between the video and the category
+  _floating point number_ `[0..1]` the matching score between the medium and the category
 
 ### Example
 	{ :category-id "math"
@@ -583,9 +585,9 @@ is extended by the following slots:
 * **index-stats**  
   _[Index Statistics](#IndexStatistics)_ for the category word index 
 * **matches**  
-  _map_ a look-up table, which maps from video IDs to _[Video Matches](#VideoMatch)_
+  _map_ a look-up table, which maps from media IDs to _[Medium Matches](#MediumMatch)_
 * **max-score**  
-  _floating point value_ `[0..1]` the maximal score between the category and a video
+  _floating point value_ `[0..1]` the maximal score between the category and a medium
 
 ### Example
 	{ :id "math"
@@ -600,7 +602,7 @@ is extended by the following slots:
                ... }
       :index-stats { :count 1022
                      :max-occurrence-count 56 } 
-      :matches { "video01" { :video-id "video01"
+      :matches { "video01" { :medium-id "video01"
                              :word-scores { ... }
                              :score 0.3991 }
                  "video02" { ... }
@@ -665,20 +667,20 @@ a list of _[Category Word Occurrences](#CategoryWordOccurrence)_.
       :mean-confidence 0.8234
       :match-value 0.01522 }
 
-## Video Match {#VideoMatch}
-The video match describes the matching result between a category and a video.
+## Medium Match {#MediumMatch}
+The medium match describes the matching result between a category and a medium.
 
 ### Slots
 
-* **video-id**  
-  _string_ the id of the matched video
+* **medium-id**  
+  _string_ the id of the matched medium
 * **word-scores**  
   _map_ a look-up table, which maps from word IDs to word matching scores
 * **score**  
-  _floating point number_ `[0..1]` the matching score between the category and the video
+  _floating point number_ `[0..1]` the matching score between the category and the medium
 
 ### Example
-	{ :video-id "video08"
+	{ :medium-id "video08"
       :word-scores { "hair" 0.00023
                      "tube" 1.6882E-4
                      ... } }

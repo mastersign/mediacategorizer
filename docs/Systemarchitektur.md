@@ -7,8 +7,8 @@ creator:
   name: Tobias Kiertscher
   affiliation: Fachhochschule Brandenburg
   email: kiertscher@fh-brandenburg.de
-version: 0.3.0
-date: 31.01.2014
+version: 0.4.0
+date: 05.02.2014
 lang: de
 ...
 
@@ -36,15 +36,15 @@ Das Hauptprojekt dient als Startpunkt. Es enthält die Dokumentation und eine An
 * Kompilieren der Komponenten
 * Zusammenstellen eines lauffähigen Programmpakets
 
-Die Benutzeroberfläche ermöglicht das benutzerfreundliche Verwalten von Projekten (Videos, Kategorien, Parameter). Sie ist für die Koordination der Prozessausführung verantwortlich und nutzt die übrigen Komponenten über deren Befehlszeilenschnittstelle.
+Die Benutzeroberfläche ermöglicht das benutzerfreundliche Verwalten von Projekten (Medien, Kategorien, Parameter). Sie ist für die Koordination der Prozessausführung verantwortlich und nutzt die übrigen Komponenten über deren Befehlszeilenschnittstelle.
 
-Die Tonspurextraktion löst aus den Videos die Tonspur heraus und konvertiert sie in ein Format, das von der Komponente zur Wellenformvisualisierung und der Komponente zur Spracherkennung unterstützt wird.
+Die Tonspurextraktion löst aus den Medien die Tonspur heraus und konvertiert sie in ein Format, das von der Komponente zur Wellenformvisualisierung und der Komponente zur Spracherkennung unterstützt wird.
 
 Die Wellenformvisualisierung erzeugt aus der extrahierten Tonspur eine bildliche Darstellung des Tonsignals. Dieses wird in der HTML5-Ausgabe eingebunden und dient der Veranschaulichung der Dynamik des Tonsignals.
 
 Die Spracherkennung steuert die Microsoft Speech API an und speichert die Spracherkennungsergebnisse als Zwischenergebnis in einer EDN-Datei, welche von der Komponente für Analyse und Visualisierung gelesen werden kann.
 
-Die Komponente für Analyse und Visualisierung filtert zunächst die erkannten Worte und bildet anschließend für Videos und Kategorien Worthäufigkeitslisten. Diese werden in Form von Wortwolken visualisiert. Aus den Worthäufigkeitslisten von Videos und Kategorien werden die Übereinstimmungen zwischen Videos und Kategorien berechnet. Aus den Übereinstimmungen werden dann Zuordnungen zwischen Videos und Kategorien abgeleitet. Die Ergebnisse (einschließlich der erkannten Worte mit ihren Erkennungssicherheiten) werden in Form einer XML-Datei gespeichert.  Zusätzlich werden die Volltexte der einzelnen Videos als Reintext gespeichert. Abschließend wird eine statische HTML5-Webseite generiert welche alle Ergebnisse visuell aufbereitet darstellt, die Original-Videodateien einbindet und eine interaktive Navigation zwischen den Analyseergebnissen erlaubt. Diese Webseite kann sowohl lokal gespeichert und direkt mit einem Browser betrachtet werden, sie kann aber auch mit Hilfe eines Webservers gehostet und so über das Internet verfügbar gemacht werden. 
+Die Komponente für Analyse und Visualisierung filtert zunächst die erkannten Worte und bildet anschließend für Medien und Kategorien Worthäufigkeitslisten. Diese werden in Form von Wortwolken visualisiert. Aus den Worthäufigkeitslisten von Medien und Kategorien werden die Übereinstimmungen zwischen Medien und Kategorien berechnet. Aus den Übereinstimmungen werden dann Zuordnungen zwischen Medien und Kategorien abgeleitet. Die Ergebnisse (einschließlich der erkannten Worte mit ihren Erkennungssicherheiten) werden in Form einer XML-Datei gespeichert.  Zusätzlich werden die Volltexte der einzelnen Medien als Reintext gespeichert. Abschließend wird eine statische HTML5-Webseite generiert welche alle Ergebnisse visuell aufbereitet darstellt, die Original-Mediendateien einbindet und eine interaktive Navigation zwischen den Analyseergebnissen erlaubt. Diese Webseite kann sowohl lokal gespeichert und direkt mit einem Browser betrachtet werden, sie kann aber auch mit Hilfe eines Webservers gehostet und so über das Internet verfügbar gemacht werden. 
 
 # Entwicklungsumgebung
 MediaCategorizer wurde mit C# in Visual Studio 2013 und Clojure in LightTable 0.5 implementiert. Deshalb benötigt das Projekt sowohl die Microsoft .NET Laufzeitumgebung als auch die Java Laufzeitumgebung. C# wurden gewählt, weil es mit der WPF-Bibliothek eine schnelle Entwicklung der Benutzeroberfläche und durch die .NET-Schnittstelle eine einfache Anbindung an die Microsoft Speech API ermöglicht. Clojure wurde gewählt, weil das funktionale Programmierparadigma, die komfortablen Bibliotheken für Webseitenerzeugung und die interaktive Entwicklungsumgebung (REPL) eine schnelle Umsetzung der Analyse und Visualisierung ermöglichen. Für die Projektautomatisierung wird die Microsoft PowerShell eingesetzt.
@@ -115,7 +115,7 @@ In den folgenden Abschnitten werden die einzelnen Komponenten detailliert beschr
 ### Merkmale
 
 * Einfache Bedienung
-* Verwaltung eines Projektes (Videos, Kategorien, Parameter)
+* Verwaltung eines Projektes (Medien, Kategorien, Parameter)
 * Ansteuerung von FFmpeg, WaveViz, Transcripter und Distillery über die Befehlszeile
 * Überwachung der Prozessausführung
 
@@ -232,7 +232,7 @@ Die Ausgabe könnte dann z.B. wie folgt aussehen.
 	      creation_time   : 2012-05-15 16:52:11
 	      handler_name    : IsoMedia File Produced by Google, 5-11-2011
 
-MediaCategorizer nutzt `ffprobe` um die Länge der Videos zu ermitteln, um daraus einen Fortschritt bei Transformation und Spracherkennung zu berechnen. Die Länge des Videos wird dabei mit dem folgenden regulären Ausdruck ermittelt: `Duration: (\d+):(\d\d):(\d\d)\.(\d+)`. Die vier Gruppen entsprechen dabei Stunden, Minuten, Sekunden, Millisekunden.
+MediaCategorizer nutzt `ffprobe` um die Länge der Mediums zu ermitteln, um daraus einen Fortschritt bei Transformation und Spracherkennung zu berechnen. Die Länge des Mediums wird dabei mit dem folgenden regulären Ausdruck ermittelt: `Duration: (\d+):(\d\d):(\d\d)\.(\d+)`. Die vier Gruppen entsprechen dabei Stunden, Minuten, Sekunden, Millisekunden.
 
 #### Transformation {#ffmpeg}
 **Beispiel:** `> ffmpeg.exe -i "D:\media\video.mp4" -n -vn -ac 1 -ar 16000 -acodec pcm_s16le "D:\media\sound.wav"`
@@ -339,7 +339,7 @@ Im Testmodus für Erkennungssicherheit werden die folgenden Werte ausgegeben.
 
 * Befehlszeilenschnittstelle
 * Analyse der Spracherkennungsergebnisse
-* Erzeugung der Worthäufigkeitslisten für Videos und Kategorien
+* Erzeugung der Worthäufigkeitslisten für Medien und Kategorien
 * Berechnung der Übereinstimmungskennzahlen
 * Erzeugung der XML-Ausgabe
 * Erzeugung der Reintext-Ausgabe

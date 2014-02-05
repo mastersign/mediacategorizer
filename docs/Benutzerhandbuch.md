@@ -44,7 +44,7 @@ Die Benutzeroberfläche von MediaCategorizer gliedert sich die die folgenden dre
 
 ![#ui-parts Die allgemeine Aufteilung der Benutzeroberfläche][ui-parts]
 
-Am oberen Fensterrand befindet sich das Projektmenü, mit dessen Hilfe Projekte angelegt, gespeichert und wieder geöffnet werden können. Am rechten Ende des Projektmenüs befindet sich ein Eintrag für die [Programmeinstellungen](#programmeinstellungen) und ein Eintrag für die [Infoseite](#infoseite).
+Am oberen Fensterrand befindet sich das Projektmenü, mit dessen Hilfe Projekte angelegt, gespeichert und wieder geöffnet werden können. Am rechten Ende des Projektmenüs befindet sich ein Eintrag für die [Programmeinstellungen](#PageSetup) und ein Eintrag für die [Infoseite](#PageAbout).
 
 Am rechten Fensterrand befindet sich das Prozessmenü. Mit dem Prozessmenü wird zwischen den verschiedenen Seiten eines Projektes umgeschaltet. 
 
@@ -306,7 +306,7 @@ Die Ergebnisse werden in der folgenden Verzeichnisstruktur gespeichert:
 
 Welche Teile der Ausgabe erzeugt werden hängt von den Projektparametern in der Parametergruppe *Ausgabe* ab: *Ergebnis visualisieren*, *Keine Übereinstimmungsdetails*, *Keine Wortseiten*, *Keine Wortwolken* und *Mediendateien nicht kopieren*.
 
-Weitere Details zum Aufbau der Ergebnis-Website sind im Dokument [Site Structure][site-structure] (englisch) zu finden.
+Weitere Details zum Aufbau der Ergebnis-Website sind im Dokument [Struktur der Ergebniswebseite][site-structure] zu finden.
 
 ## Website
 Die Website mit den Prozessergebnissen kann mit der Datei `index.html` in einem Browser aufgerufen werden.
@@ -343,4 +343,4 @@ Bei der Veröffentlichung ist zu beachten, dass je nach Größe der Videodateien
 [ui-page-info]: images/ui-page-info.png
 [result-general]: images/result-general.png
 
-[site-structure]: site-structure.html
+[site-structure]: Webseitenstruktur.html

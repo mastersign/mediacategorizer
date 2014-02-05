@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>MediaCategorizer - Benutzerhandbuch</title>
+    <meta name="author" content="Tobias Kiertscher" />
+    <meta name="date" content="31.01.2014" />
+    
+    <style type="text/css">
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    color: inherit;
+    font-family: inherit;
+}
+
+body
+{
+    line-height: 100%;
+    background-color: #fff;
+    color: #000;
+    font-family: sans-serif;
+    text-align: left;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    font-family: serif;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section
+{
+    display: block;
+}
+
+nav ul
+{
+    list-style: none;
+}
+
+blockquote, q
+{
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after
+{
+    content: '';
+    content: none;
+}
+
+code
+{
+    font-family: monospace;
+}
+
+ins
+{
+    text-decoration: underline;
+}
+
+mark
+{
+    font-style: italic;
+    font-weight: bold;
+}
+
+del
+{
+    text-decoration: line-through;
+}
+
+a
+{
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+abbr[title], dfn[title]
+{
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+table
+{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+hr
+{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #888;
+    margin: 1em 0;
+    padding: 0;
+}
+
+input, select
+{
+    vertical-align: middle;
+}
+
+body
+{
+    font-family: Calibri, Tahoma, Helvetica, Arial, sans-serif;
+    line-height: 115%;
+    margin: 1em 1.5em 2em 1.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0.66em;
+    margin-bottom: 0.33em;
+    line-height: 100%;
+}
+h1, h2, h3, h4 {
+    font-family: Cambria, Times, "Times New Roman", serif;
+    font-weight: normal;
+}
+h1 {
+    font-size: 2.3em;
+}
+h2 {
+    font-size: 1.8em;
+}
+h3 {
+    font-size: 1.4em;
+}
+h4 {
+    font-size: 1.1em;
+}
+h5, h6 {
+    font-family: Calibri, Tahoma, Helvetica, Arial, sans-serif;
+}
+h5 {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+h6 {
+    text-decoration: underline;
+    font-weight: normal;
+}
+
+hr {
+    clear: both;
+}
+
+p, ul, ol, pre, figure, table {
+    margin-top: 1.00em;
+}
+
+a {
+    color: #0850ff;
+    text-decoration: none;
+}
+a:visited {
+    color: #4060A0;
+}
+a:hover {
+    color: #0080ff;
+}
+a:active {
+    color: #dc143c;
+}
+
+h1 a, h1 a:visited,
+h2 a, h2 a:visited,
+h3 a, h3 a:visited,
+h4 a, h4 a:visited,
+h5 a, h5 a:visited,
+h6 a, h6 a:visited
+{
+    color: inherit;
+}
+
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
+    color: #0080ff;
+}
+h1 a:active, h2 a:active, h3 a:active, h4 a:active, h5 a:active, h6 a:active {
+    color: #dc143c;
+}
+
+
+img {
+    border: none;
+}
+
+ins, mark, del {
+    border-radius: 0.25em;
+    padding: 0 0.2em;
+}
+
+ins
+{
+    background-color: #9f9;
+    border: 1px solid #6b6;
+    color: #000;
+    text-decoration: none;
+}
+
+mark
+{
+    background-color: #ff9;
+    border: 1px solid #bb6;
+    color: #000;
+    font-style: italic;
+}
+
+del
+{
+    background-color: #f99;
+    border: 1px solid #b66;
+    color: #000;
+    text-decoration: line-through;
+}
+
+li ul, li ol {
+    margin-top: 0.33em;
+    margin-bottom: 0.33em;
+}
+li {
+    margin-left: 2em;
+}
+ul li {
+    list-style: disc outside none;
+}
+ul li li {
+    list-style: circle outside none;
+}
+ul li li li {
+    list-style: square outside none;
+}
+ol li {
+    list-style: decimal outside none;
+}
+ol li li {
+    list-style: lower-latin outside none;
+}
+ol li li li {
+    list-style: lower-roman outside none;
+}
+
+li p  {
+    margin-top: 0;
+}
+
+nav li {
+    list-style: none outside none;
+    margin-left: 0;
+}
+
+q {
+    quotes: "\201E" "\201C";
+    font-style: italic;
+}
+q:before {
+    content: open-quote;
+}
+q:after {
+    content: close-quote;
+}
+
+blockquote {
+    border: 1px #ddd solid;
+    border-radius: 0.5em;
+    margin: 1em 10% 1em 10%;
+    padding: 0.5em;
+    font-style: italic;
+}
+blockquote cite {
+    display: block;
+    text-align: right;
+    margin-top: 0.5em;
+    font-style: normal;
+    font-size: 0.8em;
+}
+blockquote > p:first-child {
+    margin-top: 0;
+}
+
+code {
+    font-family: Consolas, "Lucida Console", Courier, monospace;
+    font-size: 0.8em;
+    color: #024;
+    background-color: #f6f6f6;
+    padding: 0 0.2em;
+    border: 1px solid #e4e4e4;
+    border-radius: 0.2em;
+}
+pre code {
+    background-color: inherit;
+    border: none;
+    border-radius: none;
+}
+pre {
+    border: 1px #ddd solid;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    white-space: pre;
+    overflow: auto;
+}
+
+table {
+    border-collapse: collapse;
+}
+td, th {
+    padding: 0.125em 0.5em 0.125em 0.5em;
+    border: 1px #ddd solid;
+}
+thead td, th, tfoot td {
+    font-weight: bold;
+}
+
+thead, tfoot {
+    background-color: #F0F0F0;
+}
+
+figure {
+    border: 1px #ddd solid;
+    border-radius: 0.5em;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 0.5em;
+    text-align: center;
+    overflow: auto;
+}
+figure figcaption {
+    display: block;
+    text-align: center;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 0.8em;
+    margin-top: 0.5em;
+}
+
+figure table {
+    width: 100%;
+    margin-top: 0;
+}
+
+section {
+    border-top: 1px #aaa solid;
+    margin-top: 2em;
+}
+
+footer {
+    margin-top: 2em;
+    text-align: center;
+    color: #888;
+}
+
+aside {
+    float: right;
+    width: 20%;
+    border: 1px #ddd solid;
+    border-radius: 0.5em;
+    margin-left: 1em;
+    padding: 0 0.5em 1em 0.5em;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F0F0F0;
+}
+
+#frame {
+    text-align: left;
+    padding: 1em;
+    background-color: #FFFFFF;
+    -moz-box-shadow:    0 0 12px #808080;
+    -chrome-box-shadow: 0 0 12px #808080;
+    box-shadow:         0 0 12px #808080;
+}
+
+header {
+    padding-bottom: 1em;
+}
+
+figure {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/*** NAV ***/
+
+nav ul {
+    list-style: none;
+    margin-top: 0px;
+    padding-top: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+nav .menu-title {
+    font-weight: bold;
+}
+
+/*** NAV HORIZONTAL ***/
+
+nav.horizontal {
+    border-bottom: 1px solid #AAA;
+    width: auto;
+    float: none;
+    padding: 0.25em;
+}
+
+nav.horizontal .menu-title, nav.horizontal ul {
+    display: inline-block;
+}
+
+nav.horizontal .menu-title {
+    padding: 0 0.5em 0 0.25em;
+}
+
+nav.horizontal li {
+    display: inline-block;
+    padding: 0 0.5em 0 0.5em;
+}
+
+/*** NAV VERTICAL ***/
+
+nav.vertical {
+    border-bottom: none;
+    width: 10em;
+    float: left;
+    padding: 1em 1em 1em 0.5em;
+}
+
+nav.fixed {
+    position: fixed;
+}
+
+nav.vertical .menu-title, nav.vertical ul {
+    display: block;
+}
+
+nav.vertical .menu-title {
+    padding: 0 0 0.5em 0;
+}
+
+nav.vertical li {
+    display: block;
+    padding: 0 0 0.25em 0;
+}
+
+nav.vertical li li {
+    margin-left: 0.75em;
+    font-size: small;
+    padding: 0;
+}
+
+#page {
+    margin: 1em 0.5em 1em 11em;
+    padding-left: 1em;
+}
+
+footer {
+    border-top: 1px solid #AAA;
+    clear: both;
+}
+
+@media screen and (min-width: 960px) and (min-device-width: 960px) {
+    #frame {
+        width: 920px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (max-width: 720px), screen and (max-device-height: 720px) and (orientation: landscape) {
+    #frame {
+        max-width: 720px;
+    }
+
+    nav.vertical {
+        width: auto;
+        float: none;
+        margin: 0;
+        padding: 0.25em;
+    }
+
+    nav.fixed {
+        position: relative;
+    }
+
+    nav.vertical {
+        border-bottom: 1px solid #AAA;
+        width: auto;
+        float: none;
+        padding: 0.25em;
+    }
+
+    nav.vertical .menu-title, nav.vertical ul {
+        display: inline-block;
+    }
+
+    nav.vertical .menu-title {
+        padding: 0 0.5em 0 0.25em;
+    }
+
+    nav.vertical li {
+        display: inline-block;
+        padding: 0 0.5em 0 0.5em;
+    }
+
+    #page {
+        margin: 1em 0.5em;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 480px) and (orientation: portrait) {
+    #frame {
+    max-width: 480px;
+        padding: 0.25em;
+    }
+  header {
+        padding-bottom: 0;
+    }
+    header h1 {
+        margin: 0;
+        padding-bottom: 0.25em;
+    padding-top: 0.25em;
+        font-size: 1.8em;
+        border-bottom: 1px solid #AAA;
+        text-align: center;
+    }
+
+    nav.vertical, nav.horizontal {
+        border-bottom: 1px solid #AAA;
+        width: auto;
+        float: none;
+        padding: 0.5em 0em;
+        text-align: center;
+    }
+
+    nav.vertical .menu-title, nav.vertical ul, nav.horizontal .menu-title {
+        display: block;
+    }
+
+    nav.vertical .menu-title, nav.horizontal .menu-title {
+        padding: 0 0 0.5em 0;
+    }
+
+    nav.vertical li, nav.horizontal li {
+        display: block;
+        padding: 0 0 0.25em 0;
+    }
+}
+
+header h1#title {
+    margin-top: 0.25em;
+}
+
+header h1#subtitle {
+    margin-top: 0.5em;
+    font-size: 1.6em;
+}
+
+#preface {
+
+}
+#preface .item {
+    margin: 0.5em 0;
+}
+#preface .item .label {
+    font-weight: bold;
+    display: block;
+    float: left;
+    width: 6em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#preface .item .text {
+    display: block;
+    margin-left: 7em;
+}
+#preface .item .affiliation {
+    display: block;
+    margin-left: 7em;
+    clear: both;
+    font-style: italic;
+    color: #888;
+}
+
+    </style>
+    </head>
+<body>
+<div id="frame">
+    <header>
+        
+        <h1 id="title">MediaCategorizer</h1>
+        <h1 id="subtitle">Benutzerhandbuch</h1>
+    </header>
+    <a id="TOC"></a>
+    <nav class="vertical fixed">
+    	<ul>
+<li><a href="#einleitung">Einleitung</a></li>
+<li><a href="#technische-voraussetzungen">Technische Voraussetzungen</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#benutzeroberfläche">Benutzeroberfläche</a><ul>
+<li><a href="#projektseiten">Projektseiten</a></li>
+<li><a href="#PageSetup">Programmeinstellungen</a></li>
+<li><a href="#PageAbout">Infoseite</a></li>
+</ul></li>
+<li><a href="#prozessergebnisse">Prozessergebnisse</a><ul>
+<li><a href="#verzeichnisstruktur">Verzeichnisstruktur</a></li>
+<li><a href="#website">Website</a></li>
+</ul></li>
+</ul>
+    </nav>
+    <div id="page">
+        <div id="preface">
+            
+            <div class="item creator">
+                <span class="label">Autor</span>
+                <span class="text">Tobias Kiertscher                <a href="mailto:kiertscher@fh-brandenburg.de">kiertscher@fh-brandenburg.de</a>                </span>
+                                <span class="affiliation">Fachhochschule Brandenburg</span>
+                            </div>
+            <div class="item date">
+                <span class="label">Datum</span>
+                <span class="text">31.01.2014</span>
+            </div>
+            <div class="item version">
+                <span class="label">Version</span>
+                <span class="text">0.3.0</span>
+            </div>
+        </div>
+    	<figure>
+<img src="images/MediaCategorizer.png" />
+</figure>
+<h1 id="einleitung"><a href="#einleitung">Einleitung</a></h1>
+<p>MediaCategorizer ist eine Windows-Desktop-Anwendung zur Verschriftlichung von Videos und der automatischen Zuordnung von Videos zu Kategorien.</p>
+<h1 id="technische-voraussetzungen"><a href="#technische-voraussetzungen">Technische Voraussetzungen</a></h1>
+<p>Für den Betrieb von MediaCategorizer wird ein PC mit Microsoft Windows 7 Professional oder Enterprise und deutscher Benutzeroberfläche als Betriebssystem benötigt. (Es genügt evtl. nicht, ein Windows mit anderer Sprache durch die Installation eines Sprachpakets auf Deutsch umzustellen, da in einem deutschen Sprachpaket evtl. nicht die Deutschen Wörterbücher für die Spracherkennung enthalten sind.)</p>
+<p>Für die Darstellung der Prozessergebnisse ist ein Browser erforderlich. Die Ergebnisse wurden mit Mozilla Firefox (Version 25) und Microsoft Internet Explorer 10 getestet.</p>
+<p>Der Rechenaufwand und Arbeitsspeicherbedarf ist abhängig von der Anzahl und Länge der verarbeiteten Videos. Es wird empfohlen mindestens 3 GB RAM und eine CPU mit mindestens 2 Kernen zu verwenden. MediaCategorizer ist so implementiert, dass mehrere Prozessorkerne effektiv genutzt werden. Das bedeutet, dass sich die Verarbeitungszeit bei Projekten mit mehreren Videos durch den Einsatz eines Mehrprozessorsystems deutlich reduziert.</p>
+<h1 id="installation"><a href="#installation">Installation</a></h1>
+<p>MediaCategorizer benötigt sowohl das Microsoft .NET-Framework 4.5 als auch eine Java 7 Laufzeitumgebung.</p>
+<ul>
+<li><strong>Microsoft .NET-Framework 4.5</strong><br /> In der Systemsteuerung unter <em>Programme und Funktionen</em> kann überprüft werden, ob das Framework in der erforderlichen Version bereits installiert ist. Falls dies nicht der Fall ist, kann das Framework über das Microsoft Update installiert werden, oder durch ein Setup-Paket, das <a href="http://www.microsoft.com/de-de/download/details.aspx?id=30653">hier</a> heruntergeladen werden kann.</li>
+<li><strong>Java 7 Plattform</strong><br /> In der Systemsteuerung unter <em>Programme und Funktionen</em> kann überprüft werden, ob Java 7 bereits installiert ist. Falls dies nicht der Fall ist, kann es durch das Setup-Paket installiert werden, das <a href="https://www.java.com/de/download/manual.jsp">hier</a> heruntergeladen werden kann. Im Normalfall genügt die 32-Bit-Laufzeitumgebung (auch auf einem 64-Bit Windows). Wenn große Projekte mit vielen Videos verarbeitet werden sollen und ein Microsoft Windows 7 in der 64-Bit-Variante als Betriebssystem verwendet wird, empfiehlt es sich jedoch, die 64-Bit-Laufzeitumgebung von Java 7 zu installieren.</li>
+</ul>
+<p>MediaCategorizer benötigt keine Registrierung im Betriebssystem. Das bedeutet, dass es nicht durch das Ausführen eines Setup-Programms installiert werden muss, sondern einfach durch Kopieren des Anwendungsverzeichnisses installiert wird. MediaCategorizer kann z.B. im Verzeichnis <code>C:\MediaCategorizer</code> installiert werden oder in <code>C:\User\&lt;Benutzer&gt;\Documents\MediaCategorizer</code>.</p>
+<p>Es kann, falls gewünscht, eine Verknüpfung zum Start von MediaCategorizer auf dem Desktop platziert werden. Dafür kann die Datei <code>MediaCategorizer.exe</code> im Installationsverzeichnis aus einem Explorer-Fenster bei gedrückter <code>Alt</code>-Taste auf den Desktop gezogen werden.</p>
+<p>Nach erfolgreicher Installation von MediaCategorizer müssen Sprecherprofile in Windows eingerichtet werden. Dazu dienen die Anweisungen im Dokument <a href="Sprecherprofilverwaltung.html">MediaCategorizer - Sprecherprofilverwaltung</a>.</p>
+<h1 id="benutzeroberfläche"><a href="#benutzeroberfläche">Benutzeroberfläche</a></h1>
+<p>Die Benutzeroberfläche von MediaCategorizer gliedert sich die die folgenden drei Bereiche (siehe <a href="#ui-parts">Abbildung 1</a>).</p>
+<p><a name="ui-parts"></a></p>
+<figure>
+<img src="images/ui-parts-annotated.png" alt="Abbildung 1: Die allgemeine Aufteilung der Benutzeroberfläche" /><figcaption>Abbildung 1: Die allgemeine Aufteilung der Benutzeroberfläche</figcaption>
+</figure>
+<p>Am oberen Fensterrand befindet sich das Projektmenü, mit dessen Hilfe Projekte angelegt, gespeichert und wieder geöffnet werden können. Am rechten Ende des Projektmenüs befindet sich ein Eintrag für die <a href="#PageSetup">Programmeinstellungen</a> und ein Eintrag für die <a href="#PageAbout">Infoseite</a>.</p>
+<p>Am rechten Fensterrand befindet sich das Prozessmenü. Mit dem Prozessmenü wird zwischen den verschiedenen Seiten eines Projektes umgeschaltet.</p>
+<p>Im übrigen Bereich des Fensters wird die jeweils aktive Seite angezeigt.</p>
+<h2 id="projektseiten"><a href="#projektseiten">Projektseiten</a></h2>
+<p>Die verschiedenen Aspekte eines Projektes sind auf die folgenden Seiten verteilt.</p>
+<ul>
+<li><a href="#PageStart">Start</a></li>
+<li><a href="#PageCategories">Kategorien</a></li>
+<li><a href="#PageMedia">Medien</a></li>
+<li><a href="#PageParameters">Parameter</a></li>
+<li><a href="#PageProcessing">Ausführung</a></li>
+</ul>
+<p>Die Seiten können in beliebiger Reihenfolge über das Prozessmenü aufgerufen werden.</p>
+<h3 id="PageStart"><a href="#PageStart">Start</a></h3>
+<p>Auf der <em>Startseite</em> eines Projekt kann für das Projekt ein Name und eine Beschreibung angegeben werden (siehe <a href="#ui-page-start">Abbildung 2</a>). Darüber hinaus wird auf der Startseite ein absoluter oder relativer Pfad für das Ausgabeverzeichnis angegeben. In diesem Verzeichnis werden die Prozessergebnisse gespeichert.</p>
+<p>Wird ein relativer Pfad für das Ausgabeverzeichnis angegeben, bezieht sich dieser auf die Position der Projektdatei im Dateisystem. Deshalb muss das Projekt gespeichert werden, bevor die Ausführung des Prozesses gestartet wird.</p>
+<p><a name="ui-page-start"></a></p>
+<figure>
+<img src="images/ui-page-start.png" alt="Abbildung 2: Die Startseite eines Projektes" /><figcaption>Abbildung 2: Die Startseite eines Projektes</figcaption>
+</figure>
+<h3 id="PageCategories"><a href="#PageCategories">Kategorien</a></h3>
+<p>Auf der Seite <em>Kategorien</em> können die Kategorien für das Projekt definiert werden (siehe <a href="#ui-page-cats">Abbildung 3</a>). Die Schaltflächen <em>Kategorie hinzufügen</em> und <em>Kategorie entfernen</em> können verwendet werden um der Liste neue Einträge hinzuzufügen oder einen markierten Eintrag zu löschen.</p>
+<p><a name="ui-page-cats"></a></p>
+<figure>
+<img src="images/ui-page-categories.png" alt="Abbildung 3: Die Kategorien eines Projektes" /><figcaption>Abbildung 3: Die Kategorien eines Projektes</figcaption>
+</figure>
+<p>Durch das Markieren eines Eintrags werden seine Details unter der Liste angezeigt. Es können die ID, der Name und die Ressourcen einer Kategorie bearbeitet werden.</p>
+<p>Die ID einer Kategorie darf keine Leer- oder Sonderzeichen enthalten und sollte möglichst kurz gewählt werden. Der Name sollte die Kategorie möglichst aussagekräftig beschreiben. Er wird in der Prozessausgabe zur Beschriftung der Kategorie verwendet.</p>
+<p>Die Ressourcen einer Kategorie werden verwendet um die Wortliste der Kategorie zu erzeugen. Um eine neue Ressource hinzuzufügen, muss in den freien Bereich unter dem letzten Eintrag geklickt werden. Um eine Ressource zu löschen muss der Ressourceneintrag markiert und die <code>Entf</code>-Taste gedrückt werden.</p>
+<p>Jede Ressource wird durch einen Typ und eine URL definiert. Es gibt drei Typen von Ressourcen:</p>
+<ul>
+<li><strong>Plain</strong> (Reintext)<br /> Dieser Typ eignet sich, wenn eine Textdatei als Ressource verwendet werden soll, die einfachen Text oder sogar nur beschreibende Wörter enthält.</li>
+<li><strong>HTML</strong> (Webseite)<br /> Dieser Typ eignet sich für HTML-Seiten die hauptsächlich Text enthalten. Es muss jedoch beachtet werden, dass MediaCategorizer nicht zwischen inhaltlichem Text und z.B. Menüeinträgen oder Fußzeilen unterscheiden kann. Deshalb sollte die Webseite nach Möglichkeit nur den Text enthalten, der zur Beschreibung der Kategorie herangezogen werden soll.</li>
+<li><strong>Wikipedia</strong> (MediaWiki-Seite)<br /> Dieser Typ eignet sich für Wikipedia-Seiten. Da die deutsche Wikipedia zu nahezu jedem Thema Seiten enthält, ist es in vielen Fällen Hilfreich eine Kategorie durch Wikipedia-Seiten beschreiben zu können. Da MediaCategorizer den Aufbau einer Wikipedia-Seite kennt, können viele Struktur- und Navigationselemente, die keine inhaltlichen Worte enthalten, vor der weiteren Verarbeitung heraus gefiltert werden.</li>
+</ul>
+<p>Die URL gibt den Pfad zu der Ressource an. Für eine Wikipedia-Seite zum Begriff <em>Betriebssystem</em> kann z.B. die URL <code>http://de.wikipedia.org/wiki/Betriebssystem</code> verwendet werden. Wenn eine Datei aus dem lokalen Dateisystem angegeben werden soll, muss dem Pfad <code>file:///</code> vorangestellt werden. So kann die Datei <code>C:\Users\Nutzer1\Documents\Stichworte.txt</code> z.B. mit der URL <code>file:///C:\Users\Nutzer1\Documents\Stichworte.txt</code> angegeben werden.</p>
+<p>Werden in einem Projekt keine Kategorien angegeben, wird für die Prozessausgabe keine Zuordnung zwischen Kategorien und Videos berechnet.</p>
+<h3 id="PageMedia"><a href="#PageMedia">Medien</a></h3>
+<p>Auf der Seite <em>Medien</em> werden die Videos angegeben, die in dem Prozess verarbeitet werden sollen (siehe <a href="#ui-page-media">Abbildung 4</a>).</p>
+<p><a name="ui-page-media"></a></p>
+<figure>
+<img src="images/ui-page-media.png" alt="Abbildung 4: Die Medienliste eines Projektes" /><figcaption>Abbildung 4: Die Medienliste eines Projektes</figcaption>
+</figure>
+<p>Videos werden mit einer ID einem Namen und dem lokalen Pfad zu einer Mediendatei beschrieben. Die ID darf keine Leer- oder Sonderzeichen enthalten und sie sollte möglichst kurz gewählt werden. Der Name sollte das Video aussagekräftig beschreiben, er wird in der Prozessausgabe zur Beschriftung des Videos verwendet.</p>
+<p>Einträge werden in der Medienliste durch das Klicken auf den freien Bereich unter dem letzten Eintrag erzeugt. Es können ein oder mehrere Einträge markiert und mit der <code>Entf</code>-Taste gelöscht werden.</p>
+<p>Einfacher als das manuelle Hinzufügen von Einträgen zu Liste ist jedoch die Nutzung der Drag&amp;Drop-Unterstützung. Dazu können ein oder mehrere Dateien oder Ordner aus einem Explorer-Fenster auf die umrandete Fläche unter der Liste gezogen werden. Dabei werden alle Ordner nach kompatiblen Mediendateien durchsucht und passende Einträge in der List erzeugt. Der Name wird aus dem Dateinamen gewonnen und die ID wird als fortlaufende Nummer generiert.</p>
+<p>Zurzeit werden in der Benutzeroberfläche von MediaCategorizer nur mp4-Video-Dateien als Medien unterstützt.</p>
+<h3 id="PageParameters"><a href="#PageParameters">Parameter</a></h3>
+<p>Die Seite <em>Parameter</em> führt eine Reihe von Einstellungen auf, die den Prozess steuern (siehe <a href="#ui-page-params">Abbildung 5</a>).</p>
+<p><a name="ui-page-params"></a></p>
+<figure>
+<img src="images/ui-page-parameter.png" alt="Abbildung 5: Die Parametereinstellung eines Projektes" /><figcaption>Abbildung 5: Die Parametereinstellung eines Projektes</figcaption>
+</figure>
+<ul>
+<li><p><em>Analyse</em></p>
+<ul>
+<li><strong>Gute Erkennungssicherheit</strong><br /> Die minimale Erkennungssicherheit für Worte die in der Ausgabe verwendet werden dürfen.</li>
+<li><strong>Minimale Erkennungssicherheit</strong><br /> Die minimale Erkennungssicherheit für Worte die in der Analyse berücksichtigt werden sollen.</li>
+<li><strong>Minimale Übereinstimmung</strong><br /> Die minimale Übereinstimmung für eine Zuordnung zwischen einem Video und einer Kategorie.</li>
+<li><p><strong>Wortfilter</strong><br /> Der Wortfilter steuert, welche Worte aus der Verschriftlichung und aus den Kategorie-Ressourcen in die Wortlisten aufgenommen werden dürfen.</p>
+<ul>
+<li><strong>Blacklist</strong><br /> Aktiviert die Verwendung der Blacklist.</li>
+<li><strong>Blacklist-Worte</strong><br /> Die obere Grenze für die Anzahl der Worte, die vom Anfang der Blacklist für das Filtern verwendet werden. Es wird eine nach Relevanz sortierte Blacklist vorausgesetzt.</li>
+<li><strong>Erkennungssicherheit gut</strong><br /> Akzeptiert nur Worte, die mindestens eine gute Erkennungssicherheit besitzen. Der Schwellwert wird durch den Parameter <em>Gute Erkennungssicherheit</em> definiert.</li>
+<li><strong>Erkennungssicherheit minimal</strong><br /> Akzeptiert nur Worte, die mindestens eine minimale Erkennungssicherheit besitzen. Der Schwellwert wird durch den Parameter <em>Minimale Erkennungssicherheit</em> definiert.</li>
+<li><strong>Keine kurzen Worte</strong><br /> Akzeptiert nur Worte mit einer Mindestlänge von drei Zeichen.</li>
+<li><strong>Keine Sonderzeichen</strong><br /> Akzeptiert keine Worte, die Sonderzeichen enthalten.</li>
+<li><strong>Nur Substantive</strong><br /> Akzeptiert nur Worte die in ihrer Normalform großgeschrieben werden.</li>
+</ul></li>
+</ul></li>
+<li><p><em>Ausgabe</em></p>
+<ul>
+<li><strong>Ergebnis anzeigen</strong><br /> Gibt an, ob die Ergebnisse des Prozesses nach Abschluss der Ausführung angezeigt werden sollen.</li>
+<li><strong>Ergebnis visualisieren</strong><br /> Gibt an, ob die Prozessergebnisse in Form einer Website mit Wortwolken und Worthäufigkeitsdiagrammen visualisiert werden soll.</li>
+<li><strong>Keine Übereinstimmungsdetails</strong><br /> Verhindert dass Detailseiten für jede Übereinstimmung zwischen einem Video und einer Kategorie generiert wird.</li>
+<li><strong>Keine Wortseiten</strong><br /> Verhindert dass Detailseiten für jedes Wort im Kontext eines Videos, einer Kategorie oder des Projektes generiert wird.</li>
+<li><strong>Keine Wortwolken</strong><br /> Verhindert die Visualisierung der häufigsten Worte in Wortwolken. (Beschleunigt die Erzeugung der Ausgabe wesentlich.)</li>
+<li><strong>Mediendateien nicht kopieren</strong><br /> Verhindert dass die Videodateien in die Website kopiert werden.</li>
+</ul></li>
+<li><p><em>Spracherkennung</em></p>
+<ul>
+<li><strong>Dauer des Profiltests (sec)</strong><br /> Gibt an, wie viel vom Anfang der Tonspuren mit allen installierten Sprecherprofilen verarbeitet werden soll, um für jedes Video das beste Sprecherprofil auszuwählen.</li>
+<li><strong>Profilauswahlkriterium</strong><br /> Gibt die statistische Größe an, anhand derer das beste Sprecherprofil für ein Video ausgewählt wird.</li>
+</ul></li>
+<li><p><em>Verarbeitung</em></p>
+<ul>
+<li><strong>Arbeitsverzeichnis aufräumen</strong><br /> Gibt an, dass nach erfolgreicher Ausführung des Prozesses alle temporären Zwischenergebnisse gelöscht werden sollen. Diese stehen dann für eine wiederholte Ausführung nicht mehr zur Verfügung.</li>
+<li><strong>Zwischenergebnisse verwerfen</strong><br /> Gibt an, dass alle noch existierenden Zwischenergebnisse aus einer früheren Prozessausführung verworfen werden sollen. Andernfalls werden die Zwischenergebnisse wiederverwendet und verkürzen entsprechend die Ausführungszeit.</li>
+</ul></li>
+<li><p><em>Visualisierung</em></p>
+<ul>
+<li><p><strong>Globale Wolke</strong><br /> Steuert die Erzeugung der Wortwolke für die Worte aus allen Videos.</p>
+<ul>
+<li><strong>Breite (px)</strong><br /> Gibt die Breite der Bildfläche in Pixeln an.</li>
+<li><strong>Höhe (px)</strong><br /> Gibt die Höhe der Bildfläche in Pixeln an.</li>
+<li><strong>Genauigkeit</strong><br /> Gibt die Genauigkeit der Berechnung für die Position der Worte in der Wortwolke an (<code>High</code>, <code>Medium</code>, <code>Low</code>). Eine hohe Genauigkeit (<code>High</code>) sorgt dafür, dass nach Möglichkeit auch kleine Lücken in der Darstellung für die Platzierung von Worten genutzt werden, erzeugt aber einen höheren Rechenaufwand. Eine niedrige Genauigkeit (<code>Low</code>) bedeutet, dass evtl. Lücken in der Darstellung frei bleiben, erzeugt aber weniger Rechenaufwand. Eine mittlere Genauigkeit (<code>Medium</code>) ist ein Kompromiss zwischen Visueller Qualität und Rechenaufwand.</li>
+<li><strong>Minimales Vorkommen</strong><br /> Gibt die Anzahl an, die ein Wort mindestens erkannt werden muss, damit es in einer Wortwolke berücksichtigt wird. Es gibt jedoch keine Garantie dafür, dass ein Wort mit einer entsprechenden Häufigkeit in der Wortwolke erscheint, da in vielen Fällen nicht alle Worte auf der Bildfläche Platz finden.</li>
+<li><strong>Priorität der Sortierung</strong><br /> Gibt die Priorität der Sortierung gegenüber der Worthäufigkeit bei der Platzierung der Worte an. Bei einer niedrigen Priorität (z.B. <code>0,1</code>) werden Worte hauptsächlich nach ihrer Häufigkeit von innen nach außen platziert. Bei einer hohen Priorität (z.B. <code>0,9</code>) werden Worte mehr nach ihrem Anfangsbuchstaben platziert (A-N oben von links nach rechts, O-Z unten von links nach rechts.).</li>
+<li><strong>Hintergrundfarbe</strong><br /> Hintergrundfarbe der Bildfläche auf der die Worte platziert werden.</li>
+<li><strong>Schriftfarbe</strong><br /> Die Farbe in der die Worte dargestellt werden. Haben Worte eine hohe Erkennungssicherheit werden sie einfach mit dieser Farbe dargestellt. Haben die Worte eine niedrige Erkennungssicherheit werden die Worte zunehmend transparent dargestellt.</li>
+<li><strong>Schriftfamilie</strong><br /> Die Schriftfamilie mit der die Worte dargestellt werden.</li>
+<li><strong>Schriftschnitt (kursiv)</strong><br /> Gibt an, ob die Worte in kursiver Schrift dargestellt werden sollen.</li>
+<li><strong>Schriftstärke (fett)</strong><br /> Gibt an, ob die Worte fett dargestellt werden sollen.</li>
+<li><strong>Schriftgröße (minimal)</strong><br /> Gibt die Schriftgröße an, mit der die Worte mit der geringsten Häufigkeit dargestellt werden sollen.</li>
+<li><strong>Schriftgröße (maximal)</strong><br /> Gibt die Schriftgröße an, mit der die Worte mit der größten Häufigkeit dargestellt werden sollen.</li>
+</ul></li>
+<li><p><strong>Kategoriewolke</strong><br /> Steuert die Erzeugung einer Wortwolke für die Worte aus einer Kategorie.</p>
+<ul>
+<li>… (siehe <em>Globale Wortwolke</em>)</li>
+</ul></li>
+<li><p><strong>Medienwolke</strong><br /> Steuert die Erzeugung einer Wortwolke für die Worte aus einem Video.</p>
+<ul>
+<li>… (siehe <em>Globale Wortwolke</em>)</li>
+</ul></li>
+<li><p><strong>Wellenformvisualisierung</strong><br /> Steuert die Erzeugung der Wellenform aus der Tonspur eines Videos.</p>
+<ul>
+<li><strong>Breite (px)</strong><br /> Gibt die Breite der Bildfläche in Pixeln an.</li>
+<li><strong>Höhe (px)</strong><br /> Gibt die Höhe der Bildfläche in Pixeln an.</li>
+<li><strong>Hintergrund</strong><br /> Gibt die Farbe des Hintergrundes an.</li>
+<li><strong>Horizontlinie</strong><br /> Gibt die Farbe der Horizontlinie an.</li>
+<li><strong>Wellenform 1</strong><br /> Gibt die erste Farbe für den Farbverlauf der Wellenform an. Die erste Farbe wird nahe der Horizontlinie verwendet.</li>
+<li><strong>Wellenform 2</strong><br /> Gibt die zweite Farbe für den Farbverlauf der Wellenform an. Die zweite Farbe wird fern der Horizontlinie verwendet.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="PageProcessing"><a href="#PageProcessing">Ausführung</a></h3>
+<p>Auf der Seite <em>Ausführung</em> kann der Prozess gestartet und der Fortschritt der Ausführung beobachtet werden. Sie besteht aus einem Kopfbereich der den globalen Fortschritt der Ausführung anzeigt, eine Liste mit Aufgaben und am Fuß eine Schaltfläche zum Starten des Projektes.</p>
+<p><a name="ui-page-process"></a></p>
+<figure>
+<img src="images/ui-page-process.png" alt="Abbildung 6: Die Fortschrittsanzeige während der Ausführung des Prozesses" /><figcaption>Abbildung 6: Die Fortschrittsanzeige während der Ausführung des Prozesses</figcaption>
+</figure>
+<p>Die Aufgabenliste besteht aus drei Bereichen:</p>
+<ul>
+<li><strong>Wartende Aufgaben</strong><br /> In diesem Teil werden alle Aufgaben angezeigt, die noch nicht ausgeführt wurden.</li>
+<li><strong>Laufende Aufgaben</strong><br /> In diesem Teil werden all Aufgaben angezeigt, die gerade ausgeführt werden. Jede laufende Aufgabe zeigt Statusmeldungen an und besitzt einen eigenen Fortschrittsbalken.</li>
+<li><strong>Abgeschlossene Aufgaben</strong><br /> In diesem Teil werden alle Aufgaben angezeigt, die abgeschlossen oder fehlgeschlagen sind. Abgeschlossene Aufgaben werden grün hinterlegt, fehlgeschlagene Aufgaben werden rot hinterlegt und zeigen eine Fehlermeldung an.</li>
+</ul>
+<h2 id="PageSetup"><a href="#PageSetup">Programmeinstellungen</a></h2>
+<p>Durch den Eintrag <em>Einstellungen</em> im Projektmenü oben rechts, gelangt man auf die Seite <em>Einstellungen</em>. Auf dieser Seite werden Projektübergreifende Programmeinstellungen festgelegt. Diese Einstellungen werden in der Datei <code>MediaCategorizer.setup.xml</code> im Programmverzeichnis von MediaCategorizer gespeichert.</p>
+<p><a name="ui-page-settings"></a></p>
+<figure>
+<img src="images/ui-page-settings.png" alt="Abbildung 7: Die Programmeinstellungen von MediaCategorizer" /><figcaption>Abbildung 7: Die Programmeinstellungen von MediaCategorizer</figcaption>
+</figure>
+<p>Die folgenden Einstellungen stehen zur Verfügung:</p>
+<ul>
+<li><p><em>Hilfsprogramme</em></p>
+<ul>
+<li><strong>distillery</strong><br /> Der relative oder absolute Pfad zur JAR-Datei der distillery-Komponente.</li>
+<li><strong>FFmpeg</strong><br /> Der relative oder absolute Pfad zu <code>ffmpeg.exe</code>. (<code>ffmpeg.exe</code> ist das Befehlszeilenprogramm aus dem FFmpeg-Projekt, welches Umwandlung und Streaming von Audio- und Video-Daten ermöglicht.)</li>
+<li><strong>FFprobe</strong><br /> Der relative oder absolute Pfad zu <code>ffprobe.exe</code>. (<code>ffprobe.exe</code> ist ein Befehlszeilenprogramm aus dem FFmpeg-Projekt, welches Informationen über eine Mediendatei ausgibt.)</li>
+<li><strong>JRE</strong> (optional)<br /> Der relative oder absolute Pfad zu <code>java.exe</code>. (<code>java.exe</code> ist die Programmdatei der Java-Plattform.) Wird kein Pfad angegeben, wird nach einer Java-7-Installation gesucht.</li>
+<li><strong>Transcripter</strong><br /> Der relative oder absolute Pfad zur EXE-Datei der Transcripter-Komponente.</li>
+<li><strong>WaveViz</strong><br /> Der relative oder absolute Pfad zur EXE-Date der WaveViz-Komponente.</li>
+</ul></li>
+<li><p><em>Verarbeitung</em></p>
+<ul>
+<li><strong>Mediendateiendungen</strong><br /> Eine Komma-separierte Aufzählung mit allen Dateiendungen, die als Mediendateien zugelassen werden sollen.</li>
+<li><strong>Parallelisierung</strong><br /> Gibt an, ob unabhängige Aufgaben parallel ausgeführt werden dürfen (<code>None</code>, <code>Manual</code>, <code>Auto</code>). <code>None</code> bedeutet, dass Aufgaben nicht parallel ausgeführt werden dürfen. <code>Manual</code> bedeutet, das nur eine begrenzte Anzahl von Aufgaben parallel ausgeführt werden dürfen. <code>Auto</code> gibt an, das so viele Aufgaben parallel ausgeführt werden dürfen, wie Prozessorkerne im System verfügbar sind.</li>
+<li><strong>Parallele Aufgaben</strong><br /> Wenn <em>Parallelisierung</em> auf <code>Manual</code> steht, gibt dieser Parameter die Anzahl der maximal parallel laufenden Aufgaben an.</li>
+</ul></li>
+</ul>
+<h2 id="PageAbout"><a href="#PageAbout">Infoseite</a></h2>
+<p>Die <em>Infoseite</em> wird über den Eintrag <em>Info</em> im Projektmenü rechts oben aufgerufen. Sie enthält Versions- und Lizenzinformationen zu MediaCategorizer (siehe <a href="#ui-page-info">Abbildung 8</a>).</p>
+<p><a name="ui-page-info"></a></p>
+<figure>
+<img src="images/ui-page-info.png" alt="Abbildung 8: Die Infoseite von MediaCategorizer" /><figcaption>Abbildung 8: Die Infoseite von MediaCategorizer</figcaption>
+</figure>
+<h1 id="prozessergebnisse"><a href="#prozessergebnisse">Prozessergebnisse</a></h1>
+<p>Nach erfolgreicher Prozessausführung wurden die Ergebnisse im Ausgabeverzeichnis des Projektes gespeichert.</p>
+<h2 id="verzeichnisstruktur"><a href="#verzeichnisstruktur">Verzeichnisstruktur</a></h2>
+<p>Die Ergebnisse werden in der folgenden Verzeichnisstruktur gespeichert:</p>
+<ul>
+<li><code>index.html</code><br /> Die HTML-Seite mit der visuell aufbereiteten Darstellung der Ergebnisse. Diese Datei ist die Startseite der Ergebnis-Website.</li>
+<li><code>categories.html</code><br /> Eine HTML-Seite mit einer Liste aller Kategorien.</li>
+<li><code>videos.html</code><br /> Eine HTML-Seite mit einer Liste aller Videos.</li>
+<li><code>cloud.png</code><br /> Eine Bilddatei mit der Wortwolke für alle Videos.</li>
+<li><code>result.xml</code> (<em>wird immer erzeugt</em>)<br /> Eine maschinenlesbare XML-Datei mit allen Ergebnissen (Worthäufigkeiten, Transkript mit Erkennungssicherheiten, Zuordnungen)</li>
+<li><code>*.css</code><br /> Eine Reihe von CSS-Dateien die Style-Informationen für die Website enthalten.</li>
+<li><code>*.js</code><br /> Eine Reihe von JavaScript-Dateien die Programmlogik für die Website enthalten.</li>
+<li><code>&lt;YYYY-MM-DD_hh-mm-ss&gt;.log</code> (<em>wird immer erzeugt</em>)<br /> Bei jeder Prozessausführung wird eine Protokolldatei geschrieben. Der Dateiname wird durch einen Zeitstempel erzeugt.</li>
+<li><code>_tmp_</code><br /> Enthält Zwischenergebnisse und wird automatisch gelöscht, wenn der Projektparameter <em>Arbeitsverzeichnis aufräumen</em> gesetzt ist.</li>
+<li><p><code>videos</code><br /> Ein Verzeichnis das für jedes verarbeitete Video ein Unterverzeichnis enthält. Der Name des Verzeichnisses entspricht der ID des Videos.</p>
+<ul>
+<li><p><code>&lt;Video-ID&gt;</code> (z.B. <code>lecture-1</code>)<br /> Ein Verzeichnis mit Video-spezifischen Ergebnissen.</p>
+<ul>
+<li><code>index.html</code><br /> Die HTML-Seite mit der visuell aufbereiteten Darstellung der Video-spezifischen Ergebnisse.</li>
+<li><code>transcript.txt</code> (<em>wird immer erzeugt</em>)<br /> Eine Textdatei mit dem Transkript des Videos mit jeder erkannten Phrase in einer Zeile.</li>
+<li><code>cloud.png</code><br /> Eine Bilddatei mit der Wortwolke des Videos.</li>
+<li><code>waveform.png</code><br /> Eine Bilddatei mit der Wellenform des Videos.</li>
+<li><code>&lt;Video-ID&gt;.&lt;Dateiendung&gt;</code> (t.B. <code>lecture-1.mp4</code>)<br /> Die Mediendatei des Videos.</li>
+<li><code>words</code><br /> Ein Verzeichnis mit Details zu allen Worten des Videos.</li>
+</ul></li>
+</ul></li>
+<li><p><code>categories</code><br /> Ein Verzeichnis das für jede verarbeitete Kategorie ein Unterverzeichnis enthält. Der Name des Verzeichnisses entspricht der ID der Kategorie.</p>
+<ul>
+<li><p><code>&lt;Kategorie-ID&gt;</code> (z.B. <code>math</code>)<br /> Ein Verzeichnis mit Kategorie-spezifischen Ergebnissen.</p>
+<ul>
+<li><code>index.html</code><br /> Die HTML-Seite mit der visuell aufbereiteten Darstellung der Kategorie-spezifischen Ergebnisse.</li>
+<li><code>cloud.png</code><br /> Eine Bilddatei mit der Wortwolke der Kategorie.</li>
+<li><code>words</code><br /> Ein Verzeichnis mit Details zu allen Worten der Kategorie.</li>
+<li><code>matches</code><br /> Ein Verzeichnis mit Details zu den Übereinstimmungen zwischen der Kategorie und den Videos.</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Welche Teile der Ausgabe erzeugt werden hängt von den Projektparametern in der Parametergruppe <em>Ausgabe</em> ab: <em>Ergebnis visualisieren</em>, <em>Keine Übereinstimmungsdetails</em>, <em>Keine Wortseiten</em>, <em>Keine Wortwolken</em> und <em>Mediendateien nicht kopieren</em>.</p>
+<p>Weitere Details zum Aufbau der Ergebnis-Website sind im Dokument <a href="Webseitenstruktur.html">Struktur der Ergebniswebseite</a> zu finden.</p>
+<h2 id="website"><a href="#website">Website</a></h2>
+<p>Die Website mit den Prozessergebnissen kann mit der Datei <code>index.html</code> in einem Browser aufgerufen werden.</p>
+<p>Die Seite besitzt ein Hauptmenü und ein Ansichtsmenü (siehe <a href="#result-general">Abbildung 9</a>). Über das Hauptmenü kann zwischen den allgemeinen Projektergebnissen, der Kategorieliste und der Videoliste umgeschaltet werden. Die Kategorieliste führt zu den Kategorie-spezifischen Ergebnissen und die Videoliste führt zu den Video-spezifischen Ergebnissen. Damit gibt es drei unterschiedliche Kontexte: Projekt, Kategorie und Video. Das Ansichtsmenü erlaubt den Wechsel zwischen den verschiedenen Ansichten des jeweiligen Kontexts.</p>
+<p><a name="result-general"></a></p>
+<figure>
+<img src="images/result-general.png" alt="Abbildung 9: Die Startseite der Prozessergebnisse" /><figcaption>Abbildung 9: Die Startseite der Prozessergebnisse</figcaption>
+</figure>
+<p>Die unterschiedlichen visuellen Darstellungen sind mit erläuternden Texten versehen, so dass die Website weitgehend selbsterklärend ist.</p>
+<p>Das Ausgabeverzeichnis kann auf jedem Webserver veröffentlicht werden, der statische Inhalte vom Dateisystem ausliefern kann und die Datei <code>index.html</code> als Startseite für ein Verzeichnis erkennt.</p>
+<p>Falls vorhanden, sollten die folgenden Dateien und Verzeichnisse nicht veröffentlicht werden:</p>
+<ul>
+<li><code>*.log</code></li>
+<li><code>_tmp_</code></li>
+</ul>
+<p>Ob die Datei <code>result.xml</code> veröffentlicht werden soll hängt davon ab, ob die maschinenlesbaren Ergebnisse über die Website abrufbar sein sollen.</p>
+<p>Bei der Veröffentlichung ist zu beachten, dass je nach Größe der Videodateien erheblicher Speicherplatzbedarf entsteht.</p>
+<div class="references">
+
+</div>
+    </div>
+    
+</div>
+</body>
+</html>

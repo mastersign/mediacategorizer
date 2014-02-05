@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>MediaCategorizer - Struktur der Ergebniswebseite</title>
+    <meta name="author" content="Tobias Kiertscher" />
+    <meta name="date" content="31.01.2014" />
+    
+    <style type="text/css">
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    color: inherit;
+    font-family: inherit;
+}
+
+body
+{
+    line-height: 100%;
+    background-color: #fff;
+    color: #000;
+    font-family: sans-serif;
+    text-align: left;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    font-family: serif;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section
+{
+    display: block;
+}
+
+nav ul
+{
+    list-style: none;
+}
+
+blockquote, q
+{
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after
+{
+    content: '';
+    content: none;
+}
+
+code
+{
+    font-family: monospace;
+}
+
+ins
+{
+    text-decoration: underline;
+}
+
+mark
+{
+    font-style: italic;
+    font-weight: bold;
+}
+
+del
+{
+    text-decoration: line-through;
+}
+
+a
+{
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+abbr[title], dfn[title]
+{
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+table
+{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+hr
+{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #888;
+    margin: 1em 0;
+    padding: 0;
+}
+
+input, select
+{
+    vertical-align: middle;
+}
+
+body
+{
+    font-family: Calibri, Tahoma, Helvetica, Arial, sans-serif;
+    line-height: 115%;
+    margin: 1em 1.5em 2em 1.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0.66em;
+    margin-bottom: 0.33em;
+    line-height: 100%;
+}
+h1, h2, h3, h4 {
+    font-family: Cambria, Times, "Times New Roman", serif;
+    font-weight: normal;
+}
+h1 {
+    font-size: 2.3em;
+}
+h2 {
+    font-size: 1.8em;
+}
+h3 {
+    font-size: 1.4em;
+}
+h4 {
+    font-size: 1.1em;
+}
+h5, h6 {
+    font-family: Calibri, Tahoma, Helvetica, Arial, sans-serif;
+}
+h5 {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+h6 {
+    text-decoration: underline;
+    font-weight: normal;
+}
+
+hr {
+    clear: both;
+}
+
+p, ul, ol, pre, figure, table {
+    margin-top: 1.00em;
+}
+
+a {
+    color: #0850ff;
+    text-decoration: none;
+}
+a:visited {
+    color: #4060A0;
+}
+a:hover {
+    color: #0080ff;
+}
+a:active {
+    color: #dc143c;
+}
+
+h1 a, h1 a:visited,
+h2 a, h2 a:visited,
+h3 a, h3 a:visited,
+h4 a, h4 a:visited,
+h5 a, h5 a:visited,
+h6 a, h6 a:visited
+{
+    color: inherit;
+}
+
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
+    color: #0080ff;
+}
+h1 a:active, h2 a:active, h3 a:active, h4 a:active, h5 a:active, h6 a:active {
+    color: #dc143c;
+}
+
+
+img {
+    border: none;
+}
+
+ins, mark, del {
+    border-radius: 0.25em;
+    padding: 0 0.2em;
+}
+
+ins
+{
+    background-color: #9f9;
+    border: 1px solid #6b6;
+    color: #000;
+    text-decoration: none;
+}
+
+mark
+{
+    background-color: #ff9;
+    border: 1px solid #bb6;
+    color: #000;
+    font-style: italic;
+}
+
+del
+{
+    background-color: #f99;
+    border: 1px solid #b66;
+    color: #000;
+    text-decoration: line-through;
+}
+
+li ul, li ol {
+    margin-top: 0.33em;
+    margin-bottom: 0.33em;
+}
+li {
+    margin-left: 2em;
+}
+ul li {
+    list-style: disc outside none;
+}
+ul li li {
+    list-style: circle outside none;
+}
+ul li li li {
+    list-style: square outside none;
+}
+ol li {
+    list-style: decimal outside none;
+}
+ol li li {
+    list-style: lower-latin outside none;
+}
+ol li li li {
+    list-style: lower-roman outside none;
+}
+
+li p  {
+    margin-top: 0;
+}
+
+nav li {
+    list-style: none outside none;
+    margin-left: 0;
+}
+
+q {
+    quotes: "\201E" "\201C";
+    font-style: italic;
+}
+q:before {
+    content: open-quote;
+}
+q:after {
+    content: close-quote;
+}
+
+blockquote {
+    border: 1px #ddd solid;
+    border-radius: 0.5em;
+    margin: 1em 10% 1em 10%;
+    padding: 0.5em;
+    font-style: italic;
+}
+blockquote cite {
+    display: block;
+    text-align: right;
+    margin-top: 0.5em;
+    font-style: normal;
+    font-size: 0.8em;
+}
+blockquote > p:first-child {
+    margin-top: 0;
+}
+
+code {
+    font-family: Consolas, "Lucida Console", Courier, monospace;
+    font-size: 0.8em;
+    color: #024;
+    background-color: #f6f6f6;
+    padding: 0 0.2em;
+    border: 1px solid #e4e4e4;
+    border-radius: 0.2em;
+}
+pre code {
+    background-color: inherit;
+    border: none;
+    border-radius: none;
+}
+pre {
+    border: 1px #ddd solid;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    white-space: pre;
+    overflow: auto;
+}
+
+table {
+    border-collapse: collapse;
+}
+td, th {
+    padding: 0.125em 0.5em 0.125em 0.5em;
+    border: 1px #ddd solid;
+}
+thead td, th, tfoot td {
+    font-weight: bold;
+}
+
+thead, tfoot {
+    background-color: #F0F0F0;
+}
+
+figure {
+    border: 1px #ddd solid;
+    border-radius: 0.5em;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 0.5em;
+    text-align: center;
+    overflow: auto;
+}
+figure figcaption {
+    display: block;
+    text-align: center;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 0.8em;
+    margin-top: 0.5em;
+}
+
+figure table {
+    width: 100%;
+    margin-top: 0;
+}
+
+section {
+    border-top: 1px #aaa solid;
+    margin-top: 2em;
+}
+
+footer {
+    margin-top: 2em;
+    text-align: center;
+    color: #888;
+}
+
+aside {
+    float: right;
+    width: 20%;
+    border: 1px #ddd solid;
+    border-radius: 0.5em;
+    margin-left: 1em;
+    padding: 0 0.5em 1em 0.5em;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F0F0F0;
+}
+
+#frame {
+    text-align: left;
+    padding: 1em;
+    background-color: #FFFFFF;
+    -moz-box-shadow:    0 0 12px #808080;
+    -chrome-box-shadow: 0 0 12px #808080;
+    box-shadow:         0 0 12px #808080;
+}
+
+header {
+    padding-bottom: 1em;
+}
+
+figure {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/*** NAV ***/
+
+nav ul {
+    list-style: none;
+    margin-top: 0px;
+    padding-top: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+nav .menu-title {
+    font-weight: bold;
+}
+
+/*** NAV HORIZONTAL ***/
+
+nav.horizontal {
+    border-bottom: 1px solid #AAA;
+    width: auto;
+    float: none;
+    padding: 0.25em;
+}
+
+nav.horizontal .menu-title, nav.horizontal ul {
+    display: inline-block;
+}
+
+nav.horizontal .menu-title {
+    padding: 0 0.5em 0 0.25em;
+}
+
+nav.horizontal li {
+    display: inline-block;
+    padding: 0 0.5em 0 0.5em;
+}
+
+/*** NAV VERTICAL ***/
+
+nav.vertical {
+    border-bottom: none;
+    width: 10em;
+    float: left;
+    padding: 1em 1em 1em 0.5em;
+}
+
+nav.fixed {
+    position: fixed;
+}
+
+nav.vertical .menu-title, nav.vertical ul {
+    display: block;
+}
+
+nav.vertical .menu-title {
+    padding: 0 0 0.5em 0;
+}
+
+nav.vertical li {
+    display: block;
+    padding: 0 0 0.25em 0;
+}
+
+nav.vertical li li {
+    margin-left: 0.75em;
+    font-size: small;
+    padding: 0;
+}
+
+#page {
+    margin: 1em 0.5em 1em 11em;
+    padding-left: 1em;
+}
+
+footer {
+    border-top: 1px solid #AAA;
+    clear: both;
+}
+
+@media screen and (min-width: 960px) and (min-device-width: 960px) {
+    #frame {
+        width: 920px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (max-width: 720px), screen and (max-device-height: 720px) and (orientation: landscape) {
+    #frame {
+        max-width: 720px;
+    }
+
+    nav.vertical {
+        width: auto;
+        float: none;
+        margin: 0;
+        padding: 0.25em;
+    }
+
+    nav.fixed {
+        position: relative;
+    }
+
+    nav.vertical {
+        border-bottom: 1px solid #AAA;
+        width: auto;
+        float: none;
+        padding: 0.25em;
+    }
+
+    nav.vertical .menu-title, nav.vertical ul {
+        display: inline-block;
+    }
+
+    nav.vertical .menu-title {
+        padding: 0 0.5em 0 0.25em;
+    }
+
+    nav.vertical li {
+        display: inline-block;
+        padding: 0 0.5em 0 0.5em;
+    }
+
+    #page {
+        margin: 1em 0.5em;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 480px) and (orientation: portrait) {
+    #frame {
+    max-width: 480px;
+        padding: 0.25em;
+    }
+  header {
+        padding-bottom: 0;
+    }
+    header h1 {
+        margin: 0;
+        padding-bottom: 0.25em;
+    padding-top: 0.25em;
+        font-size: 1.8em;
+        border-bottom: 1px solid #AAA;
+        text-align: center;
+    }
+
+    nav.vertical, nav.horizontal {
+        border-bottom: 1px solid #AAA;
+        width: auto;
+        float: none;
+        padding: 0.5em 0em;
+        text-align: center;
+    }
+
+    nav.vertical .menu-title, nav.vertical ul, nav.horizontal .menu-title {
+        display: block;
+    }
+
+    nav.vertical .menu-title, nav.horizontal .menu-title {
+        padding: 0 0 0.5em 0;
+    }
+
+    nav.vertical li, nav.horizontal li {
+        display: block;
+        padding: 0 0 0.25em 0;
+    }
+}
+
+header h1#title {
+    margin-top: 0.25em;
+}
+
+header h1#subtitle {
+    margin-top: 0.5em;
+    font-size: 1.6em;
+}
+
+#preface {
+
+}
+#preface .item {
+    margin: 0.5em 0;
+}
+#preface .item .label {
+    font-weight: bold;
+    display: block;
+    float: left;
+    width: 6em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#preface .item .text {
+    display: block;
+    margin-left: 7em;
+}
+#preface .item .affiliation {
+    display: block;
+    margin-left: 7em;
+    clear: both;
+    font-style: italic;
+    color: #888;
+}
+
+    </style>
+    </head>
+<body>
+<div id="frame">
+    <header>
+        
+        <h1 id="title">MediaCategorizer</h1>
+        <h1 id="subtitle">Struktur der Ergebniswebseite</h1>
+    </header>
+    <a id="TOC"></a>
+    <nav class="vertical fixed">
+    	<ul>
+<li><a href="#index">Index</a><ul>
+<li><a href="#kontext">Kontext</a></li>
+<li><a href="#ansichten">Ansichten</a></li>
+</ul></li>
+<li><a href="#kategorie">Kategorie*</a><ul>
+<li><a href="#kontext-1">Kontext</a></li>
+<li><a href="#ansichten-1">Ansichten</a></li>
+</ul></li>
+<li><a href="#video">Video*</a><ul>
+<li><a href="#kontext-2">Kontext</a></li>
+<li><a href="#ansichten-2">Ansichten</a></li>
+</ul></li>
+</ul>
+    </nav>
+    <div id="page">
+        <div id="preface">
+            
+            <div class="item creator">
+                <span class="label">Autor</span>
+                <span class="text">Tobias Kiertscher                <a href="mailto:kiertscher@fh-brandenburg.de">kiertscher@fh-brandenburg.de</a>                </span>
+                                <span class="affiliation">Fachhochschule Brandenburg</span>
+                            </div>
+            <div class="item date">
+                <span class="label">Datum</span>
+                <span class="text">31.01.2014</span>
+            </div>
+            <div class="item version">
+                <span class="label">Version</span>
+                <span class="text">0.3.0</span>
+            </div>
+        </div>
+    	<p>Dieses Dokument bietet eine knappe Übersicht über die technische Struktur der Ergebniswebseite, die von MediaCategorizer ausgegeben wird. Es richtet sich an Entwickler, die die Projektausgabe an eigene Bedürfnisse anpassen möchten. Das Dokument ist als Orientierungshilfe und Nachschlagewerk konzipiert.</p>
+<p>In der Webseite werden alle verarbeiteten Videos und Kategorien aufgeführt. Für jedes Video und jede Kategorie ist ein individuelles Glossar und eine Wortwolke in der Webseite enthalten. Des Weiteren ist ein Video-übergreifendes Glossar und eine Video-übergreifende Wortwolke enthalten. Die Übereinstimmungen zwischen Videos und Kategorien werden übersichtlich in einer Matrix dargestellt.</p>
+<p>Die Webseite ist in unterschiedliche Kontexte aufgeteilt:</p>
+<ul>
+<li><strong>Projektkontext</strong> alle Videos und alle Kategorien</li>
+<li><strong>Video</strong> ein Video und die zugeordneten Kategorien</li>
+<li><strong>Kategorie</strong> eine Kategorie und die zugeordneten Videos</li>
+</ul>
+<h1 id="index"><a href="#index">Index</a></h1>
+<p>Pfad: <code>/index.html</code></p>
+<h2 id="kontext"><a href="#kontext">Kontext</a></h2>
+<ul>
+<li>Mehrere Kategorien</li>
+<li>Mehrere Videos</li>
+</ul>
+<h2 id="ansichten"><a href="#ansichten">Ansichten</a></h2>
+<ul>
+<li><p>Projekt</p>
+<ul>
+<li><p>Übersicht</p>
+<ul>
+<li>Beschreibung</li>
+<li>Statistiken</li>
+<li>Wort-Hitliste → Projekt : Wort</li>
+</ul></li>
+<li><p>Wortwolke</p>
+<ul>
+<li>Wortwolke Wort → Projekt : Wort</li>
+</ul></li>
+<li><p>Matrix</p>
+<ul>
+<li>Zeile → Video : Übersicht</li>
+<li>Spalte → Kategorie : Übersicht</li>
+<li>Zelle → Kategorie : Übereinstimmung</li>
+</ul></li>
+<li>Glossar</li>
+</ul></li>
+<li><p>Kategorien</p>
+<ul>
+<li><p>Übersicht</p>
+<ul>
+<li>List → Kategorie : Übersicht</li>
+</ul></li>
+</ul></li>
+<li><p>Videos</p>
+<ul>
+<li><p>Übersicht</p>
+<ul>
+<li>List → Video : Übersicht</li>
+</ul></li>
+</ul></li>
+<li><p>Wort*<br /> Pfad: <code>/Worts/&lt;Wort&gt;.inc.html</code></p>
+<ul>
+<li>Statistiken</li>
+<li>Videos (Teilmenge) → Video : Wort</li>
+<li>Kategorien (Teilmenge) → Kategorie : Wort</li>
+</ul></li>
+</ul>
+<h1 id="kategorie"><a href="#kategorie">Kategorie*</a></h1>
+<p>Pfad: <code>/categories/&lt;Kategorie&gt;/index.html</code></p>
+<h2 id="kontext-1"><a href="#kontext-1">Kontext</a></h2>
+<ul>
+<li>Einzelne Kategorie</li>
+<li>Mehrere Videos (Teilmenge)</li>
+</ul>
+<h2 id="ansichten-1"><a href="#ansichten-1">Ansichten</a></h2>
+<ul>
+<li><p>Kategorie (Übersicht)</p>
+<ul>
+<li>Beschreibung</li>
+<li>Statistiken</li>
+<li>Wort-Hitliste → Kategorie:Wort</li>
+</ul></li>
+<li><p>Wortwolke</p>
+<ul>
+<li>Wortwolke Wort → Kategorie:Wort</li>
+</ul></li>
+<li><p>Videos</p>
+<ul>
+<li>Liste → Kategorie : Übereinstimmung</li>
+</ul></li>
+<li><p>Glossar</p>
+<ul>
+<li>Liste → Kategorie : Wort</li>
+</ul></li>
+<li><p>Wort*<br /> Pfad: <code>/categories/&lt;Kategorie&gt;/Worts/&lt;Wort&gt;.inc.html</code></p>
+<ul>
+<li>Statistiken</li>
+<li>Videos (Teilmenge) → Video : Wort</li>
+</ul></li>
+<li><p>Übereinstimmung*<br /> Pfad: <code>/categories/&lt;Kategorie&gt;/matches/&lt;video&gt;.inc.html</code></p>
+<ul>
+<li>Übereinstimmung</li>
+<li>Wortliste → Kategorie : Wort</li>
+</ul></li>
+</ul>
+<h1 id="video"><a href="#video">Video*</a></h1>
+<p>Pfad: <code>/videos/&lt;video&gt;/index.html</code><br />Video-Pfad: <code>/video/&lt;video&gt;/&lt;video&gt;.mp4</code><br />Waveform-Pfad: <code>/videos/&lt;video&gt;/waveform.png</code></p>
+<h2 id="kontext-2"><a href="#kontext-2">Kontext</a></h2>
+<ul>
+<li>Einzelnes Video</li>
+<li>Mehrere Kategorien (Teilmenge)</li>
+</ul>
+<h2 id="ansichten-2"><a href="#ansichten-2">Ansichten</a></h2>
+<ul>
+<li><p>Video (Übersicht)</p>
+<ul>
+<li>Beschreibung</li>
+<li>Statistiken</li>
+<li>Waveform</li>
+<li>Wort-Hitliste &amp;rarra; Video : Wort</li>
+</ul></li>
+<li><p>Wortwolke</p>
+<ul>
+<li>Wortwolke Wort → Video : Wort</li>
+</ul></li>
+<li><p>Transkript</p>
+<ul>
+<li>Phrase Zeitpunkt → Abspielposition</li>
+<li>Phrase Wort → Video : Wort</li>
+</ul></li>
+<li><p>Kategorien</p>
+<ul>
+<li>Liste → Kategorie : Übereinstimmung</li>
+</ul></li>
+<li><p>Glossar</p>
+<ul>
+<li>Liste → Video : Wort</li>
+</ul></li>
+<li><p>Wort*<br /> Pfad: <code>/videos/&lt;video&gt;/Worts/&lt;Wort&gt;.inc.html</code></p>
+<ul>
+<li>Statistiken</li>
+<li>Auftreten → Abspielposition</li>
+<li>Kategorien → Kategorie:Wort</li>
+</ul></li>
+</ul>
+<div class="references">
+
+</div>
+    </div>
+    
+</div>
+</body>
+</html>

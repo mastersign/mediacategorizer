@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>MediaCategorizer - Systemarchitektur</title>
+    <meta name="author" content="Tobias Kiertscher" />
+    <meta name="date" content="31.01.2014" />
+    
+    <style type="text/css">
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    color: inherit;
+    font-family: inherit;
+}
+
+body
+{
+    line-height: 100%;
+    background-color: #fff;
+    color: #000;
+    font-family: sans-serif;
+    text-align: left;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    font-family: serif;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section
+{
+    display: block;
+}
+
+nav ul
+{
+    list-style: none;
+}
+
+blockquote, q
+{
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after
+{
+    content: '';
+    content: none;
+}
+
+code
+{
+    font-family: monospace;
+}
+
+ins
+{
+    text-decoration: underline;
+}
+
+mark
+{
+    font-style: italic;
+    font-weight: bold;
+}
+
+del
+{
+    text-decoration: line-through;
+}
+
+a
+{
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+abbr[title], dfn[title]
+{
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+table
+{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+hr
+{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #888;
+    margin: 1em 0;
+    padding: 0;
+}
+
+input, select
+{
+    vertical-align: middle;
+}
+
+body
+{
+    font-family: Calibri, Tahoma, Helvetica, Arial, sans-serif;
+    line-height: 115%;
+    margin: 1em 1.5em 2em 1.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0.66em;
+    margin-bottom: 0.33em;
+    line-height: 100%;
+}
+h1, h2, h3, h4 {
+    font-family: Cambria, Times, "Times New Roman", serif;
+    font-weight: normal;
+}
+h1 {
+    font-size: 2.3em;
+}
+h2 {
+    font-size: 1.8em;
+}
+h3 {
+    font-size: 1.4em;
+}
+h4 {
+    font-size: 1.1em;
+}
+h5, h6 {
+    font-family: Calibri, Tahoma, Helvetica, Arial, sans-serif;
+}
+h5 {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+h6 {
+    text-decoration: underline;
+    font-weight: normal;
+}
+
+hr {
+    clear: both;
+}
+
+p, ul, ol, pre, figure, table {
+    margin-top: 1.00em;
+}
+
+a {
+    color: #0850ff;
+    text-decoration: none;
+}
+a:visited {
+    color: #4060A0;
+}
+a:hover {
+    color: #0080ff;
+}
+a:active {
+    color: #dc143c;
+}
+
+h1 a, h1 a:visited,
+h2 a, h2 a:visited,
+h3 a, h3 a:visited,
+h4 a, h4 a:visited,
+h5 a, h5 a:visited,
+h6 a, h6 a:visited
+{
+    color: inherit;
+}
+
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
+    color: #0080ff;
+}
+h1 a:active, h2 a:active, h3 a:active, h4 a:active, h5 a:active, h6 a:active {
+    color: #dc143c;
+}
+
+
+img {
+    border: none;
+}
+
+ins, mark, del {
+    border-radius: 0.25em;
+    padding: 0 0.2em;
+}
+
+ins
+{
+    background-color: #9f9;
+    border: 1px solid #6b6;
+    color: #000;
+    text-decoration: none;
+}
+
+mark
+{
+    background-color: #ff9;
+    border: 1px solid #bb6;
+    color: #000;
+    font-style: italic;
+}
+
+del
+{
+    background-color: #f99;
+    border: 1px solid #b66;
+    color: #000;
+    text-decoration: line-through;
+}
+
+li ul, li ol {
+    margin-top: 0.33em;
+    margin-bottom: 0.33em;
+}
+li {
+    margin-left: 2em;
+}
+ul li {
+    list-style: disc outside none;
+}
+ul li li {
+    list-style: circle outside none;
+}
+ul li li li {
+    list-style: square outside none;
+}
+ol li {
+    list-style: decimal outside none;
+}
+ol li li {
+    list-style: lower-latin outside none;
+}
+ol li li li {
+    list-style: lower-roman outside none;
+}
+
+li p  {
+    margin-top: 0;
+}
+
+nav li {
+    list-style: none outside none;
+    margin-left: 0;
+}
+
+q {
+    quotes: "\201E" "\201C";
+    font-style: italic;
+}
+q:before {
+    content: open-quote;
+}
+q:after {
+    content: close-quote;
+}
+
+blockquote {
+    border: 1px #ddd solid;
+    border-radius: 0.5em;
+    margin: 1em 10% 1em 10%;
+    padding: 0.5em;
+    font-style: italic;
+}
+blockquote cite {
+    display: block;
+    text-align: right;
+    margin-top: 0.5em;
+    font-style: normal;
+    font-size: 0.8em;
+}
+blockquote > p:first-child {
+    margin-top: 0;
+}
+
+code {
+    font-family: Consolas, "Lucida Console", Courier, monospace;
+    font-size: 0.8em;
+    color: #024;
+    background-color: #f6f6f6;
+    padding: 0 0.2em;
+    border: 1px solid #e4e4e4;
+    border-radius: 0.2em;
+}
+pre code {
+    background-color: inherit;
+    border: none;
+    border-radius: none;
+}
+pre {
+    border: 1px #ddd solid;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    white-space: pre;
+    overflow: auto;
+}
+
+table {
+    border-collapse: collapse;
+}
+td, th {
+    padding: 0.125em 0.5em 0.125em 0.5em;
+    border: 1px #ddd solid;
+}
+thead td, th, tfoot td {
+    font-weight: bold;
+}
+
+thead, tfoot {
+    background-color: #F0F0F0;
+}
+
+figure {
+    border: 1px #ddd solid;
+    border-radius: 0.5em;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 0.5em;
+    text-align: center;
+    overflow: auto;
+}
+figure figcaption {
+    display: block;
+    text-align: center;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 0.8em;
+    margin-top: 0.5em;
+}
+
+figure table {
+    width: 100%;
+    margin-top: 0;
+}
+
+section {
+    border-top: 1px #aaa solid;
+    margin-top: 2em;
+}
+
+footer {
+    margin-top: 2em;
+    text-align: center;
+    color: #888;
+}
+
+aside {
+    float: right;
+    width: 20%;
+    border: 1px #ddd solid;
+    border-radius: 0.5em;
+    margin-left: 1em;
+    padding: 0 0.5em 1em 0.5em;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F0F0F0;
+}
+
+#frame {
+    text-align: left;
+    padding: 1em;
+    background-color: #FFFFFF;
+    -moz-box-shadow:    0 0 12px #808080;
+    -chrome-box-shadow: 0 0 12px #808080;
+    box-shadow:         0 0 12px #808080;
+}
+
+header {
+    padding-bottom: 1em;
+}
+
+figure {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/*** NAV ***/
+
+nav ul {
+    list-style: none;
+    margin-top: 0px;
+    padding-top: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+nav .menu-title {
+    font-weight: bold;
+}
+
+/*** NAV HORIZONTAL ***/
+
+nav.horizontal {
+    border-bottom: 1px solid #AAA;
+    width: auto;
+    float: none;
+    padding: 0.25em;
+}
+
+nav.horizontal .menu-title, nav.horizontal ul {
+    display: inline-block;
+}
+
+nav.horizontal .menu-title {
+    padding: 0 0.5em 0 0.25em;
+}
+
+nav.horizontal li {
+    display: inline-block;
+    padding: 0 0.5em 0 0.5em;
+}
+
+/*** NAV VERTICAL ***/
+
+nav.vertical {
+    border-bottom: none;
+    width: 10em;
+    float: left;
+    padding: 1em 1em 1em 0.5em;
+}
+
+nav.fixed {
+    position: fixed;
+}
+
+nav.vertical .menu-title, nav.vertical ul {
+    display: block;
+}
+
+nav.vertical .menu-title {
+    padding: 0 0 0.5em 0;
+}
+
+nav.vertical li {
+    display: block;
+    padding: 0 0 0.25em 0;
+}
+
+nav.vertical li li {
+    margin-left: 0.75em;
+    font-size: small;
+    padding: 0;
+}
+
+#page {
+    margin: 1em 0.5em 1em 11em;
+    padding-left: 1em;
+}
+
+footer {
+    border-top: 1px solid #AAA;
+    clear: both;
+}
+
+@media screen and (min-width: 960px) and (min-device-width: 960px) {
+    #frame {
+        width: 920px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (max-width: 720px), screen and (max-device-height: 720px) and (orientation: landscape) {
+    #frame {
+        max-width: 720px;
+    }
+
+    nav.vertical {
+        width: auto;
+        float: none;
+        margin: 0;
+        padding: 0.25em;
+    }
+
+    nav.fixed {
+        position: relative;
+    }
+
+    nav.vertical {
+        border-bottom: 1px solid #AAA;
+        width: auto;
+        float: none;
+        padding: 0.25em;
+    }
+
+    nav.vertical .menu-title, nav.vertical ul {
+        display: inline-block;
+    }
+
+    nav.vertical .menu-title {
+        padding: 0 0.5em 0 0.25em;
+    }
+
+    nav.vertical li {
+        display: inline-block;
+        padding: 0 0.5em 0 0.5em;
+    }
+
+    #page {
+        margin: 1em 0.5em;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 480px) and (orientation: portrait) {
+    #frame {
+    max-width: 480px;
+        padding: 0.25em;
+    }
+  header {
+        padding-bottom: 0;
+    }
+    header h1 {
+        margin: 0;
+        padding-bottom: 0.25em;
+    padding-top: 0.25em;
+        font-size: 1.8em;
+        border-bottom: 1px solid #AAA;
+        text-align: center;
+    }
+
+    nav.vertical, nav.horizontal {
+        border-bottom: 1px solid #AAA;
+        width: auto;
+        float: none;
+        padding: 0.5em 0em;
+        text-align: center;
+    }
+
+    nav.vertical .menu-title, nav.vertical ul, nav.horizontal .menu-title {
+        display: block;
+    }
+
+    nav.vertical .menu-title, nav.horizontal .menu-title {
+        padding: 0 0 0.5em 0;
+    }
+
+    nav.vertical li, nav.horizontal li {
+        display: block;
+        padding: 0 0 0.25em 0;
+    }
+}
+
+header h1#title {
+    margin-top: 0.25em;
+}
+
+header h1#subtitle {
+    margin-top: 0.5em;
+    font-size: 1.6em;
+}
+
+#preface {
+
+}
+#preface .item {
+    margin: 0.5em 0;
+}
+#preface .item .label {
+    font-weight: bold;
+    display: block;
+    float: left;
+    width: 6em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#preface .item .text {
+    display: block;
+    margin-left: 7em;
+}
+#preface .item .affiliation {
+    display: block;
+    margin-left: 7em;
+    clear: both;
+    font-style: italic;
+    color: #888;
+}
+
+    </style>
+    </head>
+<body>
+<div id="frame">
+    <header>
+        
+        <h1 id="title">MediaCategorizer</h1>
+        <h1 id="subtitle">Systemarchitektur</h1>
+    </header>
+    <a id="TOC"></a>
+    <nav class="vertical fixed">
+    	<ul>
+<li><a href="#übersicht">Übersicht</a></li>
+<li><a href="#entwicklungsumgebung">Entwicklungsumgebung</a><ul>
+<li><a href="#voraussetzungen">Voraussetzungen</a></li>
+</ul></li>
+<li><a href="#komponenten">Komponenten</a><ul>
+<li><a href="#mc">Hauptprojekt</a></li>
+<li><a href="#ui">Benutzeroberfläche</a></li>
+<li><a href="#medieninspektion-und-tonspurextraktion-extern">Medieninspektion und Tonspurextraktion (extern)</a></li>
+<li><a href="#waveviz">Wellenformvisualisierung (extern)</a></li>
+<li><a href="#transcripter">Spracherkennung</a></li>
+<li><a href="#distillery">Analyse und Visualisierung</a></li>
+<li><a href="#wortwolken">Wortwolken</a></li>
+</ul></li>
+</ul>
+    </nav>
+    <div id="page">
+        <div id="preface">
+            
+            <div class="item creator">
+                <span class="label">Autor</span>
+                <span class="text">Tobias Kiertscher                <a href="mailto:kiertscher@fh-brandenburg.de">kiertscher@fh-brandenburg.de</a>                </span>
+                                <span class="affiliation">Fachhochschule Brandenburg</span>
+                            </div>
+            <div class="item date">
+                <span class="label">Datum</span>
+                <span class="text">31.01.2014</span>
+            </div>
+            <div class="item version">
+                <span class="label">Version</span>
+                <span class="text">0.3.0</span>
+            </div>
+        </div>
+    	<p>Dieses Dokument beschreibt die Architektur und Implementierung von <em>MediaCategorizer</em>. Es soll Softwareentwicklern helfen die Software zu verstehen und somit eine Anpassung und Erweiterung unterstützen.</p>
+<h1 id="übersicht"><a href="#übersicht">Übersicht</a></h1>
+<p>Das Projekt setzt sich aus den folgenden Komponenten zusammen (siehe <a href="#img:architecture">Abbildung 1</a>).</p>
+<ul>
+<li><a href="#mc">Hauptprojekt</a> <em>MediaCategorizer</em></li>
+<li><a href="#ui">Benutzeroberfläche</a> <em>MediaCategorizer - UI</em></li>
+<li><a href="#transcripter">Spracherkennung</a> <em>MediaCategorizer - Transcripter</em></li>
+<li><a href="#distillery">Analyse und Visualisierung</a> <em>MediaCategorizer - Distillery</em></li>
+<li><a href="#cloud">Wortwolkengenerierung</a> <em>Mastersign Cloud</em></li>
+<li><a href="#ffprobe">Medieninspektion</a> <em>FFprobe</em> (extern)</li>
+<li><a href="#ffmpeg">Tonspurextraktion</a> <em>FFmpeg</em> (extern)</li>
+<li><a href="#waveviz">Wellenformvisualisierung</a> <em>WaveViz</em> (extern)</li>
+</ul>
+<p><a name="img:architecture"></a></p>
+<figure>
+<img src="images/diagrams/Architecture.png" alt="Abbildung 1: Übersicht über die Architektur von MediaCategorizer" /><figcaption>Abbildung 1: Übersicht über die Architektur von <em>MediaCategorizer</em></figcaption>
+</figure>
+<p>Das Hauptprojekt dient als Startpunkt. Es enthält die Dokumentation und eine Anzahl von Scripts zur Automatisierung des Projektes. Durch die Automatisierung werden die folgenden Aktionen unterstützt:</p>
+<ul>
+<li>Download der externen Komponenten <em>FFmpeg</em>, <em>FFprobe</em> und <em>WaveViz</em></li>
+<li>Erzeugen der Dokumentation im <abbr title="Hyper Text Markup Language">HTML</abbr>- und DOCX-Format aus den Markdown-Quelldateien</li>
+<li>Klonen der Komponenten-Repositories <em>UI</em>, <em>Transcripter</em> und <em>Distillery</em></li>
+<li>Kompilieren der Komponenten</li>
+<li>Zusammenstellen eines lauffähigen Programmpakets</li>
+</ul>
+<p>Die Benutzeroberfläche ermöglicht das benutzerfreundliche Verwalten von Projekten (Videos, Kategorien, Parameter). Sie ist für die Koordination der Prozessausführung verantwortlich und nutzt die übrigen Komponenten über deren Befehlszeilenschnittstelle.</p>
+<p>Die Tonspurextraktion löst aus den Videos die Tonspur heraus und konvertiert sie in ein Format, das von der Komponente zur Wellenformvisualisierung und der Komponente zur Spracherkennung unterstützt wird.</p>
+<p>Die Wellenformvisualisierung erzeugt aus der extrahierten Tonspur eine bildliche Darstellung des Tonsignals. Dieses wird in der <abbr title="Hyper Text Markup Language">HTML</abbr>5-Ausgabe eingebunden und dient der Veranschaulichung der Dynamik des Tonsignals.</p>
+<p>Die Spracherkennung steuert die Microsoft Speech API an und speichert die Spracherkennungsergebnisse als Zwischenergebnis in einer <abbr title="Extensible Data Notation">EDN</abbr>-Datei, welche von der Komponente für Analyse und Visualisierung gelesen werden kann.</p>
+<p>Die Komponente für Analyse und Visualisierung filtert zunächst die erkannten Worte und bildet anschließend für Videos und Kategorien Worthäufigkeitslisten. Diese werden in Form von Wortwolken visualisiert. Aus den Worthäufigkeitslisten von Videos und Kategorien werden die Übereinstimmungen zwischen Videos und Kategorien berechnet. Aus den Übereinstimmungen werden dann Zuordnungen zwischen Videos und Kategorien abgeleitet. Die Ergebnisse (einschließlich der erkannten Worte mit ihren Erkennungssicherheiten) werden in Form einer <abbr title="eXtensible Markup Language">XML</abbr>-Datei gespeichert. Zusätzlich werden die Volltexte der einzelnen Videos als Reintext gespeichert. Abschließend wird eine statische <abbr title="Hyper Text Markup Language">HTML</abbr>5-Webseite generiert welche alle Ergebnisse visuell aufbereitet darstellt, die Original-Videodateien einbindet und eine interaktive Navigation zwischen den Analyseergebnissen erlaubt. Diese Webseite kann sowohl lokal gespeichert und direkt mit einem Browser betrachtet werden, sie kann aber auch mit Hilfe eines Webservers gehostet und so über das Internet verfügbar gemacht werden.</p>
+<h1 id="entwicklungsumgebung"><a href="#entwicklungsumgebung">Entwicklungsumgebung</a></h1>
+<p>MediaCategorizer wurde mit C# in Visual Studio 2013 und Clojure in LightTable 0.5 implementiert. Deshalb benötigt das Projekt sowohl die Microsoft .NET Laufzeitumgebung als auch die Java Laufzeitumgebung. C# wurden gewählt, weil es mit der WPF-Bibliothek eine schnelle Entwicklung der Benutzeroberfläche und durch die .NET-Schnittstelle eine einfache Anbindung an die Microsoft Speech API ermöglicht. Clojure wurde gewählt, weil das funktionale Programmierparadigma, die komfortablen Bibliotheken für Webseitenerzeugung und die interaktive Entwicklungsumgebung (<abbr title="Read-Eval-Print-Loop">REPL</abbr>) eine schnelle Umsetzung der Analyse und Visualisierung ermöglichen. Für die Projektautomatisierung wird die Microsoft PowerShell eingesetzt.</p>
+<h2 id="voraussetzungen"><a href="#voraussetzungen">Voraussetzungen</a></h2>
+<ul>
+<li>Microsoft Windows 7 Professional/Enterprise mit Service Pack 1 oder höher</li>
+<li><a href="http://git-scm.com/">Git</a></li>
+<li><a href="http://www.microsoft.com/de-de/download/details.aspx?id=40855">Microsoft PowerShell 3</a> oder höher (in Windows 8 bereits enthalten)</li>
+<li><a href="http://johnmacfarlane.net/pandoc/">pandoc 1.12</a> oder höher<br /> <em>(für das Generieren der Dokumentation aus den Markdown-Quellen erforderlich)</em></li>
+<li><a href="http://www.microsoft.com/de-de/download/details.aspx?id=40779">Microsoft .NET Framework 4.5</a> oder höher (in Windows 8 bereits enthalten)</li>
+<li><a href="http://www.visualstudio.com/de-de">Microsoft Visual Studio 2012</a> oder höher<br /> <em>(für die Anpassung oder Weiterentwicklung von MediaCategorizer oder Transcripter erforderlich)</em></li>
+<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java Development Kit 7</a> oder höher</li>
+</ul>
+<h1 id="komponenten"><a href="#komponenten">Komponenten</a></h1>
+<p>In den folgenden Abschnitten werden die einzelnen Komponenten detailliert beschrieben.</p>
+<h2 id="mc"><a href="#mc">Hauptprojekt</a></h2>
+<p><strong>Projektname:</strong> MediaCategorizer<br /><strong>Repository:</strong> <a href="https://github.com/mastersign/mediacategorizer/">https://github.com/mastersign/mediacategorizer/</a><br /><strong>Verzeichnis:</strong> <code>/</code></p>
+<h3 id="merkmale"><a href="#merkmale">Merkmale</a></h3>
+<ul>
+<li>Einstiegspunkt</li>
+<li>Dokumentation</li>
+<li>Skripte für das Bauen des Projektes</li>
+</ul>
+<h3 id="setup"><a href="#setup">Setup</a></h3>
+<ol type="1">
+<li><p>Installieren der <a href="#voraussetzungen">Voraussetzungen</a></p>
+<p>Für das Kompilieren der Komponenten müssen mindestens .NET 4.5, <abbr title="Java Development Kit">JDK</abbr> 7 und PowerShell 3 installiert sein. Für das Erzeugen der Projektdokumentation in <abbr title="Hyper Text Markup Language">HTML</abbr> und DOCX müssen mindestens PowerShell 3 und pandoc installiert sein.</p></li>
+<li><p>Klonen des Hauptprojektes in ein lokales Repository</p>
+<p>Befehlszeile mit git in <code>PATH</code> öffnen und <code>&gt; git clone https://github.com/mastersign/mediacategorizer.git D:\MediaCategorizer</code> ausführen. Der Pfad <code>D:\MediaCategorizer</code> kann bei Bedarf angepasst werden.</p></li>
+<li><p>Erzeugen der Projektdokumentation in <abbr title="Hyper Text Markup Language">HTML</abbr> und DOCX</p>
+<p>In das Verzeichnis <code>auto</code> wechseln und die Windows-Batch-Datei <code>transform-all-documents.bat</code> ausführen. Der Vorgang wird in der Datei <code>transform-all-documents.log</code> protokolliert.</p>
+<p>War die Ausführung des Skripts erfolgreich, wurden für jede Markdown-Datei aus dem Verzeichnis <code>docs</code> je eine <abbr title="Hyper Text Markup Language">HTML</abbr>-Datei und eine DOCX-Datei im Verzeichnis <code>docs\out</code> erzeugt. Für die <abbr title="Hyper Text Markup Language">HTML</abbr>-Dateien wurde zusätzlich das Verzeichnis <code>docs\images</code> nach <code>docs\out\images</code> kopiert.</p></li>
+<li><p>Herunterladen der externen Programme, klonen der Komponenten-Repositories, bauen der Komponenten</p>
+<p>In das Verzeichnis <code>auto</code> wechseln und die Windows-Batch-Datei <code>update-build-release.bat</code> ausführen. Der Vorgang wird in der Datei <code>update-build-release.log</code> protokolliert.</p>
+<p>Die einzelnen Schritte <code>Update-Tools.ps1</code>, <code>Update-Components.ps1</code>, <code>Build-Project.ps1</code> und <code>Create-Release.sp1</code> können auch einzeln ausgeführt werden. Es muss aber berücksichtigt werden, dass die Ausführungsrichtlinie der PowerShell von <code>Restricted</code> auf <code>RemoteSigned</code> oder <code>Unrestricted</code> gesetzt werden muss. Dazu muss die PowerShell mit Administrationsrechten gestartet werden und der Befehl <code>&gt; Set-ExecutionPolicy RemoteSigned -Force</code> ausgeführt werden.</p>
+<p>War die Ausführung des Skripts erfolgreich, wurde im Verzeichnis <code>release</code> ein vollständiges Paket mit MediaCategorizer und allen erforderlichen Abhängigkeiten zusammengestellt.</p>
+<p>Um MediaCategorizer in Betrieb zu nehmen sind die Anweisungen im <a href="Benutzerhandbuch.html">Benutzerhandbuch</a> Abschnitt <em>Installation</em> zu beachten.</p></li>
+</ol>
+<h2 id="ui"><a href="#ui">Benutzeroberfläche</a></h2>
+<p><strong>Projektname:</strong> MediaCategorizer - UI<br /><strong>Repository:</strong> <a href="https://github.com/mastersign/mediacategorizer-ui/">https://github.com/mastersign/mediacategorizer-ui/</a><br /><strong>Verzeichnis:</strong> <code>/components/MediaCategorizer</code><br /><strong>Projekt-Typ:</strong> Microsoft Visual Studio<br /><strong>Programmiersprache:</strong> C# 5.0<br /><strong>Plattform, Bibliotheken:</strong> .NET 4.5, WPF, Xceed WPF-Toolkit, Windows API CodePack</p>
+<h3 id="merkmale-1"><a href="#merkmale-1">Merkmale</a></h3>
+<ul>
+<li>Einfache Bedienung</li>
+<li>Verwaltung eines Projektes (Videos, Kategorien, Parameter)</li>
+<li>Ansteuerung von FFmpeg, WaveViz, Transcripter und Distillery über die Befehlszeile</li>
+<li>Überwachung der Prozessausführung</li>
+</ul>
+<h3 id="architektur"><a href="#architektur">Architektur</a></h3>
+<p>Der Quellcode der Benutzeroberfläche teilt sich in die folgenden Namensräume auf (siehe <a href="#img:ui-ns">Abbildung 2</a>).</p>
+<p><a name="img:ui-ns"></a></p>
+<figure>
+<img src="images/diagrams/Namespaces.png" alt="Abbildung 2: Namesräume der Benutzeroberfläche" /><figcaption>Abbildung 2: Namesräume der Benutzeroberfläche</figcaption>
+</figure>
+<h4 id="de.fhb.oll.mediacategorizer"><a href="#de.fhb.oll.mediacategorizer"><code>de.fhb.oll.mediacategorizer</code></a></h4>
+<p>Dieser Namensraum enthält die <code>App</code>-Klasse welche den Programmstart initiiert, das Hauptfenster <code>MainWindow</code> und die verschiedenen Seiten <code>Page*</code> (siehe <a href="#img:ui-ui">Abbildung 3</a>).</p>
+<p><a name="img:ui-ui"></a></p>
+<figure>
+<img src="images/diagrams/UI.png" alt="Abbildung 3: Die Klassen des Hauptfensters und der Seiten" /><figcaption>Abbildung 3: Die Klassen des Hauptfensters und der Seiten</figcaption>
+</figure>
+<h4 id="de.fhb.oll.mediacategorizer.edn"><a href="#de.fhb.oll.mediacategorizer.edn"><code>de.fhb.oll.mediacategorizer.edn</code></a></h4>
+<p>Dieser Namensraum enthält die Schnittstelle <code>IEdnWritable</code> und einige Hilfsklassen für das Erzeugen von <abbr title="Extensible Data Notation">EDN</abbr>-Dateien.</p>
+<h4 id="de.fhb.oll.mediacategorizer.model"><a href="#de.fhb.oll.mediacategorizer.model"><code>de.fhb.oll.mediacategorizer.model</code></a></h4>
+<p>Dieser Namensraum enthält die Domain-Modell-Klassen <code>Project</code>, <code>Category</code>, <code>Media</code>, <code>Configuration</code> und alle Klassen die für deren Definition benötigt werden (siehe <a href="#img:ui-project">Abbildung 4</a> und <a href="#img:ui-configuration">Abbildung 5</a>).</p>
+<p><a name="img:ui-project"></a></p>
+<figure>
+<img src="images/diagrams/Project.png" alt="Abbildung 4: Das Domain-Modell für ein Projekt" /><figcaption>Abbildung 4: Das Domain-Modell für ein Projekt</figcaption>
+</figure>
+<p><a name="img:ui-configuration"></a></p>
+<figure>
+<img src="images/diagrams/Configuration.png" alt="Abbildung 5: Das Domain-Modell für die Projektparameter" /><figcaption>Abbildung 5: Das Domain-Modell für die Projektparameter</figcaption>
+</figure>
+<p>Die Klassen in diesem Namensraum wird in der Datei <code>Model.xml</code> definiert und durch den Codegenerator <em>Scaleton</em> in der Datei <code>Model.Designer.cs</code> implementiert. Einige der generierten Klassen werden in eigenen Dateien um zusätzliche Funktionalität ergänzt. Die Schnittstelle <code>IEdnWritable</code> wird für alle Modell-Klassen in der Datei <code>&lt;abbr title=&quot;Extensible Data Notation&quot;&gt;EDN&lt;/abbr&gt;.cs</code> implementiert.</p>
+<h4 id="de.fhb.oll.mediacategorizer.processing"><a href="#de.fhb.oll.mediacategorizer.processing"><code>de.fhb.oll.mediacategorizer.processing</code></a></h4>
+<p>Dieser Namensraum enthält die Klassen für die verschiedenen Prozessschritte. Jeder Prozessschritt wird durch eine Klasse realisiert, welche die Schnittstelle <code>IProcess</code> implementiert (siehe <a href="#img:ui-iprocess">Abbildung 6</a>). Zur Vereinfachung der Implementierung wurden gemeinsame Aspekte der Prozessschritte in den Basisklassen <code>ProcessBase</code> und <code>MultiTaskProcessBase</code> zusammengefasst (siehe <a href="#img:ui-process">Abbildung 7</a>).</p>
+<p><a name="img:ui-iprocess"></a></p>
+<figure>
+<img src="images/diagrams/IProcess.png" alt="Abbildung 6: Die Schnittstelle für Prozessschritte" /><figcaption>Abbildung 6: Die Schnittstelle für Prozessschritte</figcaption>
+</figure>
+<p><a name="img:ui-process"></a></p>
+<figure>
+<img src="images/diagrams/Process.png" alt="Abbildung 7: Die Basisklassen der Prozessschritte" /><figcaption>Abbildung 7: Die Basisklassen der Prozessschritte</figcaption>
+</figure>
+<p>Die Klasse <code>ProcessChain</code> verwaltet den gesamten Prozess und übernimmt das Starten der Prozessschritte, wenn deren Vorgänger im Prozess erfolgreich abgeschlossen wurden (siehe <a href="#img:ui-process-chain">Abbildung 8</a>).</p>
+<p><a name="img:ui-process-chain"></a></p>
+<figure>
+<img src="images/diagrams/ProcessChain.png" alt="Abbildung 8: Die zentrale Steuerung für den Prozess" /><figcaption>Abbildung 8: Die zentrale Steuerung für den Prozess</figcaption>
+</figure>
+<h4 id="de.fhb.oll.mediacategorizer.tools"><a href="#de.fhb.oll.mediacategorizer.tools"><code>de.fhb.oll.mediacategorizer.tools</code></a></h4>
+<p>Dieser Namensraum enthält die Steuerklassen für die Komponenten, die über eine Befehlszeilenschnittstelle angesteuert werden. Die Steuerklassen sind von der gemeinsamen Basisklasse <code>ToolBase</code> abgeleitet (siehe <a href="#img:ui-tool-base">Abbildung 9</a>).</p>
+<ul>
+<li><code>ToolFfprobe</code> (siehe <a href="#img:ui-tool-ffprobe">Abbildung 10</a>)</li>
+<li><code>ToolFfmpeg</code> (siehe <a href="#img:ui-tool-ffmpeg">Abbildung 11</a>)</li>
+<li><code>ToolWaveViz</code> (siehe <a href="#img:ui-tool-waveviz">Abbildung 12</a>)</li>
+<li><code>ToolTranscripter</code> (siehe <a href="#img:ui-tool-transcripter">Abbildung 13</a>)</li>
+<li><code>ToolDistillery</code> (siehe <a href="#img:ui-tool-distillery">Abbildung 14</a>)</li>
+</ul>
+<p>Die Steuerklassen sind für das asynchrone Verarbeiten der Komponentenausgaben verantwortlich. Die Ausgaben enthalten dabei sowohl Fortschrittsinformationen als auch Ergebnisdaten.</p>
+<p><a name="img:ui-tool-base"></a></p>
+<figure>
+<img src="images/diagrams/ToolBase.png" alt="Abbildung 9: Die Basisklasse der Steuerklassen für Komponenten" /><figcaption>Abbildung 9: Die Basisklasse der Steuerklassen für Komponenten</figcaption>
+</figure>
+<p><a name="img:ui-tool-ffprobe"></a></p>
+<figure>
+<img src="images/diagrams/ToolFFprobe.png" alt="Abbildung 10: Die Steuerklasse für FFprobe" /><figcaption>Abbildung 10: Die Steuerklasse für FFprobe</figcaption>
+</figure>
+<p><a name="img:ui-tool-ffmpeg"></a></p>
+<figure>
+<img src="images/diagrams/ToolFFmpeg.png" alt="Abbildung 11: Die Steuerklasse für FFmpeg" /><figcaption>Abbildung 11: Die Steuerklasse für FFmpeg</figcaption>
+</figure>
+<p><a name="img:ui-tool-waveviz"></a></p>
+<figure>
+<img src="images/diagrams/ToolWaveViz.png" alt="Abbildung 12: Die Steuerklasse für WaveViz" /><figcaption>Abbildung 12: Die Steuerklasse für WaveViz</figcaption>
+</figure>
+<p><a name="img:ui-tool-transcripter"></a></p>
+<figure>
+<img src="images/diagrams/ToolTranscripter.png" alt="Abbildung 13: Die Steuerklasse für Transcripter" /><figcaption>Abbildung 13: Die Steuerklasse für Transcripter</figcaption>
+</figure>
+<p><a name="img:ui-tool-distillery"></a></p>
+<figure>
+<img src="images/diagrams/ToolDistillery.png" alt="Abbildung 14: Die Steuerklasse für Distillery" /><figcaption>Abbildung 14: Die Steuerklasse für Distillery</figcaption>
+</figure>
+<h4 id="de.fhb.oll.mediacategorizer.settings"><a href="#de.fhb.oll.mediacategorizer.settings"><code>de.fhb.oll.mediacategorizer.settings</code></a></h4>
+<p>Dieser Namensraum enthält die Klassen <code>Setup</code> und <code>SetupManager</code>, die für die Verwaltung und das Sichern und Wiederherstellen der Anwendungseinstellungen verantwortlich sind (siehe <a href="#img:ui-setup">Abbildung 15</a>).</p>
+<p><a name="img:ui-setup"></a></p>
+<figure>
+<img src="images/diagrams/Setup.png" alt="Abbildung 15: Das Modell für die Programmeinstellungen" /><figcaption>Abbildung 15: Das Modell für die Programmeinstellungen</figcaption>
+</figure>
+<h2 id="medieninspektion-und-tonspurextraktion-extern"><a href="#medieninspektion-und-tonspurextraktion-extern">Medieninspektion und Tonspurextraktion (extern)</a></h2>
+<p><strong>Projektname:</strong> FFmpeg<br /><strong>Website:</strong> <a href="http://www.ffmpeg.org">http://www.ffmpeg.org</a></p>
+<h3 id="merkmale-2"><a href="#merkmale-2">Merkmale</a></h3>
+<ul>
+<li>Befehlszeilenschnittstelle</li>
+<li>Inspektion und Transformation von Audio- und Videodaten</li>
+</ul>
+<h3 id="befehlszeilenschnittstelle"><a href="#befehlszeilenschnittstelle">Befehlszeilenschnittstelle</a></h3>
+<p>Das FFmpeg-Projekt umfasst die Programmdatei <code>ffmpeg.exe</code> für Transformationsaufgaben und die Programmdatei <code>ffprobe.exe</code> für Inspektionsaufgaben.</p>
+<h4 id="ffprobe"><a href="#ffprobe">Inspektion</a></h4>
+<p><strong>Beispiel:</strong> <code>&gt; ffprobe.exe -i &quot;D:\media\video.mp4&quot;</code></p>
+<p>Die Ausgabe könnte dann z.B. wie folgt aussehen.</p>
+<pre><code>ffprobe version N-58699-ge3d7a39 Copyright (c) 2007-2013 the FFmpeg developers
+  built on Dec  1 2013 22:07:24 with gcc 4.8.2 (GCC)
+  configuration: --enable-gpl --enable-version3 --disable-w32threads --enable-avisynth --enable-bzlib --enable-fontconfig --enable-frei0r --enable-gnutls --enable-iconv --enable-libass --enable-libbluray --enable-libcaca --enable-libfreetype --enable-libgsm --enable-libilbc --enable-libmodplug --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libopus --enable-librtmp --enable-libschroedinger --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvo-aacenc --enable-libvo-amrwbenc --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libx264 --enable-libxavs --enable-libxvid --enable-zlib
+  libavutil      52. 56.100 / 52. 56.100
+  libavcodec     55. 44.100 / 55. 44.100
+  libavformat    55. 22.100 / 55. 22.100
+  libavdevice    55.  5.102 / 55.  5.102
+  libavfilter     3. 91.100 /  3. 91.100
+  libswscale      2.  5.101 /  2.  5.101
+  libswresample   0. 17.104 /  0. 17.104
+  libpostproc    52.  3.100 / 52.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from &#39;D:\media\video.mp4&#39;:
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 0
+    compatible_brands: isommp42
+    creation_time   : 2012-05-15 16:52:11
+  Duration: 01:05:51.97, start: 0.000000, bitrate: 363 kb/s
+    Stream #0:0(und): Video: h264 (Constrained Baseline) (avc1 / 0x31637661), yuv420p, 480x360, 265 kb/s, 18 fps, 18 tbr, 36 tbn, 36 tbc (default)
+    Metadata:
+      creation_time   : 1970-01-01 00:00:00
+      handler_name    : VideoHandler
+    Stream #0:1(und): Audio: aac (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 95 kb/s (default)
+    Metadata:
+      creation_time   : 2012-05-15 16:52:11
+      handler_name    : IsoMedia File Produced by Google, 5-11-2011</code></pre>
+<p>MediaCategorizer nutzt <code>ffprobe</code> um die Länge der Videos zu ermitteln, um daraus einen Fortschritt bei Transformation und Spracherkennung zu berechnen. Die Länge des Videos wird dabei mit dem folgenden regulären Ausdruck ermittelt: <code>Duration: (\d+):(\d\d):(\d\d)\.(\d+)</code>. Die vier Gruppen entsprechen dabei Stunden, Minuten, Sekunden, Millisekunden.</p>
+<h4 id="ffmpeg"><a href="#ffmpeg">Transformation</a></h4>
+<p><strong>Beispiel:</strong> <code>&gt; ffmpeg.exe -i &quot;D:\media\video.mp4&quot; -n -vn -ac 1 -ar 16000 -acodec pcm_s16le &quot;D:\media\sound.wav&quot;</code></p>
+<p>Bedeutung der Argumente:</p>
+<ul>
+<li><code>-i &quot;D:\media\video.mp4&quot;</code> Der Pfad der Eingabedatei</li>
+<li><code>-n</code> Abbrechen falls Ausgabedatei bereits existiert</li>
+<li><code>-vn</code> keine Videoausgabe</li>
+<li><code>-ac 1</code> 1-kanalige Audioausgabe (mono)</li>
+<li><code>-ar 16000</code> Resampling der Abtastrate auf 16 kHz</li>
+<li><code>-acodec pcm_s16le</code> Ausgabeformat ist PCM-Audio mit Vorzeichen-behafteter 16Bit-Auflösung und Little-Endian Byte-Reihenfolge</li>
+<li><code>&quot;D:\media\sound.wav</code> Der Pfad der Ausgabedatei</li>
+</ul>
+<h2 id="waveviz"><a href="#waveviz">Wellenformvisualisierung (extern)</a></h2>
+<p><strong>Projektname:</strong> WaveViz<br /><strong>Repository:</strong> <a href="https://github.com/mastersign/waveviz">https://github.com/mastersign/waveviz</a></p>
+<h3 id="merkmale-3"><a href="#merkmale-3">Merkmale</a></h3>
+<ul>
+<li>Befehlszeilenschnittstelle</li>
+<li>Erwartet PCM-Wave-Dateien (16 Bit, mono, Abtastrate beliebig)</li>
+<li>Parameter für die Größe der Bildfläche</li>
+<li>Parameter für Hintergrund und Vordergrundfarben</li>
+<li>Antialiasing durch Over-Sampling</li>
+<li>Ausgabe als PNG-Datei</li>
+</ul>
+<p><a name="img:waveform"></a></p>
+<figure>
+<img src="images/waveform.png" alt="Abbildung 16: Eine mit WaveViz erzeugte Visualisierung einer Wave-Datei" /><figcaption>Abbildung 16: Eine mit <em>WaveViz</em> erzeugte Visualisierung einer Wave-Datei</figcaption>
+</figure>
+<h3 id="befehlszeilenschnittstelle-1"><a href="#befehlszeilenschnittstelle-1">Befehlszeilenschnittstelle</a></h3>
+<p><strong>Programmdatei:</strong> <code>WaveViz.exe</code></p>
+<pre><code>Syntax: waveviz &lt;WAV-Datei&gt; &lt;PNG-Datei&gt; [w h] [bg f1 f2 li]
+  w  = Bildbreite in Pixeln
+  h  = Bildhöhe in Pixeln
+  bg = Hintergrundfarbe
+  f1 = Vordergrundfarbe 1
+  f2 = Vordergrundfarbe 2
+  li = Farbe der Horizontlinie
+Farbwerte werden als RGBA-Hex-Werte angegeben. (z.B. #E080D0FF)</code></pre>
+<p><strong>Beispiel:</strong> <code>&gt; WaveViz.exe &quot;D:\media\sound.wav&quot; &quot;D:\media\wave.png&quot; 1024 100 #00000000 #FF880080 #880000FF #FF0000FF</code></p>
+<h2 id="transcripter"><a href="#transcripter">Spracherkennung</a></h2>
+<p><strong>Projektname:</strong> MediaCategorizer - Transcripter<br /><strong>Repository:</strong> <a href="https://github.com/mastersign/mediacategorizer-transcripter/">https://github.com/mastersign/mediacategorizer-transcripter/</a><br /><strong>Verzeichnis:</strong> <code>/components/Transcripter</code><br /><strong>Projekt-Typ:</strong> Microsoft Visual Studio<br /><strong>Programmiersprache:</strong> C# 5.0<br /><strong>Plattform, Bibiotheken:</strong> .NET 4.5, Microsoft Speech API</p>
+<h3 id="merkmale-4"><a href="#merkmale-4">Merkmale</a></h3>
+<ul>
+<li>Befehlszeilenschnittstelle</li>
+<li>Ansteuerung der Microsoft Speech API<br /> über den .NET-Namensraum <code>System.Speech.Recognition</code> aus der Assembly <code>System.Speech.dll</code></li>
+<li>Ausgabe der Erkennungsergebnisse als <abbr title="Extensible Data Notation">EDN</abbr>-Datei</li>
+</ul>
+<h3 id="architektur-1"><a href="#architektur-1">Architektur</a></h3>
+<p>Das Befehlszeilenprogramm <em>Transcripter</em> ist nahezu vollständig prozedural in der statischen Klasse <code>de.fhb.oll.transcripter.Program</code> implementiert. Lediglich das Parsen der Befehlszeilenargumente wird von einer Instanz der Klasse <code>CommandLineArguments</code> übernommen.</p>
+<p>Das Programm besitzt zwei Betriebsmodi. Im Standardmodus wird die gesamte Quelldatei vom Spracherkennungssystem verarbeitet und die Erkennungsergebnisse werden im <abbr title="Extensible Data Notation">EDN</abbr>-Format in die Ergebnisdatei geschrieben. Die Ergebnisdatei sollte die Endung <code>.srr</code> für <a href="intermediate-data-structures.html#SpeechRecognitionResultFile">Speech Recognition Result</a> besitzen. Im Testmodus für Erkennungssicherheit wird nur der Anfang einer Datei vom Spracherkennungssystem verarbeitet und statistische Werte zu den erkannten Phrasen und Wörtern ausgegeben.</p>
+<h3 id="befehlszeilenschnittstelle-2"><a href="#befehlszeilenschnittstelle-2">Befehlszeilenschnittstelle</a></h3>
+<p><strong>Programmdatei:</strong> <code>Transcripter.exe</code></p>
+<pre><code>Syntax: transcripter [Optionen] &lt;WAV-Datei&gt;
+  Optionen
+    -ct, --confidence-test: Schaltet in den Testmodus für Erkennungssicherheit
+    -td, --test-duration: Die maximale Testlänge ab dem Dateianfang in Sekunden
+    -db, --dashboard: Aktiviert im Standardmodus eine Übersichtsdarstellung
+    -p, --progress: Aktiviert die Ausgabe des Fortschritts
+    -t, --target &lt;SRR-Datei&gt;: Gibt im Standardmodus die Ergebnisdatei an</code></pre>
+<p><strong>Beispiel Test:</strong> <code>&gt; Transcripter.exe -ct -td 60 &quot;D:\media\sound.wav&quot;</code></p>
+<p><strong>Beispiel Spracherkennung:</strong> <code>&gt; Transcripter.exe -p -t &quot;D:\media\result.srr&quot; &quot;D:\media\sound.wav&quot;</code></p>
+<h3 id="testergebnisse"><a href="#testergebnisse">Testergebnisse</a></h3>
+<p>Im Testmodus für Erkennungssicherheit werden die folgenden Werte ausgegeben.</p>
+<ul>
+<li><code>PhraseCount</code> Anzahl der erkannten Phrasen</li>
+<li><code>PhraseConfidenceSum</code> Summe der Erkennungssicherheit aller erkannten Phrasen</li>
+<li><code>MaxPhraseConfidence</code> Höchste Erkennungssicherheit aller erkannten Phrasen</li>
+<li><code>MinPhraseConfidence</code> Mittlere Erkennungssicherheit aller erkannten Phrasen</li>
+<li><code>MinPhraseConfidence</code> Geringste Erkennungssicherheit aller erkannten Phrasen</li>
+<li><code>WordCount</code> Anzahl der erkannten Worte</li>
+<li><code>WordCondifenceSum</code> Summe der Erkennungssicherheit aller erkannten Worte</li>
+<li><code>MaxWordConfidence</code> Höchste Erkennungssicherheit aller erkannten Worte</li>
+<li><code>MeanWordConfidence</code> Mittlere Erkennungssicherheit aller erkannten Worte</li>
+<li><code>MinWordConfidence</code> Geringste Erkennungssicherheit aller erkannten Worte</li>
+<li><code>BestWordConfidence</code> Mittlere Erkennungssicherheit des am besten erkannten Wortes</li>
+</ul>
+<h2 id="distillery"><a href="#distillery">Analyse und Visualisierung</a></h2>
+<p><strong>Projektname:</strong> MediaCategorizer - Distillery<br /><strong>Repository:</strong> <a href="https://github.com/mastersign/mediacategorizer-distillery/">https://github.com/mastersign/mediacategorizer-distillery/</a><br /><strong>Verzeichnis:</strong> <code>/components/Distillery</code><br /><strong>Projekt-Typ:</strong> Leiningen<br /><strong>Programmiersprache:</strong> Clojure 1.5<br /><strong>Plattform, Bibiotheken:</strong> Java 7 Runtime, clojure, data.xml, enlive</p>
+<h3 id="merkmale-5"><a href="#merkmale-5">Merkmale</a></h3>
+<ul>
+<li>Befehlszeilenschnittstelle</li>
+<li>Analyse der Spracherkennungsergebnisse</li>
+<li>Erzeugung der Worthäufigkeitslisten für Videos und Kategorien</li>
+<li>Berechnung der Übereinstimmungskennzahlen</li>
+<li>Erzeugung der <abbr title="eXtensible Markup Language">XML</abbr>-Ausgabe</li>
+<li>Erzeugung der Reintext-Ausgabe</li>
+<li>Ansteuerung der Bibliothek <em>Mastersign Cloud</em></li>
+<li>Erzeugung der Ergebniswebseite</li>
+</ul>
+<h3 id="architektur-2"><a href="#architektur-2">Architektur</a></h3>
+<p><em>Distillery</em> ist nach dem funktionalen Programmierparadigma entwickelt und besteht aus einer Anzahl von Namensräumen und Funktionen in diesen Namensräumen. Es wurden keine expliziten Datentypen definiert, sondern ausschließlich die nativen Datentypen von Clojure verwendet (siehe <a href="intermediate-data-structures.html">Intermediate Data Structures</a>).</p>
+<p>In <a href="#img:d-architecture">Abbildung 17</a> werden die Namensräume und ihre Abhängigkeiten dargestellt. Der Einstiegspunkt für die Anwendung ist der Namensraum <code>distillery.core</code>. Die logischen Schritte der Verarbeitung und die Ausgabe der Fortschrittsmeldungen sind in <code>distillery.tasks</code> implementiert. Die Funktionen für die Analyse der Spracherkennungsergebnisse befinden sich im Namensraum <code>distillery.processing</code>. Die Namensräume <code>distillery.txtresult</code> und <code>distillery.xmlresult</code> enthalten Funktionen zur Ausgabe der Spracherkennungs- und Analyseergebnisse in Reintext und <abbr title="eXtensible Markup Language">XML</abbr>-Format. Die Namensräume in <code>distillery.view</code> enthalten die verschiedenen Teile für die Erzeugung der <abbr title="Hyper Text Markup Language">HTML</abbr>5-Webseite.</p>
+<p>Ergänzend gibt es die Namensräume <code>distillery.data</code>, <code>distillery.text</code> und <code>distillery.config</code>. Der Namesraum <code>distillery.data</code> enthält Funktionen für das Laden von externen Daten (z.B. Web-Seiten oder Textdateien) und einige allgemeine Hilfsfunktionen als Ergänzung zur <code>clojure.core</code>-Bibliothek. Der Namensraum <code>distillery.text</code> ist eine Abstraktionsschicht für Zeichenfolgenkonstanten, welche aus der Datei <code>Distillery/resources/text.edn</code> geladen werden. Diese Zwischenschicht bietet die Grundlage für die Wiederverwendung von Zeichenfolgen und stellt eine Vorbereitung für die Unterstützung von mehreren Ausgabesprachen dar. Der Namensraum <code>distillery.config</code> bietet eine Funktion für das Laden von Konfigurationsparametern an. Dabei werden Standardwerte aus der Datei <code>Distillery/resources/default-config.edn</code> geladen und mit den benutzerdefinierten Konfigurationsparameters aus der <a href="intermediate-data-structures.html#JobFile">Job-Datei</a> überlagert.</p>
+<p><a name="img:d-architecture"></a></p>
+<figure>
+<img src="images/diagrams/D_Architecture.png" alt="Abbildung 17: Die Architektur von Distillery" /><figcaption>Abbildung 17: Die Architektur von Distillery</figcaption>
+</figure>
+<h3 id="api"><a href="#api">API</a></h3>
+<p>Für eine ausführliche Beschreibung der Namensräume und Funktionen von <em>Distillery</em> steht die automatisch generierte API-Dokumentation im Verzeichnis <code>Distillery/doc/api.html</code> zur Verfügung.</p>
+<h3 id="befehlszeile"><a href="#befehlszeile">Befehlszeile</a></h3>
+<p><strong>Programmdatei:</strong> <code>distillery.jar</code></p>
+<p>Die Einstiegsfunktion von <em>Distillery</em> erwartet nur den Pfad zur <a href="intermediate-data-structures.html#JobFile">Job-Datei</a> als einziges Argument.</p>
+<p><strong>Beispiel:</strong> <code>&gt; java -jar &quot;D:\MediaCategorizer\tools\distillery.jar&quot; &quot;D:\work\job.saj&quot;</code></p>
+<h2 id="wortwolken"><a href="#wortwolken">Wortwolken</a></h2>
+<p><strong>Projektname:</strong> Mastersign Cloud<br /><strong>Repository:</strong> <a href="https://github.com/mastersign/mediacategorizer-distillery/">https://github.com/mastersign/mediacategorizer-distillery/</a><br /><strong>Verzeichnis:</strong> <code>/components/Distillery/src/mastersign</code><br /><strong>Projekt-Typ:</strong> Clojure-Bibliothek<br /><strong>Programmiersprache:</strong> Clojure 1.5<br /><strong>Plattform, Bibliotheken:</strong> Java 7 Runtime, clojure</p>
+<h3 id="merkmale-6"><a href="#merkmale-6">Merkmale</a></h3>
+<ul>
+<li>Clojure-Schnittstelle</li>
+<li>Visualisierung einer Wortmenge</li>
+<li>Unterstützung für zwei charakteristische Größen (Wortgröße, Farbe)</li>
+<li>Parameter für die Größe der Bildfläche</li>
+<li>Parameter für Hintergrund- und Vordergrundfarben</li>
+<li>Parameter für Schriftgrößen und -stilen</li>
+<li>Optional sortiertes Layout</li>
+<li>Parametrisierung für Darstellungsqualität (beeinflusst Laufzeit)</li>
+</ul>
+<h3 id="api-1"><a href="#api-1">API</a></h3>
+<p>Die Funktionen des Wortwolkengenerators befinden sich in dem Namensraum <code>mastersign.wordcloud</code>. Um eine Wortwolke zu erzeugen, sind die folgenden Schritte notwendig.</p>
+<ol type="1">
+<li>Sortieren der Wortliste, Zuweisen von Schriftart, Schriftgröße und Schriftfarbe, und Berechnen des Platzbedarfs der einzelnen Worte</li>
+<li>Berechnen der Position und Drehung aller Wörter die auf die Bildfläche passen</li>
+<li>Zeichnen der Wörter an den berechneten Position im entsprechenden Stil</li>
+</ol>
+<p>Um den ersten Schritt auszuführen, wird die Funktion <code>mastersign.wordcloud/build-word-infos</code> aufgerufen. Diese nimmt zwei Parameter entgegen: <code>word-data</code> und <code>args</code>. Das Argument <code>word-data</code> erwartet eine Sequenz von Vektoren/Tupeln mit folgendem Aufbau: <code>[id text v1 v2]</code> wobei <code>id</code> eine Zeichenkette zur eindeutigen Identifizierung des Wortes ist, <code>text</code> die darzustellende Zeichenfolge des Wortes, <code>v1</code> die Wert für die Schriftgröße und <code>v2</code> der Wert für die Schriftfarbe. Die Werte <code>v1</code> und <code>v2</code> sollten im Wertebereich <code>[0..1]</code> liegen. Ein Beispieldatensatz könnt z.B. wie folgt aussehen.</p>
+<pre><code>(def words [[&quot;b&quot; &quot;Bravo&quot; 0.1 0.9]
+            [&quot;a&quot; &quot;Alpha&quot; 0.4 0.8]
+            [&quot;c&quot; &quot;Charlie&quot; 1.0 0.2]
+            ...])</code></pre>
+<p>Das Argument <code>args</code> erwartet eine Map mit den folgenden Slots:</p>
+<ul>
+<li><code>:order-mode</code> steuert, nach welcher Worteigenschaft sortiert werden soll (<code>:id</code>, <code>:text</code>, <code>:value1</code>, <code>:value2</code>) (Standard: <code>:value1</code>)<br /> Die Sortierung wirkt sich später in der Position der Worte aus. Worte die am Anfang eingeordnet werde, erscheinen tendenziell in der Mitte der Wolke, Worte die am Ende eingeordnet werden, erscheinen tendenziell am Rand der Wolke.</li>
+<li><code>:font</code> Die Schriftart (mit Schriftfamilie und -stil): <code>java.awt.Font</code></li>
+<li><code>:color-fn</code> Eine Funktion, die einen Wert zwischen 0 und 1 auf eine <code>java.awt.Color</code>-Instanz abbildet (Standard: Eine Überblendung zwischen Blau und Orange)</li>
+<li><code>:min-font-size</code> Die kleinste zu verwendende Schriftgröße in Pixeln (Standard: <code>14</code>)</li>
+<li><code>:max-font-size</code> Die größte zu verwendende Schriftgröße in Pixeln (Standard: <code>80</code>)</li>
+</ul>
+<p>Ein Aufruf könnte z.B. wie folgt aussehen.</p>
+<pre><code>(def word-infos (build-word-infos words {:order-mode :value2}))</code></pre>
+<p>Wird anstelle der Standardsortierung von <code>:value1</code> die Sortierung <code>:value2</code> angegeben wird nicht nach Wortgröße sondern nach Farbe sortiert (siehe <a href="#img:cloud-sort-value2">Abbildung 19</a>).</p>
+<p>Das Ergebnis des Aufrufs ist eine Sequenz mit Maps als Elementen. Jedes Element besitzt dabei die folgenden Slots:</p>
+<ul>
+<li><code>:id</code> Die Id</li>
+<li><code>:text</code> Die Zeichenfolge</li>
+<li><code>:v1</code> Der erste Wert</li>
+<li><code>:v2</code> Der zweite Wert</li>
+<li><code>:font</code> Die Schriftart (mit Schriftfamilie, -größe und -stil): <code>java.awt.Font</code></li>
+<li><code>:color</code> Die Farbe: <code>java.awt.Color</code></li>
+<li><code>:word-bounds</code> Das Rechteck in dem alle Zeichen des Wortes Platz finden: <code>java.awt.geom.Rectangle2D.Float</code></li>
+<li><code>:glyph-bounds</code> Ein Vektor mit den Rechtecken in denen sich die einzelnen Zeichen des Wortes befinden: Vektor von <code>java.awt.geom.Rectangle2D.Float</code></li>
+</ul>
+<p>Für den zweiten Schritt wird die Funktion <code>mastersign.wordcloud/build-cloud-info</code> aufgerufen. Sie akzeptiert ebenfalls zwei Argumente: <code>word-infos</code> und <code>args</code>. Das Argument <code>word-infos</code> erwartet die Sequenz von Wortbeschreibungen in Form von Maps wie sie von <code>build-word-infos</code> zurückgegeben wird. Das zweite Argument erwartet eine Map, die die folgenden Steuerparameter enthalten muss:</p>
+<ul>
+<li><code>:width</code> Die Breite der Bildfläche in Pixeln (Standard: <code>600</code>)</li>
+<li><code>:height</code> Die Höhe der Bildfläche in Pixeln (Standard: <code>300</code>)</li>
+<li><code>:padding</code> Der minimale Randabstand zum Bildrand (Standard: <code>4</code>)</li>
+<li><code>:max-test-radius</code> Der maximale Abstand zum Mittelpunkt beim Suchen einer passenden Position (Standard: <code>350</code>)</li>
+<li><code>:order-priority</code> Ein Wert zwischen 0 und 1 der angibt, wie stark eine alphabetische Sortierung angewendet werden soll (Standard: <code>0.7</code>)</li>
+<li><code>:allow-rotation</code> Gibt an, ob Worte nach rechts oder links gedreht werden dürfen (Standard: <code>true</code>)</li>
+<li><code>:precision</code> Gibt die Präzision bei der Positionssuche als Wert zwischen 0 und 1 an (Standard: <code>0.4</code>)</li>
+<li><code>:final-refine</code> Gibt an, ob die Worte nach der Positionierung zusammengerückt werden sollen (Standard: <code>true</code>)</li>
+</ul>
+<p>Ein Aufruf könnte z.B. wie folgt aussehen.</p>
+<pre><code>(def cloud-info (build-cloud-info word-infos {:width 400 :height 400 :precision 0.7}))</code></pre>
+<p>Das Ergebnis des Aufrufs ist eine Map mit den folgenden Slots:</p>
+<ul>
+<li><code>:args</code> Die übergebene Map mit den Steuerparametern</li>
+<li><p><code>:word-infos</code> Die übergebene Sequenz mit den Wortbeschreibungen, wobei die Wortbeschreibungen um die folgenden Slots ergänzt wurden:</p>
+<ul>
+<li><code>:position</code> Mittelpunkt des Wortes</li>
+<li><code>:rotation</code> Ausrichtung des Wortes</li>
+<li><code>:rect</code> Das Rechteck in dem das Wort platziert wurde</li>
+</ul></li>
+<li><p><code>:test-area</code> Der Bereich der Bildfläche, der mit Worten gefüllt wurde</p></li>
+</ul>
+<p>Der dritte Schritt ist das Zeichnen der Wortwolke. Dazu wird die Funktion <code>mastersign.wordcloud/paint-cloud</code> aufgerufen. Sie akzeptiert als erstes Argument eine Map mit der Beschreibung der Wortwolke, wie sie von <code>mastersign.wordcloud/build-cloud-info</code> zurückgegeben wird. Als zweites Argument akzeptiert sie eine Map mit Steuerparametern, welche die Slots <code>:width</code> und <code>:height</code> enthalten muss. Die Funktion gibt ein <code>java.awt.image.BufferedImage</code> zurück.</p>
+<p>Der Aufruf könnte z.B. wie folgt aussehen.</p>
+<pre><code>(def img (paint-cloud cloud-info {:width 400 :height 400}))</code></pre>
+<p>Als Zusammenfassung der drei Schritte und Vereinfachung des Aufrufs kann die Funktion <code>mastersign.wordcloud/create-cloud</code> verwendet werden. Sie erwartet als erstes Argument eine Sequenz mit Wörtern in der Form wie sie <code>mastersign.wordcloud/build-word-info</code> erwartet. Als zusätzliche Argumente können alle Steuerparameter aus den oben genannten Maps mit dem Argumentnamen <code>args</code> verwendet werden.</p>
+<p>Ein Aufruf könnte z.B. wie folgt aussehen.</p>
+<pre><code>(def img (create-cloud words :width 400 :height 400 :precision 0.7 :order-mode :value2))</code></pre>
+<p>Die folgenden Abbildungen zeigen mögliche Ergebnisse.</p>
+<p><a name="img:cloud-sort-value1"></a></p>
+<figure>
+<img src="images/cloud/sort-value1.png" alt="Abbildung 18: Eine nach der Wortgröße sortierte Wortwolke" /><figcaption>Abbildung 18: Eine nach der Wortgröße sortierte Wortwolke</figcaption>
+</figure>
+<p><a name="img:cloud-sort-value2"></a></p>
+<figure>
+<img src="images/cloud/sort-value2.png" alt="Abbildung 19: Eine nach der Wortfarbe sortierte Wortwolke" /><figcaption>Abbildung 19: Eine nach der Wortfarbe sortierte Wortwolke</figcaption>
+</figure>
+<p><a name="img:cloud-sort-alpha"></a></p>
+<figure>
+<img src="images/cloud/sort-alpha.png" alt="Abbildung 20: Eine alphabetisch sortierte Wortwolke" /><figcaption>Abbildung 20: Eine alphabetisch sortierte Wortwolke</figcaption>
+</figure>
+<div class="references">
+
+</div>
+    </div>
+    
+</div>
+</body>
+</html>

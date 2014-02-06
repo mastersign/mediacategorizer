@@ -210,12 +210,16 @@ Defines a medium and all associated resources.
   _string_ the full name of the medium
 * **medium-file**  
   _string_ the absolute path to the original medium file
+* **medium-type**  
+  `:audio` | `:video` | `:unknown` the type of the medium
+* **encoded-media-files**  
+  _vector_ a vector with _[Media Files](#MediumFile)_
 * **recognition-profile**  
   _string_ the identifier for the selected speech recognition profile
   (for the Microsoft SAPI the identifier is a GUID)
 * **recognition-profile-name**  
   _string_ the human readable name of the selected speech recognition profile
-* **audio-file**  
+* **extracted-audio-file**  
   _string_ the absolute path to the extracted audio file `.wav` (PCM 16bit mono),
   used for speech recognition
 * **duration**  
@@ -229,11 +233,28 @@ Defines a medium and all associated resources.
 	{ :id "C1-P3-Intro"
       :name "Introduction"
       :medium-file "D:\\media\\c1\\p3_introduction.mp4"
+	  :medium-type :video
+	  :encoded-media-files [ {:mime-type "video/mp4" :path "D:\\media\\c1\\p3_introduction.mp4"} ]
       :recognition-profile ""
       :recognition-profile-name "en-US_female_03"
       :audio-file "D:\\media\\proc\\audio\\p3_introduction.wav"
       :waveform-file "D:\\media\\proc\\waveform\\p3_introduction.png"
       :results-file "D:\\media\\proc\\transcript\\p3_introduction.srr" }
+
+## Medium File {#MediumFile}
+The reference to an encoded media file. Encoded media files are prepared to be played with HTML5 video and audio elements inside a web browser.
+
+### Slots
+
+* **path**  
+  _string_ the absolute path to the encoded medium file
+* **mime-type**  
+  _string_ the MIME type of the medium file
+
+### Example
+
+	{ :path "D:\\media\\c1\\p3_introduction.mp4"
+	  :mime-type "video/mp4" }
 
 # Speech Recognition Result File {#SpeechRecognitionResultFile}
 File in [Clojure EDN syntax](http://edn-format.org/) with file extension `.srr`.

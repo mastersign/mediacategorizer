@@ -236,11 +236,14 @@ Die folgenden Einstellungen stehen zur Verfügung:
 	  Der relative oder absolute Pfad zur EXE-Datei der Transcripter-Komponente.
 	* **WaveViz**  
 	  Der relative oder absolute Pfad zur EXE-Date der WaveViz-Komponente.
-* *Verarbeitung*
+* *Ressourcen*
 	* **Download-Timeout**  
 	  Die Anzahl an Sekunden, nach denen ein Downloadversuch von Kategorie-Ressourcen abgebrochen wird. 
-	* **Mediendateiendungen**  
-	  Eine Komma-separierte Aufzählung mit allen Dateiendungen, die als Mediendateien zugelassen werden sollen.
+	* **Audiodateiendungen**  
+	  Eine Liste mit Dateiendungen für unterstützte Audiodateien. Die Endungen werden ohne führenden Punkt angegeben und durch Leerzeichen getrennt.
+	* **Videodateiendungen**  
+	  Eine Liste mit Dateiendungen für unterstützte Videodateien. Die Endungen werden ohne führenden Punkt angegeben und durch Leerzeichen getrennt.
+* *Verarbeitung*
 	* **Parallelisierung**  
 	  Gibt an, ob unabhängige Aufgaben parallel ausgeführt werden dürfen (`None`, `Manual`, `Auto`). `None` bedeutet, dass Aufgaben nicht parallel ausgeführt werden dürfen. `Manual` bedeutet, das nur eine begrenzte Anzahl von Aufgaben parallel ausgeführt werden dürfen. `Auto` gibt an, das so viele Aufgaben parallel ausgeführt werden dürfen, wie Prozessorkerne im System verfügbar sind.
 	* **Parallele Aufgaben**  

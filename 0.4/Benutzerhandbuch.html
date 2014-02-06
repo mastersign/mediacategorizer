@@ -829,10 +829,14 @@ header h1#subtitle {
 <li><strong>Transcripter</strong><br /> Der relative oder absolute Pfad zur EXE-Datei der Transcripter-Komponente.</li>
 <li><strong>WaveViz</strong><br /> Der relative oder absolute Pfad zur EXE-Date der WaveViz-Komponente.</li>
 </ul></li>
-<li><p><em>Verarbeitung</em></p>
+<li><p><em>Ressourcen</em></p>
 <ul>
 <li><strong>Download-Timeout</strong><br /> Die Anzahl an Sekunden, nach denen ein Downloadversuch von Kategorie-Ressourcen abgebrochen wird.</li>
-<li><strong>Mediendateiendungen</strong><br /> Eine Komma-separierte Aufzählung mit allen Dateiendungen, die als Mediendateien zugelassen werden sollen.</li>
+<li><strong>Audiodateiendungen</strong><br /> Eine Liste mit Dateiendungen für unterstützte Audiodateien. Die Endungen werden ohne führenden Punkt angegeben und durch Leerzeichen getrennt.</li>
+<li><strong>Videodateiendungen</strong><br /> Eine Liste mit Dateiendungen für unterstützte Videodateien. Die Endungen werden ohne führenden Punkt angegeben und durch Leerzeichen getrennt.</li>
+</ul></li>
+<li><p><em>Verarbeitung</em></p>
+<ul>
 <li><strong>Parallelisierung</strong><br /> Gibt an, ob unabhängige Aufgaben parallel ausgeführt werden dürfen (<code>None</code>, <code>Manual</code>, <code>Auto</code>). <code>None</code> bedeutet, dass Aufgaben nicht parallel ausgeführt werden dürfen. <code>Manual</code> bedeutet, das nur eine begrenzte Anzahl von Aufgaben parallel ausgeführt werden dürfen. <code>Auto</code> gibt an, das so viele Aufgaben parallel ausgeführt werden dürfen, wie Prozessorkerne im System verfügbar sind.</li>
 <li><strong>Parallele Aufgaben</strong><br /> Wenn <em>Parallelisierung</em> auf <code>Manual</code> steht, gibt dieser Parameter die Anzahl der maximal parallel laufenden Aufgaben an.</li>
 </ul></li>

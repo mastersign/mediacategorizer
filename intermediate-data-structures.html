@@ -624,6 +624,7 @@ header h1#subtitle {
 <li><a href="#ConfigFile">Configuration File</a><ul>
 <li><a href="#Configuration">Configuration</a></li>
 <li><a href="#CloudConfiguration">Cloud Configuration</a></li>
+<li><a href="#WaveformConfiguration">Waveform Configuration</a></li>
 </ul></li>
 <li><a href="#JobFile">Job File</a><ul>
 <li><a href="#JobDescription">Job Description</a></li>
@@ -633,7 +634,7 @@ header h1#subtitle {
 <li><a href="#MediumFile">Medium File</a></li>
 </ul></li>
 <li><a href="#SpeechRecognitionResultFile">Speech Recognition Result File</a><ul>
-<li><a href="#example-6">Example</a></li>
+<li><a href="#example-7">Example</a></li>
 <li><a href="#Phrase">Phrase</a></li>
 <li><a href="#SpeechRecognitionResult">Speech Recognition Result</a></li>
 <li><a href="#AlternatePhrase">Alternate Phrase</a></li>
@@ -694,6 +695,7 @@ header h1#subtitle {
 <li><strong>main-cloud</strong><br /> <em><a href="#CloudConfiguration">Cloud Configuration</a></em> the configuration map for the global word cloud</li>
 <li><strong>category-cloud</strong><br /> <em><a href="#CloudConfiguration">Cloud Configuration</a></em> the configuration map for the category word clouds</li>
 <li><strong>medium-cloud</strong><br /> <em><a href="#CloudConfiguration">Cloud Configuration</a></em> the configuration map for the medium word clouds</li>
+<li><strong>waveform</strong><br /> <em><a href="#WaveformConfiguration">Waveform Configuration</a></em> the configuration for the waveforms</li>
 </ul>
 <h3 id="example"><a href="#example">Example</a></h3>
 <pre><code>{ :parallel-proc true
@@ -738,11 +740,21 @@ header h1#subtitle {
   :max-font-size 70
   :color [0.0 0.3 0.8 1.0]
   :background-color [0.0 0.0 0.0 0.0] }</code></pre>
+<h2 id="WaveformConfiguration"><a href="#WaveformConfiguration">Waveform Configuration</a></h2>
+<p>A waveform configuration controls the creation of waveform visualizations for a medium.</p>
+<h3 id="slots-2"><a href="#slots-2">Slots</a></h3>
+<ul>
+<li><strong>width</strong><br /> <em>integer number</em> the width of the waveform in pixels</li>
+<li><strong>height</strong><br /> <em>integer number</em> the height of the waveform in pixels</li>
+</ul>
+<h3 id="example-2"><a href="#example-2">Example</a></h3>
+<pre><code>{ :width 640
+  :height 80 }</code></pre>
 <h1 id="JobFile"><a href="#JobFile">Job File</a></h1>
 <p>File in <a href="http://edn-format.org/">Clojure <abbr title="Extensible Data Notation">EDN</abbr> syntax</a> with file extension <code>.saj</code>. It is the input for the speech recognition result analysis and contains a <em><a href="#JobDescription">Job Description</a></em> structure. Part of a job is a name, a number of categories, a number of medium, and additional parameters like the output directory.</p>
 <h2 id="JobDescription"><a href="#JobDescription">Job Description</a></h2>
 <p>A job description contains all information necessary to perform the analysis and create the analysis result representation.</p>
-<h3 id="slots-2"><a href="#slots-2">Slots</a></h3>
+<h3 id="slots-3"><a href="#slots-3">Slots</a></h3>
 <ul>
 <li><strong>media-categorizer-version</strong><br /> <em>string</em> the version number of the MediaCategorizer tool</li>
 <li><strong>job-name</strong><br /> <em>string</em> short name for the job</li>
@@ -753,7 +765,7 @@ header h1#subtitle {
 <li><strong>categories</strong><br /> <em>vector</em> of <em><a href="#CategoryDescription">Category Descriptions</a></em></li>
 <li><strong>media</strong><br /> <em>vector</em> of <em><a href="#MediumDescription">Medium Descriptions</a></em></li>
 </ul>
-<h3 id="example-2"><a href="#example-2">Example</a></h3>
+<h3 id="example-3"><a href="#example-3">Example</a></h3>
 <pre><code>{ :media-categorizer-version &quot;1.0.0&quot;
   :job-name &quot;Archive 001&quot;
   :job-description &quot;The first part of the media archive.&quot;
@@ -764,13 +776,13 @@ header h1#subtitle {
   :media [ ... ] }</code></pre>
 <h2 id="CategoryDescription"><a href="#CategoryDescription">Category Description</a></h2>
 <p>Defines a category and all associated resources.</p>
-<h3 id="slots-3"><a href="#slots-3">Slots</a></h3>
+<h3 id="slots-4"><a href="#slots-4">Slots</a></h3>
 <ul>
 <li><strong>id</strong><br /> <em>string</em> a short identifier without white spaces and special chars</li>
 <li><strong>name</strong><br /> <em>string</em> the full name of the category</li>
 <li><strong>resources</strong><br /> <em>vector</em> a vector with <em><a href="#CategoryResourceDescription">Category Resource Descriptions</a></em></li>
 </ul>
-<h3 id="example-3"><a href="#example-3">Example</a></h3>
+<h3 id="example-4"><a href="#example-4">Example</a></h3>
 <pre><code>{ :id &quot;comb&quot;
   :name &quot;Combination&quot;
   :resources [ {:type :wikipedia, :url &quot;http://en.wikipedia.org/wiki/Combination&quot;}
@@ -778,7 +790,7 @@ header h1#subtitle {
                {:type :plain, :file &quot;D:\\text\\combination.txt&quot;} ] }</code></pre>
 <h2 id="CategoryResourceDescription"><a href="#CategoryResourceDescription">Category Resource Description</a></h2>
 <p>The reference to a category resource.</p>
-<h3 id="slots-4"><a href="#slots-4">Slots</a></h3>
+<h3 id="slots-5"><a href="#slots-5">Slots</a></h3>
 <ul>
 <li><strong>type</strong><br /> <code>:plain</code> | <code>:html</code> | <code>:wikipedia</code> the text type of the resource</li>
 <li><strong>url</strong><br /> <em>string</em> the <abbr title="Uniform Resource Locator">URL</abbr> to the resource</li>
@@ -786,7 +798,7 @@ header h1#subtitle {
 </ul>
 <h2 id="MediumDescription"><a href="#MediumDescription">Medium Description</a></h2>
 <p>Defines a medium and all associated resources.</p>
-<h3 id="slots-5"><a href="#slots-5">Slots</a></h3>
+<h3 id="slots-6"><a href="#slots-6">Slots</a></h3>
 <ul>
 <li><strong>id</strong><br /> <em>string</em> a short identifier without white spaces and special chars</li>
 <li><strong>name</strong><br /> <em>string</em> the full name of the medium</li>
@@ -798,9 +810,10 @@ header h1#subtitle {
 <li><strong>extracted-audio-file</strong><br /> <em>string</em> the absolute path to the extracted audio file <code>.wav</code> (<abbr title="Pulse Code Modulation">PCM</abbr> 16bit mono), used for speech recognition</li>
 <li><strong>duration</strong><br /> <em>floating point number</em> the length of the audio stream in seconds</li>
 <li><strong>waveform-file</strong><br /> <em>string</em> the absolute path to an image representing the waveform of the extracted audio</li>
+<li><strong>waveform-file-bg</strong><br /> <em>string</em> the absolute path to an image representing the background of the waveform of the extracted audio</li>
 <li><strong>results-file</strong><br /> <em>string</em> the absolute path to the speech recognition results file <code>*.srr</code></li>
 </ul>
-<h3 id="example-4"><a href="#example-4">Example</a></h3>
+<h3 id="example-5"><a href="#example-5">Example</a></h3>
 <pre><code>{ :id &quot;C1-P3-Intro&quot;
   :name &quot;Introduction&quot;
   :medium-file &quot;D:\\media\\c1\\p3_introduction.mp4&quot;
@@ -810,20 +823,21 @@ header h1#subtitle {
   :recognition-profile-name &quot;en-US_female_03&quot;
   :audio-file &quot;D:\\media\\proc\\audio\\p3_introduction.wav&quot;
   :waveform-file &quot;D:\\media\\proc\\waveform\\p3_introduction.png&quot;
+  :waveform-file-bg &quot;D:\\media\\proc\\waveform\\p3_introduction_2.png&quot;
   :results-file &quot;D:\\media\\proc\\transcript\\p3_introduction.srr&quot; }</code></pre>
 <h2 id="MediumFile"><a href="#MediumFile">Medium File</a></h2>
 <p>The reference to an encoded media file. Encoded media files are prepared to be played with <abbr title="Hyper Text Markup Language">HTML</abbr>5 video and audio elements inside a web browser.</p>
-<h3 id="slots-6"><a href="#slots-6">Slots</a></h3>
+<h3 id="slots-7"><a href="#slots-7">Slots</a></h3>
 <ul>
 <li><strong>path</strong><br /> <em>string</em> the absolute path to the encoded medium file</li>
 <li><strong>mime-type</strong><br /> <em>string</em> the MIME type of the medium file</li>
 </ul>
-<h3 id="example-5"><a href="#example-5">Example</a></h3>
+<h3 id="example-6"><a href="#example-6">Example</a></h3>
 <pre><code>{ :path &quot;D:\\media\\c1\\p3_introduction.mp4&quot;
   :mime-type &quot;video/mp4&quot; }</code></pre>
 <h1 id="SpeechRecognitionResultFile"><a href="#SpeechRecognitionResultFile">Speech Recognition Result File</a></h1>
 <p>File in <a href="http://edn-format.org/">Clojure <abbr title="Extensible Data Notation">EDN</abbr> syntax</a> with file extension <code>.srr</code>. The content is a vector of <em><a href="#SpeechRecognitionResult">Speech Recognition Results</a></em>.</p>
-<h2 id="example-6"><a href="#example-6">Example</a></h2>
+<h2 id="example-7"><a href="#example-7">Example</a></h2>
 <pre><code>[ { :no 0
     :start 0.3
     :duration 2.712
@@ -840,7 +854,7 @@ header h1#subtitle {
   ... ]</code></pre>
 <h2 id="Phrase"><a href="#Phrase">Phrase</a></h2>
 <p>A phrase is a sequence of recognized words.</p>
-<h3 id="slots-7"><a href="#slots-7">Slots</a></h3>
+<h3 id="slots-8"><a href="#slots-8">Slots</a></h3>
 <ul>
 <li><strong>confidence</strong><br /> <em>floating point number</em> <code>[0..1]</code> describing the overall confidence of this phrase</li>
 <li><strong>text</strong><br /> <em>string</em> with the text of the words in this phrase</li>
@@ -848,7 +862,7 @@ header h1#subtitle {
 </ul>
 <h2 id="SpeechRecognitionResult"><a href="#SpeechRecognitionResult">Speech Recognition Result</a></h2>
 <p>A speech recognition result describes the result yielded by the speech recognition engine, analyzing a section of an audio stream. The analyzed section is typically selected by an algorithm which considers among others values like length of silence, background noises, and maximal length of a section. A speech recognition of an audio section yields a number of alternative phrases. The phrase with the highest confidence is typically used as the recognized phrase for the audio section. A speech recognition result is a <em><a href="#Phrase">Phrase</a></em> as well.</p>
-<h3 id="slots-8"><a href="#slots-8">Slots</a></h3>
+<h3 id="slots-9"><a href="#slots-9">Slots</a></h3>
 <ul>
 <li><strong>no</strong><br /> <em>integer number</em> <code>[0..n]</code> identifying the result in the context of a medium</li>
 <li><strong>start</strong><br /> <em>floating point number</em> with the begin of the audio section in seconds</li>
@@ -858,7 +872,7 @@ header h1#subtitle {
 <li><strong>words</strong><br /> <em>vector</em> of the <em><a href="#RecognizedWord">Recognized Words</a></em> in the recognized phrase</li>
 <li><strong>alternates</strong> (optional)<br /> <em>vector</em> with <em><a href="#AlternatePhrase">Alternate Phrases</a></em></li>
 </ul>
-<h3 id="example-7"><a href="#example-7">Example</a></h3>
+<h3 id="example-8"><a href="#example-8">Example</a></h3>
 <pre><code>{ :no 0
   :start 24.35
   :duration 4.267
@@ -868,21 +882,21 @@ header h1#subtitle {
   :alternates [ ... ] }</code></pre>
 <h2 id="AlternatePhrase"><a href="#AlternatePhrase">Alternate Phrase</a></h2>
 <p>An alternate sequence of recognized words for an audio section. An alternate sequence is an extension of the <em><a href="#Phrase">Phrase</a></em> structure.</p>
-<h3 id="slots-9"><a href="#slots-9">Slots</a></h3>
+<h3 id="slots-10"><a href="#slots-10">Slots</a></h3>
 <ul>
 <li><strong>no</strong> <em>integer number</em> <code>[0..n]</code> identifying the phrase in the context of a <em><a href="#SpeechRecognitionResult">Speech Recognition Result</a></em></li>
 <li><strong>confidence</strong> <em>floating point number</em> <code>[0..1]</code> describing the overall confidence of this phrase</li>
 <li><strong>text</strong> <em>string</em> with the text of the words in this phrase</li>
 <li><strong>words</strong> <em>vector</em> of the <em><a href="#RecognizedWord">Recognized Words</a></em> in this phrase</li>
 </ul>
-<h3 id="example-8"><a href="#example-8">Example</a></h3>
+<h3 id="example-9"><a href="#example-9">Example</a></h3>
 <pre><code>{ :no 4
   :confidence 0.48992
   :text &quot;a brown fox run about the messy mill.&quot;
   :words [ ... ] }</code></pre>
 <h2 id="RecognizedWord"><a href="#RecognizedWord">Recognized Word</a></h2>
 <p>A recognized word is a word in the context of a recognition result. Every word is recognized with a certain confidence. The confidence values of the words in a phrase can be combined to an overall confidence for a phrase.</p>
-<h3 id="slots-10"><a href="#slots-10">Slots</a></h3>
+<h3 id="slots-11"><a href="#slots-11">Slots</a></h3>
 <ul>
 <li><strong>no</strong><br /> <em>integer number</em> <code>[0..n]</code> identifying the word in a phrase</li>
 <li><strong>confidence</strong><br /> <em>floating point number</em> <code>[0..1]</code> describing the confidence for the recognition of this word</li>
@@ -890,7 +904,7 @@ header h1#subtitle {
 <li><strong>lexical-form</strong><br /> <em>string</em> the lexical form of the word</li>
 <li><strong>pronunciation</strong><br /> <em>string</em> the <a href="http://en.wikipedia.org/wiki/International_Phonetic_Alphabet"><abbr title="International Phonetic Alphabet">IPA</abbr></a> pronunciation of the word in the context of the phrase</li>
 </ul>
-<h3 id="example-9"><a href="#example-9">Example</a></h3>
+<h3 id="example-10"><a href="#example-10">Example</a></h3>
 <pre><code>{ :no 2
   :confidence 0.6443
   :text &quot;brown&quot;
@@ -929,7 +943,7 @@ header h1#subtitle {
 <li><strong>occurrence-count</strong><br /> <em>integer number</em> <code>[1..n]</code> the number of occurrences (cached for easy accessibility)</li>
 <li><strong>mean-confidence</strong><br /> <em>floating point number</em> <code>[0..1]</code> mean recognition confidence</li>
 </ul>
-<h3 id="example-10"><a href="#example-10">Example</a></h3>
+<h3 id="example-11"><a href="#example-11">Example</a></h3>
 <pre><code>{ &quot;Grammar&quot; { :id &quot;grammar&quot;
               :lexical-form &quot;Grammar&quot;
               :pronunciation &quot;...&quot;
@@ -944,31 +958,31 @@ header h1#subtitle {
               :mean-confidence 0.895 }</code></pre>
 <h2 id="IndexStatistics"><a href="#IndexStatistics">Index Statistics</a></h2>
 <p>For computational reasons, an index map can be supported by some statistical values.</p>
-<h3 id="slots-11"><a href="#slots-11">Slots</a></h3>
+<h3 id="slots-12"><a href="#slots-12">Slots</a></h3>
 <ul>
 <li><strong>count</strong><br /> <em>integer number</em> <code>[0..n]</code> the number of words in the index</li>
 <li><strong>max-occurrence-count</strong><br /> <em>integer number</em> <code>[1..n]</code> the number of occurrences of the most frequent word</li>
 </ul>
-<h3 id="example-11"><a href="#example-11">Example</a></h3>
+<h3 id="example-12"><a href="#example-12">Example</a></h3>
 <pre><code>{ :count 233
   :max-occurrence-count: 35 } </code></pre>
 <h2 id="MediumWordOccurrence"><a href="#MediumWordOccurrence">Medium Word Occurrence</a></h2>
 <p>A medium word occurrence is the address to a recognized word in a medium.</p>
-<h3 id="slots-12"><a href="#slots-12">Slots</a></h3>
+<h3 id="slots-13"><a href="#slots-13">Slots</a></h3>
 <ul>
 <li><strong>medium-id</strong> <em>(optional)</em><br /> <em>string</em> medium id</li>
 <li><strong>result-no</strong><br /> <em>int</em> result number</li>
 <li><strong>word-no</strong><br /> <em>int</em> word number</li>
 <li><strong>confidence</strong><br /> <em>floating point number</em> <code>[0..1]</code> recognition confidence</li>
 </ul>
-<h3 id="example-12"><a href="#example-12">Example</a></h3>
+<h3 id="example-13"><a href="#example-13">Example</a></h3>
 <pre><code>{ :medium-id &quot;video1&quot; 
   :result-no 20 
   :word-no 3 
   :confidence 0.679 }</code></pre>
 <h2 id="MediumResult"><a href="#MediumResult">Medium Result</a></h2>
 <p>The analysis result for the recognized phrases of a medium extends the <em><a href="#MediumDescription">Medium Description</a></em> structure. The original <em><a href="#MediumDescription">Medium Description</a></em> from the vector in the <code>:media</code> slot of a <em><a href="#JobDescription">Job Description</a></em> structure is extended by the following slots:</p>
-<h3 id="slots-13"><a href="#slots-13">Slots</a></h3>
+<h3 id="slots-14"><a href="#slots-14">Slots</a></h3>
 <ul>
 <li><em>id</em></li>
 <li><em>name</em></li>
@@ -981,7 +995,7 @@ header h1#subtitle {
 <li><strong>matches</strong><br /> <em>map</em> a look-up table, which maps from category IDs to <em><a href="#CategoryMatch">Category Matches</a></em></li>
 <li><strong>max-score</strong><br /> <em>floating point value</em> <code>[0..1]</code> the maximal score between the medium and a category</li>
 </ul>
-<h3 id="example-13"><a href="#example-13">Example</a></h3>
+<h3 id="example-14"><a href="#example-14">Example</a></h3>
 <pre><code>{ :id &quot;video01&quot;
   :name &quot;The first medium&quot;
   ...
@@ -1004,7 +1018,7 @@ header h1#subtitle {
   :max-score 0.9323 }</code></pre>
 <h2 id="MediumWord"><a href="#MediumWord">Medium Word</a></h2>
 <p>A medium word is a word which occurs at least one time in the recognized phrases of a medium. Every medium word is represented by some statistical values and a list of <em><a href="#MediumWordOccurrence">Medium Word Occurrences</a></em>.</p>
-<h3 id="slots-14"><a href="#slots-14">Slots</a></h3>
+<h3 id="slots-15"><a href="#slots-15">Slots</a></h3>
 <ul>
 <li><strong>id</strong><br /> <em>string</em> an identifier, that can be used ax <abbr title="Hyper Text Markup Language">HTML</abbr>/<abbr title="eXtensible Markup Language">XML</abbr> ID or as a file name</li>
 <li><strong>lexical-form</strong><br /> <em>string</em> the lexical form of the word</li>
@@ -1014,7 +1028,7 @@ header h1#subtitle {
 <li><strong>mean-confidence</strong><br /> <em>floating point number</em> <code>[0..1]</code> mean recognition confidence</li>
 <li><strong>match-value</strong><br /> <em>floating point number</em> <code>[0..1]</code> the weight of this word in the context of the medium</li>
 </ul>
-<h3 id="example-14"><a href="#example-14">Example</a></h3>
+<h3 id="example-15"><a href="#example-15">Example</a></h3>
 <pre><code>{ :id &quot;bioinformatik&quot;
   :lexical-form &quot;Bioinformatik&quot;
   :pronunciation &quot;biːoːiːnfɔ͡ɐmaːˈtʰɪk&quot;
@@ -1028,20 +1042,20 @@ header h1#subtitle {
   :match-value 0.01522 }</code></pre>
 <h2 id="CategoryMatch"><a href="#CategoryMatch">Category Match</a></h2>
 <p>The category match describes the matching result between a medium and a category.</p>
-<h3 id="slots-15"><a href="#slots-15">Slots</a></h3>
+<h3 id="slots-16"><a href="#slots-16">Slots</a></h3>
 <ul>
 <li><strong>category-id</strong><br /> <em>string</em> the id of the matched category</li>
 <li><strong>word-scores</strong><br /> <em>map</em> a look-up table, which maps from word IDs to word matching scores</li>
 <li><strong>score</strong><br /> <em>floating point number</em> <code>[0..1]</code> the matching score between the medium and the category</li>
 </ul>
-<h3 id="example-15"><a href="#example-15">Example</a></h3>
+<h3 id="example-16"><a href="#example-16">Example</a></h3>
 <pre><code>{ :category-id &quot;math&quot;
   :word-scores { &quot;algorithm&quot; 0.00315
                  &quot;linear&quot; 2.4552E-4
                  ... } }</code></pre>
 <h2 id="CategoryResult"><a href="#CategoryResult">Category Result</a></h2>
 <p>The analysis result for the words of a category extends the <em><a href="#CategoryDescription">Category Description</a></em> structure. The original <em><a href="#CategoryDescription">Category Description</a></em> from the vector in the <code>:categories</code> slot of a <em><a href="#JobDescription">Job Description</a></em> structure is extended by the following slots:</p>
-<h3 id="slots-16"><a href="#slots-16">Slots</a></h3>
+<h3 id="slots-17"><a href="#slots-17">Slots</a></h3>
 <ul>
 <li><em>id</em></li>
 <li><em>name</em></li>
@@ -1052,7 +1066,7 @@ header h1#subtitle {
 <li><strong>matches</strong><br /> <em>map</em> a look-up table, which maps from media IDs to <em><a href="#MediumMatch">Medium Matches</a></em></li>
 <li><strong>max-score</strong><br /> <em>floating point value</em> <code>[0..1]</code> the maximal score between the category and a medium</li>
 </ul>
-<h3 id="example-16"><a href="#example-16">Example</a></h3>
+<h3 id="example-17"><a href="#example-17">Example</a></h3>
 <pre><code>{ :id &quot;math&quot;
   :name &quot;Mathematics&quot;
   ...
@@ -1073,21 +1087,21 @@ header h1#subtitle {
   :max-score 0.8554 }</code></pre>
 <h2 id="DescriptiveWord"><a href="#DescriptiveWord">Descriptive Word</a></h2>
 <p>A descriptive word is a word, describing a category as part of the category resources. The category resources are filtered to sequences of tokens and then concatenated to one token sequence per category. A descriptive word is a token in this sequence. The structure of a descriptive word is somehow similar to the <em><a href="#RecognizedWord">Recognized Word</a></em> structure</p>
-<h3 id="slots-17"><a href="#slots-17">Slots</a></h3>
+<h3 id="slots-18"><a href="#slots-18">Slots</a></h3>
 <ul>
 <li><strong>no</strong><br /> <em>integer number</em> <code>[0..n]</code> the position of the word in the token sequence</li>
 <li><strong>text</strong><br /> <em>string</em> the characters of the word</li>
 <li><strong>lexical-form</strong><br /> <em>string</em> a copy of the text to provide the same interface as <em><a href="#RecognizedWord">Recognized Words</a></em></li>
 <li><strong>confidence</strong><br /> <em>floating point number</em> has always the value of <code>1</code> because a descriptive word is part of the category resources and therefore has no recognition confidence</li>
 </ul>
-<h3 id="example-17"><a href="#example-17">Example</a></h3>
+<h3 id="example-18"><a href="#example-18">Example</a></h3>
 <pre><code>{ :no 455
   :text &quot;way&quot;
   :lexical-confidence &quot;way&quot;
   :confidence 1 }</code></pre>
 <h2 id="CategoryWord"><a href="#CategoryWord">Category Word</a></h2>
 <p>A category word is a word which occurs at least one time in the category resources. Every category word is represented by some statistical values and a list of <em><a href="#CategoryWordOccurrence">Category Word Occurrences</a></em>.</p>
-<h3 id="slots-18"><a href="#slots-18">Slots</a></h3>
+<h3 id="slots-19"><a href="#slots-19">Slots</a></h3>
 <ul>
 <li><strong>id</strong><br /> <em>string</em> an identifier, that can be used ax <abbr title="Hyper Text Markup Language">HTML</abbr>/<abbr title="eXtensible Markup Language">XML</abbr> ID or as a file name</li>
 <li><strong>lexical-form</strong><br /> <em>string</em> the lexical form of the word</li>
@@ -1096,7 +1110,7 @@ header h1#subtitle {
 <li><strong>mean-confidence</strong><br /> <em>floating point number</em> has always the value of <code>1</code> because all category word occurrences have the confidence of <code>1</code></li>
 <li><strong>match-value</strong><br /> <em>floating point number</em> <code>[0..1]</code> the weight of this word in the context of the category</li>
 </ul>
-<h3 id="example-18"><a href="#example-18">Example</a></h3>
+<h3 id="example-19"><a href="#example-19">Example</a></h3>
 <pre><code>{ :id &quot;bioinformatik&quot;
   :lexical-form &quot;Bioinformatik&quot;
   :occurrences [ {:category-id &quot;biology&quot;
@@ -1108,13 +1122,13 @@ header h1#subtitle {
   :match-value 0.01522 }</code></pre>
 <h2 id="MediumMatch"><a href="#MediumMatch">Medium Match</a></h2>
 <p>The medium match describes the matching result between a category and a medium.</p>
-<h3 id="slots-19"><a href="#slots-19">Slots</a></h3>
+<h3 id="slots-20"><a href="#slots-20">Slots</a></h3>
 <ul>
 <li><strong>medium-id</strong><br /> <em>string</em> the id of the matched medium</li>
 <li><strong>word-scores</strong><br /> <em>map</em> a look-up table, which maps from word IDs to word matching scores</li>
 <li><strong>score</strong><br /> <em>floating point number</em> <code>[0..1]</code> the matching score between the category and the medium</li>
 </ul>
-<h3 id="example-19"><a href="#example-19">Example</a></h3>
+<h3 id="example-20"><a href="#example-20">Example</a></h3>
 <pre><code>{ :medium-id &quot;video08&quot;
   :word-scores { &quot;hair&quot; 0.00023
                  &quot;tube&quot; 1.6882E-4

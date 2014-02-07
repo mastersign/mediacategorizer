@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>MediaCategorizer - Projekt-Website</title>
+    <title>MediaCategorizer - Release Notes</title>
     
     
     
@@ -616,14 +616,15 @@ header h1#subtitle {
     <header>
         
         <h1 id="title">MediaCategorizer</h1>
-        <h1 id="subtitle">Projekt-Website</h1>
+        <h1 id="subtitle">Release Notes</h1>
     </header>
     <a id="TOC"></a>
     <nav class="vertical fixed">
     	<ul>
-<li><a href="#funktionalität">Funktionalität</a></li>
-<li><a href="#dokumentation">Dokumentation</a></li>
-<li><a href="#screenshots">Screenshots</a></li>
+<li><a href="#v0.4.0">0.4.0</a></li>
+<li><a href="#v0.3.0">0.3.0</a></li>
+<li><a href="#v0.2.0">0.2.0</a></li>
+<li><a href="#v0.1.0">0.1.0</a></li>
 </ul>
     </nav>
     <div id="page">
@@ -633,59 +634,50 @@ header h1#subtitle {
             
             
         </div>
-    	<figure>
-<img src="images/MediaCategorizer.png" />
-</figure>
-<p>Eine Windows-Anwendung zur Verschriftlichung und Kategorisierung von Videos mit gesprochenem Inhalt.</p>
-<p>Diese Anwendung ist das Ergebnis eines Forschungsprojektes an der <a href="http://www.fh-brandenburg.de/">Fachhochschule Brandenburg</a> mit dem Namen “Online Lehr- und Lernhilfsmittel” (OLL). Das Projekt wurde gefördert mit Mitteln des Europäischen Fonds für Regionalentwicklung (<abbr title="Europäischer Fonds für regionale Entwicklung">EFRE</abbr>) in der Bewirtschaftung des <abbr title="Ministerium für Wissenschaft, Forschung und Kultur">MWFK</abbr> Programms “e-learning und e-knowledge”.</p>
-<p><strong>Projektleiter:</strong> Friedhelm Mündemann <script type="text/javascript">
-<!--
-h='&#102;&#104;&#x2d;&#98;&#114;&#x61;&#110;&#100;&#x65;&#110;&#98;&#x75;&#114;&#x67;&#46;&#100;&#x65;';a='&#64;';n='&#x6d;&#x75;&#x65;&#110;&#100;&#x65;&#x6d;&#x61;&#110;&#110;';e=n+a+h;
-document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+e+'<\/'+'a'+'>');
-// -->
-</script><noscript>&#x6d;&#x75;&#x65;&#110;&#100;&#x65;&#x6d;&#x61;&#110;&#110;&#32;&#x61;&#116;&#32;&#102;&#104;&#x2d;&#98;&#114;&#x61;&#110;&#100;&#x65;&#110;&#98;&#x75;&#114;&#x67;&#32;&#100;&#x6f;&#116;&#32;&#100;&#x65;</noscript><br /><strong>Mitarbeiter:</strong> Tobias Kiertscher <script type="text/javascript">
-<!--
-h='&#102;&#104;&#x2d;&#98;&#114;&#x61;&#110;&#100;&#x65;&#110;&#98;&#x75;&#114;&#x67;&#46;&#100;&#x65;';a='&#64;';n='&#x6b;&#x69;&#x65;&#114;&#116;&#x73;&#x63;&#104;&#x65;&#114;';e=n+a+h;
-document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+e+'<\/'+'a'+'>');
-// -->
-</script><noscript>&#x6b;&#x69;&#x65;&#114;&#116;&#x73;&#x63;&#104;&#x65;&#114;&#32;&#x61;&#116;&#32;&#102;&#104;&#x2d;&#98;&#114;&#x61;&#110;&#100;&#x65;&#110;&#98;&#x75;&#114;&#x67;&#32;&#100;&#x6f;&#116;&#32;&#100;&#x65;</noscript><br /><strong>Bearbeitungszeit:</strong> 07.2013 - 01.2014</p>
-<p><strong>Lizenz:</strong> <a href="http://opensource.org/licenses/MIT">MIT License</a><br /><strong>Download:</strong> <a href="https://github.com/mastersign/mediacategorizer/releases">https://github.com/mastersign/mediacategorizer/releases</a> (<a href="release-notes.html">Release Notes</a>)</p>
-<p><strong>Quelltexte:</strong></p>
+    	<h1 id="v0.4.0"><a href="#v0.4.0">0.4.0</a></h1>
 <ul>
-<li><a href="https://github.com/mastersign/mediacategorizer">https://github.com/mastersign/mediacategorizer</a></li>
-<li><a href="https://github.com/mastersign/mediacategorizer-ui">https://github.com/mastersign/mediacategorizer-ui</a></li>
-<li><a href="https://github.com/mastersign/mediacategorizer-transcripter">https://github.com/mastersign/mediacategorizer-transcripter</a></li>
-<li><a href="https://github.com/mastersign/mediacategorizer-distillery">https://github.com/mastersign/mediacategorizer-distillery</a></li>
+<li>Unterstützung für das Laden von Kategorie-Resourcen hinter einem HTTP-Proxy</li>
+<li>Unterstützung für Audiodateien</li>
+<li>Begriff “Video” durch “Medium” ersetzt</li>
+<li>Link auf Projektwebseite zur Infoseite in der Benutzeroberfläche</li>
+<li>Verwaltung von Medien und Kategorien vereinfacht, vereinheitlicht</li>
+<li>eingebautes Browser-Fenster zur Ressourcenauswahl</li>
+<li>Wellenform in interaktive Steuerung für Player umgebaut</li>
+<li>Systemarchitektur dokumentiert</li>
 </ul>
-<h1 id="funktionalität"><a href="#funktionalität">Funktionalität</a></h1>
+<h1 id="v0.3.0"><a href="#v0.3.0">0.3.0</a></h1>
+<p><em>(Projektabschluss 31.01.2014)</em></p>
 <ul>
-<li>Die Tonspur aus einer Anzahl von Videos herauslösen</li>
-<li>und diese mit Hilfe eines Spracherkennungssystems verschriftlichen</li>
-<li>Eine Gruppe von Kategorien durch Beispieltexte definieren</li>
-<li>Die Videos den Kategorien zuordnen</li>
-<li>Die Ergebnisse als <abbr title="eXtensible Markup Language">XML</abbr> und als <abbr title="Hyper Text Markup Language">HTML</abbr>5-WebSite ausgeben</li>
+<li>Wellenform hinzugefügt</li>
+<li>Reintext-Ausgabe des Transkripts für alle Videos</li>
+<li>kleinere visuelle Verbesserungen der Ergebniswebseite</li>
+<li>Benutzerhandbuch</li>
+<li>Hilfe-Schaltfläche in der Benutzeroberfläche</li>
+<li>Marginalia-API-Dokumentation zu Distillery hinzugefügt</li>
+<li>Dokumentation verbessert</li>
 </ul>
-<h1 id="dokumentation"><a href="#dokumentation">Dokumentation</a></h1>
+<h1 id="v0.2.0"><a href="#v0.2.0">0.2.0</a></h1>
+<p><em>(kein öffentlicher Build)</em></p>
 <ul>
-<li><a href="Forschungsergebnisse.html">Forschungsbericht</a></li>
-<li><a href="Benutzerhandbuch.html">Benutzerhandbuch</a></li>
-<li><a href="Sprecherprofilverwaltung.html">Sprecherprofilverwaltung</a></li>
-<li><a href="Systemarchitektur.html">Systemarchitektur</a></li>
-<li><a href="Webseitenstruktur.html">Ergebniswebseitenstruktur</a></li>
-<li><a href="intermediate-data-structures.html">Intermediate Data Structures</a></li>
+<li>Verbesserte Darstellung der Übereinstimmungen zwischen Videos und Kategorien</li>
+<li>Unterstützung von projektspezifischen Parametern für Wortwolken</li>
+<li>Minimale Worthäufigkeit als Parameter</li>
+<li>Unterstützung für Projekt ohne Kategorien</li>
+<li>Infoseite zur Benutzeroberfläche hinzugefügt</li>
+<li>Überarbeitete Standard-Blacklist</li>
+<li>Stabilität der Benutzeroberfläche verbessert</li>
+<li>Abbrechen aller laufenden Unterprozesse beim Beenden der Benutzeroberfläche</li>
+<li>Hervorhebung des Wortes auf den Detailseiten für Wörter (rot)</li>
+<li>erläuternde Texte zur Ergebniswebseite hinzugefügt</li>
+<li>Zeichenketten für Ergebniswebseite zentralisiert</li>
+<li>Quellen aufgeräumt</li>
+<li>Verbesserte Erkennung von Symbolen und Sonderzeichen im Spracherkennungsergebnis</li>
 </ul>
-<h1 id="screenshots"><a href="#screenshots">Screenshots</a></h1>
-<figure>
-<img src="images/ui-page-process.png" alt="Die Fortschrittsanzeige während der Bearbeitung eines Projektes" /><figcaption>Die Fortschrittsanzeige während der Bearbeitung eines Projektes</figcaption>
-</figure>
-<figure>
-<img src="images/video_word.png" alt="Die Details eines erkannten Wortes" /><figcaption>Die Details eines erkannten Wortes</figcaption>
-</figure>
-<figure>
-<img src="images/matrix.png" alt="Die Übereinstimmungsmatrix zwischen Kategorien und Videos" /><figcaption>Die Übereinstimmungsmatrix zwischen Kategorien und Videos</figcaption>
-</figure>
-<hr />
-<p>Copyright © 2014 Tobias Kiertscher, Fachhochschule Brandenburg.</p>
+<h1 id="v0.1.0"><a href="#v0.1.0">0.1.0</a></h1>
+<p><em>(kein öffentlicher Build)</em></p>
+<ul>
+<li>Erste lauffähige Version</li>
+</ul>
 <div class="references">
 
 </div>

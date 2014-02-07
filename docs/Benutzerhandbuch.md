@@ -188,19 +188,27 @@ Die Seite *Parameter* führt eine Reihe von Einstellungen auf, die den Prozess s
 	  Steuert die Erzeugung einer Wortwolke für die Worte aus einem Medium.
 		* ... (siehe *Globale Wortwolke*)
 	* **Wellenformvisualisierung**  
-	  Steuert die Erzeugung der Wellenform aus der Mediendatei.
+	  Steuert die Erzeugung der Wellenform aus der Mediendatei. Jede Wellenform wird zweimal visualisert, einmal aktiv und einmal passiv. Die passive Darstellung ist immer zusehen, die aktive Darstellung ist nur für den Bereich zu sehen der bereits abgespielt wurde. 
 		* **Breite (px)**  
 		  Gibt die Breite der Bildfläche in Pixeln an.
 		* **Höhe (px)**  
 		  Gibt die Höhe der Bildfläche in Pixeln an.
 		* **Hintergrund**  
-		  Gibt die Farbe des Hintergrundes an.
+		  Gibt die Farbe des aktiven Hintergrundes an.
 		* **Horizontlinie**  
-		  Gibt die Farbe der Horizontlinie an.
+		  Gibt die Farbe der aktiven Horizontlinie an.
 		* **Wellenform 1**  
-		  Gibt die erste Farbe für den Farbverlauf der Wellenform an. Die erste Farbe wird nahe der Horizontlinie verwendet.
+		  Gibt die erste Farbe für den Farbverlauf der aktiven Wellenform an. Die erste Farbe wird nahe der Horizontlinie verwendet.
 		* **Wellenform 2**  
-		  Gibt die zweite Farbe für den Farbverlauf der Wellenform an. Die zweite Farbe wird fern der Horizontlinie verwendet.
+		  Gibt die zweite Farbe für den Farbverlauf der aktiven Wellenform an. Die zweite Farbe wird fern der Horizontlinie verwendet.
+		* **Passiver Hintergrund**  
+		  Gibt die Farbe des passiven Hintergrundes an.
+		* **Passive Horizontlinie**  
+		  Gibt die Farbe der passiven Horizontlinie an.
+		* **Passive Wellenform 1**  
+		  Gibt die erste Farbe für den Farbverlauf der passiven Wellenform an. Die erste Farbe wird nahe der Horizontlinie verwendet.
+		* **Passive Wellenform 2**  
+		  Gibt die zweite Farbe für den Farbverlauf der passiven Wellenform an. Die zweite Farbe wird fern der Horizontlinie verwendet.
 
 ### Ausführung {#PageProcessing}
 Auf der Seite *Ausführung* kann der Prozess gestartet und der Fortschritt der Ausführung beobachtet werden. Sie besteht aus einem Kopfbereich der den globalen Fortschritt der Ausführung anzeigt, eine Liste mit Aufgaben und am Fuß eine Schaltfläche zum Starten des Projektes.

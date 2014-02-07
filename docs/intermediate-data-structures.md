@@ -66,6 +66,8 @@ speech recognition results and the creation of the output.
   _[Cloud Configuration](#CloudConfiguration)_ the configuration map for the category word clouds
 * **medium-cloud**  
   _[Cloud Configuration](#CloudConfiguration)_ the configuration map for the medium word clouds
+* **waveform**  
+  _[Waveform Configuration](#WaveformConfiguration)_ the configuration for the waveforms
 
 ### Example
 	{ :parallel-proc true
@@ -126,6 +128,20 @@ A cloud configuration controls the creation of a word cloud.
 	  :max-font-size 70
 	  :color [0.0 0.3 0.8 1.0]
 	  :background-color [0.0 0.0 0.0 0.0] }
+
+## Waveform Configuration {#WaveformConfiguration}
+A waveform configuration controls the creation of waveform visualizations for a medium.
+
+### Slots
+* **width**  
+  _integer number_ the width of the waveform in pixels
+* **height**  
+  _integer number_ the height of the waveform in pixels
+
+### Example
+
+	{ :width 640
+	  :height 80 }
 
 # Job File {#JobFile}
 File in [Clojure EDN syntax](http://edn-format.org/) with file extension `.saj`.
@@ -226,6 +242,8 @@ Defines a medium and all associated resources.
   _floating point number_ the length of the audio stream in seconds
 * **waveform-file**  
   _string_ the absolute path to an image representing the waveform of the extracted audio
+* **waveform-file-bg**  
+  _string_ the absolute path to an image representing the background of the waveform of the extracted audio
 * **results-file**  
   _string_ the absolute path to the speech recognition results file `*.srr`
 
@@ -239,6 +257,7 @@ Defines a medium and all associated resources.
       :recognition-profile-name "en-US_female_03"
       :audio-file "D:\\media\\proc\\audio\\p3_introduction.wav"
       :waveform-file "D:\\media\\proc\\waveform\\p3_introduction.png"
+	  :waveform-file-bg "D:\\media\\proc\\waveform\\p3_introduction_2.png"
       :results-file "D:\\media\\proc\\transcript\\p3_introduction.srr" }
 
 ## Medium File {#MediumFile}

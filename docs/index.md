@@ -6,7 +6,7 @@ lang: de
 
 ![][logo]
 
-Eine Windows-Anwendung zur Verschriftlichung und Kategorisierung von Videos mit gesprochenem Inhalt.
+Eine Windows-Anwendung zur Verschriftlichung und Kategorisierung von Audio- und Videodateien mit gesprochenem Inhalt.
 
 Diese Anwendung ist das Ergebnis eines Forschungsprojektes an der [Fachhochschule Brandenburg][fhb] mit dem Namen "Online Lehr- und Lernhilfsmittel" (OLL). Das Projekt wurde gefördert mit Mitteln des Europäischen Fonds für Regionalentwicklung (EFRE) in der Bewirtschaftung des MWFK Programms "e-learning und e-knowledge".
 
@@ -17,7 +17,7 @@ Diese Anwendung ist das Ergebnis eines Forschungsprojektes an der [Fachhochschul
 **Lizenz:** [MIT License][mit-lic]  
 **Download:** <https://github.com/mastersign/mediacategorizer/releases> ([Release Notes][release-notes])
 
-**Quelltexte:**
+**Quellen:**
 
 * <https://github.com/mastersign/mediacategorizer>
 * <https://github.com/mastersign/mediacategorizer-ui>

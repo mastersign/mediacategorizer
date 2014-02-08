@@ -6,7 +6,7 @@ lang: de
 
 # 0.4.0 {#v0.4.0}
 
-* Unterstützung für das Laden von Kategorie-Resourcen hinter einem HTTP-Proxy
+* Unterstützung für das Laden von Kategorieressourcen hinter einem HTTP-Proxy
 * Unterstützung für Audiodateien
 * Begriff "Video" durch "Medium" ersetzt
 * Link auf Projektwebseite zur Infoseite in der Benutzeroberfläche

@@ -7,8 +7,8 @@ creator:
   name: Tobias Kiertscher
   affiliation: Fachhochschule Brandenburg
   email: kiertscher@fh-brandenburg.de
-version: 0.4.0
-date: 05.02.2014
+version: 0.5.0
+date: 10.02.2014
 lang: de
 ...
 
@@ -152,6 +152,8 @@ Die Seite *Parameter* führt eine Reihe von Einstellungen auf, die den Prozess s
 * *Transkodierung*
 	* **Medien transkodieren**  
 	  Gibt an, ob das Kopieren der Medien in die Ausgabe übersprungen werden soll.
+	* **Video in Audio umwandeln**  
+	  Gibt an, ob bei Videomedien nur die Tonspur in die Ergebniswebseite eingebunden werden soll.
 	* **Video-Breite**  
 	  Gibt die Breite des Video-Bildes an. Die Höhe ergibt sich aus dem Seitenverhältnis des Originalvideos.
 	* **Audio-Format MP3**  

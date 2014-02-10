@@ -4,6 +4,11 @@ subtitle: Release Notes
 lang: de
 ...
 
+# 0.5.0 {#v0.5.0}
+
+* Transkodieren der Originalmedien in Browser-kompatible Formate (MP3, MP4, OGG, WebM)
+* Umwandeln von Video- in Audiomedien für die Ergebnisausgabe
+
 # 0.4.0 {#v0.4.0}
 
 * Unterstützung für das Laden von Kategorieressourcen hinter einem HTTP-Proxy

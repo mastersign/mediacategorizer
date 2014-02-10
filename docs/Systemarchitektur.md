@@ -7,8 +7,8 @@ creator:
   name: Tobias Kiertscher
   affiliation: Fachhochschule Brandenburg
   email: kiertscher@fh-brandenburg.de
-version: 0.4.0
-date: 05.02.2014
+version: 0.5.0
+date: 10.02.2014
 lang: de
 ...
 
@@ -156,6 +156,10 @@ Dieser Namensraum enthält die Klassen für die verschiedenen Prozessschritte. J
 Die Klasse `ProcessChain` verwaltet den gesamten Prozess und übernimmt das Starten der Prozessschritte, wenn deren Vorgänger im Prozess erfolgreich abgeschlossen wurden (siehe [#img:ui-process-chain]). 
 
 ![#img:ui-process-chain Die zentrale Steuerung für den Prozess][ui-process-chain]
+
+Wann welche Prozessschritte gestartet werden, hängt von deren Abhängigkeiten ab. Ein Prozessschritt wird genau dann gestartet, wenn alle Prozessschritte, von denen er abhängig ist, erfolgreich ausgeführt wurden. Prozessschritte ohne Abhängigkeiten werden mit dem Start des Gesamtprozesses gestartet. In [#img:ui-process-deps] sind die Abhängigkeiten zwischen den Prozessschritten visualisiert.   
+
+![#img:ui-process-deps Die Abhängigkeiten zwischen den Prozessschritten][ui-process-deps]
 
 #### `de.fhb.oll.mediacategorizer.tools`
 
@@ -486,6 +490,7 @@ Die folgenden Abbildungen zeigen mögliche Ergebnisse.
 [architecture]: images/diagrams/Architecture.png
 [ui-ns]: images/diagrams/Namespaces.png
 [ui-ui]: images/diagrams/UI.png
+[ui-process-deps]: images/diagrams/ProcessDependencies.png
 [ui-project]: images/diagrams/Project.png
 [ui-configuration]: images/diagrams/Configuration.png
 [ui-iprocess]: images/diagrams/IProcess.png

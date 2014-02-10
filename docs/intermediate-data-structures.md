@@ -7,8 +7,8 @@ creator:
   name: Tobias Kiertscher
   affiliation: Brandenburg University of Applied Sciences
   email: kiertscher@fh-brandenburg.de
-version: 0.4.0
-date: 2014-02-05
+version: 0.5.0
+date: 2014-02-10
 lang: en
 ...
 

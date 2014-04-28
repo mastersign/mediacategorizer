@@ -7,8 +7,8 @@ creator:
   role: Autor
   affiliation: Fachhochschule Brandenburg
   email: kiertscher@fh-brandenburg.de
-version: 0.3.0
-date: 31.01.2014
+version: 0.5.0
+date: 10.02.2014
 lang: de
 ...
 

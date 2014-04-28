@@ -7,8 +7,8 @@ creator:
   name: Tobias Kiertscher
   affiliation: Fachhochschule Brandenburg
   email: kiertscher@fh-brandenburg.de
-version: 0.4.0
-date: 05.02.2014
+version: 0.5.0
+date: 10.02.2014
 lang: de
 ...
 
@@ -149,6 +149,59 @@ Die Seite *Parameter* führt eine Reihe von Einstellungen auf, die den Prozess s
 	  Gibt an, wie viel vom Anfang der Tonspuren mit allen installierten Sprecherprofilen verarbeitet werden soll, um für jedes Medium das beste Sprecherprofil auszuwählen.
 	* **Profilauswahlkriterium**  
 	  Gibt die statistische Größe an, anhand derer das beste Sprecherprofil für ein Medium ausgewählt wird.
+* *Transkodierung*
+	* **Medien transkodieren**  
+	  Gibt an, ob das Kopieren der Medien in die Ausgabe übersprungen werden soll.
+	* **Video in Audio umwandeln**  
+	  Gibt an, ob bei Videomedien nur die Tonspur in die Ergebniswebseite eingebunden werden soll.
+	* **Video-Breite**  
+	  Gibt die Breite des Video-Bildes an. Die Höhe ergibt sich aus dem Seitenverhältnis des Originalvideos.
+	* **Audio-Format MP3**  
+	  Aktiviert die Transkodierung von Audio-Dateien in MP3-Dateien. (IE 9, Chrome, Firefox 21, Opera 14, Safari 3.1)
+	* **Audio-Format OGG**  
+	  Aktiviert die Transkodierung von Audio-Dateien in Vorbis kodierte OGG-Dateien. (Chrome 9, Firefox 3.5, Opera 10.50, Safari)
+	* **Audio-Parameter MP3**  
+	  Die Parameter für die Audio-Transkodierung in das MP3-Format.
+		* **Audio-Bitrate (KB)**  
+		  Die Ziel-Bitrate des Audio-Datestroms.
+		* **Mono-Tonspur**  
+		  Gibt an, ob die Audio-Kanäle des Originalmediums in einen Mono-Kanal konvertiert werden sollen.
+	* **Audio-Parameter OGG**  
+	  Die Parameter für die Audio-Transkodierung in das OGG-Format.
+		* **Audio-Bitrate (KB)**  
+		  Die Ziel-Bitrate des Audio-Datestroms.
+		* **Mono-Tonspur**  
+		  Gibt an, ob die Audio-Kanäle des Originalmediums in einen Mono-Kanal konvertiert werden sollen.
+	* **Video-Format MP4**  
+	  Aktiviert die Transkodierung von Video-Dateien in H.264/AAC kodierte MP4-Dateien. (IE 9, Chrome 3, Firefox 21, Konqueror 4.4, Safari 3.1, Android 3.0)
+	* **Video-Format OGG**  
+	  Aktiviert die Transkodierung von Video-Dateien in Theora/Vorbis kodierte OGG-Dateien. (Chrome 3, Firefox 3.5, Konqueror 4.4, Opera 10.50, Android 2.3)
+	* **Video-Format WebM**  
+	  Aktiviert die Transkodierung von Video-Dateien in VP8/Vorbis kodierte WebM-Dateien. (Chrome 6, Firefox 4.0, Konqueror 4.4, Opera 10.60, Android 2.3)
+	* **Video-Parameter MP4**  
+	  Die Parameter für die Video-Transkodierung in das MP4-Format.
+		* **Audio-Bitrate (KB)**  
+		  Die Ziel-Bitrate des Audio-Datestroms.
+		* **Video-Bitrate (KB)**  
+		  Die Ziel-Bitrate des Video-Datenstroms.
+		* **Mono-Tonspur**  
+		  Gibt an, ob die Audio-Kanäle des Originalmediums in einen Mono-Kanal konvertiert werden sollen.
+	* **Video-Parameter OGG**  
+	  Die Parameter für die Video-Transkodierung in das OGG-Format.
+		* **Audio-Bitrate (KB)**  
+		  Die Ziel-Bitrate des Audio-Datestroms.
+		* **Video-Bitrate (KB)**  
+		  Die Ziel-Bitrate des Video-Datenstroms.
+		* **Mono-Tonspur**  
+		  Gibt an, ob die Audio-Kanäle des Originalmediums in einen Mono-Kanal konvertiert werden sollen.
+	* **Video-Parameter WebM**  
+	  Die Parameter für die Video-Transkodierung in das WebM-Format.
+		* **Audio-Bitrate (KB)**  
+		  Die Ziel-Bitrate des Audio-Datestroms.
+		* **Video-Bitrate (KB)**  
+		  Die Ziel-Bitrate des Video-Datenstroms.
+		* **Mono-Tonspur**  
+		  Gibt an, ob die Audio-Kanäle des Originalmediums in einen Mono-Kanal konvertiert werden sollen.
 * *Verarbeitung*
 	* **Arbeitsverzeichnis aufräumen**  
 	  Gibt an, dass nach erfolgreicher Ausführung des Prozesses alle temporären Zwischenergebnisse gelöscht werden sollen. Diese stehen dann für eine wiederholte Ausführung nicht mehr zur Verfügung.

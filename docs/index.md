@@ -1,11 +1,12 @@
 ---
 title: MediaCategorizer
 subtitle: Projekt-Website
+lang: de
 ...
 
 ![][logo]
 
-Eine Windows-Anwendung zur Verschriftlichung und Kategorisierung von Videos mit gesprochenem Inhalt.
+Eine Windows-Anwendung zur Verschriftlichung und Kategorisierung von Audio- und Videodateien mit gesprochenem Inhalt.
 
 Diese Anwendung ist das Ergebnis eines Forschungsprojektes an der [Fachhochschule Brandenburg][fhb] mit dem Namen "Online Lehr- und Lernhilfsmittel" (OLL). Das Projekt wurde gefördert mit Mitteln des Europäischen Fonds für Regionalentwicklung (EFRE) in der Bewirtschaftung des MWFK Programms "e-learning und e-knowledge".
 
@@ -13,10 +14,10 @@ Diese Anwendung ist das Ergebnis eines Forschungsprojektes an der [Fachhochschul
 **Mitarbeiter:** Tobias Kiertscher <kiertscher@fh-brandenburg.de>  
 **Bearbeitungszeit:** 07.2013 - 01.2014  
 
-**Download:** <https://github.com/mastersign/mediacategorizer/releases>  
-**Lizenz:** [MIT License][mit-lic]
+**Lizenz:** [MIT License][mit-lic]  
+**Download:** <https://github.com/mastersign/mediacategorizer/releases> ([Release Notes][release-notes])
 
-**Quelltexte:**
+**Quellen:**
 
 * <https://github.com/mastersign/mediacategorizer>
 * <https://github.com/mastersign/mediacategorizer-ui>
@@ -63,6 +64,7 @@ Copyright &copy; 2014 Tobias Kiertscher, Fachhochschule Brandenburg.
 [architecture]: Systemarchitektur.html
 [site-structure]: Webseitenstruktur.html
 [intermediates]: intermediate-data-structures.html
+[release-notes]: release-notes.html
 
 [fhb]: http://www.fh-brandenburg.de/
 [mit-lic]: http://opensource.org/licenses/MIT

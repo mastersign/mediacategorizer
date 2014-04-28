@@ -7,20 +7,20 @@ creator:
   name: Tobias Kiertscher
   affiliation: Fachhochschule Brandenburg
   email: kiertscher@fh-brandenburg.de
-version: 0.3.0
-date: 31.01.2014
+version: 0.4.0
+date: 05.02.2014
 lang: de
 ...
 
 Dieses Dokument bietet eine knappe Übersicht über die technische Struktur der Ergebniswebseite, die von MediaCategorizer ausgegeben wird. Es richtet sich an Entwickler, die die Projektausgabe an eigene Bedürfnisse anpassen möchten. Das Dokument ist als Orientierungshilfe und Nachschlagewerk konzipiert.
 
-In der Webseite werden alle verarbeiteten Videos und Kategorien aufgeführt. Für jedes Video und jede Kategorie ist ein individuelles Glossar und eine Wortwolke in der Webseite enthalten. Des Weiteren ist ein Video-übergreifendes Glossar und eine Video-übergreifende Wortwolke enthalten. Die Übereinstimmungen zwischen Videos und Kategorien werden übersichtlich in einer Matrix dargestellt.
+In der Webseite werden alle verarbeiteten Medien und Kategorien aufgeführt. Für jedes Medium und jede Kategorie ist ein individuelles Glossar und eine Wortwolke in der Webseite enthalten. Des Weiteren ist ein Medien-übergreifendes Glossar und eine Medien-übergreifende Wortwolke enthalten. Die Übereinstimmungen zwischen Medien und Kategorien werden übersichtlich in einer Matrix dargestellt.
 
 Die Webseite ist in unterschiedliche Kontexte aufgeteilt:
 
-* **Projektkontext** alle Videos und alle Kategorien
-* **Video** ein Video und die zugeordneten Kategorien
-* **Kategorie** eine Kategorie und die zugeordneten Videos 
+* **Projektkontext** alle Medien und alle Kategorien
+* **Medium** ein Medium und die zugeordneten Kategorien
+* **Kategorie** eine Kategorie und die zugeordneten Medien 
 
 # Index
 
@@ -29,7 +29,7 @@ Pfad: `/index.html`
 ## Kontext
 
 * Mehrere Kategorien
-* Mehrere Videos
+* Mehrere Medien
 
 ## Ansichten
 
@@ -41,20 +41,20 @@ Pfad: `/index.html`
 	* Wortwolke
 		* Wortwolke Wort &rarr; Projekt : Wort 
 	* Matrix
-		* Zeile &rarr; Video : Übersicht
+		* Zeile &rarr; Medium : Übersicht
 		* Spalte &rarr; Kategorie : Übersicht
 		* Zelle &rarr; Kategorie : Übereinstimmung 
 	* Glossar
 * Kategorien
 	* Übersicht 
 		* List &rarr; Kategorie : Übersicht
-* Videos
+* Medien
 	* Übersicht	
-		* List &rarr; Video : Übersicht
+		* List &rarr; Medium : Übersicht
 * Wort*  
-  Pfad: `/Worts/<Wort>.inc.html`
+  Pfad: `/words/<Wort>.inc.html`
 	* Statistiken
-	* Videos (Teilmenge) &rarr; Video : Wort
+	* Medien (Teilmenge) &rarr; Medium : Wort
 	* Kategorien (Teilmenge) &rarr; Kategorie : Wort
 
 # Kategorie*
@@ -64,7 +64,7 @@ Pfad: `/categories/<Kategorie>/index.html`
 ## Kontext
 
 * Einzelne Kategorie
-* Mehrere Videos (Teilmenge)
+* Mehrere Medien (Teilmenge)
 
 ## Ansichten
 
@@ -74,48 +74,48 @@ Pfad: `/categories/<Kategorie>/index.html`
 	* Wort-Hitliste &rarr; Kategorie:Wort
 * Wortwolke
 	* Wortwolke Wort &rarr; Kategorie:Wort
-* Videos
+* Medien
 	* Liste &rarr; Kategorie : Übereinstimmung
 * Glossar
 	* Liste &rarr; Kategorie : Wort
 * Wort*  
-  Pfad: `/categories/<Kategorie>/Worts/<Wort>.inc.html`
+  Pfad: `/categories/<Kategorie>/words/<Wort>.inc.html`
 	* Statistiken
-	* Videos (Teilmenge) &rarr; Video : Wort
+	* Medien (Teilmenge) &rarr; Medium : Wort
 * Übereinstimmung*  
-  Pfad: `/categories/<Kategorie>/matches/<video>.inc.html`
+  Pfad: `/categories/<Kategorie>/matches/<Medium>.inc.html`
 	* Übereinstimmung
 	* Wortliste &rarr; Kategorie : Wort
 
-# Video*
+# Medium*
 
-Pfad: `/videos/<video>/index.html`  
-Video-Pfad: `/video/<video>/<video>.mp4`  
-Waveform-Pfad: `/videos/<video>/waveform.png`
+Pfad: `/media/<Medium>/index.html`  
+Medienpfad: `/media/<Medium>/<Medium>.<Typ>`  
+Waveform-Pfad: `/media/<Medium>/waveform.png`
 
 ## Kontext
 
-* Einzelnes Video
+* Einzelnes Medium
 * Mehrere Kategorien (Teilmenge)
 
 ## Ansichten
 
-* Video (Übersicht)
+* Medium (Übersicht)
 	* Beschreibung
 	* Statistiken
 	* Waveform
-	* Wort-Hitliste &rarra; Video : Wort
+	* Wort-Hitliste &rarra; Medium : Wort
 * Wortwolke
-	* Wortwolke Wort &rarr; Video : Wort 
+	* Wortwolke Wort &rarr; Medium : Wort 
 * Transkript
 	* Phrase Zeitpunkt &rarr; Abspielposition
-	* Phrase Wort &rarr; Video : Wort
+	* Phrase Wort &rarr; Medium : Wort
 * Kategorien 
 	* Liste &rarr; Kategorie : Übereinstimmung
 * Glossar
-	* Liste &rarr; Video : Wort
+	* Liste &rarr; Medium : Wort
 * Wort*  
-  Pfad: `/videos/<video>/Worts/<Wort>.inc.html`
+  Pfad: `/media/<Medium>/words/<Wort>.inc.html`
 	* Statistiken
 	* Auftreten &rarr; Abspielposition
 	* Kategorien &rarr; Kategorie:Wort

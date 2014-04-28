@@ -14,8 +14,14 @@ Diese Anwendung ist das Ergebnis eines Forschungsprojektes an der [Fachhochschul
 **Bearbeitungszeit:** 07.2013 - 01.2014  
 
 **Download:** <https://github.com/mastersign/mediacategorizer/releases>  
-**Quelltexte:** <https://github.com/mastersign/mediacategorizer>  
-**Lizenz:** [MIT License][mit-lic]  
+**Lizenz:** [MIT License][mit-lic]
+
+**Quelltexte:**
+
+* <https://github.com/mastersign/mediacategorizer>
+* <https://github.com/mastersign/mediacategorizer-ui>
+* <https://github.com/mastersign/mediacategorizer-transcripter>
+* <https://github.com/mastersign/mediacategorizer-distillery>
 
 # Funktionalität
 

@@ -3,7 +3,7 @@ MediaCategorizer
 
 ![MediaCategorizer][logo]
 
-Eine Windows-Anwendung zur Verschriftlichung und Kategorisierung von Videos mit gesprochenem Inhalt.
+Eine Windows-Anwendung zur Verschriftlichung und Kategorisierung von Video- und Audiodateien mit gesprochenem Inhalt.
 
 Diese Anwendung ist das Ergebnis eines Forschungsprojektes an der [Fachhochschule Brandenburg][fhb] mit dem Namen "Online Lehr- und Lernhilfsmittel" (OLL). Das Projekt wurde gefördert mit Mitteln des Europäischen Fonds für Regionalentwicklung (EFRE) in der Bewirtschaftung des MWFK Programms "e-learning und e-knowledge".
 

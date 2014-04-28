@@ -1,0 +1,1 @@
+powershell -ExecutionPolicy RemoteSigned -NoLogo -NoProfile -Command ".\UpdateBuildRelease.ps1" > update-build-release.log

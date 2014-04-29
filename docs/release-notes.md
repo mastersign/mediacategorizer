@@ -4,6 +4,12 @@ subtitle: Release Notes
 lang: de
 ...
 
+# 0.6.0 {#v0.6.0}
+
+* Manuelle Vorauswahl der Sprecherprofile
+* Abbruch der Ausführung durch Benutzer möglich
+* Benutzerdefinierte Farbe für die Zellen der Übereinstimmungsmatrix
+
 # 0.5.0 {#v0.5.0}
 
 * Transkodieren der Originalmedien in Browser-kompatible Formate (MP3, MP4, OGG, WebM)

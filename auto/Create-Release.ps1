@@ -5,7 +5,7 @@ $ComponentsPath = Resolve-Path "$BasePath\components"
 $DocsPath = Resolve-Path "$BasePath\docs"
 $TargetDir = "$BasePath\release"
 if (Test-Path $TargetDir) { Remove-Item $TargetDir -Recurse -Force }
-if (!(Test-Path $TargetDir)) { mkdir $TargetDir | Out-Null }
+mkdir $TargetDir | Out-Null
 
 function get-clojure-project-name($projectDir) {
 	$prjFile = Resolve-Path "$projectDir\project.clj"

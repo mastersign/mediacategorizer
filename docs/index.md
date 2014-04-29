@@ -26,10 +26,10 @@ Diese Anwendung ist das Ergebnis eines Forschungsprojektes an der [Fachhochschul
 
 # Funktionalität
 
-* Die Tonspur aus einer Anzahl von Videos herauslösen
-* und diese mit Hilfe eines Spracherkennungssystems verschriftlichen
+* Eine Mono-Tonspur aus Audio- und Videodateien extrahieren
+* Den Ton mit Hilfe eines Spracherkennungssystems verschriftlichen
 * Eine Gruppe von Kategorien durch Beispieltexte definieren
-* Die Videos den Kategorien zuordnen
+* Die Medien den Kategorien zuordnen
 * Die Ergebnisse als XML und als HTML5-WebSite ausgeben
 
 # Dokumentation
@@ -43,11 +43,11 @@ Diese Anwendung ist das Ergebnis eines Forschungsprojektes an der [Fachhochschul
 
 # Screenshots
 
-![Die Fortschrittsanzeige während der Bearbeitung eines Projektes][ui-page-process]
+![Die Fortschrittsanzeige während der Ausführung eines Projektes][ui-page-process]
 
 ![Die Details eines erkannten Wortes][video-word]
 
-![Die Übereinstimmungsmatrix zwischen Kategorien und Videos][matrix]
+![Die Übereinstimmungsmatrix zwischen Kategorien und Medien][matrix]
 
 ---
 

@@ -7,8 +7,8 @@ creator:
   name: Tobias Kiertscher
   affiliation: Fachhochschule Brandenburg
   email: kiertscher@fh-brandenburg.de
-version: 0.5.0
-date: 10.02.2014
+version: 0.6.0
+date: 29.04.2014
 lang: de
 ...
 
@@ -57,6 +57,7 @@ Die verschiedenen Aspekte eines Projektes sind auf die folgenden Seiten verteilt
 * [Kategorien](#PageCategories)
 * [Medien](#PageMedia)
 * [Parameter](#PageParameters)
+* [Sprecherprofile](#PageProfiles)
 * [Ausführung](#PageProcessing)
 
 Die Seiten können in beliebiger Reihenfolge über das Prozessmenü aufgerufen werden.
@@ -240,6 +241,10 @@ Die Seite *Parameter* führt eine Reihe von Einstellungen auf, die den Prozess s
 	* **Medienwolke**  
 	  Steuert die Erzeugung einer Wortwolke für die Worte aus einem Medium.
 		* ... (siehe *Globale Wortwolke*)
+	* **Übereinstimmungsmatrix**
+	  Steuert die Erzeugung der Übereinstimmungsmatrix zwischen allen Medien und allen Kategorien im Projekt.
+		* **Zellenfarbe**  
+		  Gibt die Hintergrundfarbe für die Zellen der Matrix an. Die Farbe wird je nach Wichtung der Zelle mit dem Seitenhintergrund gemischt. Zellen die eine starke Übereinstimmung beschreiben, erhalten eine intensive Hintergrundfarbe die nicht mit dem Seitenhintergrund gemischt ist. Die Farbe von Zellen die eine schwache Übereinstimmung beschreiben, wird stärker mit dem Seitenhintergrund gemischt. 
 	* **Wellenformvisualisierung**  
 	  Steuert die Erzeugung der Wellenform aus der Mediendatei. Jede Wellenform wird zweimal visualisert, einmal aktiv und einmal passiv. Die passive Darstellung ist immer zusehen, die aktive Darstellung ist nur für den Bereich zu sehen der bereits abgespielt wurde. 
 		* **Breite (px)**  
@@ -262,6 +267,15 @@ Die Seite *Parameter* führt eine Reihe von Einstellungen auf, die den Prozess s
 		  Gibt die erste Farbe für den Farbverlauf der passiven Wellenform an. Die erste Farbe wird nahe der Horizontlinie verwendet.
 		* **Passive Wellenform 2**  
 		  Gibt die zweite Farbe für den Farbverlauf der passiven Wellenform an. Die zweite Farbe wird fern der Horizontlinie verwendet.
+
+### Sprecherprofile {#PageProfiles}
+Auf der Seite *Sprecherprofile* wird eine Tabelle mit allen in Windows installierten Sprecherprofilen angezeigt. Die Tabelle besitzt die drei Spalten *Name*, *Aktiviert* und *ID*. Mit den Häkchen in der Spalte *Aktiviert* können die Sprecherprofile für die Ausführung des Projektes aktiviert oder deaktiviert werden. Die Spalte *ID* enthält die GUID, mit der das jeweilige Sprecherprofil in der Registry von Windows identifiziert wird.
+
+Je mehr Profile für die Ausführung eines Projektes aktiviert sind, desto höher ist die Wahrscheinlichkeit, dass gute Spracherkennungsergebnisse erzielt werden. Jedoch führt die Aktivierung von vielen Sprecherprofilen i.d.R. zu einer längeren Verarbeitungszeit. 
+
+**Hinweis:** *Die Auswahl der aktiven Sprecherprofile wird nicht im Projekt gespeichert. Beim Öffnen eines bestehenden Projektes oder dem Erzeugen eines neuen Projektes werden automatisch alle Sprecherprofile für die Verarbeitung aktiviert. Achten Sie vor dem Starten der Ausführung darauf, dass Sie nur jene Sprecherprofile aktivieren, die Sie benötigen.*
+
+![#ui-page-profiles Die Liste mit den verfügbaren Sprecherprofilen][ui-page-profiles]
 
 ### Ausführung {#PageProcessing}
 Auf der Seite *Ausführung* kann der Prozess gestartet und der Fortschritt der Ausführung beobachtet werden. Sie besteht aus einem Kopfbereich der den globalen Fortschritt der Ausführung anzeigt, eine Liste mit Aufgaben und am Fuß eine Schaltfläche zum Starten des Projektes.
@@ -402,6 +416,7 @@ Bei der Veröffentlichung ist zu beachten, dass je nach Größe der Mediendateie
 [ui-page-cats]: images/ui-page-categories.png
 [ui-page-media]: images/ui-page-media.png
 [ui-page-params]: images/ui-page-parameter.png
+[ui-page-profiles]: images/ui-page-profiles.png
 [ui-page-process]: images/ui-page-process.png
 [ui-page-settings]: images/ui-page-settings.png
 [ui-page-info]: images/ui-page-info.png

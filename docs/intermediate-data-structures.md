@@ -68,6 +68,8 @@ speech recognition results and the creation of the output.
   _[Cloud Configuration](#CloudConfiguration)_ the configuration map for the medium word clouds
 * **waveform**  
   _[Waveform Configuration](#WaveformConfiguration)_ the configuration for the waveforms
+* **matrix**  
+  _[Matrix Configuration](#MatrixConfiguration)_ the configuration for the match matrix
 
 ### Example
 	{ :parallel-proc true
@@ -85,7 +87,8 @@ speech recognition results and the creation of the output.
                       :color [0.0 0.8 0.2]
                       ... } } 
       :category-cloud { ... }
-      :medium-cloud { ... } }
+      :medium-cloud { ... }
+	  :matrix { ... } }
 
 ## Cloud Configuration {#CloudConfiguration}
 A cloud configuration controls the creation of a word cloud.
@@ -142,6 +145,19 @@ A waveform configuration controls the creation of waveform visualizations for a 
 
 	{ :width 640
 	  :height 80 }
+
+## Matrix Configuration {#MatrixConfiguration}
+The matrix configuration controls the creation of the match matrix between categories and media.
+
+### Slots
+* **color**  
+  _vector_ a vector with four _floating point numbers_ `[0..1]` 
+  for red, green, blue, and alpha  
+  The alpha part of the color is ignored and replaced by the normalized matching score.
+
+### Example
+
+	{ :color [0.0 0.3 0.8 1.0] }
 
 # Job File {#JobFile}
 File in [Clojure EDN syntax](http://edn-format.org/) with file extension `.saj`.

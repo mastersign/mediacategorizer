@@ -57,7 +57,7 @@ Die verschiedenen Aspekte eines Projektes sind auf die folgenden Seiten verteilt
 * [Kategorien](#PageCategories)
 * [Medien](#PageMedia)
 * [Parameter](#PageParameters)
-* [Sprachprofile](#PageProfiles)
+* [Sprecherprofile](#PageProfiles)
 * [Ausführung](#PageProcessing)
 
 Die Seiten können in beliebiger Reihenfolge über das Prozessmenü aufgerufen werden.
@@ -268,14 +268,14 @@ Die Seite *Parameter* führt eine Reihe von Einstellungen auf, die den Prozess s
 		* **Passive Wellenform 2**  
 		  Gibt die zweite Farbe für den Farbverlauf der passiven Wellenform an. Die zweite Farbe wird fern der Horizontlinie verwendet.
 
-### Sprachprofile {#PageProfiles}
-Auf der Seite *Sprachprofile* wird eine Tabelle mit allen in Windows installierten Sprachprofilen angezeigt. Die Tabelle besitzt die drei Spalten *Name*, *Aktiviert* und *ID*. Mit den Häkchen in der Spalte *Aktiviert* können die Sprachprofile für die Ausführung des Projektes aktiviert oder deaktiviert werden. Die Spalte *ID* enthält die GUID, mit der das jeweilige Sprachprofil in der Registry von Windows identifiziert wird.
+### Sprecherprofile {#PageProfiles}
+Auf der Seite *Sprecherprofile* wird eine Tabelle mit allen in Windows installierten Sprecherprofilen angezeigt. Die Tabelle besitzt die drei Spalten *Name*, *Aktiviert* und *ID*. Mit den Häkchen in der Spalte *Aktiviert* können die Sprecherprofile für die Ausführung des Projektes aktiviert oder deaktiviert werden. Die Spalte *ID* enthält die GUID, mit der das jeweilige Sprecherprofil in der Registry von Windows identifiziert wird.
 
-Je mehr Profile für die Ausführung eines Projektes aktiviert sind, desto höher ist die Wahrscheinlichkeit, dass gute Spracherkennungsergebnisse erzielt werden. Jedoch führt die Aktivierung von vielen Sprachprofilen i.d.R. zu einer längeren Verarbeitungszeit. 
+Je mehr Profile für die Ausführung eines Projektes aktiviert sind, desto höher ist die Wahrscheinlichkeit, dass gute Spracherkennungsergebnisse erzielt werden. Jedoch führt die Aktivierung von vielen Sprecherprofilen i.d.R. zu einer längeren Verarbeitungszeit. 
 
-**Hinweis:** *Die Auswahl der aktiven Sprachprofile wird nicht im Projekt gespeichert. Beim Öffnen eines bestehenden Projektes oder dem Erzeugen eines neuen Projektes werden automatisch alle Sprachprofile für die Verarbeitung aktiviert. Achten Sie vor dem Starten der Ausführung darauf, dass Sie nur jene Sprachprofile aktivieren, die Sie benötigen.*
+**Hinweis:** *Die Auswahl der aktiven Sprecherprofile wird nicht im Projekt gespeichert. Beim Öffnen eines bestehenden Projektes oder dem Erzeugen eines neuen Projektes werden automatisch alle Sprecherprofile für die Verarbeitung aktiviert. Achten Sie vor dem Starten der Ausführung darauf, dass Sie nur jene Sprecherprofile aktivieren, die Sie benötigen.*
 
-![#ui-page-profiles Die Liste mit den verfügbaren Sprachprofilen][ui-page-profiles]
+![#ui-page-profiles Die Liste mit den verfügbaren Sprecherprofilen][ui-page-profiles]
 
 ### Ausführung {#PageProcessing}
 Auf der Seite *Ausführung* kann der Prozess gestartet und der Fortschritt der Ausführung beobachtet werden. Sie besteht aus einem Kopfbereich der den globalen Fortschritt der Ausführung anzeigt, eine Liste mit Aufgaben und am Fuß eine Schaltfläche zum Starten des Projektes.

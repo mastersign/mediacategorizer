@@ -48,9 +48,9 @@ Um ein Profil zu importieren, genügt es im Speech Profile Manager auf die Schal
 Nach erfolgreichem Import fragt das Programm zunächst nach, ob das importierte Profil zum Standardprofil gemacht werden soll. Diese Frage kann mit *No* beantwortet werden. Anschließen bietet das Programm an, die Mikrofoneinrichtung für das Profil durchzuführen. Für die Verschriftlichung mit MediaCategorizer ist dies nicht erforderlich, da dabei nicht das am PC angeschlossene Mikrofon zum Einsatz kommt. Deshalb kann auch dieser zweite Dialog mit *No* beantwortet werden. 
 
 # Hinweise zum Einsatz von Sprecherprofilen
-MediaCategorizer nutzt immer alle installierten Sprecherprofile. Es wählt während der Ausführung nacheinander verschiedene Sprecherprofile als aktuelles Standardprofil aus, deshalb ist es die Regel, dass das Standardprofil nach der Ausführung von MediaCategorizer umgestellt wurde.
+Vor der Ausführung eines Projektes in MediaCategorizer kann auf der Seite *Sprachprofile* die Auswahl jener Sprecherprofile getroffen werden, die für die Verarbeitung genutzt werden sollen. MediaCategorizer wählt während der Ausführung nacheinander verschiedene Sprecherprofile als aktuelles Standardprofil aus und führt anschließend die Sprachererkennung durch. In der Regel wird das vor dem Start der Ausführung als Standardprofil ausgewählte Sprecherprofil, nach Abschluss der Verarbeitung wieder als Standardprofil gewählt.
 
-Sind mehrere Sprecherprofile im System installiert, wählt MediaCategorizer für jedes Video das Sprecherprofil mit der besten Erkennungsleistung aus. 
+Sind mehrere Sprecherprofile im System installiert und für die Ausführung aktiviert, wählt MediaCategorizer für jedes Video das Sprecherprofil mit der besten Erkennungsleistung aus. 
 
 Für gute Erkennungsergebnisse mit unbekanntem Videomaterial ist es empfehlenswert eine kleine Anzahl von Profilen (z.B. 8) zu verwenden, die von Sprechern mit möglichst unterschiedlichen Stimmen und unterschiedlicher Aussprache trainiert wurden. Eine große Anzahl unterschiedlicher Profile erhöht die Wahrscheinlichkeit einer guten Erkennungsleistung, erhöht aber auch deutlich den Rechenaufwand für die Profilauswahl.
 

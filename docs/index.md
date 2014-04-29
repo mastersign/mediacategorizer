@@ -43,7 +43,7 @@ Diese Anwendung ist das Ergebnis eines Forschungsprojektes an der [Fachhochschul
 
 # Screenshots
 
-![Die Fortschrittsanzeige während der Bearbeitung eines Projektes][ui-page-process]
+![Die Fortschrittsanzeige während der Ausführung eines Projektes][ui-page-process]
 
 ![Die Details eines erkannten Wortes][video-word]
 

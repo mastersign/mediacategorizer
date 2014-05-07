@@ -3,7 +3,7 @@ $MyPath = [IO.Path]::GetDirectoryName($MyInvocation.MyCommand.Definition)
 $BasePath = Resolve-Path "$MyPath\.."
 $ComponentsPath = "$BasePath\components"
 if (!(Test-Path $ComponentsPath)) {
-	mkdir $BasePath | Out-Null
+	mkdir $ComponentsPath | Out-Null
 }
 $BaseRepo = "https://github.com/mastersign/mediacategorizer"
 

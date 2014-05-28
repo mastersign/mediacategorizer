@@ -9,6 +9,7 @@ Write-Host "Transforming $source ..."
 
 $myPath = [IO.Path]::GetDirectoryName($MyInvocation.MyCommand.Definition);
 $sourcePath = [IO.Path]::GetDirectoryName($source)
+$targetPath = [IO.Path]::GetDirectoryName($target)
 
 $intermediate = "${source}.tmp"
 .\Transform-Markdown.ps1 $source $intermediate
@@ -30,6 +31,14 @@ $inputFormat = "markdown+pipe_tables+table_captions+pandoc_title_block+yaml_meta
 pushd $sourcePath
 
 if ($formats -contains "html") {
+  $faviconFile = "favicon.ico"
+	if (Test-Path $faviconFile) {
+    copy $faviconFile "$targetPath\favicon.ico" -Force
+    $favicon = "favicon.ico"
+	} else {
+    $favicon = "false"
+	}
+	
 	pandoc -r $inputFormat `
 		--default-image-extension=png `
 		--normalize `
@@ -38,6 +47,7 @@ if ($formats -contains "html") {
 		--template $templateHtml `
 		--filter pandoc-citeproc `
 		--mathml `
+		-M "favicon=$favicon" `
 		-o "$target.html" $intermediate
 }
 

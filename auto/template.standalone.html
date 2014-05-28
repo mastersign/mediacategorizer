@@ -7,6 +7,9 @@
     $for(author)$<meta name="author" content="$author$" />$endfor$
     $if(date)$<meta name="date" content="$date$" />$endif$
     $header-includes$
+    $if(favicon)$<link rel="icon" href="$favicon$" type="image/x-icon" />
+    <link rel="shortcut icon" type="image/x-icon" href="$favicon$" />
+    <link type="image/x-icon" href="$favicon$" />$endif$
     <style type="text/css">
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
